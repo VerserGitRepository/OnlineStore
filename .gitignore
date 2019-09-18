@@ -5,3 +5,4 @@
 /.vs
 /OnlineStore.WebUI/bin
 /OnlineStore.WebUI/obj/Debug
+/packages
