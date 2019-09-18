@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+        }
+        html, body {
+            height: 100%;
+            
+            
+        }
+        
+        .wrapper {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            margin: 0 auto -30px;
+        }
+        .my_footer, .push {
+            clear: both;
+            height: 20px;
+            padding: 10px;
+        }
+    </style>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    @{
+        if (Session["CustomerName"] == null)
+        {
+            Session["CustomerName"] = "Online Store";
+        }
+    }
+
+    <div class="wrapper">
+        <div class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               @if (Session["SaleID"] != null)
+               {
+                <a class="navbar-brand" href="@Url.Action("List", "Sale", new { customerCode = Session["CustomerCode"], saleId = Session["SaleID"]})">@Session["CustomerName"]</a>
+               }
+               else
+               {
+                <a class="navbar-brand" href="@Url.Action("Welcome", "Customer", new { customerCode = Session["CustomerCode"] })">@Session["CustomerName"]</a>
+                
+                }
+                <a href=""></a>
+
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+        @* <li id="terms">@Html.ActionLink("Terms", "Terms", "Home")</li>
+        <li id="upgrade">@Html.ActionLink("Windows 7 Professional", "Upgrade", "Home")</li>*@
+                    <li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
+                </ul>
+
+                <div>
+                    @Html.Action("Summary", "Cart")
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 10px; margin-left: 10px;">
+            @RenderBody()
+        </div>
+        <div class="push"></div>
+    </div>
+    <div class="my_footer text-center text-muted">
+        The @Session["CustomerName"] site is managed by Verser Technology Lifecycles &copy; @DateTime.Now.Year
+    </div>
+</body>
+</html>

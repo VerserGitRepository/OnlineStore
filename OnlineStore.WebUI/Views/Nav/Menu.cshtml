@@ -1,0 +1,22 @@
+﻿@model OnlineStore.WebUI.Models.MenuViewModel
+
+<div style="margin-bottom: 20px">
+    @*@Html.ActionLink("All", "List", "Sale", new { itemType = "All", customerCode = Model.CustomerCode, saleId = Model.SaleId },
+        new { @class = "btn btn-block btn-default btn-lg" + (Model.SelectedItemType == "All" ? " btn-primary" : "")})
+
+    @foreach (OnlineStore.WebUI.Models.ItemType itemType in Model.ItemTypes)
+    {
+        @Html.RouteLink(itemType.Description, new
+        {
+            controller = "Sale",
+            action = "List",
+            itemType = itemType.Description,
+            customerCode = Model.CustomerCode,
+            saleId = Model.SaleId
+        }, new
+        {
+            @class = "btn btn-block btn-default btn-lg"
+                + (itemType.Description == Model.SelectedItemType ? " btn-primary" : "")
+        })
+    }*@
+</div>

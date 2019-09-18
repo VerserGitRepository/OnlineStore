@@ -1,0 +1,402 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0">
+    <Schema xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Namespace="LightSwitchApplication" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityType Name="Customer">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        <Property Name="Logo" Type="Edm.Binary" Nullable="false" MaxLength="Max" />
+        <Property Name="CustomerName" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="CustomerCode" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="WelcomeMessage" Type="Edm.String" Nullable="false" MaxLength="Max" />
+        <Property Name="Project_Id" Type="Edm.Int32" />
+        <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Created" Type="Edm.DateTimeOffset" />
+        <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Modified" Type="Edm.DateTimeOffset" />
+        <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+        <NavigationProperty Name="Products" Relationship="LightSwitchApplication.Product_Customer" ToRole="Product" FromRole="Customer" />
+        <NavigationProperty Name="Sales" Relationship="LightSwitchApplication.Sale_Customer" ToRole="Sale" FromRole="Customer" />
+      </EntityType>
+      <EntityType Name="OrderDetail">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        <Property Name="OrderDetail_Order" Type="Edm.Int32" Nullable="false" />
+        <Property Name="OrderDetail_SaleProduct" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Quantity" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Created" Type="Edm.DateTimeOffset" />
+        <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Modified" Type="Edm.DateTimeOffset" />
+        <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+        <NavigationProperty Name="Order" Relationship="LightSwitchApplication.OrderDetail_Order" ToRole="Order" FromRole="OrderDetail" />
+        <NavigationProperty Name="SaleProduct" Relationship="LightSwitchApplication.OrderDetail_SaleProduct" ToRole="SaleProduct" FromRole="OrderDetail" />
+        <NavigationProperty Name="OrderDetailSSNs" Relationship="LightSwitchApplication.OrderDetailSSN_OrderDetail" ToRole="OrderDetailSSN" FromRole="OrderDetail" />
+      </EntityType>
+      <EntityType Name="OrderDetailSSN">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        <Property Name="OrderDetailSSN_OrderDetail" Type="Edm.Int32" Nullable="false" />
+        <Property Name="vw_SSN_SSN" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Created" Type="Edm.DateTimeOffset" />
+        <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Modified" Type="Edm.DateTimeOffset" />
+        <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+        <NavigationProperty Name="OrderDetail" Relationship="LightSwitchApplication.OrderDetailSSN_OrderDetail" ToRole="OrderDetail" FromRole="OrderDetailSSN" />
+      </EntityType>
+      <EntityType Name="Order">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        <Property Name="Order_Sale" Type="Edm.Int32" Nullable="false" />
+        <Property Name="OrderNo" Type="Edm.Int32" />
+        <Property Name="OrderRef" Type="Edm.String" MaxLength="255" />
+        <Property Name="OrderDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="OrderStatus" Type="Edm.String" MaxLength="255" />
+        <Property Name="UserId" Type="Edm.String" MaxLength="255" />
+        <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="ShipTo" Type="Edm.String" MaxLength="255" />
+        <Property Name="ShippingAddressLine1" Type="Edm.String" MaxLength="255" />
+        <Property Name="ShippingAddressLine2" Type="Edm.String" MaxLength="255" />
+        <Property Name="Suburb" Type="Edm.String" MaxLength="255" />
+        <Property Name="State" Type="Edm.String" MaxLength="255" />
+        <Property Name="Postcode" Type="Edm.String" MaxLength="255" />
+        <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Created" Type="Edm.DateTimeOffset" />
+        <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Modified" Type="Edm.DateTimeOffset" />
+        <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+        <NavigationProperty Name="Sale" Relationship="LightSwitchApplication.Order_Sale" ToRole="Sale" FromRole="Order" />
+        <NavigationProperty Name="OrderDetails" Relationship="LightSwitchApplication.OrderDetail_Order" ToRole="OrderDetail" FromRole="Order" />
+        <NavigationProperty Name="Payments" Relationship="LightSwitchApplication.Payment_Order" ToRole="Payment" FromRole="Order" />
+        <NavigationProperty Name="AssetAllocation" Relationship="LightSwitchApplication.AssetAllocation_Order" ToRole="AssetAllocation" FromRole="Order" />
+      </EntityType>
+      <EntityType Name="Payment">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        <Property Name="PaymentAmount" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="2" />
+        <Property Name="CardType" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="NameOnCard" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="TruncatedCardNo" Type="Edm.String" MaxLength="255" />
+        <Property Name="PaymentReference" Type="Edm.String" MaxLength="255" />
+        <Property Name="PaymentStatus" Type="Edm.Int32" />
+        <Property Name="Payment_Order" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Created" Type="Edm.DateTimeOffset" />
+        <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Modified" Type="Edm.DateTimeOffset" />
+        <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+        <NavigationProperty Name="Order" Relationship="LightSwitchApplication.Payment_Order" ToRole="Order" FromRole="Payment" />
+      </EntityType>
+      <EntityType Name="Product">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        <Property Name="ProductImage" Type="Edm.Binary" MaxLength="Max" />
+        <Property Name="Product_Customer" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ProductName" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" />
+        <Property Name="IsSKU" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="ItemType_ID" Type="Edm.Decimal" Precision="18" Scale="2" />
+        <Property Name="Brand_ID" Type="Edm.Decimal" Precision="18" Scale="2" />
+        <Property Name="Model_ID" Type="Edm.Decimal" Precision="18" Scale="2" />
+        <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Created" Type="Edm.DateTimeOffset" />
+        <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Modified" Type="Edm.DateTimeOffset" />
+        <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+        <NavigationProperty Name="Customer" Relationship="LightSwitchApplication.Product_Customer" ToRole="Customer" FromRole="Product" />
+        <NavigationProperty Name="SaleProducts" Relationship="LightSwitchApplication.SaleProduct_Product" ToRole="SaleProduct" FromRole="Product" />
+      </EntityType>
+      <EntityType Name="SaleProduct">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        <Property Name="SaleProduct_Sale" Type="Edm.Int32" Nullable="false" />
+        <Property Name="SaleProduct_Product" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PriceExGST" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="2" />
+        <Property Name="GSTAmount" Type="Edm.Decimal" Precision="18" Scale="2" />
+        <Property Name="PriceIncGST" Type="Edm.Decimal" Precision="18" Scale="2" />
+        <Property Name="QtyAvailable" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Created" Type="Edm.DateTimeOffset" />
+        <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Modified" Type="Edm.DateTimeOffset" />
+        <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+        <NavigationProperty Name="Sale" Relationship="LightSwitchApplication.SaleProduct_Sale" ToRole="Sale" FromRole="SaleProduct" />
+        <NavigationProperty Name="Product" Relationship="LightSwitchApplication.SaleProduct_Product" ToRole="Product" FromRole="SaleProduct" />
+        <NavigationProperty Name="OrderDetails" Relationship="LightSwitchApplication.OrderDetail_SaleProduct" ToRole="OrderDetail" FromRole="SaleProduct" />
+        <NavigationProperty Name="AssetAllocations" Relationship="LightSwitchApplication.AssetAllocation_SaleProduct" ToRole="AssetAllocation" FromRole="SaleProduct" />
+      </EntityType>
+      <EntityType Name="Sale">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        <Property Name="SaleID" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="SaleType" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="SaleName" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="WelcomeMessage" Type="Edm.String" MaxLength="255" />
+        <Property Name="StartDate" Type="Edm.DateTime" />
+        <Property Name="EndDate" Type="Edm.DateTime" />
+        <Property Name="Sale_Customer" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Created" Type="Edm.DateTimeOffset" />
+        <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Modified" Type="Edm.DateTimeOffset" />
+        <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+        <NavigationProperty Name="Customer" Relationship="LightSwitchApplication.Sale_Customer" ToRole="Customer" FromRole="Sale" />
+        <NavigationProperty Name="SaleProducts" Relationship="LightSwitchApplication.SaleProduct_Sale" ToRole="SaleProduct" FromRole="Sale" />
+        <NavigationProperty Name="Orders" Relationship="LightSwitchApplication.Order_Sale" ToRole="Order" FromRole="Sale" />
+        <NavigationProperty Name="AssetAllocations" Relationship="LightSwitchApplication.AssetAllocation_Sale" ToRole="AssetAllocation" FromRole="Sale" />
+      </EntityType>
+      <EntityType Name="AssetAllocation">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        <Property Name="Employee_Sale" Type="Edm.Int32" Nullable="false" />
+        <Property Name="EmployeeID" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="AssetID" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="EmployeeName" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="EmployeeEmail" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="AssetID_Type" Type="Edm.String" Nullable="false" MaxLength="255" />
+        <Property Name="PreAllocatedAsset_Order" Type="Edm.Int32" />
+        <Property Name="Job_Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="AssetAllocation_SaleProduct" Type="Edm.Int32" />
+        <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Created" Type="Edm.DateTimeOffset" />
+        <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+        <Property Name="Modified" Type="Edm.DateTimeOffset" />
+        <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+        <NavigationProperty Name="Sale" Relationship="LightSwitchApplication.AssetAllocation_Sale" ToRole="Sale" FromRole="AssetAllocation" />
+        <NavigationProperty Name="Order" Relationship="LightSwitchApplication.AssetAllocation_Order" ToRole="Order" FromRole="AssetAllocation" />
+        <NavigationProperty Name="SaleProduct" Relationship="LightSwitchApplication.AssetAllocation_SaleProduct" ToRole="SaleProduct" FromRole="AssetAllocation" />
+      </EntityType>
+      <Association Name="Product_Customer">
+        <End Role="Customer" Type="LightSwitchApplication.Customer" Multiplicity="1" />
+        <End Role="Product" Type="LightSwitchApplication.Product" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Customer">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Product">
+            <PropertyRef Name="Product_Customer" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Sale_Customer">
+        <End Role="Customer" Type="LightSwitchApplication.Customer" Multiplicity="1" />
+        <End Role="Sale" Type="LightSwitchApplication.Sale" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Customer">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Sale">
+            <PropertyRef Name="Sale_Customer" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="OrderDetailSSN_OrderDetail">
+        <End Role="OrderDetail" Type="LightSwitchApplication.OrderDetail" Multiplicity="1" />
+        <End Role="OrderDetailSSN" Type="LightSwitchApplication.OrderDetailSSN" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="OrderDetail">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="OrderDetailSSN">
+            <PropertyRef Name="OrderDetailSSN_OrderDetail" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="OrderDetail_Order">
+        <End Role="Order" Type="LightSwitchApplication.Order" Multiplicity="1" />
+        <End Role="OrderDetail" Type="LightSwitchApplication.OrderDetail" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Order">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="OrderDetail">
+            <PropertyRef Name="OrderDetail_Order" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Payment_Order">
+        <End Role="Order" Type="LightSwitchApplication.Order" Multiplicity="1" />
+        <End Role="Payment" Type="LightSwitchApplication.Payment" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Order">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Payment">
+            <PropertyRef Name="Payment_Order" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="SaleProduct_Product">
+        <End Role="Product" Type="LightSwitchApplication.Product" Multiplicity="1" />
+        <End Role="SaleProduct" Type="LightSwitchApplication.SaleProduct" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Product">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="SaleProduct">
+            <PropertyRef Name="SaleProduct_Product" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="OrderDetail_SaleProduct">
+        <End Role="SaleProduct" Type="LightSwitchApplication.SaleProduct" Multiplicity="1" />
+        <End Role="OrderDetail" Type="LightSwitchApplication.OrderDetail" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="SaleProduct">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="OrderDetail">
+            <PropertyRef Name="OrderDetail_SaleProduct" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="SaleProduct_Sale">
+        <End Role="Sale" Type="LightSwitchApplication.Sale" Multiplicity="1" />
+        <End Role="SaleProduct" Type="LightSwitchApplication.SaleProduct" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Sale">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="SaleProduct">
+            <PropertyRef Name="SaleProduct_Sale" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Order_Sale">
+        <End Role="Sale" Type="LightSwitchApplication.Sale" Multiplicity="1" />
+        <End Role="Order" Type="LightSwitchApplication.Order" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Sale">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Order">
+            <PropertyRef Name="Order_Sale" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="AssetAllocation_Sale">
+        <End Role="Sale" Type="LightSwitchApplication.Sale" Multiplicity="1" />
+        <End Role="AssetAllocation" Type="LightSwitchApplication.AssetAllocation" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Sale">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="AssetAllocation">
+            <PropertyRef Name="Employee_Sale" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="AssetAllocation_Order">
+        <End Role="Order" Type="LightSwitchApplication.Order" Multiplicity="0..1" />
+        <End Role="AssetAllocation" Type="LightSwitchApplication.AssetAllocation" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Order">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="AssetAllocation">
+            <PropertyRef Name="PreAllocatedAsset_Order" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="AssetAllocation_SaleProduct">
+        <End Role="SaleProduct" Type="LightSwitchApplication.SaleProduct" Multiplicity="0..1" />
+        <End Role="AssetAllocation" Type="LightSwitchApplication.AssetAllocation" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="SaleProduct">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="AssetAllocation">
+            <PropertyRef Name="AssetAllocation_SaleProduct" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <EntityContainer Name="ApplicationData" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Customers" EntityType="LightSwitchApplication.Customer" />
+        <EntitySet Name="OrderDetails" EntityType="LightSwitchApplication.OrderDetail" />
+        <EntitySet Name="OrderDetailSSNs" EntityType="LightSwitchApplication.OrderDetailSSN" />
+        <EntitySet Name="Orders" EntityType="LightSwitchApplication.Order" />
+        <EntitySet Name="Payments" EntityType="LightSwitchApplication.Payment" />
+        <EntitySet Name="Products" EntityType="LightSwitchApplication.Product" />
+        <EntitySet Name="SaleProducts" EntityType="LightSwitchApplication.SaleProduct" />
+        <EntitySet Name="Sales" EntityType="LightSwitchApplication.Sale" />
+        <EntitySet Name="AssetAllocations" EntityType="LightSwitchApplication.AssetAllocation" />
+        <AssociationSet Name="Product_Customer" Association="LightSwitchApplication.Product_Customer">
+          <End Role="Customer" EntitySet="Customers" />
+          <End Role="Product" EntitySet="Products" />
+        </AssociationSet>
+        <AssociationSet Name="Sale_Customer" Association="LightSwitchApplication.Sale_Customer">
+          <End Role="Customer" EntitySet="Customers" />
+          <End Role="Sale" EntitySet="Sales" />
+        </AssociationSet>
+        <AssociationSet Name="OrderDetailSSN_OrderDetail" Association="LightSwitchApplication.OrderDetailSSN_OrderDetail">
+          <End Role="OrderDetail" EntitySet="OrderDetails" />
+          <End Role="OrderDetailSSN" EntitySet="OrderDetailSSNs" />
+        </AssociationSet>
+        <AssociationSet Name="OrderDetail_Order" Association="LightSwitchApplication.OrderDetail_Order">
+          <End Role="Order" EntitySet="Orders" />
+          <End Role="OrderDetail" EntitySet="OrderDetails" />
+        </AssociationSet>
+        <AssociationSet Name="Payment_Order" Association="LightSwitchApplication.Payment_Order">
+          <End Role="Order" EntitySet="Orders" />
+          <End Role="Payment" EntitySet="Payments" />
+        </AssociationSet>
+        <AssociationSet Name="SaleProduct_Product" Association="LightSwitchApplication.SaleProduct_Product">
+          <End Role="Product" EntitySet="Products" />
+          <End Role="SaleProduct" EntitySet="SaleProducts" />
+        </AssociationSet>
+        <AssociationSet Name="OrderDetail_SaleProduct" Association="LightSwitchApplication.OrderDetail_SaleProduct">
+          <End Role="SaleProduct" EntitySet="SaleProducts" />
+          <End Role="OrderDetail" EntitySet="OrderDetails" />
+        </AssociationSet>
+        <AssociationSet Name="SaleProduct_Sale" Association="LightSwitchApplication.SaleProduct_Sale">
+          <End Role="Sale" EntitySet="Sales" />
+          <End Role="SaleProduct" EntitySet="SaleProducts" />
+        </AssociationSet>
+        <AssociationSet Name="Order_Sale" Association="LightSwitchApplication.Order_Sale">
+          <End Role="Sale" EntitySet="Sales" />
+          <End Role="Order" EntitySet="Orders" />
+        </AssociationSet>
+        <AssociationSet Name="AssetAllocation_Sale" Association="LightSwitchApplication.AssetAllocation_Sale">
+          <End Role="Sale" EntitySet="Sales" />
+          <End Role="AssetAllocation" EntitySet="AssetAllocations" />
+        </AssociationSet>
+        <AssociationSet Name="AssetAllocation_Order" Association="LightSwitchApplication.AssetAllocation_Order">
+          <End Role="Order" EntitySet="Orders" />
+          <End Role="AssetAllocation" EntitySet="AssetAllocations" />
+        </AssociationSet>
+        <AssociationSet Name="AssetAllocation_SaleProduct" Association="LightSwitchApplication.AssetAllocation_SaleProduct">
+          <End Role="SaleProduct" EntitySet="SaleProducts" />
+          <End Role="AssetAllocation" EntitySet="AssetAllocations" />
+        </AssociationSet>
+        <FunctionImport Name="GetOrderSSNs" EntitySet="OrderDetailSSNs" ReturnType="Collection(LightSwitchApplication.OrderDetailSSN)" m:HttpMethod="GET">
+          <Parameter Name="OrderId" Type="Edm.Int32" Mode="In" />
+        </FunctionImport>
+        <FunctionImport Name="AvailableProducts" EntitySet="Products" ReturnType="Collection(LightSwitchApplication.Product)" m:HttpMethod="GET">
+          <Parameter Name="CustomerId" Type="Edm.Int32" Mode="In" />
+          <Parameter Name="SaleId" Type="Edm.Int32" Mode="In" />
+        </FunctionImport>
+        <FunctionImport Name="Microsoft_LightSwitch_GetCanInformation" ReturnType="Edm.String" m:HttpMethod="GET">
+          <Parameter Name="dataServiceMembers" Type="Edm.String" Mode="In" />
+        </FunctionImport>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

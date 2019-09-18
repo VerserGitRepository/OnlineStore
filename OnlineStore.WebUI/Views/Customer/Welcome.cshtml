@@ -1,0 +1,75 @@
+﻿@model OnlineStore.WebUI.Models.WelcomeViewModel
+
+@{
+    ViewBag.Title = "Welcome";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        @if (Model.Customer != null)
+        {
+            <img src="@Url.Action("GetCustomerLogo", "Customer", new { customerId = Model.Customer.Id })" style="margin-bottom: 10px" />
+            <div>@Html.Raw(Model.Customer.WelcomeMessage)</div>
+
+            using (Html.BeginForm("Welcome", "Customer", FormMethod.Post))
+            {
+                <div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.Customer.Id)
+                    @Html.HiddenFor(m => m.Sale.Id)
+
+                    @if (Model.Sale.SaleType == "Pre-Allocated")
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeEmail, new { @class = "control-label" })
+                            <br />
+                            <div>
+                                @Html.EditorFor(m => m.EmployeeEmail, new { htmlAttributes = new { @class = "form-control", @style = "width: 300px" } })
+                                @Html.ValidationMessageFor(m => m.EmployeeEmail, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeID, new { @class = "control-label" })
+                            <br />
+                            <div>
+                                @Html.TextBoxFor(m => m.EmployeeID, new { @class = "form-control", @style = "width: 300px" })
+                                @Html.ValidationMessageFor(m => m.EmployeeID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    }
+
+                    <div>
+                        @*<input type="text" name="Salecode" id="txtsalecode" />*@
+                        @*@Html.TextBox("Salecode", name= "", htmlAttributes: new { @class = "form-control", @style = "width: 200px", placeholder = "Enter Sale Code" }) <br/>*@
+                        @*@Html.TextBoxFor(m => m.Sale.SaleID, new { @class = "form-control", @style = "width: 300px" , placeholder = "Enter Sales Code" })*@
+                        @*@Html.ValidationMessageFor(m => m.EmployeeID, "", new { @class = "text-danger" })*@
+                        <input type="submit" value="Go to Sale" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+
+            @*@if (@Session["ErrorMessage"] != null)*@
+            @*{
+            <div class="alert alert-danger text-center  alert-dismissible" role="alert" style = "width: 280px; ">
+                <button type="button" class="close"  data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+            @*@Session["ErrorMessage"]*@
+            @*</div>
+               @Session["ErrorMessage"] = @"";
+            }*@
+
+        }
+        else
+        {
+            <div>
+                <img src="~/Content/Images/verserLogo.png" />
+                <h3>Welcome to Verser's Online Sale Portal</h3>
+                <p>
+                    To learn more about Verser Technology Lifecycles, please visit <a href="http://www.verser.com.au" title="Verser Website">http://www.verser.com.au</a>
+                </p>
+
+
+            </div>
+        }
+    </div>
+</div>

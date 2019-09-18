@@ -1,0 +1,274 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0">
+    <Schema xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Namespace="LightSwitchApplication" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityType Name="Brand">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" />
+        <Property Name="ItemTypeID" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" ConcurrencyMode="Fixed" />
+        <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+        <NavigationProperty Name="vw_SSN" Relationship="LightSwitchApplication.vw_SSN_Brand" ToRole="vw_SSN" FromRole="Brand" />
+        <NavigationProperty Name="Models" Relationship="LightSwitchApplication.Model_Brand" ToRole="Model" FromRole="Brand" />
+        <NavigationProperty Name="ItemType" Relationship="LightSwitchApplication.Brand_ItemType" ToRole="ItemType" FromRole="Brand" />
+      </EntityType>
+      <EntityType Name="Inventory">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+        <Property Name="InventoryName" Type="Edm.String" Nullable="false" MaxLength="100" Unicode="false" ConcurrencyMode="Fixed" />
+        <NavigationProperty Name="vw_SSN" Relationship="LightSwitchApplication.vw_SSN_Inventory" ToRole="vw_SSN" FromRole="Inventory" />
+      </EntityType>
+      <EntityType Name="ItemType">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+        <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <NavigationProperty Name="vw_SSN" Relationship="LightSwitchApplication.vw_SSN_ItemType" ToRole="vw_SSN" FromRole="ItemType" />
+        <NavigationProperty Name="Models" Relationship="LightSwitchApplication.Model_ItemType" ToRole="Model" FromRole="ItemType" />
+        <NavigationProperty Name="Brands" Relationship="LightSwitchApplication.Brand_ItemType" ToRole="Brand" FromRole="ItemType" />
+      </EntityType>
+      <EntityType Name="Model">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" />
+        <Property Name="BrandID" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" ConcurrencyMode="Fixed" />
+        <Property Name="ItemTypeID" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" ConcurrencyMode="Fixed" />
+        <Property Name="Description" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+        <NavigationProperty Name="vw_SSN" Relationship="LightSwitchApplication.vw_SSN_Model" ToRole="vw_SSN" FromRole="Model" />
+        <NavigationProperty Name="Brand" Relationship="LightSwitchApplication.Model_Brand" ToRole="Brand" FromRole="Model" />
+        <NavigationProperty Name="ItemType" Relationship="LightSwitchApplication.Model_ItemType" ToRole="ItemType" FromRole="Model" />
+      </EntityType>
+      <EntityType Name="Supplier">
+        <Key>
+          <PropertyRef Name="Supplier1" />
+        </Key>
+        <Property Name="Supplier1" Type="Edm.String" Nullable="false" MaxLength="7" FixedLength="true" Unicode="false" />
+        <Property Name="SupplierName" Type="Edm.String" MaxLength="30" FixedLength="true" Unicode="false" ConcurrencyMode="Fixed" />
+        <NavigationProperty Name="vw_SSN" Relationship="LightSwitchApplication.vw_SSN_Supplier" ToRole="vw_SSN" FromRole="Supplier" />
+      </EntityType>
+      <EntityType Name="vw_SSN">
+        <Key>
+          <PropertyRef Name="SSN" />
+        </Key>
+        <Property Name="SSN" Type="Edm.String" Nullable="false" MaxLength="8" Unicode="false" />
+        <Property Name="LoadNo" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" ConcurrencyMode="Fixed" />
+        <Property Name="Created" Type="Edm.DateTime" Precision="3" ConcurrencyMode="Fixed" />
+        <Property Name="Tested" Type="Edm.DateTime" Precision="3" ConcurrencyMode="Fixed" />
+        <Property Name="TestID" Type="Edm.String" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="QAMark" Type="Edm.Boolean" Nullable="false" ConcurrencyMode="Fixed" />
+        <Property Name="AFT" Type="Edm.Boolean" ConcurrencyMode="Fixed" />
+        <Property Name="Scrap" Type="Edm.Boolean" ConcurrencyMode="Fixed" />
+        <Property Name="SerialNo" Type="Edm.String" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="Barcode" Type="Edm.String" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="QAFail" Type="Edm.Boolean" ConcurrencyMode="Fixed" />
+        <Property Name="SalesOrder" Type="Edm.String" MaxLength="100" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="DespatchNo" Type="Edm.Decimal" Precision="18" Scale="0" ConcurrencyMode="Fixed" />
+        <Property Name="DespatchPallet" Type="Edm.String" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="DV" Type="Edm.Decimal" Precision="3" Scale="2" ConcurrencyMode="Fixed" />
+        <Property Name="Condition" Type="Edm.String" MaxLength="255" ConcurrencyMode="Fixed" />
+        <Property Name="Grade" Type="Edm.String" MaxLength="50" ConcurrencyMode="Fixed" />
+        <Property Name="BuyPrice" Type="Edm.Decimal" Precision="18" Scale="2" ConcurrencyMode="Fixed" />
+        <Property Name="ExpectedSellPrice" Type="Edm.Decimal" Precision="18" Scale="2" ConcurrencyMode="Fixed" />
+        <Property Name="ReservationCode" Type="Edm.String" MaxLength="255" ConcurrencyMode="Fixed" />
+        <Property Name="ReservationCustomer" Type="Edm.String" MaxLength="255" ConcurrencyMode="Fixed" />
+        <Property Name="ReservationComment" Type="Edm.String" MaxLength="Max" ConcurrencyMode="Fixed" />
+        <Property Name="ReservationDate" Type="Edm.DateTime" Precision="3" ConcurrencyMode="Fixed" />
+        <Property Name="ReleaseDate" Type="Edm.DateTime" Precision="3" ConcurrencyMode="Fixed" />
+        <Property Name="ItemTypeId" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" ConcurrencyMode="Fixed" />
+        <Property Name="BrandId" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" ConcurrencyMode="Fixed" />
+        <Property Name="ModelId" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" ConcurrencyMode="Fixed" />
+        <Property Name="SupplierId" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="InventoryId" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" ConcurrencyMode="Fixed" />
+        <NavigationProperty Name="ItemType" Relationship="LightSwitchApplication.vw_SSN_ItemType" ToRole="ItemType" FromRole="vw_SSN" />
+        <NavigationProperty Name="Brand" Relationship="LightSwitchApplication.vw_SSN_Brand" ToRole="Brand" FromRole="vw_SSN" />
+        <NavigationProperty Name="Model" Relationship="LightSwitchApplication.vw_SSN_Model" ToRole="Model" FromRole="vw_SSN" />
+        <NavigationProperty Name="Supplier" Relationship="LightSwitchApplication.vw_SSN_Supplier" ToRole="Supplier" FromRole="vw_SSN" />
+        <NavigationProperty Name="Inventory" Relationship="LightSwitchApplication.vw_SSN_Inventory" ToRole="Inventory" FromRole="vw_SSN" />
+      </EntityType>
+      <EntityType Name="wms_SSN">
+        <Key>
+          <PropertyRef Name="SSN" />
+        </Key>
+        <Property Name="SSN" Type="Edm.String" Nullable="false" MaxLength="8" Unicode="false" />
+        <Property Name="LoadNo" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="0" ConcurrencyMode="Fixed" />
+        <Property Name="Created" Type="Edm.DateTime" Precision="3" ConcurrencyMode="Fixed" />
+        <Property Name="Tested" Type="Edm.DateTime" Precision="3" ConcurrencyMode="Fixed" />
+        <Property Name="TestID" Type="Edm.String" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="ItemType" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="QAMark" Type="Edm.Boolean" Nullable="false" ConcurrencyMode="Fixed" />
+        <Property Name="AFT" Type="Edm.Boolean" ConcurrencyMode="Fixed" />
+        <Property Name="Scrap" Type="Edm.Boolean" ConcurrencyMode="Fixed" />
+        <Property Name="SerialNo" Type="Edm.String" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="Barcode" Type="Edm.String" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="Brand" Type="Edm.String" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="Model" Type="Edm.String" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="QAFail" Type="Edm.Boolean" ConcurrencyMode="Fixed" />
+        <Property Name="SalesOrder" Type="Edm.String" MaxLength="100" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="DespatchNo" Type="Edm.Decimal" Precision="18" Scale="0" ConcurrencyMode="Fixed" />
+        <Property Name="DespatchPallet" Type="Edm.String" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+        <Property Name="DV" Type="Edm.Decimal" Precision="3" Scale="2" ConcurrencyMode="Fixed" />
+        <Property Name="Condition" Type="Edm.String" MaxLength="255" ConcurrencyMode="Fixed" />
+        <Property Name="Grade" Type="Edm.String" MaxLength="50" ConcurrencyMode="Fixed" />
+        <Property Name="BuyPrice" Type="Edm.Decimal" Precision="18" Scale="2" ConcurrencyMode="Fixed" />
+        <Property Name="ExpectedSellPrice" Type="Edm.Decimal" Precision="18" Scale="2" ConcurrencyMode="Fixed" />
+        <Property Name="ReservationCode" Type="Edm.String" MaxLength="255" ConcurrencyMode="Fixed" />
+        <Property Name="ReservationCustomer" Type="Edm.String" MaxLength="255" ConcurrencyMode="Fixed" />
+        <Property Name="ReservationComment" Type="Edm.String" MaxLength="Max" ConcurrencyMode="Fixed" />
+        <Property Name="ReservationDate" Type="Edm.DateTime" Precision="3" ConcurrencyMode="Fixed" />
+        <Property Name="ReleaseDate" Type="Edm.DateTime" Precision="3" ConcurrencyMode="Fixed" />
+      </EntityType>
+      <Association Name="vw_SSN_Brand">
+        <End Role="Brand" Type="LightSwitchApplication.Brand" Multiplicity="1" />
+        <End Role="vw_SSN" Type="LightSwitchApplication.vw_SSN" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Brand">
+            <PropertyRef Name="ID" />
+          </Principal>
+          <Dependent Role="vw_SSN">
+            <PropertyRef Name="BrandId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Model_Brand">
+        <End Role="Brand" Type="LightSwitchApplication.Brand" Multiplicity="1" />
+        <End Role="Model" Type="LightSwitchApplication.Model" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Brand">
+            <PropertyRef Name="ID" />
+          </Principal>
+          <Dependent Role="Model">
+            <PropertyRef Name="BrandID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="vw_SSN_Inventory">
+        <End Role="Inventory" Type="LightSwitchApplication.Inventory" Multiplicity="1" />
+        <End Role="vw_SSN" Type="LightSwitchApplication.vw_SSN" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Inventory">
+            <PropertyRef Name="ID" />
+          </Principal>
+          <Dependent Role="vw_SSN">
+            <PropertyRef Name="InventoryId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="vw_SSN_ItemType">
+        <End Role="ItemType" Type="LightSwitchApplication.ItemType" Multiplicity="1" />
+        <End Role="vw_SSN" Type="LightSwitchApplication.vw_SSN" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="ItemType">
+            <PropertyRef Name="ID" />
+          </Principal>
+          <Dependent Role="vw_SSN">
+            <PropertyRef Name="ItemTypeId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Model_ItemType">
+        <End Role="ItemType" Type="LightSwitchApplication.ItemType" Multiplicity="1" />
+        <End Role="Model" Type="LightSwitchApplication.Model" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="ItemType">
+            <PropertyRef Name="ID" />
+          </Principal>
+          <Dependent Role="Model">
+            <PropertyRef Name="ItemTypeID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Brand_ItemType">
+        <End Role="ItemType" Type="LightSwitchApplication.ItemType" Multiplicity="1" />
+        <End Role="Brand" Type="LightSwitchApplication.Brand" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="ItemType">
+            <PropertyRef Name="ID" />
+          </Principal>
+          <Dependent Role="Brand">
+            <PropertyRef Name="ItemTypeID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="vw_SSN_Model">
+        <End Role="Model" Type="LightSwitchApplication.Model" Multiplicity="1" />
+        <End Role="vw_SSN" Type="LightSwitchApplication.vw_SSN" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Model">
+            <PropertyRef Name="ID" />
+          </Principal>
+          <Dependent Role="vw_SSN">
+            <PropertyRef Name="ModelId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="vw_SSN_Supplier">
+        <End Role="Supplier" Type="LightSwitchApplication.Supplier" Multiplicity="1" />
+        <End Role="vw_SSN" Type="LightSwitchApplication.vw_SSN" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Supplier">
+            <PropertyRef Name="Supplier1" />
+          </Principal>
+          <Dependent Role="vw_SSN">
+            <PropertyRef Name="SupplierId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <EntityContainer Name="WMSData" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Brands" EntityType="LightSwitchApplication.Brand" />
+        <EntitySet Name="Inventories" EntityType="LightSwitchApplication.Inventory" />
+        <EntitySet Name="ItemTypes" EntityType="LightSwitchApplication.ItemType" />
+        <EntitySet Name="Models" EntityType="LightSwitchApplication.Model" />
+        <EntitySet Name="Suppliers" EntityType="LightSwitchApplication.Supplier" />
+        <EntitySet Name="vw_SSNs" EntityType="LightSwitchApplication.vw_SSN" />
+        <EntitySet Name="wms_SSNs" EntityType="LightSwitchApplication.wms_SSN" />
+        <AssociationSet Name="vw_SSN_Brand" Association="LightSwitchApplication.vw_SSN_Brand">
+          <End Role="Brand" EntitySet="Brands" />
+          <End Role="vw_SSN" EntitySet="vw_SSNs" />
+        </AssociationSet>
+        <AssociationSet Name="Model_Brand" Association="LightSwitchApplication.Model_Brand">
+          <End Role="Brand" EntitySet="Brands" />
+          <End Role="Model" EntitySet="Models" />
+        </AssociationSet>
+        <AssociationSet Name="vw_SSN_Inventory" Association="LightSwitchApplication.vw_SSN_Inventory">
+          <End Role="Inventory" EntitySet="Inventories" />
+          <End Role="vw_SSN" EntitySet="vw_SSNs" />
+        </AssociationSet>
+        <AssociationSet Name="vw_SSN_ItemType" Association="LightSwitchApplication.vw_SSN_ItemType">
+          <End Role="ItemType" EntitySet="ItemTypes" />
+          <End Role="vw_SSN" EntitySet="vw_SSNs" />
+        </AssociationSet>
+        <AssociationSet Name="Model_ItemType" Association="LightSwitchApplication.Model_ItemType">
+          <End Role="ItemType" EntitySet="ItemTypes" />
+          <End Role="Model" EntitySet="Models" />
+        </AssociationSet>
+        <AssociationSet Name="Brand_ItemType" Association="LightSwitchApplication.Brand_ItemType">
+          <End Role="ItemType" EntitySet="ItemTypes" />
+          <End Role="Brand" EntitySet="Brands" />
+        </AssociationSet>
+        <AssociationSet Name="vw_SSN_Model" Association="LightSwitchApplication.vw_SSN_Model">
+          <End Role="Model" EntitySet="Models" />
+          <End Role="vw_SSN" EntitySet="vw_SSNs" />
+        </AssociationSet>
+        <AssociationSet Name="vw_SSN_Supplier" Association="LightSwitchApplication.vw_SSN_Supplier">
+          <End Role="Supplier" EntitySet="Suppliers" />
+          <End Role="vw_SSN" EntitySet="vw_SSNs" />
+        </AssociationSet>
+        <FunctionImport Name="GetSSNsByModel" EntitySet="vw_SSNs" ReturnType="Collection(LightSwitchApplication.vw_SSN)" m:HttpMethod="GET">
+          <Parameter Name="ItemTypeId" Type="Edm.Decimal" Mode="In" />
+          <Parameter Name="BrandId" Type="Edm.Decimal" Mode="In" />
+          <Parameter Name="ModelId" Type="Edm.Decimal" Mode="In" />
+          <Parameter Name="SaleId" Type="Edm.String" Mode="In" />
+        </FunctionImport>
+        <FunctionImport Name="Microsoft_LightSwitch_GetCanInformation" ReturnType="Edm.String" m:HttpMethod="GET">
+          <Parameter Name="dataServiceMembers" Type="Edm.String" Mode="In" />
+        </FunctionImport>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

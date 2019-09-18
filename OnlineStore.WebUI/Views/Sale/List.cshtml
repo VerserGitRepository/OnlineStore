@@ -1,0 +1,23 @@
+﻿@model OnlineStore.WebUI.Models.ProductsListViewModel
+
+@{
+    ViewBag.Title = "List";
+}
+<div style="margin-bottom: 20px">
+    <img src="@Url.Action("GetCustomerLogo", "Customer", new { customerId = Model.Customer.Id })" />
+</div>
+<div class="row panel">
+    <div class="col-sm-3">
+        @Html.Action("Menu", "Nav", new { selectedItemType = Model.SelectedItemType, customerCode = Model.Customer.CustomerCode, saleId = Model.SaleId })
+    </div>
+    <div class="col-sm-8">
+       
+        @foreach (var spi in Model.SaleProductInfos.Where(x => x.InStock))
+        {
+            
+          @Html.Partial("ProductSummary", new OnlineStore.WebUI.Models.ProductSummaryViewModel { SaleProduct = spi.SaleProduct, AssetAllocation = spi.AssetAllocation, InStock = spi.InStock })
+            
+        }
+    </div>
+</div>
+
