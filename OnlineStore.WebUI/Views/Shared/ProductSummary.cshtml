@@ -68,6 +68,9 @@
                 <div><b>Employee ID:</b> @Model.AssetAllocation.EmployeeID</div>
                 <div><b>@Model.AssetAllocation.AssetID_Type:</b> @Model.AssetAllocation.AssetID</div>
                 <br />
+
+
+
             }
 
             <p>@Html.Raw(@Model.SaleProduct.Product.Description)</p>
@@ -80,21 +83,21 @@
         <div class="col-md-3">
             <h4 style="margin-top:5px; padding-right:5px">
                 <span>@Model.SaleProduct.PriceIncGST.Value.ToString("c")</span>
-                
+
                 <span style="font-size:x-small">Inc.GST</span>
-                <br/>
+                <br />
                 @*@if (Model.InStock)
-                {
-                    <span class="text-success" style="font-size:small">In Stock</span>
-                }
-                else
-                {
-                    <span class="text-danger" style="font-size:small">Out of Stock</span>
-                    <br />
-                    <span style="font-size:small">Please check again soon</span>
-                }*@
+                    {
+                        <span class="text-success" style="font-size:small">In Stock</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger" style="font-size:small">Out of Stock</span>
+                        <br />
+                        <span style="font-size:small">Please check again soon</span>
+                    }*@
             </h4>
-           
+
             @using (Html.BeginForm("AddToCart", "Cart"))
             {
                 @Html.Hidden("id", Model.SaleProduct.Id)
@@ -110,5 +113,7 @@
             }
         </div>
     </div>
+    <div> <input type="checkbox" /> I DO Confirm that  Serial No @Model.AssetAllocation.AssetID Matches To My physical Serial No.</div>
+
 </div>
 
