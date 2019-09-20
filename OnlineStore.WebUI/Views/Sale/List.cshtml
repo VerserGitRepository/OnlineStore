@@ -11,13 +11,18 @@
         @Html.Action("Menu", "Nav", new { selectedItemType = Model.SelectedItemType, customerCode = Model.Customer.CustomerCode, saleId = Model.SaleId })
     </div>
     <div class="col-sm-8">
-       
+
         @foreach (var spi in Model.SaleProductInfos.Where(x => x.InStock))
         {
-            
-          @Html.Partial("ProductSummary", new OnlineStore.WebUI.Models.ProductSummaryViewModel { SaleProduct = spi.SaleProduct, AssetAllocation = spi.AssetAllocation, InStock = spi.InStock })
-            
+
+            @Html.Partial("ProductSummary", new OnlineStore.WebUI.Models.ProductSummaryViewModel { SaleProduct = spi.SaleProduct, AssetAllocation = spi.AssetAllocation, InStock = spi.InStock })
         }
+
+        @if (@Model.SaleProductInfos.Where(x => x.InStock).Count() <= 0)
+        {
+            <p style="font-weight:800;height:20px;vertical-align:top;color:orange">You Have Already Purchased The Allocated Asset Or Order is in Pending Status. Please Contact <a href="mailto:det.enquiries@verser.com.au">det.enquiries@verser.com.au</a> For Re Purchansing Asset</p><br />
+        }
+
     </div>
 </div>
 

@@ -77,7 +77,10 @@
             {
                 @*<p><a href="https://payments.verser.com.au/OnlineStore/Home/FAQ" target="_blank">Find out more about refurbished ex-lease products</a></p>*@
             }
-            <input type="checkbox" style="width: 20px;height:20px;" id="chkboxConfirm"/> <b>I DO Confirm that  Serial No @Model.AssetAllocation.AssetID Matches To My physical Serial No.</b>
+            <input type="checkbox" style="width: 20px;height:16px;" id="chkboxConfirm"/> <b style="font-weight:800;height:20px;vertical-align:top">
+            The Serial No @Model.AssetAllocation.AssetID Must Match With The Serial Number provided to Verser By DET. If itdoes not then we need to replace the line highlighted above with.
+          @*I DO Confirm that  Serial No @Model.AssetAllocation.AssetID Matches To My physical Serial No.*@
+            </b>
         </div>
         <div class="col-md-3">
             <h4 style="margin-top:5px; padding-right:5px">
