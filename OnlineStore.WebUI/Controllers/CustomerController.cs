@@ -63,10 +63,10 @@ namespace OnlineStore.WebUI.Controllers
 
             if (sale.SaleType == "Pre-Allocated")
             {
-                if (string.IsNullOrEmpty(model.EmployeeEmail))
-                {
-                    ModelState.AddModelError("EmployeeEmail", "Please enter an email address");
-                }
+                //if (string.IsNullOrEmpty(model.EmployeeEmail))
+                //{
+                //    ModelState.AddModelError("EmployeeEmail", "Please enter an email address");
+                //}
 
                 if (string.IsNullOrEmpty(model.EmployeeID))
                 {
@@ -75,7 +75,8 @@ namespace OnlineStore.WebUI.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    var assetAllocations = applicationDataContext.AssetAllocations.Where(x => x.EmployeeEmail == model.EmployeeEmail && x.EmployeeID == model.EmployeeID);
+                    //   var assetAllocations = applicationDataContext.AssetAllocations.Where(x => x.EmployeeEmail == model.EmployeeEmail && x.EmployeeID == model.EmployeeID);
+                    var assetAllocations = applicationDataContext.AssetAllocations.Where(x => x.EmployeeID == model.EmployeeID);
 
                     if (assetAllocations.Count() == 0)
                     {

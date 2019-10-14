@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "FAQ";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+
+<style>
+    .results {
+        display: flex;
+    }
+
+        .results p {
+            flex: 1;
+        }
+</style>
+
+
+
+<h3 style="font-weight:500;text-align:center;background-color:darkorange;color:white">Frequently Asked Questions</h3>
+
+
+<div class="alert alert-info" style="border:1px solid lightGrey; margin-right:10px">
+    This section contains a wealth of information, related to <strong>@Session["CustomerName"]</strong> and its online store. If you cannot find an answer to your question,
+    make sure to contact us at <a href="mailto:onlinesales@verser.com.au">onlinesales@verser.com.au</a>.
+</div>
+
+<input id="filter" type="text" placeholder="Search Question with a Keyword..." style="width:250px">
+<div id="results" style="border:solid;border-color:grey;border-width:thin;padding-left:20px">
+    <br />
+    <div id="searchable">
+        <p class="searchableQuestion"><strong>Q. What round of disposals does the service cover?</strong></p>
+        <div>A. Round 1, cycle 6 (R1C6)</div>
+        <br />
+    </div>
+    <div id="searchable">
+        <p class="searchableQuestion"><strong>Q. What happens with my notebook once collected?</strong></p>
+        <div>
+            A: Verser will collect all notebooks and return to our facility in Campbellfield where certified data @*<br />*@
+            destruction services are performed. We then re-image before shipping.
+        </div>
+    </div>
+    <div id="searchable">
+        <br />
+
+        <p class="searchableQuestion"><strong>Q. How many notebooks can I purchase?</strong></p>
+        <div>
+            A: The Department has facilitated a program with Verser to offer teachers to purchase the notebook @*<br />*@
+            you were previously using in round R1C6.
+        </div>
+        <br />
+    </div>
+    <div id="searchable">
+
+        <p class="searchableQuestion"><strong>Q. Will I receive my own notebook?</strong></p>
+        <div>
+            A: Yes. The exception to this standard is if an operational fault is identified at the time of the data wipe @*<br />*@
+            or re-imaging.
+        </div>
+        <br />
+    </div>
+    <div id="searchable">
+        <p class="searchableQuestion"><strong>Q. What happens if my notebook is found to be faulty?</strong></p>
+        <div>
+            A: Verser will contact you directly to advise as such and offer you options of a like-for-like @*<br />*@
+            replacement or a full refund.
+        </div>
+        <br />
+    </div>
+    <div id="searchable">
+        <p class="searchableQuestion"><strong>Q. Where will my notebook be sent?</strong></p>
+        <div>A: Your notebook will be sent back to the address you specify during your purchase.</div>
+        <br />
+    </div>
+    <div id="searchable">
+        <p class="searchableQuestion"><strong>Q. Will Microsoft Office be loaded on my notebook?</strong></p>
+        <div>A: No, Microsoft Office is not part of the agreed process.</div>
+        <br />
+    </div>
+    <div id="searchable">
+        <p class="searchableQuestion"><strong>Q. What happens if my notebook doesn't work when I receive it?</strong></p>
+        <div>
+            A: Verser will offer a 10-day warranty period starting from the date of delivery for any notebooks@*<br />*@
+            received as DOA (dead on arrival). Please contact Verser at <a href="mailto:Det.enquires@verser.com.au">Det.enquires@verser.com.au</a> and we'll <br />
+            contact you to offer you a like-for-like replacement or a full refund.
+        </div>
+        <br />
+    </div>
+    <div id="searchable">
+        <p class="searchableQuestion"><strong>Q. Will the notebook I receive have all my data?</strong></p>
+        <div>
+            A: No, if you wish to retain personal data, it is your responsibility to back-up to an external device @*<br />*@
+            prior to the collection. Verser does not accept responsibility for loss of data.
+        </div>
+        <br />
+    </div>
+    <div id="searchable">
+        <p class="searchableQuestion"><strong>Q. What happens if I have any further questions?</strong></p>
+        <div>A: Please email <a href="mailto:Det.enquires@verser.com.au">Det.enquires@verser.com.au</a></div>
+        <br />
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#faq").addClass("active");
+        });
+
+        $("#filter").keyup(function () {
+            //alert('hi');
+            // Retrieve the input field text and reset the count to zero
+            var filter = $(this).val(),
+                count = 0;
+            var row = $(this).closest("tr");
+            // Loop through the comment list
+            $('.searchableQuestion').each(function () {
+
+
+                // If the list item does not contain the text phrase fade it out
+                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                    $(this).closest("#searchable").hide();
+
+                    // Show the list item if the phrase matches and increase the count by 1
+                } else {
+                    $(this).closest("#searchable").show();
+                    count++;
+                }
+
+            });
+
+        });
+
+    </script>
