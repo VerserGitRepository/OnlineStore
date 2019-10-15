@@ -112,6 +112,7 @@ namespace OnlineStore.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 OrderProcessor processor = new OrderProcessor(applicationDataContext, cart, shippingDetails);
+                LogService.info("Order Has been Checked out for payment");
                 return Redirect(processor.ProcessOrder());
             }
             else

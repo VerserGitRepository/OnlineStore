@@ -8,6 +8,7 @@ using System.Net;
 using System.Web.Configuration;
 using OnlineStore.WebUI.Models;
 using OnlineStore.WebUI.ApplicationData;
+using OnlineStore.WebUI.Infrastructure;
 
 namespace OnlineStore.WebUI.Controllers
 {
@@ -83,17 +84,14 @@ namespace OnlineStore.WebUI.Controllers
                 Session["CustomerCode"] = customer.CustomerCode;
                 Session["SaleID"] = saleId;
             }
-
             ProductsListViewModel model = new ProductsListViewModel {
                 SaleProductInfos = saleProductInfos.AsEnumerable(),
                 SelectedItemType = itemType,
                 Customer = customer,
                 SaleId = saleId
             };
-
             return View(model);
         }
-
         public ActionResult GetProductImage(int productId)
         {
             string encoding = "image/jpg";
@@ -123,44 +121,47 @@ namespace OnlineStore.WebUI.Controllers
 
             return File(image.GetBytes(), encoding);
         }
-
         [HttpPost]
         public ActionResult PaymentReceipt()
         {
-            string username = Request.Form["username"];
-            string password = Request.Form["password"];
-            int orderNo = Convert.ToInt32(Request.Form["payment_reference"]);
-            decimal paymentAmount = Convert.ToDecimal(Request.Form["am_payment"]);
-            string cardType = Request.Form["nm_card_scheme"];
-            string nameOnCard = Request.Form["nm_card_holder"];
-            string truncatedCardNumber = Request.Form["TruncatedCardNumber"];
-            int paymentStatus = Convert.ToInt32(Request.Form["fl_success"]);
-
-            if (username != WebConfigurationManager.AppSettings["payway_username"] || password != WebConfigurationManager.AppSettings["payway_password"])
+            try
             {
-                return new HttpUnauthorizedResult();
+                string username = Request.Form["username"];
+                string password = Request.Form["password"];
+                LogService.info(username + password + "PaymentReceipt Request Form Data");
+                int orderNo = Convert.ToInt32(Request.Form["payment_reference"]);
+                decimal paymentAmount = Convert.ToDecimal(Request.Form["am_payment"]);
+                string cardType = Request.Form["nm_card_scheme"];
+                string nameOnCard = Request.Form["nm_card_holder"];
+                string truncatedCardNumber = Request.Form["TruncatedCardNumber"];
+                int paymentStatus = Convert.ToInt32(Request.Form["fl_success"]);
+                if (username != WebConfigurationManager.AppSettings["payway_username"] || password != WebConfigurationManager.AppSettings["payway_password"])
+                {
+                    LogService.Error(username + password + "Not Matched");
+                    return new HttpUnauthorizedResult();
+                }
+                var order = applicationDataContext.Orders.Where(x => x.OrderNo == orderNo).Single();
+                Payment payment = new Payment
+                {
+                    Order = order,
+                    PaymentAmount = paymentAmount,
+                    CardType = cardType,
+                    NameOnCard = nameOnCard,
+                    TruncatedCardNo = truncatedCardNumber,
+                    PaymentStatus = paymentStatus
+                };
+                applicationDataContext.AddToPayments(payment);
+                order.Payments.Add(payment);
+                applicationDataContext.AddLink(order, "Payments", payment);
+                applicationDataContext.SaveChanges(System.Data.Services.Client.SaveChangesOptions.Batch);
+                LogService.info("PaymentReceipt processed");
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
-
-            var order = applicationDataContext.Orders.Where(x => x.OrderNo == orderNo).Single();
-
-            Payment payment = new Payment
+            catch (Exception ex)
             {
-                Order = order,
-                PaymentAmount = paymentAmount,
-                CardType = cardType,
-                NameOnCard = nameOnCard,
-                TruncatedCardNo = truncatedCardNumber,
-                PaymentStatus = paymentStatus
-            };
-
-            applicationDataContext.AddToPayments(payment);
-            order.Payments.Add(payment);
-            applicationDataContext.AddLink(order, "Payments", payment);
-
-            applicationDataContext.SaveChanges(System.Data.Services.Client.SaveChangesOptions.Batch);
-
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
-        }
-        
+                LogService.Error(ex.Message + ex.InnerException.StackTrace);
+                return new HttpStatusCodeResult(HttpStatusCode.ExpectationFailed);
+            }         
+        }        
     }
 }

@@ -30,15 +30,15 @@ namespace OnlineStore.WebUI.Infrastructure
                 ShippingAddressLine2 = shippingDetails.AddressLine2,
                 Suburb = shippingDetails.Suburb,
                 State = shippingDetails.State,
-                Postcode = shippingDetails.Postcode
-                
-               
-                
-            };
+                Postcode = shippingDetails.Postcode               
+                };
         }
 
         public string ProcessOrder()
         {
+            string handOffUrl = string.Empty;
+            try
+            {
             context.AddToOrders(this.order);
             this.order.Sale.Orders.Add(this.order);
             context.AddLink(this.order.Sale, "Orders", this.order);
@@ -102,19 +102,27 @@ namespace OnlineStore.WebUI.Infrastructure
                 }
                 else if ("error".Equals(paramNameValue[0]))
                     {
+                    LogService.Error(paramNameValue[1]);
                         throw new Exception(paramNameValue[1]);
                     }
                 }
 
-            string handOffUrl = WebConfigurationManager.AppSettings["payWayBaseUrl"] + "MakePayment";
-            handOffUrl += "?biller_code=" +
-                    HttpUtility.UrlEncode(WebConfigurationManager.AppSettings["billerCode"]) +
-                    "&token=" + HttpUtility.UrlEncode(token);
-
+            handOffUrl = WebConfigurationManager.AppSettings["payWayBaseUrl"] + "MakePayment";
+            handOffUrl += "?biller_code=" + HttpUtility.UrlEncode(WebConfigurationManager.AppSettings["billerCode"]) +
+             "&token=" + HttpUtility.UrlEncode(token);
             this.cart.Clear();
-            return handOffUrl;
-        }
+                LogService.info(this.order.OrderNo + "Order processed "  );
 
+
+            return handOffUrl;
+
+            }
+            catch (Exception ex)
+            {
+                LogService.Error(ex.Message + ex.InnerException.StackTrace);
+                return handOffUrl;
+            }
+        }
         private string BuildTokenRequest()
         {
             StringBuilder tokenRequest = new StringBuilder();
@@ -130,7 +138,7 @@ namespace OnlineStore.WebUI.Infrastructure
             tokenRequest.Append(order.OrderNo);
             tokenRequest.Append("&payment_reference_change=false");
             tokenRequest.Append("&surcharge_rates=");
-            tokenRequest.Append(HttpUtility.UrlEncode("VI/MC=0.0,AX=1.5,DC=1.5"));
+            tokenRequest.Append(HttpUtility.UrlEncode("VI/MC=1.0,AX=1.0,DC=1.0"));
             tokenRequest.Append("&receipt_address=");
             tokenRequest.Append(HttpUtility.UrlEncode(this.order.Email));
 
@@ -141,7 +149,7 @@ namespace OnlineStore.WebUI.Infrastructure
                 tokenRequest.Append("=");
                 tokenRequest.Append(HttpUtility.UrlEncode(string.Format("{0},{1}", l.Quantity, l.SaleProduct.PriceIncGST)));
             }
-
+            LogService.info("Payment URL" + tokenRequest.ToString());
             return tokenRequest.ToString();
         }
     }

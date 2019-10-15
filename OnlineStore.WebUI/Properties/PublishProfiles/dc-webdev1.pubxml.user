@@ -103,11 +103,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Ninject.Web.Mvc.dll">
       <publishTime>04/29/2014 02:35:10</publishTime>
     </File>
+    <File Include="bin/NLog.config">
+      <publishTime>10/15/2019 14:55:48</publishTime>
+    </File>
+    <File Include="bin/NLog.dll">
+      <publishTime>08/25/2019 19:04:24</publishTime>
+    </File>
     <File Include="bin/OnlineStore.WebUI.dll">
-      <publishTime>10/14/2019 11:11:04</publishTime>
+      <publishTime>10/15/2019 16:44:01</publishTime>
     </File>
     <File Include="bin/OnlineStore.WebUI.pdb">
-      <publishTime>10/14/2019 11:11:04</publishTime>
+      <publishTime>10/15/2019 16:44:01</publishTime>
     </File>
     <File Include="bin/ru/Microsoft.Data.Edm.resources.dll">
       <publishTime>08/16/2013 10:43:10</publishTime>
@@ -214,8 +220,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Global.asax">
       <publishTime>09/18/2019 12:19:51</publishTime>
     </File>
+    <File Include="NLog.config">
+      <publishTime>10/15/2019 14:55:48</publishTime>
+    </File>
     <File Include="packages.config">
-      <publishTime>09/18/2019 12:19:51</publishTime>
+      <publishTime>10/15/2019 13:59:01</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>09/18/2019 12:19:51</publishTime>
@@ -269,7 +278,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/18/2019 12:19:51</publishTime>
     </File>
     <File Include="Views/Sale/List.cshtml">
-      <publishTime>09/23/2019 21:45:14</publishTime>
+      <publishTime>10/15/2019 14:26:37</publishTime>
     </File>
     <File Include="Views/Shared/ProductSummary.cshtml">
       <publishTime>09/23/2019 21:44:49</publishTime>
@@ -287,7 +296,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/18/2019 12:19:51</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/18/2019 12:33:02</publishTime>
+      <publishTime>10/15/2019 14:41:53</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -8,7 +8,7 @@ using System.Web.Helpers;
 using System.Net;
 using OnlineStore.WebUI.Models;
 using System.Configuration;
-
+using OnlineStore.WebUI.Infrastructure;
 
 namespace OnlineStore.WebUI.Controllers
 {

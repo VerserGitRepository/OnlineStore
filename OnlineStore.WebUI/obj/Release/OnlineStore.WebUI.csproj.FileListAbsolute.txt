@@ -69,3 +69,7 @@ C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\ob
 C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\obj\Release\OnlineStore.WebUI.csproj.CopyComplete
 C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\obj\Release\OnlineStore.WebUI.dll
 C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\obj\Release\OnlineStore.WebUI.pdb
+C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\bin\NLog.config
+C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\bin\NLog.dll
+C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\bin\NLog.xml
+C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\obj\Release\OnlineStore.WebUI.csprojAssemblyReference.cache
