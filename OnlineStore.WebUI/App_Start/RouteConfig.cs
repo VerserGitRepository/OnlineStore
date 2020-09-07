@@ -13,12 +13,17 @@ namespace OnlineStore.WebUI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    null,
+            //    "",
+            //    new { controller = "Customer", action = "Welcome", customerCode = (string)null, saleId = (string)null }
+            //);
+
             routes.MapRoute(
                 null,
                 "",
-                new { controller = "Customer", action = "Welcome", customerCode = (string)null, saleId = (string)null }
+                new { controller = "OnlineSale", action = "Index", customerCode = (string)null, saleId = (string)null }
             );
-
             routes.MapRoute(
                 null,
                 "{customerCode}",

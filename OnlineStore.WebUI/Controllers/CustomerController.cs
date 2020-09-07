@@ -43,15 +43,12 @@ namespace OnlineStore.WebUI.Controllers
         {
             var customer = applicationDataContext.Customers.Where(x => x.CustomerCode == customerCode).SingleOrDefault();
             var sale = applicationDataContext.Sales.Where(x => x.Customer.CustomerCode == customerCode).SingleOrDefault();
-
-            WelcomeViewModel model = new WelcomeViewModel { Customer = customer, Sale = sale };
-
-            if(customer != null)
+            var model = new WelcomeViewModel { Customer = customer, Sale = sale };
+            if (customer != null)
             {
                 Session["CustomerName"] = customer.CustomerName;
                 Session["CustomerCode"] = customer.CustomerCode;
             }
-
             return View(model);
         }
 

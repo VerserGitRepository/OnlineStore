@@ -60,7 +60,7 @@
 
                 }
                 <a href=""></a>*@
-                <a class="navbar-brand" href="@Url.Action("Welcome", "Customer", new { customerCode = Session["CustomerCode"] })">@Session["CustomerName"]</a>
+                <a class="navbar-brand" href="@Url.Action("Index", "OnlineSale", new { customerCode = Session["CustomerCode"] })">@Session["CustomerName"]</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
