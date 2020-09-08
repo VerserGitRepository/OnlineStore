@@ -13,5 +13,26 @@ namespace OnlineStore.WebUI.Controllers
         {
             return View();
         }
+
+        public ActionResult Mobile()
+        {
+            return View();
+        }
+        public ActionResult Laptop()
+        {
+            return View();
+        }
+        public ActionResult Monitor()
+        {
+            return View();
+        }
+        public ActionResult DesktopPC()
+        {
+            return View();
+        }
+        public ActionResult IPad()
+        {
+            return View();
+        }
     }
 }

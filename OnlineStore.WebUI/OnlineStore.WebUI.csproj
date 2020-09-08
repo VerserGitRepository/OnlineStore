@@ -132,6 +132,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Images\apple.jpeg" />
+    <Content Include="Images\dell.png" />
+    <Content Include="Images\DellMonitor.jpg" />
+    <Content Include="Images\Desktop.jpg" />
+    <Content Include="Images\hp.png" />
+    <Content Include="Images\ipad1.png" />
+    <Content Include="Images\laptop.jfif" />
+    <Content Include="Images\laptop2.jfif" />
+    <Content Include="Images\samsung.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -219,6 +228,11 @@
     <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Home\Upgrade.cshtml" />
     <Content Include="Views\OnlineSale\Index.cshtml" />
+    <Content Include="Views\OnlineSale\Mobile.cshtml" />
+    <Content Include="Views\OnlineSale\Laptop.cshtml" />
+    <Content Include="Views\OnlineSale\Monitor.cshtml" />
+    <Content Include="Views\OnlineSale\DesktopPC.cshtml" />
+    <Content Include="Views\OnlineSale\IPad.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
