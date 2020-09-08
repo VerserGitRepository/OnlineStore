@@ -4,11 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
-    @*<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>*@
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />    
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -28,7 +24,7 @@
 }
 
 .flipkart-navbar-input {
-    padding: 11px 16px;
+    padding: 11px 10px;
     border-radius: 2px 0 0 2px;
     border: 0 none;
     outline: 0 none;
@@ -36,8 +32,8 @@
 }
 
 .flipkart-navbar-button {
-    background-color: #ffe11b;
-    border: 1px solid #ffe11b;
+    background-color: lightgray;
+    border: 1px solid Orange;
     border-radius: 0 2px 2px 0;
     color: #565656;
     padding: 10px 0;
@@ -88,7 +84,7 @@
     margin-left: 10px;
 }
 
-.upper-links {
+/*.upper-links {
     display: inline-block;
     padding: 0 11px;
     line-height: 23px;
@@ -98,9 +94,9 @@
     border: none;
     outline: none;
     font-size: 12px;
-}
+}*/
 
-.dropdown {
+/*.dropdown {
     position: relative;
     display: inline-block;
     margin-bottom: 0px;
@@ -108,7 +104,7 @@
 
 .dropdown:hover {
     background-color: #fff;
-}
+}*/
 
 .dropdown:hover .links {
     color: #000;
@@ -223,25 +219,29 @@
         }
     }
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <div id="flipkart-navbar" style="background-color:black">       
-        <div class="container" style="background-color:black">            
-            <div class="row row2">
-                <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
-                    <img src="~/Images/VerserLogo.png" style="width:80px;height:50px;" />
-                    <div class="row">
-                        
-                        <input class="flipkart-navbar-input col-xs-11" type="" placeholder="Search for Products, Brands and more" name="">
-                        <button class="flipkart-navbar-button col-xs-1">
-                            <svg width="15px" height="15px">
-                                <path d="M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 "></path>
-                            </svg>
-                        </button>
+    <div class="col-lg-3 pull-left" style="vertical-align: central;">
+        <div class="row" style="vertical-align: central;padding-left: 20px;">
+            <img src="~/Images/VerserLogo.png" style="width:120px;height:70px;border-color:gray;background-color:black; border-width:thin" />
+        </div>
+    </div>
+
+        <div id="flipkart-navbar" style="background-color:black">
+            <div class="container" style="background-color:black">
+                <div class="row row2">
+                    <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
+                        <div class="row">
+                            <input class="flipkart-navbar-input col-xs-11" type="" placeholder="Search for Products, Brands and more" name="">
+                            <button class="flipkart-navbar-button col-xs-1">
+                                <svg width="15px" height="15px">
+                                    <path d="M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 "></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
+  
     <div class="wrapper">
         <div class="navbar navbar-default">
             <div class="navbar-header">
@@ -251,29 +251,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-            
                 <a class="navbar-brand" href="@Url.Action("Index", "OnlineSale", new { customerCode = Session["CustomerCode"] })">@Session["CustomerName"]</a>
             </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  style="font-size:16px;background-color:orange">
-                <ul class="nav navbar-nav">
-
-                    <li>@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
-                    <li>@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
-                    <li>@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
-                    <li>@Html.ActionLink("Desktop PC", "DesktopPC", "OnlineSale")</li>
-                    <li>@Html.ActionLink("IPad", "IPad", "OnlineSale")</li>
-                    <li>@Html.ActionLink("Accessories", "Mobile", "OnlineSale")</li>
-                    <li>@Html.ActionLink("Printer", "Mobile", "OnlineSale")</li>
-                    
-                    <li>@Html.ActionLink("Servers", "Mobile", "OnlineSale")</li>
-                    <li>@Html.ActionLink("Network Gears", "Mobile", "OnlineSale")</li>
-                    
-                    <li>@Html.ActionLink("TV's", "Mobile", "OnlineSale")</li>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="font-size:16px;background-color:orange;color:white">
+                <ul class="nav navbar-nav" style="color:white">
+                    <li>@Html.ActionLink("MOBILE", "Mobile", "OnlineSale")</li>
+                    <li>@Html.ActionLink("LAPTOPS", "Laptop", "OnlineSale")</li>
+                    <li>@Html.ActionLink("MONITOR", "Monitor", "OnlineSale")</li>
+                    <li>@Html.ActionLink("DESKTOP PC", "DesktopPC", "OnlineSale")</li>
+                    <li>@Html.ActionLink("IPAD", "IPad", "OnlineSale")</li>
+                    <li>@Html.ActionLink("ACCESSORIES", "Mobile", "OnlineSale")</li>
+                    <li>@Html.ActionLink("PRINTER", "Mobile", "OnlineSale")</li>
+                    <li>@Html.ActionLink("SERVERS", "Mobile", "OnlineSale")</li>
+                    <li>@Html.ActionLink("NETWORK GEARS", "Mobile", "OnlineSale")</li>
+                    <li>@Html.ActionLink("TV'S", "Mobile", "OnlineSale")</li>
                     <li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
                     <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
                 </ul>
-
                 <div>
                     @Html.Action("Summary", "Cart")
                 </div>
@@ -285,16 +279,17 @@
         </div>
         <div class="push"></div>
     </div>
-    <div class="my_footer text-center text-muted">
-        The @Session["CustomerName"] site is managed by Verser Technology Lifecycles &copy; @DateTime.Now.Year
+    <div class="my_footer text-center text-muted" style="background-color:lightgray;color:white;font-size:small">
+        The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
+        
+        <img src="~/Images/Payment Options.PNG" />
     </div>
 </body>
 </html>
 <script>
 
     function openNav() {
-    document.getElementById("mySidenav").style.width = "70%";
-    // document.getElementById("flipkart-navbar").style.width = "50%";
+    document.getElementById("mySidenav").style.width = "70%";    
     document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
 

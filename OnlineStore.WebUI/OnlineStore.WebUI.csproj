@@ -138,13 +138,21 @@
     <Content Include="Images\Desktop.jpg" />
     <Content Include="Images\hp.png" />
     <Content Include="Images\ipad1.png" />
+    <Content Include="Images\iPhone11ProMax.jpg" />
     <Content Include="Images\laptop.jfif" />
     <Content Include="Images\laptop2.jfif" />
+    <Content Include="Images\mac1.jpg" />
+    <Content Include="Images\mac2.jpg" />
+    <Content Include="Images\mac3.jpg" />
+    <Content Include="Images\Payment Options.PNG" />
     <Content Include="Images\samsung.png" />
+    <Content Include="Images\sufacepro1.jpg" />
+    <Content Include="Images\SurfacePro2.jpg" />
     <Content Include="Images\VerserLogo.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\iPhone11.webp" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
