@@ -223,8 +223,8 @@
         }
     }
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <div id="flipkart-navbar"style="background-color:gray">
-        <div class="container" style="background-color:gray">
+    <div id="flipkart-navbar"style="background-color:black">
+        <div class="container" style="background-color:black">
             <div class="row row1">
                 <ul class="largenav pull-right">
                     <li class="upper-links"><a class="links" href="http://clashhacks.in/">Link 1</a></li>
@@ -245,7 +245,7 @@
             </div>
             <div class="row row2">
                 <div class="col-sm-8">
-                    <h2 style="margin:0px;"><span class="smallnav menu" @*onclick="openNav()"*@>VERSER ONLINE STORE</span></h2>
+                    @*<h2 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">VERSER ONLINE STORE</span></h2>*@
                     <h1 style="margin:0px;"><span class="largenav">Brand</span></h1>
                 </div>
                 <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
@@ -292,9 +292,9 @@
                 <a class="navbar-brand" href="@Url.Action("Index", "OnlineSale", new { customerCode = Session["CustomerCode"] })">@Session["CustomerName"]</a>
             </div>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  style="font-size:16px">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  style="font-size:16px;background-color:orange">
                 <ul class="nav navbar-nav">
-                    <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+
                     <li>@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
                     <li>@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
                     <li>@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
@@ -302,8 +302,13 @@
                     <li>@Html.ActionLink("IPad", "IPad", "OnlineSale")</li>
                     <li>@Html.ActionLink("Accessories", "Mobile", "OnlineSale")</li>
                     <li>@Html.ActionLink("Printer", "Mobile", "OnlineSale")</li>
+                    
+                    <li>@Html.ActionLink("Servers", "Mobile", "OnlineSale")</li>
+                    <li>@Html.ActionLink("Network Gears", "Mobile", "OnlineSale")</li>
+                    
                     <li>@Html.ActionLink("TV's", "Mobile", "OnlineSale")</li>
                     <li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
+                    <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
                 </ul>
 
                 <div>
