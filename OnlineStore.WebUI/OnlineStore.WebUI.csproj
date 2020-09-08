@@ -141,6 +141,7 @@
     <Content Include="Images\laptop.jfif" />
     <Content Include="Images\laptop2.jfif" />
     <Content Include="Images\samsung.png" />
+    <Content Include="Images\VerserLogo.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

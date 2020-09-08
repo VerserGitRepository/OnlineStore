@@ -21,7 +21,8 @@ namespace OnlineStore.WebUI.Infrastructure
         {
             this.context = context;
             this.cart = cart;
-            this.order = new Order {
+            this.order = new Order
+            {
                 OrderDate = DateTime.Now,
                 Email = shippingDetails.Email,
                 Sale = context.Sales.Where(x => x.Id == cart.SaleId).First(),
@@ -30,8 +31,8 @@ namespace OnlineStore.WebUI.Infrastructure
                 ShippingAddressLine2 = shippingDetails.AddressLine2,
                 Suburb = shippingDetails.Suburb,
                 State = shippingDetails.State,
-                Postcode = shippingDetails.Postcode               
-                };
+                Postcode = shippingDetails.Postcode
+            };
         }
 
         public string ProcessOrder()

@@ -104,10 +104,10 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult Checkout(Cart cart, ShippingDetailsViewModel shippingDetails)
         {
-            if (cart.Lines.Count() == 0)
-            {
-                ModelState.AddModelError("", "Sorry, your cart is empty!");
-            }
+            //if (cart.Lines.Count() == 0)
+            //{
+            //    ModelState.AddModelError("", "Sorry, your cart is empty!");
+            //}
 
             if (ModelState.IsValid)
             {
