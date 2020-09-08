@@ -141,9 +141,11 @@
     <Content Include="Images\iPhone11ProMax.jpg" />
     <Content Include="Images\laptop.jfif" />
     <Content Include="Images\laptop2.jfif" />
+    <Content Include="Images\logolenovo.jpg" />
     <Content Include="Images\mac1.jpg" />
     <Content Include="Images\mac2.jpg" />
     <Content Include="Images\mac3.jpg" />
+    <Content Include="Images\microsoftlogo.jpg" />
     <Content Include="Images\Payment Options.PNG" />
     <Content Include="Images\samsung.png" />
     <Content Include="Images\sufacepro1.jpg" />
@@ -153,6 +155,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\iPhone11.webp" />
+    <Content Include="Images\apple_logo.webp" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
