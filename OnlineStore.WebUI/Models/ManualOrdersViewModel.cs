@@ -17,9 +17,10 @@ namespace OnlineStore.WebUI.Models
         public string Locality { get; set; }
         public string Postcode { get; set; }
         public string State { get; set; }
-        public string SKU { get; set; }
-        public int? JOBID { get; set; }
+        public string Email { get; set; }
         public int? ContactNumber { get; set; }
+        public string SKU { get; set; }
+        public int? JOBID { get; set; }       
         public DateTime? OrderDate { get; set; }
         public string OrderStatus { get; set; }
         public string OrderType { get; set; }
