@@ -267,7 +267,16 @@
                     <li>@Html.ActionLink("TV'S", "Mobile", "OnlineSale")</li>
                     <li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
                     <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
-                    <li id="faq">@Html.ActionLink("LOGIN", "LOGIN", "LOGIN")</li>
+
+                    @if (@Session["Username"] != null)
+                    {
+                        <li>@Html.ActionLink("ORDERSLIST", "Index", "OrdersList")</li>
+                        <li>@Html.ActionLink("LOGOUT", "Login", "Login")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("LOGIN", "Login", "Login")</li>
+                    }
                 </ul>
                 <div>
                     @Html.Action("Summary", "Cart")
