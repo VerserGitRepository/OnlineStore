@@ -207,6 +207,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\HelperServices\LoginService.cs" />
+    <Compile Include="Infrastructure\HelperServices\OrdersServices.cs" />
     <Compile Include="Infrastructure\LogService.cs" />
     <Compile Include="Models\Binders\CartModelBinder.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />

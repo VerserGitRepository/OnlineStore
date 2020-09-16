@@ -153,23 +153,23 @@
                         @Html.EditorFor(model => model.SKU, "", new { style = "width:150px" })
                         @Html.ValidationMessageFor(model => Model.SKU, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-6">
+                    @*<div class="col-md-6">
 
                         <label class="control-label">Job&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         @Html.EditorFor(model => model.JOBID, "", new { style = "width:150px" })
                         @Html.ValidationMessageFor(model => Model.JOBID, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
+                    </div>*@
+                    @*<div class="col-md-6">
                         <label class="control-label">Order Date</label>
 
                         @Html.EditorFor(model => model.OrderDate, "", new { style = "width:150px" })
                         @Html.ValidationMessageFor(model => Model.OrderDate, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
+                    </div>*@
+                    @*<div class="col-md-6">
                         <label class="control-label">OrderStatus&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         @Html.EditorFor(model => model.OrderStatus, "", new { style = "width:150px" })
                         @Html.ValidationMessageFor(model => Model.OrderStatus, "", new { @class = "text-danger" })
-                    </div>
+                    </div>*@
                     <div class="col-md-6">
 
                         <label class="control-label">Order Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -246,7 +246,7 @@
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">ItemType</label>
-                        @Html.DropDownListFor(model => model.OnlineSaleProduct.ItemType_ID, Model.OnlineSaleProduct.ItemTypes, "ItemType", new { @class = "form-control ItemType", @id = "ddlItemType" })
+                        @*@Html.DropDownListFor(model => model.OnlineSaleProduct.ItemType_ID, Model.OnlineSaleProduct.ItemTypes, "ItemType", new { @class = "form-control ItemType", @id = "ddlItemType" })*@
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">Brand</label>
