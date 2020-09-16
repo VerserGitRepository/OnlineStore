@@ -15,18 +15,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>*@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="~/Scripts/bootstrap-multiselect.js"></script>
-<script src="~/Scripts/scrollForever.js"></script>
-<link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
-<link href="~/Content/scroll.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
+
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>*@
 
 
 <div class="container" style="width:1200px; padding-top:0px">
@@ -69,9 +65,9 @@
 
             </div>
 
-            <div id="Tab2" class="tab-pane fade" style="text-align:left;padding-left:20px;width:1000px; ">
+            <div id="Tab2" class="tab-pane fade" style="text-align:left;padding-left:20px;width:1500px; ">
 
-                <div class="col-md-6" style="padding-right:10px">
+                <div class="col-md-5 table-bordered" style="margin:10px">
                     <label class="control-label">Saluation</label>
                     @Html.EditorFor(model => model.Salutation, "", new { style = "width:150px" })
                     @Html.ValidationMessageFor(model => Model.Salutation, "", new { @class = "text-danger" })
@@ -97,7 +93,7 @@
                     <br /><br />
 
                 </div>
-                <div class="col-md-6 table-bordered">
+                <div class="col-md-5 table-bordered" style="margin:10px">
                     <label class="control-label">AddressLine1</label>
                     @Html.EditorFor(model => model.AddressLine1, "", new { style = "width:150px" })
                     @Html.ValidationMessageFor(model => Model.AddressLine1, "", new { @class = "text-danger" })
@@ -122,7 +118,7 @@
                     @Html.ValidationMessageFor(model => Model.State, "", new { @class = "text-danger" })
                     <br /><br />
                 </div>
-                <div class="col-md-6 table-bordered">
+                <div class="col-md-5 table-bordered" style="margin:10px">
                     <label class="control-label">SKU</label>
                     @Html.EditorFor(model => model.SKU, "", new { style = "width:150px" })
                     @Html.ValidationMessageFor(model => Model.SKU, "", new { @class = "text-danger" })
@@ -159,7 +155,7 @@
                 </div>
 
 
-                <div class="col-md-6 table-bordered">
+                <div class="col-md-5 table-bordered" style="margin:10px">
                     <label class="control-label">SSN</label>
                     @Html.EditorFor(model => model.SSN, "", new { style = "width:150px" })
                     @Html.ValidationMessageFor(model => Model.SSN, "", new { @class = "text-danger" })
@@ -231,3 +227,22 @@
 
     </script>
 }
+
+
+<style> .col-md-6 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%
+    }
+
+    .col-md-6 {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 15px;
+        padding-left: 5px
+    }
+  </style>
