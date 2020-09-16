@@ -29,7 +29,7 @@ namespace OnlineStore.WebUI.Models
         public string RefNo { get; set; }
         public bool? IsExport { get; set; }
         public string Comments { get; set; }
-        public SelectList CustomerProject { get; set; }
+        public SelectList CustomerProject { get; set; }        
         public string SSN { get; set; }
         public string Height { get; set; }
         public string Weight { get; set; }

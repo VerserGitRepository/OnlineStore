@@ -12,8 +12,7 @@ namespace OnlineStore.WebUI.Models
         public byte[] ProductImage { get; set; }
         public string ProductName { get; set; }
         public string Description { get; set; }
-        public bool IsSKU { get; set; }
-        public SelectList ItemTypes { get; set; }
+        public bool IsSKU { get; set; }       
         public int? ItemType_ID { get; set; }
         public int? Brand_ID { get; set; }
         public int? Model_ID { get; set; }
@@ -22,5 +21,8 @@ namespace OnlineStore.WebUI.Models
         public decimal PriceIncGST { get; set; }
         public int QtyAvailable { get; set; }
         public string CreatedBy { get; set; }
+        public SelectList ItemTypes { get; set; }
+        public SelectList Makes { get; set; }
+        public SelectList Models { get; set; }
     }
 }

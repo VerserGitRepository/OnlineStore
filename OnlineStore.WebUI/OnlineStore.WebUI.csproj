@@ -206,6 +206,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\HelperServices\DropDownServices.cs" />
     <Compile Include="Infrastructure\HelperServices\LoginService.cs" />
     <Compile Include="Infrastructure\HelperServices\OrdersServices.cs" />
     <Compile Include="Infrastructure\LogService.cs" />

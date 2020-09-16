@@ -12,6 +12,10 @@ namespace OnlineStore.WebUI.Controllers
         // GET: OrdersList
         public ActionResult Index()
         {
+            var LoadModel = new ManualOrdersViewModel();
+
+            LoadModel.CustomerProject =new SelectList (DropDownServices.ProjectList().Result, "ID", "Value");
+
             return View();
         }
         [HttpPost]
