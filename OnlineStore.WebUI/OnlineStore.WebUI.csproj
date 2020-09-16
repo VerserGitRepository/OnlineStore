@@ -214,6 +214,7 @@
     <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\ListItems.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ManualOrdersViewModel.cs" />
     <Compile Include="Models\MenuViewModel.cs" />
     <Compile Include="Models\ProductsListViewModel.cs" />
     <Compile Include="Models\ProductSummaryViewModel.cs" />
