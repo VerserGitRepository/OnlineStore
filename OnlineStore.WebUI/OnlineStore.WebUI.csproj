@@ -220,7 +220,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ManualOrdersViewModel.cs" />
     <Compile Include="Models\MenuViewModel.cs" />
-    <Compile Include="Models\OnlineSaleOrdersDto.cs" />
+    <Compile Include="Models\OnlineSaleOrdersListModel.cs" />
     <Compile Include="Models\OnlineSaleProduct.cs" />
     <Compile Include="Models\ProductsListViewModel.cs" />
     <Compile Include="Models\ProductSummaryViewModel.cs" />

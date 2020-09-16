@@ -38,6 +38,7 @@ namespace OnlineStore.WebUI.Models
         public int? NoOfItems { get; set; }
         public string AmazonOrderNo { get; set; }
         public virtual OnlineSaleProduct OnlineSaleProduct { get; set; }
+        public virtual List<OnlineSaleOrdersListModel> OnlineSaleOrdersList { get; set; }
 
     }
 }

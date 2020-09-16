@@ -12,10 +12,14 @@ namespace OnlineStore.WebUI.Controllers
         // GET: OrdersList
         public ActionResult Index()
         {
-            var LoadModel = new ManualOrdersViewModel();
+            var LoadViewModel = new ManualOrdersViewModel();
 
-            LoadModel.CustomerProject =new SelectList (DropDownServices.ProjectList().Result, "ID", "Value");
-
+            LoadViewModel.OnlineSaleOrdersList = OrdersServices.OnlineSaleOrdersList().Result;
+            LoadViewModel.CustomerProject =new SelectList (DropDownServices.ProjectList().Result, "ID", "Value");
+            LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
+            LoadViewModel.OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
+            //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
+            
             return View();
         }
         [HttpPost]
@@ -23,6 +27,13 @@ namespace OnlineStore.WebUI.Controllers
         {
              var resp=  OrdersServices.ProcessManualOrders(manualorderviewmodel);
              return RedirectToAction("Index", "Orders");
+        }
+
+        [HttpPost]
+        public ActionResult AddUpdateProduct(OnlineSaleProduct OnlineSaleProductModel)
+        {
+            var resp = OrdersServices.AddUpdateProduct(OnlineSaleProductModel);
+            return RedirectToAction("Index", "Orders");
         }
     }
 }

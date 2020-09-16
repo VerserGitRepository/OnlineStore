@@ -5,7 +5,7 @@ using System.Web;
 
 namespace OnlineStore.WebUI.Models
 {
-    public class OnlineSaleOrdersDto
+    public class OnlineSaleOrdersListModel
     {
         public int Id { get; set; }
         public int Orderno { get; set; }

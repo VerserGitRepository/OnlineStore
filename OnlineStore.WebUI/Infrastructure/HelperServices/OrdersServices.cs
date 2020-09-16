@@ -27,5 +27,37 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return returnmessage;
         }
+
+        public async static Task<bool> AddUpdateProduct(OnlineSaleProduct OnlineSaleProductmodel)
+        {
+            bool returnmessage = false;
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.PostAsJsonAsync("OnlineSaleOrders/AddUpdateProduct", OnlineSaleProductmodel).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnmessage = await response.Content.ReadAsAsync<bool>();
+                }
+            }
+            return returnmessage;
+        }
+
+        public async static Task<List<OnlineSaleOrdersListModel>> OnlineSaleOrdersList()
+        {
+            var returnmessage = new  List<OnlineSaleOrdersListModel>();
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.GetAsync("OnlineSaleOrders/OnlineSaleOrdersList").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnmessage = await response.Content.ReadAsAsync<List<OnlineSaleOrdersListModel>>();
+                }
+            }
+            return returnmessage;
+        }
     }
 }
