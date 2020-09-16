@@ -8,6 +8,7 @@ namespace OnlineStore.WebUI.Models
 {
     public class ManualOrdersViewModel
     {
+        //public List<ManualOrdersViewModel> ManualOrdersViewModel { get; set; }
         public int Id { get; set; }       
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -36,5 +37,7 @@ namespace OnlineStore.WebUI.Models
         public string Length { get; set; }
         public int? NoOfItems { get; set; }
         public string AmazonOrderNo { get; set; }
+        public virtual OnlineSaleProduct OnlineSaleProduct { get; set; }
+
     }
 }

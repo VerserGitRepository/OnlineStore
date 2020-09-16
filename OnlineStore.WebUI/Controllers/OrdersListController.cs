@@ -11,6 +11,7 @@ namespace OnlineStore.WebUI.Controllers
         // GET: OrdersList
         public ActionResult Index()
         {
+
             return View();
         }
     }

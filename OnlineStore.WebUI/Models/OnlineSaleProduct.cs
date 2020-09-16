@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace OnlineStore.WebUI.Models
 {
@@ -12,6 +13,7 @@ namespace OnlineStore.WebUI.Models
         public string ProductName { get; set; }
         public string Description { get; set; }
         public bool IsSKU { get; set; }
+        public SelectList ItemTypes { get; set; }
         public int? ItemType_ID { get; set; }
         public int? Brand_ID { get; set; }
         public int? Model_ID { get; set; }

@@ -26,21 +26,14 @@
 @*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>*@
 
 
-<<<<<<< Updated upstream
-<div class="container" style="width:1200px; padding-top:0px">
-    <div class="panel-heading">
-        <ul class="nav nav-tabs" style="padding-top:15px;" id="myTab">
-            <li class="active"><a data-toggle="tab" href="#Tab1">ORDERS LIST</a></li>
-            <li><a data-toggle="tab" href="#Tab2">MANUAL ORDER</a></li>
-            <li><a data-toggle="tab" href="#CreateOrder">PRODUCTS</a></li>
-=======
+
 <div class="container" style="width:1200px; padding-top:20px;margin-left:-22px">
     <div class="panel-heading">
         <ul class="nav nav-tabs" style="padding-top:15px;" id="myTab">
             <li class="active"><a data-toggle="tab" href="#Tab1">ORDERS LIST</a></li>
             <li><a data-toggle="tab" href="#Tab2">CREATE ORDER</a></li>
             <li><a data-toggle="tab" href="#Tab3">ADD PRODUCT</a></li>
->>>>>>> Stashed changes
+
             <li><a data-toggle="tab" href="#RemoveOrder">REMOVE EXISTING ORDER</a></li>
             <li><a data-toggle="tab" href="#MANAGEDISPATCHORDER">MANAGE DISPATCH</a></li>
 
@@ -238,58 +231,63 @@
                         <br /><br />
                     </div>
                 </div>
+
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-primary">Complete Order</button>
+                </div>
             </div>
 
             <div id="Tab3" class="tab-pane fade">
                 <div class="col-md-12 table-bordered" style="margin:10px">
                     <div class="col-md-6">
                         <label class="control-label">ProductName</label>
-                        @Html.EditorFor(model => model.Salutation, "", new { style = "width:150px" })
-                        @Html.ValidationMessageFor(model => Model.Salutation, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.OnlineSaleProduct.ProductName, "", new { style = "width:150px" })
+                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.ProductName, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">ItemType</label>
-                        @Html.EditorFor(model => model.FirstName, "", new { style = "width:150px" })
-                        @Html.ValidationMessageFor(model => Model.FirstName, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(model => model.OnlineSaleProduct.ItemType_ID, Model.OnlineSaleProduct.ItemTypes, "ItemType", new { @class = "form-control ItemType", @id = "ddlItemType" })
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">Brand</label>
-                        @Html.EditorFor(model => model.LastName, "", new { style = "width:150px" })
-                        @Html.ValidationMessageFor(model => Model.LastName, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.OnlineSaleProduct.Brand_ID, "", new { style = "width:150px" })
+                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.Brand_ID, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">Model</label>
-                        @Html.EditorFor(model => model.ContactNumber, "", new { style = "width:150px" })
-                        @Html.ValidationMessageFor(model => Model.ContactNumber, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.OnlineSaleProduct.Model_ID, "", new { style = "width:150px" })
+                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.Model_ID, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">PriceExGST</label>
-                        @Html.EditorFor(model => model.ContactNumber, "", new { style = "width:150px" })
-                        @Html.ValidationMessageFor(model => Model.ContactNumber, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.OnlineSaleProduct.PriceExGST, "", new { style = "width:150px" })
+                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.PriceExGST, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">GSTAmount</label>
-                        @Html.EditorFor(model => model.ContactNumber, "", new { style = "width:150px" })
-                        @Html.ValidationMessageFor(model => Model.ContactNumber, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.OnlineSaleProduct.GSTAmount, "", new { style = "width:150px" })
+                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.GSTAmount, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">PriceIncGST</label>
-                        @Html.EditorFor(model => model.ContactNumber, "", new { style = "width:150px" })
-                        @Html.ValidationMessageFor(model => Model.ContactNumber, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.OnlineSaleProduct.PriceIncGST, "", new { style = "width:150px" })
+                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.PriceIncGST, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">Quantity</label>
-                        @Html.EditorFor(model => model.ContactNumber, "", new { style = "width:150px" })
-                        @Html.ValidationMessageFor(model => Model.ContactNumber, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.OnlineSaleProduct.QtyAvailable, "", new { style = "width:150px" })
+                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.QtyAvailable, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-12">
                         <label class="control-label">Description</label>
 
-                        @Html.EditorFor(model => model.Email, "", new { style = "width:150px" })
-                        @Html.ValidationMessageFor(model => Model.Email, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.OnlineSaleProduct.Description, "", new { style = "width:150px" })
+                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.Description, "", new { @class = "text-danger" })
                         <br /><br />
                     </div>
-
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-primary">Complete Order</button>
+                    </div>
                 </div>
 
             </div>
