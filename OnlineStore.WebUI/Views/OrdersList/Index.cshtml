@@ -248,7 +248,7 @@
                 </div>
             </div>
             <div id="Tab4" class="tab-pane fade">
-                <table class="table table-bordered" table-responsive table-hover" id="mainTable">
+                <table class="table table-bordered" table-responsive table-hover" id="ProductsTable">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
                             <th></th>
@@ -269,11 +269,12 @@
                         @foreach (var item in Model.OnlineSaleProductList)
                             {
                         <tr>
-                            @if(item.ProductImage.Length > 0)
-                            {
-                                <td><img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" width="80" height="80" /></td>
-                            }
-                            @*<td>image</td>*@
+                            <td>
+                                @if (item.ProductImage.Length > 0)
+                                {
+                                    <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" width="80" height="80" />
+                                }
+                            </td>                         
                             <td>@item.ProductName</td>
                             <td>@item.Brand_ID</td>
                             <td>@item.ItemType_ID</td>
@@ -308,7 +309,7 @@
     <link href="~/Content/confirm.css" rel="stylesheet" />
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#mainTable').DataTable();
+            $('#ProductsTable').DataTable();
             $('.dataTables_filter').addClass('pull-right');
         });
     </script>
