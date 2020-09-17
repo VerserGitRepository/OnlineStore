@@ -41,36 +41,40 @@
                         <tr>
                             <th>FirstName</th>
                             <th>LastName</th>
-                            <th>Order</th>
-                            <th>OrderRef</th>
-                            <th>SSN</th>
-                            <th>SKU</th>
-                            <th>Amazon Order No</th>
-                            @*<th>SKU</th>*@
-                            @*<th>Ref No</th>*@
-                            @*<th>Project</th>*@
-                            <th>Shipping Address</th>
                             <th>Suburb</th>
                             <th>Postcode</th>
+                            <th>Shipping Address</th>
+                            <th>State</th>
+                            <th>ContactNumber</th>
+                            <th>Email</th>
+                            <th>JobNo</th>
+                            <th>Orderno</th>
+                            <th>OrderStatus</th>
+                            <th>SSN</th>
+                            <th>OrderRef</th>                           
+                            <th>AmazonOrder</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model.OnlineSaleOrdersList)
                         {
-                            <tr>
-                                <td>@item.FirstName</td>
-                                <td>@item.LastName</td>
-                                <td>@item.Orderno</td>
-                                <td>@item.OrderRef</td>
-                                <td>@item.SSN</td>
-                                <td>@item.AddressLine1</td>
-                                <td>@item.Suburb</td>
-                                <td>@item.Postcode</td>
-                                @*<td>@item.CustomerProject</td>
-                                    <td>@item.CustomerProject</td>
-                                    <td>@item.CustomerProject</td>*@
-                            </tr>
+                        <tr>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.Suburb</td>
+                            <td>@item.Postcode</td>
+                            <td>@item.AddressLine1 </td>
+                            <td>@item.State</td>
+                            <td>@item.ContactNumber</td>
+                            <td>@item.Email</td>
+                            <td>@item.JobNo</td>
+                            <td>@item.Orderno</td>
+                            <td>@item.OrderStatus</td>
+                            <td>@item.SSN</td>
+                            <td>@item.OrderRef</td>
+                            <td>@item.AmazonOrderNo</td>
+                        </tr>
                         }
                     </tbody>
                 </table>
@@ -272,10 +276,11 @@
                         {
                             <tr>
                                 <td>
-                                    @if (item.ProductImage.Length > 0)
+                                    @*@if (item.ProductImage.Length > 0)
                                     {
                                         <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" width="80" height="80" />
-                                    }
+                                    }*@  
+                                    Image
                                 </td>
                                 <td>@item.ProductName</td>
                                 <td>@item.Brand_ID</td>
