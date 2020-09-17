@@ -271,9 +271,8 @@
                         <tr>
                             @if(item.ProductImage.Length > 0)
                             {
-                             <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" width="80" height="80" />
+                                <td><img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" width="80" height="80" /></td>
                             }
-
                             @*<td>image</td>*@
                             <td>@item.ProductName</td>
                             <td>@item.Brand_ID</td>
