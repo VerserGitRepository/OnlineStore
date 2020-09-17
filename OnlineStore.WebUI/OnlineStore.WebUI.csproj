@@ -274,6 +274,7 @@
     <Content Include="Views\OnlineSale\IPad.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\OrdersList\Index.cshtml" />
+    <Content Include="Views\OrdersList\AddProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

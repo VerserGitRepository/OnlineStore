@@ -24,8 +24,7 @@
     <div class="panel-heading">
         <ul class="nav nav-tabs" style="padding-top:15px;" id="myTab">
             <li class="active"><a data-toggle="tab" href="#Tab1">ORDERS</a></li>
-            <li><a data-toggle="tab" href="#Tab2">MANUAL ORDER</a></li>
-            <li><a data-toggle="tab" href="#Tab3">PRODUCTS</a></li>
+            <li><a data-toggle="tab" href="#Tab2">MANUAL ORDER</a></li>           
             <li><a data-toggle="tab" href="#Tab4">PRODUCTS LIST</a></li>
             <li><a data-toggle="tab" href="#RemoveOrder">SHIPMENTS</a></li>
             <li><a data-toggle="tab" href="#MANAGEDISPATCHORDER">MANAGE</a></li>
@@ -35,7 +34,6 @@
         <div class="tab-content" style="margin-bottom:0px">
             <div id="Tab1" class="tab-pane fade in active table-bordered" role="tabpanel" style="text-align:left;padding-left:20px;width:1000px; ">
 
-                <br>
                 <table class="table table-bordered" table-responsive table-hover" id="mainTable">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
@@ -51,36 +49,33 @@
                             <th>Orderno</th>
                             <th>OrderStatus</th>
                             <th>SSN</th>
-                            <th>OrderRef</th>                           
+                            <th>OrderRef</th>
                             <th>AmazonOrder</th>
-
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model.OnlineSaleOrdersList)
                         {
-                        <tr>
-                            <td>@item.FirstName</td>
-                            <td>@item.LastName</td>
-                            <td>@item.Suburb</td>
-                            <td>@item.Postcode</td>
-                            <td>@item.AddressLine1 </td>
-                            <td>@item.State</td>
-                            <td>@item.ContactNumber</td>
-                            <td>@item.Email</td>
-                            <td>@item.JobNo</td>
-                            <td>@item.Orderno</td>
-                            <td>@item.OrderStatus</td>
-                            <td>@item.SSN</td>
-                            <td>@item.OrderRef</td>
-                            <td>@item.AmazonOrderNo</td>
-                        </tr>
+                            <tr>
+                                <td>@item.FirstName</td>
+                                <td>@item.LastName</td>
+                                <td>@item.Suburb</td>
+                                <td>@item.Postcode</td>
+                                <td>@item.AddressLine1 </td>
+                                <td>@item.State</td>
+                                <td>@item.ContactNumber</td>
+                                <td>@item.Email</td>
+                                <td>@item.JobNo</td>
+                                <td>@item.Orderno</td>
+                                <td>@item.OrderStatus</td>
+                                <td>@item.SSN</td>
+                                <td>@item.OrderRef</td>
+                                <td>@item.AmazonOrderNo</td>
+                            </tr>
                         }
                     </tbody>
                 </table>
-
             </div>
-
             <div id="Tab2" class="tab-pane fade" style="text-align:left;padding-left:20px;width:1500px;">
                 @using (Html.BeginForm("ProcessManualOrder", "OrdersList", FormMethod.Post))
                 {
@@ -200,60 +195,15 @@
                         </div>
                     </div>
                 }
-            </div>
-            <div id="Tab3" class="tab-pane fade">
-                <div class="col-md-12 table-bordered" style="margin:5px">
-                    <div class="col-md-6">
-                        <label class="control-label">ProductName</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.ProductName, "", new { })
-                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.ProductName, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">ItemType</label>
-                        @Html.DropDownListFor(model => model.OnlineSaleProduct.ItemType_ID, Model.OnlineSaleProduct.ItemTypes, "ItemType", new { @class = "form-control ItemType", @id = "ddlItemType" })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.CustomerProject, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Brand</label>
-                        @Html.DropDownListFor(model => model.OnlineSaleProduct.Brand_ID, Model.OnlineSaleProduct.Makes, "Brands", new { @class = "form-control ItemType", @id = "ddlBrand" })
-                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.Brand_ID, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Model</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.Model_ID, "", new { })
-                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.Model_ID, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">PriceExGST</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.PriceExGST, "", new { })
-                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.PriceExGST, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">GSTAmount</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.GSTAmount, "", new { })
-                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.GSTAmount, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">PriceIncGST</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.PriceIncGST, "", new { })
-                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.PriceIncGST, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Quantity</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.QtyAvailable, "", new { })
-                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.QtyAvailable, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-12">
-                        <label class="control-label">Description</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.Description, "", new { })
-                        @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.Description, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-sm-6">
-                        <button type="submit" class="btn btn-primary">Complete Order</button>
+            </div>            
+            <div id="Tab4" class="tab-pane fade">
+                <div class="row pull-right">
+                    <div class="col-md-1">
+                        <div class="col-md-1">
+                            <input type="image" src="~/Images/plus.png" width="20" height="20" id="addProduct" data-toggle="tooltip" data-placement="left" title="Add">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="Tab4" class="tab-pane fade">
                 <table class="table table-bordered" table-responsive table-hover" id="ProductsTable">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
@@ -277,9 +227,9 @@
                             <tr>
                                 <td>
                                     @*@if (item.ProductImage.Length > 0)
-                                    {
-                                        <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" width="80" height="80" />
-                                    }*@  
+                            {
+                                <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" width="80" height="80" />
+                            }*@
                                     Image
                                 </td>
                                 <td>@item.ProductName</td>
@@ -299,9 +249,7 @@
             </div>
             <div id="MANAGEDISPATCHORDER" class="tab-pane fade">
                 MANAGEDISPATCHORDER
-
             </div>
-
         </div>
         <br>
     </div>
@@ -319,6 +267,26 @@
             $('#ProductsTable').DataTable();
             $('.dataTables_filter').addClass('pull-right');
         });
+        $('#addProduct').click(function () {
+            var AddSiteURL = '@Url.Action("AddProduct", "OrdersList")'
+            $.ajax({
+            type: "GET",
+            url: AddSiteURL,
+            success: function (data) {
+
+            $.confirm({
+            boxWidth: '800px',
+            useBootstrap: false,
+            title: '',
+            content: data,
+            closeIcon: true,
+            buttons: {
+            yes: { isHidden: true }
+            },
+            });
+            }
+            });
+            });
     </script>
 }
 <style>

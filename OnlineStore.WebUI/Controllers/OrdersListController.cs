@@ -14,15 +14,12 @@ namespace OnlineStore.WebUI.Controllers
         public ActionResult Index()
         {
             var LoadViewModel = new OrderViewModel();
-
             LoadViewModel.OnlineSaleOrdersList = OrdersServices.OnlineSaleOrdersList().Result;
             LoadViewModel.OnlineSaleProductList= OrdersServices.OnlineSaleProductsList().Result;
             LoadViewModel.ManualOrdersViewModel.CustomerProject = new SelectList(DropDownServices.ProjectList().Result, "ID", "Value");
             LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
             LoadViewModel.OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
-
             //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
-
             return View(LoadViewModel);
         }
         [HttpPost]
@@ -69,5 +66,14 @@ namespace OnlineStore.WebUI.Controllers
             return RedirectToAction("Index", "OrdersList");
         }
        
+        public ActionResult AddProduct()
+        {
+            var LoadViewModel = new OrderViewModel();
+           
+            LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
+            LoadViewModel.OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
+            //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
+            return PartialView(LoadViewModel);
+        }
     }
 }
