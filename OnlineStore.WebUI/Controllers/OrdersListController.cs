@@ -10,21 +10,35 @@ namespace OnlineStore.WebUI.Controllers
     public class OrdersListController : Controller
     {
         // GET: OrdersList
+        [OutputCache(CacheProfile = "Cache10Min")]
         public ActionResult Index()
         {
             var LoadViewModel = new OrderViewModel();
 
             LoadViewModel.OnlineSaleOrdersList = OrdersServices.OnlineSaleOrdersList().Result;
+            LoadViewModel.OnlineSaleProductList= OrdersServices.OnlineSaleProductsList().Result;
             LoadViewModel.ManualOrdersViewModel.CustomerProject = new SelectList(DropDownServices.ProjectList().Result, "ID", "Value");
             LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
             LoadViewModel.OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
+
             //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
 
             return View(LoadViewModel);
         }
         [HttpPost]
-        public ActionResult ProcessManualOrder(ManualOrdersViewModel manualorderviewmodel)
+        public ActionResult ProcessManualOrder(OrderViewModel _OrderModel)
         {
+            var manualorderviewmodel = new ManualOrdersViewModel
+            {
+                FirstName= _OrderModel.ManualOrdersViewModel.FirstName,
+                LastName = _OrderModel.ManualOrdersViewModel.LastName,
+                Salutation = _OrderModel.ManualOrdersViewModel.Salutation,
+                AddressLine1 = _OrderModel.ManualOrdersViewModel.AddressLine1,
+                AddressLine2 = _OrderModel.ManualOrdersViewModel.AddressLine2,
+                SSN = _OrderModel.ManualOrdersViewModel.SSN,
+                Email = _OrderModel.ManualOrdersViewModel.Email,
+                ContactNumber = _OrderModel.ManualOrdersViewModel.ContactNumber
+            };
              var resp=  OrdersServices.ProcessManualOrders(manualorderviewmodel);
              return RedirectToAction("Index", "Orders");
         }
@@ -35,5 +49,6 @@ namespace OnlineStore.WebUI.Controllers
             var resp = OrdersServices.AddUpdateProduct(OnlineSaleProductModel);
             return RedirectToAction("Index", "Orders");
         }
+       
     }
 }

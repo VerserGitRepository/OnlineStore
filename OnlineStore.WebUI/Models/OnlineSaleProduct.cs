@@ -8,6 +8,9 @@ namespace OnlineStore.WebUI.Models
 {
     public class OnlineSaleProduct
     {
+        public OnlineSaleProduct()
+        {
+        }
         public int Id { get; set; }
         public byte[] ProductImage { get; set; }
         public string ProductName { get; set; }
@@ -23,6 +26,7 @@ namespace OnlineStore.WebUI.Models
         public string CreatedBy { get; set; }
         public SelectList ItemTypes { get; set; }
         public SelectList Makes { get; set; }
+        public string SKU { get; set; }
         public SelectList Models { get; set; }
     }
 }

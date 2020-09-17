@@ -8,7 +8,9 @@ namespace OnlineStore.WebUI.Models
 {
     public class ManualOrdersViewModel
     {
-        //public List<ManualOrdersViewModel> ManualOrdersViewModel { get; set; }
+        public ManualOrdersViewModel()
+        {
+        }
         public int Id { get; set; }       
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -29,7 +31,8 @@ namespace OnlineStore.WebUI.Models
         public string RefNo { get; set; }
         public bool? IsExport { get; set; }
         public string Comments { get; set; }
-        public SelectList CustomerProject { get; set; }        
+        public SelectList CustomerProject { get; set; }
+        public int? ProjectId { get; set; }
         public string SSN { get; set; }
         public string Height { get; set; }
         public string Weight { get; set; }
@@ -37,8 +40,5 @@ namespace OnlineStore.WebUI.Models
         public string Length { get; set; }
         public int? NoOfItems { get; set; }
         public string AmazonOrderNo { get; set; }
-        public virtual OnlineSaleProduct OnlineSaleProduct { get; set; }
-        public virtual List<OnlineSaleOrdersListModel> OnlineSaleOrdersList { get; set; }
-
     }
 }

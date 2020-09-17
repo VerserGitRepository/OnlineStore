@@ -76,123 +76,125 @@
             </div>
 
             <div id="Tab2" class="tab-pane fade" style="text-align:left;padding-left:20px;width:1500px;">
+                @using (Html.BeginForm("ProcessManualOrder", "OrdersList", FormMethod.Post))
+                {
+                    <div class="col-md-5 table-bordered" style="margin:2px;padding-bottom:15px;">
+                        <div class="col-md-6">
+                            <label class="control-label">Surname</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.Salutation, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Salutation, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">First Name</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.FirstName, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Last Name</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.LastName, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.LastName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Contact Number</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.ContactNumber, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.ContactNumber, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-12">
+                            <label class="control-label">Email</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.Email, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-5 table-bordered" style="margin:2px">
+                        <div class="col-md-6">
+                            <label class="control-label">AddressLine1</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.AddressLine1, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AddressLine1, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">AddressLine2</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.AddressLine2, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AddressLine2, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Locality</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.Locality, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Locality, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Postcode</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.Postcode, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Postcode, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-12">
+                            <label class="control-label">State</label>
+                            @Html.DropDownList("State", new List<SelectListItem>
+                            {
+                               new SelectListItem{ Text="NSW", Value = "NSW" },
+                               new SelectListItem{ Text="QLD", Value = "QLD" },
+                               new SelectListItem{ Text="SA", Value = "SA" },
+                               new SelectListItem{ Text="TAS", Value = "TAS" },
+                               new SelectListItem{ Text="VIC", Value = "VIC" },
+                               new SelectListItem{ Text="WA", Value = "WA" },
+                               new SelectListItem{ Text="ACT", Value = "ACT" },
+                               new SelectListItem{ Text="NT", Value = "NT" } },
+                            new { @class = "form-control", style = "Height:35px" })
 
-                <div class="col-md-5 table-bordered" style="margin:2px;padding-bottom:15px;">
-                    <div class="col-md-6">
-                        <label class="control-label">Surname</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.Salutation, "", new {})
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Salutation, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label class="control-label">First Name</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.FirstName, "", new {})
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.FirstName, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Last Name</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.LastName, "", new {})
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.LastName, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Contact Number</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.ContactNumber, "", new {})
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.ContactNumber, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-12">
-                        <label class="control-label">Email</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.Email, "", new {})
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Email, "", new { @class = "text-danger" })                       
-                    </div>
-                </div>
-                <div class="col-md-5 table-bordered" style="margin:2px">
-                    <div class="col-md-6">
-                        <label class="control-label">AddressLine1</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.AddressLine1, "", new {})
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AddressLine1, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">AddressLine2</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.AddressLine2, "", new {})
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AddressLine2, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Locality</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.Locality, "", new {})
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Locality, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Postcode</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.Postcode, "", new {})
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Postcode, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-12">
-                        <label class="control-label">State</label>
-                        @Html.DropDownList("State", new List<SelectListItem>
-                        {
-                           new SelectListItem{ Text="NSW", Value = "NSW" },
-                           new SelectListItem{ Text="QLD", Value = "QLD" },
-                           new SelectListItem{ Text="SA", Value = "SA" },
-                           new SelectListItem{ Text="TAS", Value = "TAS" },
-                           new SelectListItem{ Text="VIC", Value = "VIC" },
-                           new SelectListItem{ Text="WA", Value = "WA" },
-                           new SelectListItem{ Text="ACT", Value = "ACT" },
-                           new SelectListItem{ Text="NT", Value = "NT" } },
-                           new { @class = "form-control", style = "Height:35px" })
+                    <div class="col-md-10 table-bordered" style="margin:5px">
+                        <div class="col-md-6">
+                            <label class="control-label">SSN</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.SSN, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.SSN, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Height</label>
+                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.Height, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Weight</label>
+                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.Weight, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Width</label>
 
+                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.Width, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Length</label>
+                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.Length, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">No Of Items</label>
+                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.NoOfItems, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">AmazonOrderNo</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.AmazonOrderNo, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AmazonOrderNo, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">SKU</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.SKU, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.SKU, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Ref No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.RefNo, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.RefNo, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Project</label>
+                            @Html.DropDownListFor(model => model.ManualOrdersViewModel.ProjectId, Model.ManualOrdersViewModel.CustomerProject, "Projects", new { @class = "form-control ItemType", @id = "ddlProjects", style = "Height:40px" })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.CustomerProject, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-primary">Complete Order</button>
+                        </div>
                     </div>
+                }
                 </div>
-                <div class="col-md-10 table-bordered" style="margin:5px">
-                    <div class="col-md-6">
-                        <label class="control-label">SSN</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.SSN, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.SSN, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Height</label>
-                        @Html.DropDownListFor(m => m.ManualOrdersViewModel.Height, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Weight</label>
-                        @Html.DropDownListFor(m => m.ManualOrdersViewModel.Weight, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Width</label>
-
-                        @Html.DropDownListFor(m => m.ManualOrdersViewModel.Width, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Length</label>
-                        @Html.DropDownListFor(m => m.ManualOrdersViewModel.Length, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">No Of Items</label>
-                        @Html.DropDownListFor(m => m.ManualOrdersViewModel.NoOfItems, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">AmazonOrderNo</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.AmazonOrderNo, "", new {})
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AmazonOrderNo, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">SKU</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.SKU, "", new {})
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.SKU, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Ref No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.RefNo, "", new {})
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.RefNo, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Project</label>
-                        @Html.DropDownListFor(model => model.ManualOrdersViewModel.CustomerProject, Model.ManualOrdersViewModel.CustomerProject, "Projects", new { @class = "form-control ItemType", @id = "ddlProjects", style = "Height:40px" })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.CustomerProject, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-sm-6">
-                        <button type="submit" class="btn btn-primary">Complete Order</button>
-                    </div>
-                </div>
-            </div>
             <div id="Tab3" class="tab-pane fade">
                 <div class="col-md-12 table-bordered" style="margin:5px">
                     <div class="col-md-6">
@@ -249,11 +251,11 @@
                 <table class="table table-bordered" table-responsive table-hover" id="mainTable">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
-                            <th>Product Name</th>
+                            <th></th>
+                            <th>Product</th>
                             <th>ItemType</th>
                             <th>Brand</th>
-                            <th>Model</th>
-                            <th>Product</th>
+                            <th>Model</th>                            
                             <th>PriceExGST</th>
                             <th>GSTAmount</th>
                             <th>PriceIncGST</th>
@@ -264,16 +266,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @*@foreach (var item in Model.OnlineSaleOrdersList)
+                        @foreach (var item in Model.OnlineSaleProductList)
                             {
-                                <tr>
-                                    <td>@item.FirstName</td>
-                                    <td>@item.LastName</td>
-                                    <td>@item.Orderno</td>
-                                    <td>@item.OrderRef</td>
+                        <tr>
+                            @if(item.ProductImage.Length > 0)
+                            {
+                             <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" width="80" height="80" />
+                            }
 
-                                </tr>
-                            }*@
+                            @*<td>image</td>*@
+                            <td>@item.ProductName</td>
+                            <td>@item.Brand_ID</td>
+                            <td>@item.ItemType_ID</td>
+                            <td>@item.Model_ID</td>
+                            <td>@item.PriceExGST</td>
+                            <td>@item.GSTAmount</td>
+                            <td>@item.PriceIncGST</td>
+                            <td>@item.QtyAvailable</td>
+                            <td>@item.Description</td>
+                        </tr>
+                            }
                     </tbody>
                 </table>
 
