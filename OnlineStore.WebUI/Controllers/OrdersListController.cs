@@ -30,7 +30,7 @@ namespace OnlineStore.WebUI.Controllers
         {
             if (_OrderModel.ManualOrdersViewModel==null)
             {
-                return RedirectToAction("Index", "Orders");
+                return RedirectToAction("Index", "OrdersList");
             }
             var manualorderviewmodel = new ManualOrdersViewModel
             {
@@ -59,14 +59,14 @@ namespace OnlineStore.WebUI.Controllers
 
             };
              var resp=  OrdersServices.ProcessManualOrders(manualorderviewmodel);
-             return RedirectToAction("Index", "Orders");
+             return RedirectToAction("Index", "OrdersList");
         }
 
         [HttpPost]
         public ActionResult AddUpdateProduct(OnlineSaleProduct OnlineSaleProductModel)
         {
             var resp = OrdersServices.AddUpdateProduct(OnlineSaleProductModel);
-            return RedirectToAction("Index", "Orders");
+            return RedirectToAction("Index", "OrdersList");
         }
        
     }
