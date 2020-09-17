@@ -12,15 +12,15 @@ namespace OnlineStore.WebUI.Controllers
         // GET: OrdersList
         public ActionResult Index()
         {
-            var LoadViewModel = new ManualOrdersViewModel();
+            var LoadViewModel = new OrderViewModel();
 
             LoadViewModel.OnlineSaleOrdersList = OrdersServices.OnlineSaleOrdersList().Result;
-            LoadViewModel.CustomerProject =new SelectList (DropDownServices.ProjectList().Result, "ID", "Value");
+            LoadViewModel.ManualOrdersViewModel.CustomerProject = new SelectList(DropDownServices.ProjectList().Result, "ID", "Value");
             LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
             LoadViewModel.OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
             //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
-            
-            return View();
+
+            return View(LoadViewModel);
         }
         [HttpPost]
         public ActionResult ProcessManualOrder(ManualOrdersViewModel manualorderviewmodel)

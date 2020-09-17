@@ -5,8 +5,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -56,9 +56,9 @@ div.dataTables_wrapper {
     margin: 0 auto;
 }
 
-div.container {
-    width: 80%;
-}
+/*div.container {
+    width: 300%;
+}*/
 
 .navbar {
     overflow: hidden;

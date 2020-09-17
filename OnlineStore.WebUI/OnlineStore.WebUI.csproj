@@ -140,11 +140,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Images\apple.jpeg" />
+    <Content Include="Images\Dell-xps-13.jpg" />
     <Content Include="Images\dell.png" />
     <Content Include="Images\DellMonitor.jpg" />
     <Content Include="Images\Desktop.jpg" />
+    <Content Include="Images\Galaxy S10plus.jpg" />
+    <Content Include="Images\galaxys9.jpg" />
     <Content Include="Images\hp.png" />
     <Content Include="Images\ipad1.png" />
+    <Content Include="Images\ipad2.jpg" />
+    <Content Include="Images\iphone-xs-silver.jpg" />
     <Content Include="Images\iPhone11ProMax.jpg" />
     <Content Include="Images\laptop.jfif" />
     <Content Include="Images\laptop2.jfif" />
@@ -152,6 +157,8 @@
     <Content Include="Images\mac1.jpg" />
     <Content Include="Images\mac2.jpg" />
     <Content Include="Images\mac3.jpg" />
+    <Content Include="Images\mac4.jpg" />
+    <Content Include="Images\macbookpro5.jpg" />
     <Content Include="Images\microsoftlogo.jpg" />
     <Content Include="Images\Payment Options.PNG" />
     <Content Include="Images\samsung.png" />
@@ -222,6 +229,7 @@
     <Compile Include="Models\MenuViewModel.cs" />
     <Compile Include="Models\OnlineSaleOrdersListModel.cs" />
     <Compile Include="Models\OnlineSaleProduct.cs" />
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\ProductsListViewModel.cs" />
     <Compile Include="Models\ProductSummaryViewModel.cs" />
     <Compile Include="Models\SaleProductInfo.cs" />
