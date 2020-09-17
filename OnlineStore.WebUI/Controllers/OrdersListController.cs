@@ -39,9 +39,24 @@ namespace OnlineStore.WebUI.Controllers
                 Salutation = _OrderModel.ManualOrdersViewModel.Salutation,
                 AddressLine1 = _OrderModel.ManualOrdersViewModel.AddressLine1,
                 AddressLine2 = _OrderModel.ManualOrdersViewModel.AddressLine2,
-                SSN = _OrderModel.ManualOrdersViewModel.SSN,
+                Locality = _OrderModel.ManualOrdersViewModel.Locality,               
                 Email = _OrderModel.ManualOrdersViewModel.Email,
-                ContactNumber = _OrderModel.ManualOrdersViewModel.ContactNumber
+                State = _OrderModel.ManualOrdersViewModel.State,
+                Postcode = _OrderModel.ManualOrdersViewModel.Postcode,
+                ContactNumber = _OrderModel.ManualOrdersViewModel.ContactNumber,
+                Height = _OrderModel.ManualOrdersViewModel.Height,
+                Weight = _OrderModel.ManualOrdersViewModel.Weight,
+                Width = _OrderModel.ManualOrdersViewModel.Width,
+                Length = _OrderModel.ManualOrdersViewModel.Length,
+                NoOfItems = _OrderModel.ManualOrdersViewModel.NoOfItems,
+                SSN = _OrderModel.ManualOrdersViewModel.SSN,
+                IsExport = _OrderModel.ManualOrdersViewModel.IsExport,
+                OrderDate = DateTime.Now,
+               AmazonOrderNo= _OrderModel.ManualOrdersViewModel.AmazonOrderNo,
+               ProjectId = _OrderModel.ManualOrdersViewModel.ProjectId,
+               RefNo= _OrderModel.ManualOrdersViewModel.RefNo,
+               Comments =_OrderModel.ManualOrdersViewModel.Comments
+
             };
              var resp=  OrdersServices.ProcessManualOrders(manualorderviewmodel);
              return RedirectToAction("Index", "Orders");
