@@ -5,18 +5,20 @@
 }
 <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
-<script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="~/Scripts/bootstrap.min.js" rel="stylesheet" />
+
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src=" https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+@*<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>*@
+@*<script src="https://code.jquery.com/jquery-3.3.1.js"></script>*@
 
 <div class="container" style="width:1200px; padding-top:20px;margin-left:-22px">
     <div class="panel-heading">
@@ -194,12 +196,12 @@
                         </div>
                     </div>
                 }
-                </div>
+            </div>
             <div id="Tab3" class="tab-pane fade">
                 <div class="col-md-12 table-bordered" style="margin:5px">
                     <div class="col-md-6">
                         <label class="control-label">ProductName</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.ProductName, "", new {})
+                        @Html.EditorFor(model => model.OnlineSaleProduct.ProductName, "", new { })
                         @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.ProductName, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
@@ -214,32 +216,32 @@
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">Model</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.Model_ID, "", new {})
+                        @Html.EditorFor(model => model.OnlineSaleProduct.Model_ID, "", new { })
                         @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.Model_ID, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">PriceExGST</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.PriceExGST, "", new {})
+                        @Html.EditorFor(model => model.OnlineSaleProduct.PriceExGST, "", new { })
                         @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.PriceExGST, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">GSTAmount</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.GSTAmount, "", new {})
+                        @Html.EditorFor(model => model.OnlineSaleProduct.GSTAmount, "", new { })
                         @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.GSTAmount, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">PriceIncGST</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.PriceIncGST, "", new {})
+                        @Html.EditorFor(model => model.OnlineSaleProduct.PriceIncGST, "", new { })
                         @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.PriceIncGST, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
                         <label class="control-label">Quantity</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.QtyAvailable, "", new {})
+                        @Html.EditorFor(model => model.OnlineSaleProduct.QtyAvailable, "", new { })
                         @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.QtyAvailable, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-12">
                         <label class="control-label">Description</label>
-                        @Html.EditorFor(model => model.OnlineSaleProduct.Description, "", new {})
+                        @Html.EditorFor(model => model.OnlineSaleProduct.Description, "", new { })
                         @Html.ValidationMessageFor(model => Model.OnlineSaleProduct.Description, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-sm-6">
@@ -255,7 +257,7 @@
                             <th>Product</th>
                             <th>ItemType</th>
                             <th>Brand</th>
-                            <th>Model</th>                            
+                            <th>Model</th>
                             <th>PriceExGST</th>
                             <th>GSTAmount</th>
                             <th>PriceIncGST</th>
@@ -267,25 +269,25 @@
                     </thead>
                     <tbody>
                         @foreach (var item in Model.OnlineSaleProductList)
-                            {
-                        <tr>
-                            <td>
-                                @if (item.ProductImage.Length > 0)
-                                {
-                                    <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" width="80" height="80" />
-                                }
-                            </td>                         
-                            <td>@item.ProductName</td>
-                            <td>@item.Brand_ID</td>
-                            <td>@item.ItemType_ID</td>
-                            <td>@item.Model_ID</td>
-                            <td>@item.PriceExGST</td>
-                            <td>@item.GSTAmount</td>
-                            <td>@item.PriceIncGST</td>
-                            <td>@item.QtyAvailable</td>
-                            <td>@item.Description</td>
-                        </tr>
-                            }
+                        {
+                            <tr>
+                                <td>
+                                    @if (item.ProductImage.Length > 0)
+                                    {
+                                        <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" width="80" height="80" />
+                                    }
+                                </td>
+                                <td>@item.ProductName</td>
+                                <td>@item.Brand_ID</td>
+                                <td>@item.ItemType_ID</td>
+                                <td>@item.Model_ID</td>
+                                <td>@item.PriceExGST</td>
+                                <td>@item.GSTAmount</td>
+                                <td>@item.PriceIncGST</td>
+                                <td>@item.QtyAvailable</td>
+                                <td>@item.Description</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
 
@@ -321,9 +323,11 @@
         flex: 0 0 50%;
         max-width: 50%
     }
+
     .col-padding {
         padding: 0 15px;
     }
+
     body {
         padding-top: 40px;
         padding-bottom: 5px;
@@ -335,20 +339,24 @@
         padding-right: 5px;
         margin-left: 5px;
     }
+
     .dataTables_filter {
         float: right;
     }
+
     .container {
         font-size: 12px;
         padding-left: 25px;
         padding-right: 5px;
     }
+
     .col-md-6 {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 50%;
         flex: 0 0 50%;
         max-width: 50%
     }
+
     .col-md-6 {
         position: relative;
         width: 100%;
@@ -358,7 +366,8 @@
         padding-right: 15px;
         padding-left: 5px
     }
-        .col-md-6 {
+
+    .col-md-6 {
         position: relative;
         width: 100%;
         min-height: 1px;

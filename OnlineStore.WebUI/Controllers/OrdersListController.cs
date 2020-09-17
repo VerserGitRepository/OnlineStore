@@ -28,6 +28,10 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult ProcessManualOrder(OrderViewModel _OrderModel)
         {
+            if (_OrderModel.ManualOrdersViewModel==null)
+            {
+                return RedirectToAction("Index", "Orders");
+            }
             var manualorderviewmodel = new ManualOrdersViewModel
             {
                 FirstName= _OrderModel.ManualOrdersViewModel.FirstName,
