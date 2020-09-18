@@ -20,7 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>*@
 @*<script src="https://code.jquery.com/jquery-3.3.1.js"></script>*@
 
-<div class="container" style="width:1200px; padding-top:20px;margin-left:-22px">
+<div class="container" style="width:1800px; padding-top:0px;margin-left:-22px">
     <div class="panel-heading">
         <ul class="nav nav-tabs" style="padding-top:15px;" id="myTab">
             <li class="active"><a data-toggle="tab" href="#Tab1">ORDERS</a></li>
@@ -31,10 +31,9 @@
         </ul>
     </div>
     <div class="panel-body" style="margin-bottom:0px;border-color:gray">
-        <div class="tab-content" style="margin-bottom:0px">
-            <div id="Tab1" class="tab-pane fade in active table-bordered" role="tabpanel" style="text-align:left;padding-left:20px;width:1000px; ">
-
-                <table class="table table-bordered" table-responsive table-hover" id="mainTable">
+        <div class="tab-content" style="margin-bottom:0px;width:1800px">
+            <div id="Tab1" class="tab-pane fade in active table-bordered" role="tabpanel" style="text-align:left;width:1500px;">
+                <table class="table table-bordered" table-responsive table-hover" id="OrdersTable">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
                             <th>FirstName</th>
@@ -200,7 +199,8 @@
                 <div class="row pull-right">
                     <div class="col-md-1">
                         <div class="col-md-1">
-                            <input type="image" src="~/Images/plus.png" width="20" height="20" id="addProduct" data-toggle="tooltip" data-placement="left" title="Add">
+                            <input type="submit" class="glyphicon-plus-sign" width="20" height="20" id="addProduct" data-toggle="tooltip" data-placement="left" title="Add">
+                            @*<input type="image" src="~/Images/plus.png" class="glyphicon-plus-sign" width="20" height="20" id="addProduct" data-toggle="tooltip" data-placement="left" title="Add">*@
                         </div>
                     </div>
                 </div>
@@ -217,8 +217,6 @@
                             <th>PriceIncGST</th>
                             <th>Quantity</th>
                             <th>Description</th>
-
-
                         </tr>
                     </thead>
                     <tbody>
@@ -245,7 +243,6 @@
                         }
                     </tbody>
                 </table>
-
             </div>
             <div id="MANAGEDISPATCHORDER" class="tab-pane fade">
                 MANAGEDISPATCHORDER
@@ -256,6 +253,7 @@
 </div>
 @section Scripts {
     @*@Scripts.Render("~/bundles/jqueryval")*@
+
     <script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")"></script>
     <script src="~/Scripts/datatables.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
@@ -265,6 +263,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#ProductsTable').DataTable();
+            $('#OrdersTable').DataTable();            
             $('.dataTables_filter').addClass('pull-right');
         });
         $('#addProduct').click(function () {
