@@ -5,12 +5,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnlineStore.WebUI.Infrastructure.HelperServices;
+using System.Drawing;
+using System.IO;
+
 namespace OnlineStore.WebUI.Controllers
 {
     public class OrdersListController : Controller
     {
         // GET: OrdersList
-        [OutputCache(CacheProfile = "Cache10Min")]
+        [OutputCache(CacheProfile = "Cache5Min")]
         public ActionResult Index()
         {
             var LoadViewModel = new OrderViewModel();
@@ -20,6 +23,28 @@ namespace OnlineStore.WebUI.Controllers
             LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
             LoadViewModel.OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
             //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
+            //foreach (var item in LoadViewModel.OnlineSaleProductList)
+            //{
+            //    if (item.ProductImage.Length == 0)
+            //        continue;
+            //    Image rImage = null;
+            //    try
+            //    {
+            //        using (MemoryStream ms = new MemoryStream(item.ProductImage))
+            //        {
+            //            using (rImage = Image.FromStream(ms))
+            //            {
+            //                string FileName = string.Join("_", item.ProductName.Trim().Split(Path.GetInvalidFileNameChars()));
+            //                rImage.Save(@"C:\VerserSourceCodeGitRepo\VerserOnlineStore\OnlineStore\OnlineStore.WebUI\ProductImages\" + item.Id + "_" + FileName + ".jpg");
+            //            }
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+            //        continue;
+            //    }               
+            //}
+
             return View(LoadViewModel);
         }
         [HttpPost]

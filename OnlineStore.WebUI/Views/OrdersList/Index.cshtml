@@ -20,36 +20,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>*@
 @*<script src="https://code.jquery.com/jquery-3.3.1.js"></script>*@
 
-<div class="container" style="width:1800px; padding-top:0px;margin-left:-22px">
+<div class="container" style="width:100%; padding-top:0px;margin-left:-22px">
     <div class="panel-heading">
         <ul class="nav nav-tabs" style="padding-top:15px;" id="myTab">
             <li class="active"><a data-toggle="tab" href="#Tab1">ORDERS</a></li>
-            <li><a data-toggle="tab" href="#Tab2">MANUAL ORDER</a></li>           
+            <li><a data-toggle="tab" href="#Tab2">MANUAL ORDER</a></li>
             <li><a data-toggle="tab" href="#Tab4">PRODUCTS LIST</a></li>
             <li><a data-toggle="tab" href="#RemoveOrder">SHIPMENTS</a></li>
             <li><a data-toggle="tab" href="#MANAGEDISPATCHORDER">MANAGE</a></li>
         </ul>
     </div>
     <div class="panel-body" style="margin-bottom:0px;border-color:gray">
-        <div class="tab-content" style="margin-bottom:0px;width:1800px">
-            <div id="Tab1" class="tab-pane fade in active table-bordered" role="tabpanel" style="text-align:left;width:1500px;">
-                <table class="table table-bordered" table-responsive table-hover" id="OrdersTable">
+        <div class="tab-content" style="margin-bottom:0px;width:100%">
+            <div id="Tab1" class="tab-pane fade in active table-bordered" role="tabpanel">
+                <table class="table table-bordered" table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
                             <th>FirstName</th>
                             <th>LastName</th>
                             <th>Suburb</th>
                             <th>Postcode</th>
-                            <th>Shipping Address</th>
+                            <th>Address</th>
                             <th>State</th>
-                            <th>ContactNumber</th>
+                            <th>ContactNo</th>
                             <th>Email</th>
                             <th>JobNo</th>
                             <th>Orderno</th>
-                            <th>OrderStatus</th>
+                            <th>Status</th>
                             <th>SSN</th>
                             <th>OrderRef</th>
-                            <th>AmazonOrder</th>
+                            <th>AmazonOder</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,7 +75,7 @@
                     </tbody>
                 </table>
             </div>
-            <div id="Tab2" class="tab-pane fade" style="text-align:left;padding-left:20px;width:1500px;">
+            <div id="Tab2" class="tab-pane fade" style="text-align:left;padding-left:0px;width:1000px;">
                 @using (Html.BeginForm("ProcessManualOrder", "OrdersList", FormMethod.Post))
                 {
                     <div class="col-md-5 table-bordered" style="margin:2px;padding-bottom:15px;">
@@ -194,7 +194,7 @@
                         </div>
                     </div>
                 }
-            </div>            
+            </div>
             <div id="Tab4" class="tab-pane fade">
                 <div class="row pull-right">
                     <div class="col-md-1">
@@ -204,9 +204,10 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered" table-responsive table-hover" id="ProductsTable">
+                <table class="table table-bordered" table-responsive table-hover" id="ProductsTable" style="font-size:smaller">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
+                            <th>ID</th>
                             <th></th>
                             <th>Product</th>
                             <th>ItemType</th>
@@ -223,12 +224,18 @@
                         @foreach (var item in Model.OnlineSaleProductList)
                         {
                             <tr>
+                                <td>@item.Id</td>
                                 <td>
+
                                     @*@if (item.ProductImage.Length > 0)
-                            {
-                                <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" width="80" height="80" />
-                            }*@
-                                    Image
+                                        {
+                                            <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" alt="@item.ProductName" width="200" height="150"/>
+                                        }*@
+
+                                    @if (item.Images.Count > 0)
+                                    {
+                                        <img src="~/ProductImages/@item.Images.FirstOrDefault()"  width="200" height="150" />
+                                    }
                                 </td>
                                 <td>@item.ProductName</td>
                                 <td>@item.Brand_ID</td>
@@ -248,7 +255,6 @@
                 MANAGEDISPATCHORDER
             </div>
         </div>
-        <br>
     </div>
 </div>
 @section Scripts {
@@ -263,7 +269,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#ProductsTable').DataTable();
-            $('#OrdersTable').DataTable();            
+            $('#OrdersTable').DataTable();
             $('.dataTables_filter').addClass('pull-right');
         });
         $('#addProduct').click(function () {

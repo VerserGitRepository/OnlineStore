@@ -10,6 +10,7 @@ namespace OnlineStore.WebUI.Models
     {
         public OnlineSaleProduct()
         {
+            Images = new List<string>();
         }
         public int Id { get; set; }
         public byte[] ProductImage { get; set; }
@@ -28,5 +29,6 @@ namespace OnlineStore.WebUI.Models
         public SelectList Makes { get; set; }
         public string SKU { get; set; }
         public SelectList Models { get; set; }
+        public List<string> Images { get; set; }
     }
 }
