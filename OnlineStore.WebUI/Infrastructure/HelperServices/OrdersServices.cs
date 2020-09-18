@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Mvc;
 
 namespace OnlineStore.WebUI.Infrastructure.HelperServices
 {
@@ -43,7 +44,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return returnmessage;
         }
-
+        [OutputCache(CacheProfile = "Cache5Min")]
         public async static Task<List<OnlineSaleOrdersListModel>> OnlineSaleOrdersList()
         {
             var returnmessage = new  List<OnlineSaleOrdersListModel>();
@@ -59,6 +60,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return returnmessage;
         }
+        [OutputCache(CacheProfile = "Cache5Min")]
         public async static Task<List<OnlineSaleProduct>> OnlineSaleProductsList()
         {
             var returnmessage = new List<OnlineSaleProduct>();

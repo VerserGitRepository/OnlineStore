@@ -1,4 +1,5 @@
-﻿
+﻿@using System.Linq;
+@model IEnumerable<OnlineStore.WebUI.Models.OnlineSaleProduct>
 @{
     ViewBag.Title = "IPad";
 }
@@ -14,59 +15,62 @@
 <html>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-xs-4 item-photo">
-                <img style="max-width:100%;" src="~/Images/ipad1.png" alt="Submit" width="220" height="220">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-xs-4 item-photo">
+                    <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" alt="Submit" width="220" height="220">
+                </div>
+                <div class="col-xs-5" style="border:0px solid gray">
+                    <!-- Datos del vendedor y titulo del producto -->
+                    <h3>@item.ProductName</h3>
+                    <h5 style="color:#337ab7">Brand <a href="#">Apple</a> · <small style="color:#337ab7">(5054 SALES)</small></h5>
+
+                    <!-- Precios -->
+                    <h6 class="title-price"><small>PRICE</small></h6>
+                    <h3 style="margin-top:0px;">AUD @item.PriceIncGST</h3>
+
+                    <!-- Detalles especificos del producto -->
+                    <div class="section">
+                        <h6 class="title-attr" style="margin-top:15px;"><small>COLOR</small></h6>
+                        <div>
+                            <div class="attr" style="width:25px;background:#5a5a5a;"></div>
+                            <div class="attr" style="width:25px;background:white;"></div>
+                        </div>
+                    </div>
+                    <div class="section" style="padding-bottom:5px;">
+                        <h6 class="title-attr"><small>MEMORY</small></h6>
+                        <div>
+                            <div class="attr2">256 GB</div>
+                            <div class="attr2">32 GB</div>
+                        </div>
+                    </div>
+                    <div class="section" style="padding-bottom:20px;">
+                        <h6 class="title-attr"><small>AVAILABLE STOCK @item.QtyAvailable</small></h6>
+                        <div>
+                            <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
+                            <input value="1" />
+                            <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
+                        </div>
+                    </div>
+
+                    <!-- Botones de compra -->
+                    <div class="section" style="padding-bottom:20px;">
+                        <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
+                        <h6>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
+                                Add to wish list
+                            </a>
+                        </h6>
+                    </div>
+                </div>
+
+
             </div>
-            <div class="col-xs-5" style="border:0px solid gray">
-                <!-- Datos del vendedor y titulo del producto -->
-                <h3>Ipad</h3>
-                <h5 style="color:#337ab7">Brand <a href="#">Apple</a> · <small style="color:#337ab7">(5054 SALES)</small></h5>
-
-                <!-- Precios -->
-                <h6 class="title-price"><small>PRICE</small></h6>
-                <h3 style="margin-top:0px;">AUD 799</h3>
-
-                <!-- Detalles especificos del producto -->
-                <div class="section">
-                    <h6 class="title-attr" style="margin-top:15px;"><small>COLOR</small></h6>
-                    <div>
-                        <div class="attr" style="width:25px;background:#5a5a5a;"></div>
-                        <div class="attr" style="width:25px;background:white;"></div>
-                    </div>
-                </div>
-                <div class="section" style="padding-bottom:5px;">
-                    <h6 class="title-attr"><small>MEMORY</small></h6>
-                    <div>
-                        <div class="attr2">256 GB</div>
-                        <div class="attr2">32 GB</div>
-                    </div>
-                </div>
-                <div class="section" style="padding-bottom:20px;">
-                    <h6 class="title-attr"><small>QUANTITY</small></h6>
-                    <div>
-                        <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
-                        <input value="1" />
-                        <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
-                    </div>
-                </div>
-
-                <!-- Botones de compra -->
-                <div class="section" style="padding-bottom:20px;">
-                    <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
-                    <h6>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
-                            Add to wish list
-                        </a>
-                    </h6>
-                </div>
-            </div>
-
+        }
 
         </div>
-
-    </div>
 </body>
 </html>
 
