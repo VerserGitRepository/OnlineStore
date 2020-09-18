@@ -93,12 +93,12 @@ namespace OnlineStore.WebUI.Controllers
        
         public ActionResult AddProduct()
         {
-            var LoadViewModel = new OrderViewModel();
+            var OnlineSaleProduct = new OnlineSaleProduct();
            
-            LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
-            LoadViewModel.OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
+            OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
+            OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
             //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
-            return PartialView(LoadViewModel);
+            return PartialView(OnlineSaleProduct);
         }
     }
 }
