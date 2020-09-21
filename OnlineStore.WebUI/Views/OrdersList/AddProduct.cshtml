@@ -2,7 +2,7 @@
 @model OnlineStore.WebUI.Models.OnlineSaleProduct
 
     <div class="col-md-12 table-bordered">
-        @using (Html.BeginForm("AddUpdateProduct", "OrdersList", FormMethod.Post))
+        @using (Html.BeginForm("AddUpdateProduct", "OrdersList", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div class="col-md-6">
                 <label class="control-label">ProductName</label>
@@ -43,7 +43,7 @@
             
             <div class="col-md-12">
                 <br />
-                <input type="file" id="inputGroupFile01" name="filename" multiple accept=".png, .jpg, .jpeg">
+                @Html.TextBoxFor(model => model.files, new { type = "file",  accept = ".png, .jpg, .jpeg" })
             </div>
            
             <div class="col-sm-6">

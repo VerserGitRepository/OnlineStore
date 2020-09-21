@@ -30,5 +30,6 @@ namespace OnlineStore.WebUI.Models
         public string SKU { get; set; }
         public SelectList Models { get; set; }
         public List<string> Images { get; set; }
+        public HttpPostedFileBase[] files { get; set; }
     }
 }

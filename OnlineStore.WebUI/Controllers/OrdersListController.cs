@@ -87,6 +87,10 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult AddUpdateProduct(OnlineSaleProduct OnlineSaleProductModel)
         {
+            foreach (HttpPostedFileBase file in OnlineSaleProductModel.files)
+            {
+               file.SaveAs(Path.Combine(Server.MapPath(".") + "//ProductImages//", OnlineSaleProductModel.ProductName+".jpg"));
+            }
             var resp = OrdersServices.AddUpdateProduct(OnlineSaleProductModel);
             return RedirectToAction("Index", "OrdersList");
         }
