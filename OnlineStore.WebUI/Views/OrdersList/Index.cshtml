@@ -17,7 +17,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
 
-<div class="container" style="width:100%;margin-left:-22px">
+<div class="container" style="width:115%;margin-left:-22px">
     <div class="panel-heading">
         <ul class="nav nav-tabs" id="myTab">
             <li class="active"><a data-toggle="tab" href="#Tab1">ORDERS</a></li>
@@ -27,12 +27,14 @@
             <li><a data-toggle="tab" href="#MANAGEDISPATCHORDER">MANAGE</a></li>
         </ul>
     </div>
-    <div class="panel-body" style="border-color:gray">
-        <div class="tab-content" style="margin-bottom:0px;width:100%">
-            <div id="Tab1" class="tab-pane fade in active table-bordered" role="tabpanel">
+    <div class="panel-body" style="border-color:gray;width:115%">
+        <div class="tab-content table-bordered" style="margin-bottom:0px;width:115%">
+            <div id="Tab1" class="tab-pane fade in active" role="tabpanel" style="border:none">
                 <table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
+                            <th>Orderno</th>
+                            <th>SKU</th>
                             <th>FirstName</th>
                             <th>LastName</th>
                             <th>Suburb</th>
@@ -42,7 +44,6 @@
                             <th>ContactNo</th>
                             <th>Email</th>
                             <th>JobNo</th>
-                            <th>Orderno</th>
                             <th>Status</th>
                             <th>SSN</th>
                             <th>OrderRef</th>
@@ -52,27 +53,28 @@
                     <tbody>
                         @foreach (var item in Model.OnlineSaleOrdersList)
                         {
-                            <tr>
-                                <td>@item.FirstName</td>
-                                <td>@item.LastName</td>
-                                <td>@item.Suburb</td>
-                                <td>@item.Postcode</td>
-                                <td>@item.AddressLine1 </td>
-                                <td>@item.State</td>
-                                <td>@item.ContactNumber</td>
-                                <td>@item.Email</td>
-                                <td>@item.JobNo</td>
-                                <td>@item.Orderno</td>
-                                <td>@item.OrderStatus</td>
-                                <td>@item.SSN</td>
-                                <td>@item.OrderRef</td>
-                                <td>@item.AmazonOrderNo</td>
-                            </tr>
+                        <tr>
+                            <td>@item.Orderno</td>
+                            <td></td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.Suburb</td>
+                            <td>@item.Postcode</td>
+                            <td>@item.AddressLine1 </td>
+                            <td>@item.State</td>
+                            <td>@item.ContactNumber</td>
+                            <td>@item.Email</td>
+                            <td>@item.JobNo</td>
+                            <td>@item.OrderStatus</td>
+                            <td>@item.SSN</td>
+                            <td>@item.OrderRef</td>
+                            <td>@item.AmazonOrderNo</td>
+                        </tr>
                         }
                     </tbody>
                 </table>
             </div>
-            <div id="Tab2" class="tab-pane fade" style="text-align:left;padding-left:0px;width:1000px;">
+            <div id="Tab2" class="tab-pane fade" role="tabpanel" style="text-align:left;padding-left:0px;width:1000px;">
                 @using (Html.BeginForm("ProcessManualOrder", "OrdersList", FormMethod.Post))
                 {
                     <div class="col-md-5 table-bordered" style="margin:2px;padding-bottom:15px;">
