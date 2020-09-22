@@ -7,8 +7,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js">
 </script>
-
-
 <!DOCTYPE html>
 <html>
 <body>
@@ -17,18 +15,13 @@
         {
             <div class="row">
                 <div class="col-xs-4 item-photo">
-                    <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" alt="Submit" width="220" height="220">
+                    <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" alt="Submit" width="230" height="230">
                 </div>
-                <div class="col-xs-5" style="border:0px solid gray">
-                    <!-- Datos del vendedor y titulo del producto -->
-                    <h3>@item.ProductName</h3>
-                    <h5 style="color:#337ab7">Brand <a href="#">Dell</a> · <small style="color:#337ab7">(5054 SALES)</small></h5>
-
-                    <!-- Precios -->
+                <div class="col-xs-5" style="border:0px solid gray">                   
+                    <h4>@item.ProductName</h4>
+                    <h5 style="color:#337ab7">Brand <a href="#">Dell</a></h5>                
                     <h6 class="title-price"><small>PRICE</small></h6>
                     <h3 style="margin-top:0px;">AUD @item.PriceIncGST</h3>
-
-                    <!-- Detalles especificos del producto -->
                     <div class="section">
                         <h6 class="title-attr" style="margin-top:15px;"><small>COLOR</small></h6>
                         <div>
@@ -43,17 +36,15 @@
                             <div class="attr2">32 GB</div>
                         </div>
                     </div>
-                    <div class="section" style="padding-bottom:20px;">
+                    <div class="section" style="padding-bottom:5px;">
                         <h6 class="title-attr"><small>AVAILABLE STOCK @item.QtyAvailable</small></h6>
                         <div>
                             <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
                             <input value="1" />
                             <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
                         </div>
-                    </div>
-
-                    <!-- Botones de compra -->
-                    <div class="section" style="padding-bottom:20px;">
+                    </div>                  
+                    <div class="section" style="padding-bottom:5px;">
                         <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
                         <h6>
                             <a href="#">
@@ -63,8 +54,6 @@
                         </h6>
                     </div>
                 </div>
-
-
             </div>
         }
 
@@ -104,11 +93,11 @@
     }
 
     .section {
-        width: 100%;
+        width: 70%;
         margin-left: -15px;
         padding: 2px;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 5px;
+        padding-right: 5px;
         background: #f8f9f9
     }
 

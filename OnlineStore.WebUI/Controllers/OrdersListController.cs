@@ -22,28 +22,6 @@ namespace OnlineStore.WebUI.Controllers
             LoadViewModel.ManualOrdersViewModel.CustomerProject = new SelectList(DropDownServices.ProjectList().Result, "ID", "Value");
             LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
             LoadViewModel.OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
-            //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
-            //foreach (var item in LoadViewModel.OnlineSaleProductList)
-            //{
-            //    if (item.ProductImage.Length == 0)
-            //        continue;
-            //    Image rImage = null;
-            //    try
-            //    {
-            //        using (MemoryStream ms = new MemoryStream(item.ProductImage))
-            //        {
-            //            using (rImage = Image.FromStream(ms))
-            //            {
-            //                string FileName = string.Join("_", item.ProductName.Trim().Split(Path.GetInvalidFileNameChars()));
-            //                rImage.Save(@"C:\VerserSourceCodeGitRepo\VerserOnlineStore\OnlineStore\OnlineStore.WebUI\ProductImages\" + item.Id + "_" + FileName + ".jpg");
-            //            }
-            //        }
-            //    }
-            //    catch (Exception)
-            //    {
-            //        continue;
-            //    }               
-            //}
 
             return View(LoadViewModel);
         }
@@ -103,6 +81,32 @@ namespace OnlineStore.WebUI.Controllers
             OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
             //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
             return PartialView(OnlineSaleProduct);
+        }
+
+        public void imageimport()
+        {
+            //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
+            //foreach (var item in LoadViewModel.OnlineSaleProductList)
+            //{
+            //    if (item.ProductImage.Length == 0)
+            //        continue;
+            //    Image rImage = null;
+            //    try
+            //    {
+            //        using (MemoryStream ms = new MemoryStream(item.ProductImage))
+            //        {
+            //            using (rImage = Image.FromStream(ms))
+            //            {
+            //                string FileName = string.Join("_", item.ProductName.Trim().Split(Path.GetInvalidFileNameChars()));
+            //                rImage.Save(@"C:\VerserSourceCodeGitRepo\VerserOnlineStore\OnlineStore\OnlineStore.WebUI\ProductImages\" + item.Id + "_" + FileName + ".jpg");
+            //            }
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+            //        continue;
+            //    }               
+            //}
         }
     }
 }

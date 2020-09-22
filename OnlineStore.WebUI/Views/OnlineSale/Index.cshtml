@@ -1,4 +1,6 @@
-﻿
+﻿@using System.Linq;
+@model OnlineStore.WebUI.Models.MainPageProductsViewModel
+
 @{
     ViewBag.Title = "Verser OnlineStore";
 }
@@ -8,7 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 <div class="container">
-   
+
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -19,10 +21,10 @@
             <li data-target="#myCarousel" data-slide-to="4"></li>
         </ol>
 
-        <!-- Wrapper for slides -->                                     
+        <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <img src="~/Images/macbookpro5.jpg" alt="Los Angeles" style="width:20%;"  class="img-responsive">
+                <img src="~/Images/macbookpro5.jpg" alt="Los Angeles" style="width:20%;" class="img-responsive">
             </div>
 
             <div class="item">
@@ -51,255 +53,105 @@
         </a>
     </div>
 </div>
-
+@*.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.Id).Take(4).ToList();*@
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <div class="thumbnail">               
-                <div class="caption">
-                    <h4 class="pull-right">$700.99</h4>
-                    <h4><a href="#">iPhone11 ProMax</a></h4>
-                    <p><img src="~/Images/iPhone11ProMax.jpg" style="width:230px;height:200px;" class="img-responsive"/></p>
-                </div>
-                <div class="btn-ground text-center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i> Quick View</button>
-                </div>
-                <div class="space-ten"></div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">              
-                <div class="caption">
-                    <h4 class="pull-right">$700.99</h4>
-                    <h4><a href="#">Macbook Pro</a></h4>
-                    <p><img src="~/Images/mac1.jpg" style="width:230px;height:150px;" class="img-responsive" /></p>
-                </div>
-                <div class="btn-ground text-center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i> Quick View</button>
-                </div>
-                <div class="space-ten"></div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">               
-                <div class="caption">
-                    <h4 class="pull-right">$700.99</h4>
-                    <h4><a href="#">Surface Pro</a></h4>
-                    <p><img src="~/Images/SurfacePro2.jpg" style="width:240px;height:200px;" class="img-responsive"/></p>
-                </div>
-                <div class="btn-ground text-center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i> Quick View</button>
-                </div>
-                <div class="space-ten"></div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="thumbnail">               
-                <div class="caption">
-                    <h4 class="pull-right">$900.99</h4>
-                    <h4><a href="#">Dell XPS 13</a></h4>
-                    <p><img src="~/Images/Dell-xps-13.jpg" style="width:240px;height:200px;"  class="img-responsive"/></p>
-                </div>
-                <div class="btn-ground text-center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i> Quick View</button>
-                </div>
-                <div class="space-ten"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="thumbnail">               
-                <div class="caption">
-                    <h4 class="pull-right">$700.99</h4>
-                    <h4><a href="#">Mobile Product</a></h4>
-                    <p></p>
-                </div>
-                <div class="ratings">
-                    <p>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        (15 reviews)
-                    </p>
-                </div>
-                <div class="space-ten"></div>
-                <div class="btn-ground text-center">
-                    @*<button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add To Cart</button>*@
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#product_view">@*<i class="fa fa-search"></i>*@ Quick View</button>
-                </div>
-                <div class="space-ten"></div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="http://tech.firstpost.com/wp-content/uploads/2014/09/Apple_iPhone6_Reuters.jpg" alt="" class="img-responsive">
-                <div class="caption">
-                    <h4 class="pull-right">$800.99</h4>
-                    <h4><a href="#">Laptop Product</a></h4>
-                    <p></p>
-                </div>
-                <div class="ratings">
-                    <p>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        (15 reviews)
-                    </p>
-                </div>
-                <div class="space-ten"></div>
-                <div class="btn-ground text-center">
-                    @*<button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add To Cart</button>*@
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#product_view">@*<i class="fa fa-search"></i>*@ Quick View</button>
-                </div>
-                <div class="space-ten"></div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="http://tech.firstpost.com/wp-content/uploads/2014/09/Apple_iPhone6_Reuters.jpg" alt="" class="img-responsive">
-                <div class="caption">
-                    <h4 class="pull-right">$500.99</h4>
-                    <h4><a href="#">Desktop Product</a></h4>
-                    <p></p>
-                </div>
-                <div class="ratings">
-                    <p>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        (15 reviews)
-                    </p>
-                </div>
-                <div class="space-ten"></div>
-                <div class="btn-ground text-center">
-                    @*<button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add To Cart</button>*@
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i> Quick View</button>
-                </div>
-                <div class="space-ten"></div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="http://tech.firstpost.com/wp-content/uploads/2014/09/Apple_iPhone6_Reuters.jpg" alt="" class="img-responsive">
-                <div class="caption">
-                    <h4 class="pull-right">$150.99</h4>
-                    <h4><a href="#">Monitor Product</a></h4>
-                    <p></p>
-                </div>
-                <div class="ratings">
-                    <p>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        (15 reviews)
-                    </p>
-                </div>
-                <div class="space-ten"></div>
-                <div class="btn-ground text-center">
-                    @*<button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add To Cart</button>*@
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i> Quick View</button>
-                </div>
-                <div class="space-ten"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal pull-left" id="product_view" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <a href="#" data-dismiss="modal" class="class pull-left"><span class="glyphicon glyphicon-remove"></span></a>
-                <h3 class="modal-title">Mobile</h3>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6 product_img">
-                        <img src="http://img.bbystatic.com/BestBuy_US/images/products/5613/5613060_sd.jpg" class="img-responsive">
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 15).OrderByDescending(m => m.Id).Take(4).ToList())
+        {
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h5 class="pull-right">$@item.PriceIncGST</h5>
+                        <h6><a href="#">@item.ProductName</a></h6>
+                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:260px;height:280px;" class="img-responsive" /></p>
                     </div>
-                    <div class="col-md-6 product_content">
-                        <h4>Product Id: <span>51526</span></h4>
-                        <div class="rating">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            (10 reviews)
-                        </div>
-
-                        <h3 class="cost"><span class="glyphicon glyphicon-usd"></span> 75.00 <small class="pre-cost"><span class="glyphicon glyphicon-usd"></span> 60.00</small></h3>
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <select class="form-control" name="select">
-                                    <option value="" selected="">Color</option>
-                                    <option value="black">Black</option>
-                                    <option value="white">White</option>
-                                    <option value="gold">Gold</option>
-                                    <option value="rose gold">Rose Gold</option>
-                                </select>
-                            </div>
-                            <!-- end col -->
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <select class="form-control" name="select">
-                                    <option value="">Capacity</option>
-                                    <option value="">16GB</option>
-                                    <option value="">32GB</option>
-                                    <option value="">64GB</option>
-                                    <option value="">128GB</option>
-                                </select>
-                            </div>
-                            <!-- end col -->
-                            <div class="col-md-3 col-sm-12">
-                                <select class="form-control" name="select">
-                                    <option value="" selected="">QTY</option>
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                </select>
-                            </div>
-                            <!-- end col -->
-                        </div>
-                        <div class="space-ten"></div>
-                        <div class="btn-ground">
-                            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
-                            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-heart"></span> Add To Wishlist</button>
-                        </div>
+                    <div class="btn-ground text-center">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i>ADD TO CART</button>
                     </div>
+                    <div class="space-ten"></div>
                 </div>
             </div>
-        </div>
+        }
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.Id).Take(4).ToList())
+        {
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h5 class="pull-right">$@item.PriceIncGST</h5>
+                        <h6><a href="#">@item.ProductName</a></h6>
+                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:280px;height:280px;" class="img-responsive" /></p>
+                    </div>
+                    <div class="btn-ground text-center">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i>ADD TO CART</button>
+                    </div>
+                    <div class="space-ten"></div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 1).OrderByDescending(m => m.Id).Take(4).ToList())
+        {
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h5 class="pull-right">$@item.PriceIncGST</h5>
+                        <h6><a href="#">@item.ProductName</a></h6>
+                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:280px;height:280px;" class="img-responsive" /></p>
+                    </div>
+                    <div class="btn-ground text-center">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i>ADD TO CART</button>
+                    </div>
+                    <div class="space-ten"></div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 2).OrderByDescending(m => m.Id).Take(4).ToList())
+        {
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h5 class="pull-right">$@item.PriceIncGST</h5>
+                        <h6><a href="#">@item.ProductName</a></h6>
+                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:280px;height:280px;" class="img-responsive" /></p>
+                    </div>
+                    <div class="btn-ground text-center">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i>ADD TO CART</button>
+                    </div>
+                    <div class="space-ten"></div>
+                </div>
+            </div>
+        }
     </div>
 </div>
 
-<div class="container">
 
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="item"> <img style="max-width:100%;" src="~/Images/DellMonitor.jpg" alt="Submit" width="220" height="220"></div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item"> <img style="max-width:100%;" src="~/Images/Desktop.jpg" alt="Submit" width="220" height="220"></div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item"> <img style="max-width:100%;" src="~/Images/ipad1.png" alt="Submit" width="220" height="220"></div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item"> <img style="max-width:100%;" src="~/Images/Galaxy S10plus.jpg" alt="Submit" width="220" height="220"></div>
-        </div>
-    </div>
+
+<div class="container">
+    @*<div class="row">
+            <div class="col-sm-3">
+                <div class="item"> <img style="max-width:100%;" src="~/Images/DellMonitor.jpg" alt="Submit" width="220" height="220"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="item"> <img style="max-width:100%;" src="~/Images/Desktop.jpg" alt="Submit" width="220" height="220"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="item"> <img style="max-width:100%;" src="~/Images/ipad1.png" alt="Submit" width="220" height="220"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="item"> <img style="max-width:100%;" src="~/Images/Galaxy S10plus.jpg" alt="Submit" width="220" height="220"></div>
+            </div>
+        </div>*@
     <div class="row">
         <div class="col-sm-2">
             <div class="item" style="vertical-align:central"> <img style="max-width: 100%;vertical-align: central" src="~/Images/apple.jpeg" alt="Submit" width="150" height="80"></div>
