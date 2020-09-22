@@ -45,5 +45,19 @@ namespace OnlineStore.WebUI.Controllers
         {
             return View(SaleProducts.Where(m => m.ItemType_ID == 11));
         }
+
+
+        [HttpGet]      
+        public ActionResult ShowProductDetail(int ProductId)
+        {
+            try
+            {
+                return PartialView("ProductDetail", new MainPageProductsViewModel());
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("index", "OnlineSale");
+            }
+        }
     }
 }

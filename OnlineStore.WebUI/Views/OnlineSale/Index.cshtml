@@ -1,13 +1,15 @@
 ﻿@using System.Linq;
 @model OnlineStore.WebUI.Models.MainPageProductsViewModel
-
 @{
     ViewBag.Title = "Verser OnlineStore";
 }
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 <div class="container">
 
@@ -53,7 +55,6 @@
         </a>
     </div>
 </div>
-@*.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.Id).Take(4).ToList();*@
 <div class="container">
     <div class="row">
         @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 15).OrderByDescending(m => m.Id).Take(4).ToList())
@@ -63,7 +64,7 @@
                     <div class="caption">
                         <h5 class="pull-right">$@item.PriceIncGST</h5>
                         <h6><a href="#">@item.ProductName</a></h6>
-                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:260px;height:280px;" class="img-responsive" /></p>
+                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>
                     </div>
                     <div class="btn-ground text-center">
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i>ADD TO CART</button>
@@ -103,7 +104,7 @@
                     <div class="caption">
                         <h5 class="pull-right">$@item.PriceIncGST</h5>
                         <h6><a href="#">@item.ProductName</a></h6>
-                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:280px;height:280px;" class="img-responsive" /></p>
+                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="HideShowModal();" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
                     <div class="btn-ground text-center">
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i>ADD TO CART</button>
@@ -134,24 +135,7 @@
         }
     </div>
 </div>
-
-
-
 <div class="container">
-    @*<div class="row">
-            <div class="col-sm-3">
-                <div class="item"> <img style="max-width:100%;" src="~/Images/DellMonitor.jpg" alt="Submit" width="220" height="220"></div>
-            </div>
-            <div class="col-sm-3">
-                <div class="item"> <img style="max-width:100%;" src="~/Images/Desktop.jpg" alt="Submit" width="220" height="220"></div>
-            </div>
-            <div class="col-sm-3">
-                <div class="item"> <img style="max-width:100%;" src="~/Images/ipad1.png" alt="Submit" width="220" height="220"></div>
-            </div>
-            <div class="col-sm-3">
-                <div class="item"> <img style="max-width:100%;" src="~/Images/Galaxy S10plus.jpg" alt="Submit" width="220" height="220"></div>
-            </div>
-        </div>*@
     <div class="row">
         <div class="col-sm-2">
             <div class="item" style="vertical-align:central"> <img style="max-width: 100%;vertical-align: central" src="~/Images/apple.jpeg" alt="Submit" width="150" height="80"></div>
@@ -174,9 +158,35 @@
     </div>
 </div>
 
+
+<script>
+    $('.carousel').carousel({
+        interval: 2000
+    });
+    function ShowProductDetailPage(ProductId) {
+        alert(ProductId)
+        $.ajax({
+            type: "GET",
+            data: {"ProductId" : ProductId},
+            url: "./ShowProductDetail",
+             success: function (data) {
+                $.confirm({
+                    boxWidth: '800px',
+                    useBootstrap: false,
+                    title: '',
+                    content: data,
+                    closeIcon: true,
+
+                    buttons: {
+                        yes: { isHidden: true }
+                    },
+                });
+            }
+        });
+    }
+
+</script>
 <style>
-
-
     .item {
         left: 0;
         top: 0;
@@ -209,9 +219,3 @@
         border-radius: 0px;
     }
 </style>
-
-<script>
-    $('.carousel').carousel({
-        interval: 2000
-    })
-</script>
