@@ -50,14 +50,17 @@ namespace OnlineStore.WebUI.Controllers
         [HttpGet]      
         public ActionResult ShowProductDetail(int ProductId)
         {
-            try
-            {
-                return PartialView("ProductDetail", new MainPageProductsViewModel());
-            }
-            catch (Exception)
-            {
-                return RedirectToAction("index", "OnlineSale");
-            }
+
+
+            return RedirectToAction("Index", "ProductDetails", new { ProductId = ProductId });
+            //try
+            //{
+            //    return PartialView("ProductDetail", new MainPageProductsViewModel());
+            //}
+            //catch (Exception)
+            //{
+            //    return RedirectToAction("index", "OnlineSale");
+            //}
         }
     }
 }
