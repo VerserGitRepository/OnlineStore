@@ -67,7 +67,9 @@
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>
                     </div>
                     <div class="btn-ground text-center">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i>ADD TO CART</button>
+                        <a href="#" class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
+                        </a>
                     </div>
                     <div class="space-ten"></div>
                 </div>
@@ -87,7 +89,9 @@
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
                     <div class="btn-ground text-center">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i>ADD TO CART</button>
+                        <a href="#" class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
+                        </a>
                     </div>
                     <div class="space-ten"></div>
                 </div>
@@ -107,7 +111,9 @@
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="HideShowModal();" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
                     <div class="btn-ground text-center">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i>ADD TO CART</button>
+                        <a href="#" class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
+                        </a>
                     </div>
                     <div class="space-ten"></div>
                 </div>
@@ -127,7 +133,9 @@
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
                     <div class="btn-ground text-center">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i>ADD TO CART</button>
+                        <a href="#" class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
+                        </a>
                     </div>
                     <div class="space-ten"></div>
                 </div>
@@ -167,9 +175,9 @@
         alert(ProductId)
         $.ajax({
             type: "GET",
-            data: {"ProductId" : ProductId},
+            data: { "ProductId": ProductId },
             url: "./ShowProductDetail",
-             success: function (data) {
+            success: function (data) {
                 $.confirm({
                     boxWidth: '800px',
                     useBootstrap: false,
