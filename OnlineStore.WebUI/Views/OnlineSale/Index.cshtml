@@ -168,27 +168,27 @@
 
 
 <script>
-    $('.carousel').carousel({
-        interval: 2000
-    });
+    //$('.carousel').carousel({
+    //    interval: 2000
+    //});
     function ShowProductDetailPage(ProductId) {
-        alert(ProductId)
+       // alert(ProductId)
         $.ajax({
             type: "GET",
             data: { "ProductId": ProductId },
             url: "./ShowProductDetail",
             success: function (data) {
-                $.confirm({
-                    boxWidth: '800px',
-                    useBootstrap: false,
-                    title: '',
-                    content: data,
-                    closeIcon: true,
+                //$.confirm({
+                //    boxWidth: '800px',
+                //    useBootstrap: false,
+                //    title: '',
+                //    content: data,
+                //    closeIcon: true,
 
-                    buttons: {
-                        yes: { isHidden: true }
-                    },
-                });
+                //    buttons: {
+                //        yes: { isHidden: true }
+                //    },
+                //});
             }
         });
     }

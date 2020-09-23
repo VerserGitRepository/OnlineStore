@@ -51,8 +51,9 @@ namespace OnlineStore.WebUI.Controllers
         public ActionResult ShowProductDetail(int ProductId)
         {
 
+            TempData["ProductId"] = ProductId;
+            return RedirectToAction("Index", "ProductDetails");
 
-            return RedirectToAction("Index", "ProductDetails", new { ProductId = ProductId });
             //try
             //{
             //    return PartialView("ProductDetail", new MainPageProductsViewModel());
