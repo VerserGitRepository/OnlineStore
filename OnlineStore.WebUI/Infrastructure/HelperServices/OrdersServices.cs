@@ -76,6 +76,22 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
                 }
             }
             return returnmessage;
-        }        
+        }
+
+        public async static Task<OnlineSaleProduct> OnlineSaleProductById(int ProductId)
+        {
+            var returnmessage = new OnlineSaleProduct();
+            using (HttpClient client = new HttpClient())
+            {
+                client.Timeout = TimeSpan.FromMinutes(10);
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.GetAsync(string.Format("OnlineSaleOrders/{0}/OnlineSaleProductById", ProductId)).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnmessage = await response.Content.ReadAsAsync<OnlineSaleProduct>();
+                }
+            }
+            return returnmessage;
+        }
     }
 }
