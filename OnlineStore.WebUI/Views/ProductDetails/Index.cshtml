@@ -7,36 +7,44 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css" rel="stylesheet">
 
 <div class="table-bordered" style="width:900px;">
-    <div class="panel-heading" align="center" style="height:30PX;background-color:#FFA500;color:white;vertical-align:top">PRODUCT DETAILS</div>
+    @*<div class="panel-heading" align="center" style="height:30PX;background-color:#FFA500;color:white;vertical-align:top">PRODUCT DETAILS</div>*@
     <div class="panel-body" style="font-size:small;color:grey;border-color:gray;padding:0px">
 
         <br>
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.ProductName)
-            </dd>
+        <div class="row">
+            <div class="col-xs-4 item-photo">
+                <img style="max-width:100%;" src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg" />
+                @*<img style="max-width:100%;" src="~/ProductImages/@Model.Images.FirstOrDefault()" />*@
+            </div>
+            <div class="col-xs-5" style="border:0px solid gray">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProductName)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductName)
+                    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.IsSKU)
-            </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.IsSKU)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
 
-            @*<dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsSKU)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsSKU)
+                    </dd>
+
+                    @*<dt>
                 @Html.DisplayName("ItemType ID")
             </dt>
 
@@ -60,84 +68,86 @@
                 @Html.DisplayFor(model => model.Model_ID)
             </dd>*@
 
-            <dt>
-                @Html.DisplayNameFor(model => model.PriceExGST)
-            </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PriceExGST)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.PriceExGST)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.PriceExGST)
+                    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.GSTAmount)
-            </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GSTAmount)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.GSTAmount)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.GSTAmount)
+                    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.PriceIncGST)
-            </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PriceIncGST)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.PriceIncGST)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.PriceIncGST)
+                    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.QtyAvailable)
-            </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.QtyAvailable)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.QtyAvailable)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.QtyAvailable)
+                    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.CreatedBy)
-            </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.CreatedBy)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.CreatedBy)
+                    </dd>
 
-            <dt>
-                @Html.DisplayName("ItemType")
-            </dt>
+                    <dt>
+                        @Html.DisplayName("ItemType")
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.ItemTypeName)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.ItemTypeName)
+                    </dd>
 
-            <dt>
-                @Html.DisplayName("Brand")
-            </dt>
+                    <dt>
+                        @Html.DisplayName("Brand")
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.BrandName)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.BrandName)
+                    </dd>
 
-            <dt>
-                @Html.DisplayName("Model")
-            </dt>
+                    <dt>
+                        @Html.DisplayName("Model")
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.ModelName)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.ModelName)
+                    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.SKU)
-            </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SKU)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.SKU)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.SKU)
+                    </dd>
 
-        </dl>
+                </dl>
+            </div>
+        </div>
       
+
         <div class="panel-footer pull-left" align="left" style="height:50px;width:100% ;vertical-align:top;padding-bottom:10px;margin-bottom:10px;padding-left:0px">
             @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-large" })
-            @Html.ActionLink("Edit", "Edit",  null,new { @class = "btn btn-warning btn-large" })
-            @Html.ActionLink("Delete", "Delete", null, new { @class = "btn btn-danger btn-large" })
+
         </div>
     </div>
 </div>
