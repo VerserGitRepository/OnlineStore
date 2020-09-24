@@ -20,6 +20,7 @@ namespace OnlineStore.WebUI.Controllers
             //var OnlinesaleproductModelFeed =  // new List<OnlineSaleProduct>();          
             // OnlinesaleproductModelFeed.Where(p => p.ItemType_ID == 15).OrderByDescending(m=>m.Id).Take(4).ToList();
             //   MainpageproductView.MainPageLaptopProduct = OnlinesaleproductModelFeed.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.Id).Take(4).ToList();
+      
 
             return View(MainpageproductView);
         }
@@ -50,7 +51,7 @@ namespace OnlineStore.WebUI.Controllers
         [HttpGet]      
         public ActionResult ShowProductDetail(int ProductId)
         {
-
+            ProductId = 3;
             TempData["ProductId"] = ProductId;
             return RedirectToAction("Index", "ProductDetails");
 

@@ -13,7 +13,7 @@ namespace OnlineStore.WebUI.Controllers
         public ActionResult Index()
         {
             int ProductId = 0;
-            ProductId = Convert.ToInt32(TempData["ProductId"]);
+            ProductId = 1; //Convert.ToInt32(TempData["ProductId"]);
             var productdeatiledModel = new OnlineSaleProduct();
             productdeatiledModel = OrdersServices.OnlineSaleProductById(ProductId).Result;
             return View(productdeatiledModel);

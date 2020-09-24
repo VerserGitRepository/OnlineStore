@@ -32,7 +32,7 @@
         </div>
     </div>
     <div id="flipkart-navbar" style="background-color:black">
-        <div class="container" >
+        <div class="container">
             <div class="row row2">
                 <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
                     <div class="row">
@@ -47,7 +47,45 @@
             </div>
         </div>
     </div>
-    <div class="wrapper">
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:orange;height:20px;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarTogglerDemo03">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("ONLINESTORE", "Index", "OnlineSale")</li>
+                <li>@Html.ActionLink("MOBILE", "Mobile", "OnlineSale")</li>
+                <li>@Html.ActionLink("LAPTOPS", "Laptop", "OnlineSale")</li>
+                <li>@Html.ActionLink("MONITOR", "Monitor", "OnlineSale")</li>
+                <li>@Html.ActionLink("DESKTOP PC", "DesktopPC", "OnlineSale")</li>
+                <li>@Html.ActionLink("IPAD", "IPad", "OnlineSale")</li>
+                <li>@Html.ActionLink("ACCESSORIES", "Mobile", "OnlineSale")</li>
+                <li>@Html.ActionLink("PRINTER", "Mobile", "OnlineSale")</li>
+                <li>@Html.ActionLink("SERVERS", "Mobile", "OnlineSale")</li>
+                <li>@Html.ActionLink("NETWORK GEARS", "Mobile", "OnlineSale")</li>
+                <li>@Html.ActionLink("TV'S", "Mobile", "OnlineSale")</li>
+                <li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
+                <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+                @if (@Session["Username"] != null)
+                {
+                    <li>@Html.ActionLink("ORDERSLIST", "Index", "OrdersList")</li>
+                    <li>@Html.ActionLink("LOGOUT", "Login", "Login")</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("LOGIN", "Login", "Login")</li>
+                }
+            </ul>
+            <div style="vertical-align:bottom">
+                @Html.Action("Summary", "Cart")
+            </div>
+        </div>
+    </nav>
+
+    @*<div class="wrapper">
         <div class="navbar navbar-default">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -88,22 +126,22 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 
     <div class="container body-content">
-        @RenderBody()    
+        @RenderBody()
     </div>
     @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/Scripts/CustomRequiredIf.js")
-    @Scripts.Render("~/bundles/bootstrap")*@
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/Scripts/CustomRequiredIf.js")
+        @Scripts.Render("~/bundles/bootstrap")*@
 
     @RenderSection("scripts", required: false)
 
-<div class="my_footer text-center text-muted" style="background-color:lightgray;color:white;font-size:small">
-    The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
-    <img src="~/Images/Payment Options.PNG" />
-</div>
+    <div class="my_footer text-center text-muted" style="background-color:lightgray;color:white;font-size:small">
+        The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
+        <img src="~/Images/Payment Options.PNG" />
+    </div>
 </body>
 </html>
 
