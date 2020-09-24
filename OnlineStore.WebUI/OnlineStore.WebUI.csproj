@@ -140,6 +140,7 @@
     <Content Include="Content\Images\verserLogo.png" />
     <Content Include="Content\Images\Windows7.jpg" />
     <Content Include="Content\Site.css" />
+    <Content Include="EmailTemplates\OrderDetail.html" />
     <Content Include="Global.asax" />
     <Content Include="Images\apple.jpeg" />
     <Content Include="Images\Dell-xps-13.jpg" />
@@ -407,7 +408,9 @@
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\OnlineSaleController.cs" />
     <Compile Include="Controllers\OrdersListController.cs" />
+    <Compile Include="Controllers\ProductDetailsController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -481,6 +484,7 @@
     <Content Include="Views\OrdersList\Index.cshtml" />
     <Content Include="Views\OrdersList\AddProduct.cshtml" />
     <Content Include="Views\OnlineSale\ProductDetail.cshtml" />
+    <Content Include="Views\ProductDetails\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
