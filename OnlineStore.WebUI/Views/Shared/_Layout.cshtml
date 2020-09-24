@@ -55,7 +55,7 @@
             <span class="icon-bar"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" style="padding-top:20px">
                 <li>@Html.ActionLink("ONLINESTORE", "Index", "OnlineSale")</li>
                 <li>@Html.ActionLink("MOBILE", "Mobile", "OnlineSale")</li>
                 <li>@Html.ActionLink("LAPTOPS", "Laptop", "OnlineSale")</li>
@@ -79,7 +79,7 @@
                     <li>@Html.ActionLink("LOGIN", "Login", "Login")</li>
                 }
             </ul>
-            <div style="vertical-align:bottom">
+            <div style="vertical-align:bottom; padding-top:20px">
                 @Html.Action("Summary", "Cart")
             </div>
         </div>
