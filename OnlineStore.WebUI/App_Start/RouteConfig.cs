@@ -12,6 +12,11 @@ namespace OnlineStore.WebUI
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+              name: "Default",
+              url: "{controller}/{action}/{id}",
+              defaults: new { controller = "OnlineSale", action = "Index", id = UrlParameter.Optional }
+          );
 
             //routes.MapRoute(
             //    null,
@@ -19,33 +24,33 @@ namespace OnlineStore.WebUI
             //    new { controller = "Customer", action = "Welcome", customerCode = (string)null, saleId = (string)null }
             //);
 
-            routes.MapRoute(
-                null,
-                "",
-                new { controller = "OnlineSale", action = "Index", customerCode = (string)null, saleId = (string)null }
-            );
-            routes.MapRoute(
-                null,
-                "{customerCode}",
-                new { controller = "Customer", action = "Welcome" }
-            );
+            //routes.MapRoute(
+            //    null,
+            //    "",
+            //    new { controller = "OnlineSale", action = "Index", customerCode = (string)null, saleId = (string)null }
+            //);
+            //routes.MapRoute(
+            //    null,
+            //    "{customerCode}",
+            //    new { controller = "Customer", action = "Welcome" }
+            //);
 
-            routes.MapRoute(
-                null,
-                "{customerCode}/sales/{saleId}/{itemType}",
-                new { controller = "Sale", action = "List" }
-            );
+            //routes.MapRoute(
+            //    null,
+            //    "{customerCode}/sales/{saleId}/{itemType}",
+            //    new { controller = "Sale", action = "List" }
+            //);
 
-            routes.MapRoute(
-                null,
-                "{customerCode}/sales/{saleId}",
-                new { controller = "Sale", action = "List", itemType = (string)null }
-            );
+            //routes.MapRoute(
+            //    null,
+            //    "{customerCode}/sales/{saleId}",
+            //    new { controller = "Sale", action = "List", itemType = (string)null }
+            //);
 
-            routes.MapRoute(
-                null,
-                "{controller}/{action}"
-            );
+            //routes.MapRoute(
+            //    null,
+            //    "{controller}/{action}"
+            //);
         }
     }
 }

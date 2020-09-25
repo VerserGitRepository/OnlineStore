@@ -51,7 +51,7 @@ namespace OnlineStore.WebUI.Controllers
         [HttpGet]      
         public ActionResult ShowProductDetail(int ProductId)
         {
-            ProductId = 3;
+          //  ProductId = 3;
             TempData["ProductId"] = ProductId;
             return RedirectToAction("Index", "ProductDetails");
 

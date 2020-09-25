@@ -55,6 +55,7 @@
         </a>
     </div>
 </div>
+
 <div class="container">
     <div class="row">
         @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 15).OrderByDescending(m => m.Id).Take(4).ToList())
@@ -64,7 +65,7 @@
                     <div class="caption">
                         <h5 class="pull-right">$@item.PriceIncGST</h5>
                         <h6><a href="#">@item.ProductName</a></h6>
-                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>
+                       <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>                     
                     </div>
                     <div class="btn-ground text-center">
                         <a href="#" class="btn btn-success btn-sm">
@@ -143,6 +144,7 @@
         }
     </div>
 </div>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-2">
