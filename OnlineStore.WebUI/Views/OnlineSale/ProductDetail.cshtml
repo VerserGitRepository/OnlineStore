@@ -6,7 +6,7 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css" rel="stylesheet">
 
-<div class="table-bordered" style="width:900px;">
+<div class="table-bordered" style="width:700px;padding:0px">
     @*<div class="panel-heading" align="center" style="height:30PX;background-color:#FFA500;color:white;vertical-align:top">PRODUCT DETAILS</div>*@
     <div class="panel-body" style="font-size:small;color:grey;border-color:gray;padding:0px">
 
@@ -17,155 +17,104 @@
                 @*<img style="max-width:100%;" src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg" />*@
                 <img style="max-width:100%;" src="~/ProductImages/@Model.Images.FirstOrDefault()" />
             </div>
-            <div class="col-xs-5" style="border:0px solid gray">
+            <div class="col-md-8" style="border:0px solid gray">
 
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ProductName)
-                    </dt>
+                <div class="row">
 
-                    <dd>
+                    <div class="col-md-12">
+                        <label class="control-label">ProductName:</label>
+
                         @Html.DisplayFor(model => model.ProductName)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Description)
-                    </dt>
+                    <div class="col-md-12">
+                        <label class="control-label">Description:</label>
 
-                    <dd>
                         @Html.DisplayFor(model => model.Description)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.IsSKU)
-                    </dt>
+                    <div class="col-md-12">
+                        <label class="control-label">IsSKU:</label>
 
-                    <dd>
                         @Html.DisplayFor(model => model.IsSKU)
-                    </dd>
+                    </div>
 
-                    @*<dt>
-                            @Html.DisplayName("ItemType ID")
-                        </dt>
+                    <div class="col-md-12">
+                        <label class="control-label">PriceExGST:</label>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.ItemType_ID)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayName("Brand")
-                        </dt>
-
-                        <dd>
-                            @Html.DisplayFor(model => model.Brand_ID)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Model_ID)
-                        </dt>
-
-                        <dd>
-                            @Html.DisplayFor(model => model.Model_ID)
-                        </dd>*@
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.PriceExGST)
-                    </dt>
-
-                    <dd>
                         @Html.DisplayFor(model => model.PriceExGST)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.GSTAmount)
-                    </dt>
+                    <div class="col-md-12">
+                        <label class="control-label">GSTAmount:</label>
 
-                    <dd>
                         @Html.DisplayFor(model => model.GSTAmount)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.PriceIncGST)
-                    </dt>
+                    <div class="col-md-12">
+                        <label class="control-label">PriceIncGST:</label>
 
-                    <dd>
                         @Html.DisplayFor(model => model.PriceIncGST)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.QtyAvailable)
-                    </dt>
+                    <div class="col-md-12">
+                        <label class="control-label">QtyAvailable:</label>
 
-                    <dd>
                         @Html.DisplayFor(model => model.QtyAvailable)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.CreatedBy)
-                    </dt>
+                    <div class="col-md-12">
+                        <label class="control-label">CreatedBy:</label>
 
-                    <dd>
                         @Html.DisplayFor(model => model.CreatedBy)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayName("ItemType")
-                    </dt>
+                    <div class="col-md-12">
+                        <label class="control-label">TemType:</label>
 
-                    <dd>
                         @Html.DisplayFor(model => model.ItemTypeName)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayName("Brand")
-                    </dt>
+                    <div class="col-md-12">
+                        <label class="control-label">Brand:</label>
 
-                    <dd>
                         @Html.DisplayFor(model => model.BrandName)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayName("Model")
-                    </dt>
+                    <div class="col-md-12">
+                        <label class="control-label">Model:</label>
 
-                    <dd>
                         @Html.DisplayFor(model => model.ModelName)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.SKU)
-                    </dt>
+                    <div class="col-md-12">
+                        <label class="control-label">SKU:</label>
 
-                    <dd>
                         @Html.DisplayFor(model => model.SKU)
-                    </dd>
-                    <dt>
-                        @Html.DisplayName("Colour")
-                    </dt>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="control-label">Colour:</label>
 
-                    <dd>
                         @Html.DisplayFor(model => model.SKU)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayName("DiskSize")
-                    </dt>
+                    <div class="col-md-12">
+                        <label class="control-label">DiskSize:</label>
 
-                    <dd>
                         @Html.DisplayFor(model => model.SKU)
-                    </dd>
+                    </div>
 
-                    @*<dd class="section">
-                            <button class="btn btn-success"><span style="margin-right:0px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
-                            <h6>
-                                <a href="#">
-                                    <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
-                                    Add to wish list
-                                </a>
-                            </h6>
-                        </dd>*@
-                </dl>
-            </div>
+                        @*<dd class="section">
+                <button class="btn btn-success"><span style="margin-right:0px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
+                <h6>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
+                        Add to wish list
+                    </a>
+                </h6>
+            </dd>*@
+                    </div>
+                </div>
         </div>
 
 
