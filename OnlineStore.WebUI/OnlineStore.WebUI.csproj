@@ -408,6 +408,7 @@
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\OnlineSaleController.cs" />
     <Compile Include="Controllers\OrdersListController.cs" />
+    <Compile Include="Controllers\ProductDetailsController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
@@ -483,14 +484,9 @@
     <Content Include="Views\OrdersList\Index.cshtml" />
     <Content Include="Views\OrdersList\AddProduct.cshtml" />
     <Content Include="Views\OnlineSale\ProductDetail.cshtml" />
-<<<<<<< Updated upstream
     <Content Include="Views\ProductDetails\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Checkout.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
-=======
-    <Content Include="Views\ShoppingCart\Index.cshtml" />
-    <Content Include="Views\ShoppingCart\Checkout.cshtml" />
->>>>>>> Stashed changes
     <Content Include="Views\ShoppingCart\Summary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -531,11 +527,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52980</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:60000/</IISUrl>
+          <IISUrl>http://localhost:52980/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
