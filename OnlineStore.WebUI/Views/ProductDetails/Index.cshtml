@@ -45,28 +45,28 @@
                     </dd>
 
                     @*<dt>
-                @Html.DisplayName("ItemType ID")
-            </dt>
+            @Html.DisplayName("ItemType ID")
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.ItemType_ID)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.ItemType_ID)
+        </dd>
 
-            <dt>
-                @Html.DisplayName("Brand")
-            </dt>
+        <dt>
+            @Html.DisplayName("Brand")
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Brand_ID)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Brand_ID)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Model_ID)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Model_ID)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Model_ID)
-            </dd>*@
+        <dd>
+            @Html.DisplayFor(model => model.Model_ID)
+        </dd>*@
 
                     <dt>
                         @Html.DisplayNameFor(model => model.PriceExGST)
@@ -139,7 +139,31 @@
                     <dd>
                         @Html.DisplayFor(model => model.SKU)
                     </dd>
+                    <dt>
+                        @Html.DisplayName("Colour")
+                    </dt>
 
+                    <dd>
+                        @Html.DisplayFor(model => model.SKU)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayName("DiskSize")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SKU)
+                    </dd>
+                
+                    @*<dd class="section">
+                        <button class="btn btn-success"><span style="margin-right:0px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
+                        <h6>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
+                                Add to wish list
+                            </a>
+                        </h6>
+                    </dd>*@
                 </dl>
             </div>
         </div>
@@ -147,7 +171,7 @@
 
         <div class="panel-footer pull-left" align="left" style="height:50px;width:100% ;vertical-align:top;padding-bottom:10px;margin-bottom:10px;padding-left:0px">
             @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-large" })
-
+            <button class="btn btn-success"><span style="margin-right:0px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
         </div>
     </div>
 </div>
