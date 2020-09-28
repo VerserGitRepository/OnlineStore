@@ -121,6 +121,7 @@ namespace OnlineStore.WebUI.Controllers
 
             return File(image.GetBytes(), encoding);
         }
+
         [HttpPost]
         public ActionResult PaymentReceipt()
         {
