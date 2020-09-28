@@ -16,7 +16,7 @@ namespace OnlineStore.WebUI.Controllers
             ProductId = Convert.ToInt32(TempData["ProductId"]);
             var productdeatiledModel = new OnlineSaleProduct();
             productdeatiledModel = OrdersServices.OnlineSaleProductById(ProductId).Result;
-            return View(productdeatiledModel);
+            return PartialView(productdeatiledModel);
         }
         //public ActionResult Index()
         //{
