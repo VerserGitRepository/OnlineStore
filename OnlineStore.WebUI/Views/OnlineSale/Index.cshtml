@@ -185,7 +185,7 @@
         alert(theurl);
         $.ajax({
             type: "GET",
-           // data: { "ProductId": ProductId },
+            data: { "ProductId": ProductId },
             url: '@Url.Action("ShowProductDetail", "OnlineSale")',
 
             success: function (data) {
