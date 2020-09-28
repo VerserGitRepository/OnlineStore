@@ -9,117 +9,54 @@
 <div class="table-bordered" style="width:700px;padding:0px">
     @*<div class="panel-heading" align="center" style="height:30PX;background-color:#FFA500;color:white;vertical-align:top">PRODUCT DETAILS</div>*@
     <div class="panel-body" style="font-size:small;color:grey;border-color:gray;padding:0px">
-
         <br>
-
         <div class="row">
             <div class="col-xs-4 item-photo">
-                @*<img style="max-width:100%;" src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg" />*@
-                <img style="max-width:100%;" src="~/ProductImages/@Model.Images.FirstOrDefault()" />
+                 <img style="max-width:100%;" src="~/ProductImages/@Model.Images.FirstOrDefault()" />
             </div>
             <div class="col-md-8" style="border:0px solid gray">
 
                 <div class="row">
 
                     <div class="col-md-12">
-                        <label class="control-label">ProductName:</label>
-
-                        @Html.DisplayFor(model => model.ProductName)
+                        @Html.DisplayFor(model => model.ItemTypeName)<br />
+                        @Html.DisplayFor(model => model.BrandName)  @Html.DisplayFor(model => model.ModelName)  @Html.DisplayFor(model => model.ProductName)
                     </div>
 
                     <div class="col-md-12">
+                        <br />
                         <label class="control-label">Description:</label>
-
                         @Html.DisplayFor(model => model.Description)
                     </div>
-
                     <div class="col-md-12">
-                        <label class="control-label">IsSKU:</label>
-
-                        @Html.DisplayFor(model => model.IsSKU)
-                    </div>
-
-                    <div class="col-md-12">
-                        <label class="control-label">PriceExGST:</label>
-
+                        <br />   <label class="control-label">PriceExGST:</label>
                         @Html.DisplayFor(model => model.PriceExGST)
                     </div>
 
                     <div class="col-md-12">
-                        <label class="control-label">GSTAmount:</label>
-
+                        <br />   <label class="control-label">GSTAmount:</label>
                         @Html.DisplayFor(model => model.GSTAmount)
                     </div>
-
                     <div class="col-md-12">
-                        <label class="control-label">PriceIncGST:</label>
-
+                        <br /> <label class="control-label">PriceIncGST:</label>
                         @Html.DisplayFor(model => model.PriceIncGST)
                     </div>
-
                     <div class="col-md-12">
-                        <label class="control-label">QtyAvailable:</label>
-
+                        <br /> <label class="control-label">QtyAvailable:</label>
                         @Html.DisplayFor(model => model.QtyAvailable)
-                    </div>
-
+                    </div>                                
                     <div class="col-md-12">
-                        <label class="control-label">CreatedBy:</label>
-
-                        @Html.DisplayFor(model => model.CreatedBy)
-                    </div>
-
-                    <div class="col-md-12">
-                        <label class="control-label">TemType:</label>
-
-                        @Html.DisplayFor(model => model.ItemTypeName)
-                    </div>
-
-                    <div class="col-md-12">
-                        <label class="control-label">Brand:</label>
-
-                        @Html.DisplayFor(model => model.BrandName)
-                    </div>
-
-                    <div class="col-md-12">
-                        <label class="control-label">Model:</label>
-
-                        @Html.DisplayFor(model => model.ModelName)
-                    </div>
-
-                    <div class="col-md-12">
-                        <label class="control-label">SKU:</label>
-
+                        <br />  <label class="control-label">Colour:</label>
+                        @Html.DisplayFor(model => model.SKU)
+                 <label class="control-label">Memory:</label>
                         @Html.DisplayFor(model => model.SKU)
                     </div>
-                    <div class="col-md-12">
-                        <label class="control-label">Colour:</label>
-
-                        @Html.DisplayFor(model => model.SKU)
-                    </div>
-
-                    <div class="col-md-12">
-                        <label class="control-label">DiskSize:</label>
-
-                        @Html.DisplayFor(model => model.SKU)
-                    </div>
-
-                        @*<dd class="section">
-                <button class="btn btn-success"><span style="margin-right:0px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
-                <h6>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
-                        Add to wish list
-                    </a>
-                </h6>
-            </dd>*@
                     </div>
                 </div>
         </div>
 
-
         <div class="panel-footer pull-left" align="left" style="height:50px;width:100% ;vertical-align:top;padding-bottom:10px;margin-bottom:10px;padding-left:0px">
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-large" })
+      
             <button class="btn btn-success"><span style="margin-right:0px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
         </div>
     </div>
