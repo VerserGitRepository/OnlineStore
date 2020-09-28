@@ -6,15 +6,15 @@
 
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-        <h2>Checkout</h2>
+        <h4>Checkout</h4>
         @*<p>This store is managed for @Session["CustomerName"]  by our partner Verser Technology.</p>*@ 
-        <p>The following information will be used to fulfil your order. The charge on your credit card will appear as &ldquo;XXXXXXXXXXX&rdquo;</p>
-        <p><strong>Please enter your shipping details.</strong></p>
+        @*<p>The following information will be used to fulfil your order. The charge on your credit card will appear as &ldquo;XXXXXXXXXXX&rdquo;</p>
+        <p><strong>Please enter your shipping details.</strong></p>*@
 
         @using (Html.BeginForm())
         {
             @Html.ValidationSummary("", new { @class = "text-danger" })
-            <h3>Ship to</h3>
+            <h5>Ship to</h5>
             <div class="form-group">
                 @Html.LabelFor(x => x.FirstName)
                 @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
@@ -35,7 +35,7 @@
                 @Html.TextBoxFor(x => x.ConfirmEmail, new { @class = "form-control" })
             </div>
 
-            <h3>Address</h3>
+            <h5>Address</h5>
 
             foreach (var property in ViewData.ModelMetadata.Properties)
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineStore.WebUI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,19 +9,33 @@ namespace OnlineStore.WebUI.Controllers
 {
     public class ShoppingCartController : Controller
     {
-        public ViewResult Index() {
-
+        public ViewResult Index() {         
             return View();
         }
-        // GET: ShoppingCart
-        //public ViewResult Index(Cart cart, string returnUrl)
-        //{
-        //    return View(new CartIndexViewModel
-        //    {
-        //        ReturnUrl = returnUrl,
-        //        Cart = cart
-        //    });
-        //}
+        public ViewResult Checkout()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ViewResult Checkout(ShippingDetailsViewModel _checkoutDataModel)
+        {
+            return View();
+        }
+        public PartialViewResult Summary(Cart cart)
+        {
+            return PartialView(cart);
+        }
+
+  
+        public ViewResult Index(Cart cart, string returnUrl)
+        {
+            return View(new CartIndexViewModel
+            {
+                ReturnUrl = returnUrl,
+                Cart = cart
+            });
+        }
 
         //public RedirectToRouteResult AddToShoppingCart(Cart cart, int id, int? assetAllocationId, string returnUrl)
         //{

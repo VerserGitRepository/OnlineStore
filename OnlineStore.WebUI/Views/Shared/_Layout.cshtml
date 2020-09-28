@@ -4,9 +4,11 @@
     <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="~/Content/bootstrap.css" rel="stylesheet" />
-        <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        @*<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />*@
+        
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
@@ -55,7 +57,7 @@
             <span class="icon-bar"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="nav navbar-nav" style="padding-top:20px">
+            <ul class="nav navbar-nav" style="padding-top:20px; font-size:12px">
                 <li>@Html.ActionLink("ONLINESTORE", "Index", "OnlineSale")</li>
                 <li>@Html.ActionLink("MOBILE", "Mobile", "OnlineSale")</li>
                 <li>@Html.ActionLink("LAPTOPS", "Laptop", "OnlineSale")</li>
@@ -80,6 +82,7 @@
                 }
             </ul>
             <div style="vertical-align:bottom; padding-top:20px">
+                @*@Html.Action("Summary", "Cart")*@
                 @Html.Action("Summary", "Cart")
             </div>
         </div>
