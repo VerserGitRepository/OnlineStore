@@ -485,6 +485,9 @@
     <Content Include="Views\OrdersList\AddProduct.cshtml" />
     <Content Include="Views\OnlineSale\ProductDetail.cshtml" />
     <Content Include="Views\ProductDetails\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Checkout.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Summary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
