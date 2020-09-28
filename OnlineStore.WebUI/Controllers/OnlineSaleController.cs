@@ -51,9 +51,17 @@ namespace OnlineStore.WebUI.Controllers
         [HttpGet]      
         public ActionResult ShowProductDetail(int ProductId)
         {
-          //  ProductId = 3;
-            TempData["ProductId"] = ProductId;
-            return RedirectToAction("Index", "ProductDetails");
+       
+
+                
+           // ProductId = Convert.ToInt32(TempData["ProductId"]);
+            var productdeatiledModel = new OnlineSaleProduct();
+            productdeatiledModel = OrdersServices.OnlineSaleProductById(ProductId).Result;
+            return PartialView(productdeatiledModel);
+
+            //  ProductId = 3;
+          //  TempData["ProductId"] = ProductId;
+          //  return RedirectToAction("Index", "ProductDetails");
 
             //try
             //{
