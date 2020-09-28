@@ -47,13 +47,14 @@ namespace OnlineStore.WebUI.Controllers
             return View(SaleProducts.Where(m => m.ItemType_ID == 11));
         }
 
-
-        [HttpGet]      
-        public ActionResult ShowProductDetail(int ProductId)
+        public ActionResult ProductDetail()
         {
-       
+            return PartialView();
+        }
 
-                
+      [HttpGet]      
+        public ActionResult ProductDetail(int ProductId)
+        {    
            // ProductId = Convert.ToInt32(TempData["ProductId"]);
             var productdeatiledModel = new OnlineSaleProduct();
             productdeatiledModel = OrdersServices.OnlineSaleProductById(ProductId).Result;

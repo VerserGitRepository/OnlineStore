@@ -180,13 +180,13 @@
     //    interval: 2000
     //});
     function ShowProductDetailPage(ProductId) {
-        alert(ProductId)
-        var theurl = "./ShowProductDetail";
-        alert(theurl);
+       // alert(ProductId)
+        //var theurl = "./ShowProductDetail";
+       // alert(theurl);
         $.ajax({
             type: "GET",
             data: { "ProductId": ProductId },
-            url: '@Url.Action("ShowProductDetail", "OnlineSale")',
+            url: '@Url.Action("ProductDetail", "OnlineSale")',
 
             success: function (data) {
                // alert(data);
