@@ -66,7 +66,7 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h5 class="pull-right">$@item.PriceIncGST</h5>
-                        <h6><a href="#">@item.ProductName</a></h6>
+                        <h6>@item.ProductName</h6>
                         @using (Html.BeginForm("ShowProductDetail", " OnlineSale", FormMethod.Post,new { ProductId = item.Id, enctype = "multipart/form-data"}))
                         {
                             <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>
@@ -92,7 +92,7 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h5 class="pull-right">$@item.PriceIncGST</h5>
-                        <h6><a href="#">@item.ProductName</a></h6>
+                        <h6>@item.ProductName</h6>
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
                     <div class="btn-ground text-center">
@@ -114,7 +114,7 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h5 class="pull-right">$@item.PriceIncGST</h5>
-                        <h6><a href="#">@item.ProductName</a></h6>
+                        <h6>@item.ProductName</h6>
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
                     <div class="btn-ground text-center">
@@ -136,7 +136,7 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h5 class="pull-right">$@item.PriceIncGST</h5>
-                        <h6><a href="#">@item.ProductName</a></h6>
+                        <h6>@item.ProductName</h6>
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
                     <div class="btn-ground text-center">
