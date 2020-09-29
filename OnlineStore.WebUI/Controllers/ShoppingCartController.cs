@@ -1,4 +1,5 @@
-﻿using OnlineStore.WebUI.Models;
+﻿using OnlineStore.WebUI.Infrastructure.HelperServices;
+using OnlineStore.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,24 +38,17 @@ namespace OnlineStore.WebUI.Controllers
             });
         }
 
-        //public RedirectToRouteResult AddToShoppingCart(Cart cart, int id, int? assetAllocationId, string returnUrl)
-        //{
-        //    SaleProduct sp = applicationDataContext.SaleProducts.Expand("Product, Sale").Where(x => x.Id == id).FirstOrDefault();
+        public RedirectToRouteResult AddToShoppingCart(OnlineSaleProduct Productcart, int id, string returnUrl)
+        {
+            var sp = new OnlineSaleProduct();
+            sp = OrdersServices.OnlineSaleProductById(id).Result;
 
-        //    AssetAllocation aa = null;
-
-        //    if (assetAllocationId.HasValue)
-        //    {
-        //        aa = applicationDataContext.AssetAllocations.Where(x => x.Id == assetAllocationId).Single();
-        //    }
-
-        //    if (sp != null)
-        //    {
-        //        cart.AddItem(sp, 1, aa);
-        //    }
-
-        //    return RedirectToAction("Index", new { returnUrl });
-        //}
+            if (sp != null)
+            {
+              //  Productcart.AddItem(sp, 1, aa);
+            }
+            return RedirectToAction("Index", new { returnUrl });
+        }
 
         //public RedirectToRouteResult RemoveFromShoppingCart(Cart cart, int id,
         //        string returnUrl)
