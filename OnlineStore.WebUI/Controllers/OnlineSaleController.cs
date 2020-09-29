@@ -46,7 +46,22 @@ namespace OnlineStore.WebUI.Controllers
         {
             return View(SaleProducts.Where(m => m.ItemType_ID == 11));
         }
-
+        public ActionResult Printer()
+        {
+            return View(SaleProducts.Where(m => m.ItemType_ID == 6));
+        }
+        public ActionResult Server()
+        {
+            return View(SaleProducts.Where(m => m.ItemType_ID == 4));
+        }
+        public ActionResult NetworkGear()
+        {
+            return View(SaleProducts.Where(m => m.ItemType_ID == 9));
+        }
+        public ActionResult TV()
+        {
+            return View(SaleProducts.Where(m => m.ItemType_ID == 46));
+        }
         public ActionResult ProductDetail()
         {
             return PartialView();

@@ -486,6 +486,10 @@
     <Content Include="Views\ShoppingCart\Checkout.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Summary.cshtml" />
+    <Content Include="Views\OnlineSale\Printer.cshtml" />
+    <Content Include="Views\OnlineSale\Server.cshtml" />
+    <Content Include="Views\OnlineSale\TV.cshtml" />
+    <Content Include="Views\OnlineSale\NetworkGear.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
