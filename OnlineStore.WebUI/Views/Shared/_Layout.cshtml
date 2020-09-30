@@ -82,7 +82,7 @@
                 }
             </ul>
             <div style="vertical-align:bottom; padding-top:20px">              
-                @Html.Action("Checkout", "ShoppingCart")
+                <a>@Html.ActionLink("Cart","Checkout", "ShoppingCart",new { @class="cartImage"})</a>
             </div>
         </div>
     </nav>
@@ -173,5 +173,10 @@
     .smallsearch {
         margin-left: 10px;
         margin-top: 10px;
+    }
+    a.cartImage {
+      background: url(../Images/cart.png) no-repeat top right;
+      display:block;
+      text-indent : -9999px;
     }  
 </style>
