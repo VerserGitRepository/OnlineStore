@@ -54,14 +54,14 @@ namespace OnlineStore.WebUI.Infrastructure
                 orderDetail.SaleProduct.OrderDetails.Add(orderDetail);
                 context.AddLink(orderDetail.SaleProduct, "OrderDetails", orderDetail);
 
-                if (l.AssetAllocation != null)
-                {
-                    var assetAllocation = context.AssetAllocations.Where(x => x.Id == l.AssetAllocation.Id).Single();
+                //if (l.AssetAllocation != null)
+                //{
+                //    var assetAllocation = context.AssetAllocations.Where(x => x.Id == l.AssetAllocation.Id).Single();
 
-                    assetAllocation.Order = this.order;
-                    this.order.AssetAllocation.Add(l.AssetAllocation);
-                    context.AddLink(this.order, "AssetAllocation", assetAllocation);
-                }
+                //    assetAllocation.Order = this.order;
+                //    this.order.AssetAllocation.Add(l.AssetAllocation);
+                //    context.AddLink(this.order, "AssetAllocation", assetAllocation);
+                //}
             }
 
             context.SaveChanges(System.Data.Services.Client.SaveChangesOptions.Batch);

@@ -148,18 +148,18 @@ span.price {
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <h3>Payment</h3>
-        <label for="fname">Accepted Cards</label>
-        <div class="icon-container">
-            <i class="fa fa-cc-visa" style="color:navy;"></i>
-            <i class="fa fa-cc-amex" style="color:blue;"></i>
-            <i class="fa fa-cc-mastercard" style="color:red;"></i>
-            <i class="fa fa-cc-discover" style="color:orange;"></i>
-            <i class="fa fa-cc-paypal" style="color:Highlight;"></i>
+                <div class="col-md-4">
+                    <h3>Payment</h3>
+                    <label for="fname">Accepted Cards</label>
+                    <div class="icon-container">
+                        <i class="fa fa-cc-visa" style="color:navy;"></i>
+                        <i class="fa fa-cc-amex" style="color:blue;"></i>
+                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                        <i class="fa fa-cc-discover" style="color:orange;"></i>
+                        <i class="fa fa-cc-paypal" style="color:Highlight;"></i>
 
-        </div>
-        <label for="cname">Name on Card</label>
+                    </div>
+                    <label for="cname">Name on Card</label>
         @Html.TextBoxFor(x => x.nameOnCard, new { @class = "form-control", placeholder = "John More Doe" })
         @Html.ValidationMessageFor(x => x.nameOnCard, "", new { @class = "text-danger" })
         <label for="ccnum">Credit card number</label>
@@ -181,20 +181,35 @@ span.price {
             </div>
         </div>
     </div>
-    <div class="col-md-4" style="margin-right:0px">
+                <div class="col-md-4" style="margin-right:0px">
 
-        <h4>Cart <span class="price"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-        @*@if (Model.PurchasedSaleProducts.ToList().Count > 0)
-        {
-            foreach (var itempurchased in Model.PurchasedSaleProducts)
-            {
-                <p><a href="#">@itempurchased.ProductName</a> <span class="price">$@itempurchased.PriceIncGST</span></p>
-            }
-        }*@
+                    <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b></b></span></h4>
+                    <table id="cartTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th class="text-right">Price</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Session["Productcart"] != null)
+                            {
+                            foreach (var line in ((OnlineStore.WebUI.Models.ShoppingCart)Session["Productcart"]).Lines)
+                            {
+                                <tr>
+                                    <td>@line.SaleProduct.ProductName</td>
+                                    <td>@line.Quantity</td>
+                                    <td class="text-right">@line.SaleProduct.PriceIncGST.ToString("c")</td>
+                                </tr>
+                            }
+                            }
+                        </tbody>
+                        </table>
 
-        <hr>
-        <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-    </div>      
+</div>
+      
                 <label>
                     <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                 </label>

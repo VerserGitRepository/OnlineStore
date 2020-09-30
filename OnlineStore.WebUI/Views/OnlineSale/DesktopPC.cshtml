@@ -17,9 +17,9 @@
                 <div class="col-xs-4 item-photo">
                     <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" alt="Submit" width="230" height="230">
                 </div>
-                <div class="col-xs-5" style="border:0px solid gray">                   
+                <div class="col-xs-5" style="border:0px solid gray">
                     <h4>@item.ProductName</h4>
-                    <h5 style="color:#337ab7">Brand <a href="#">Dell</a></h5>                
+                    <h5 style="color:#337ab7">Brand <a href="#">Dell</a></h5>
                     <h6 class="title-price"><small>PRICE</small></h6>
                     <h3 style="margin-top:0px;">AUD @item.PriceIncGST</h3>
                     <div class="section">
@@ -43,17 +43,20 @@
                             <input value="1" />
                             <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
                         </div>
-                    </div>                  
-                    <div class="section" style="padding-bottom:5px;">
-                        <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
-                        <h6>
-                            <a href="#">
-                                <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
-                                Add to wish list
-                            </a>
-                        </h6>
                     </div>
-                </div>
+                    @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
+                    {
+                        <div class="section" style="padding-bottom:5px;">
+                            <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
+                            <h6>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
+                                    Add to wish list
+                                </a>
+                            </h6>
+                        </div>
+                    }
+                    </div>
             </div>
         }
 
