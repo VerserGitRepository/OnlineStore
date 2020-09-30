@@ -22,7 +22,8 @@ namespace OnlineStore.WebUI.Controllers
         }
         public PartialViewResult Summary(ShoppingCart cart)
         {
-            return PartialView(cart);
+            ShoppingCart item = (ShoppingCart)Session["Productcart"];
+            return PartialView(item);
         }
 
   
