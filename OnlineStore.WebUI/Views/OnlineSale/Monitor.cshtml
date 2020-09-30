@@ -46,15 +46,18 @@
                             <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
                         </div>
                     </div>
-                    <div class="section" style="padding-bottom:20px;">
-                        <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
-                        <h6>
-                            <a href="#">
-                                <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
-                                Add to wish list
-                            </a>
-                        </h6>
-                    </div>
+                    @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
+                    {
+                        <div class="section" style="padding-bottom:5px;">
+                            <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
+                            <h6>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
+                                    Add to wish list
+                                </a>
+                            </h6>
+                        </div>
+                    }
                 </div>
             </div>
         }

@@ -4,8 +4,8 @@ using OnlineStore.WebUI.ApplicationData;
 
 namespace OnlineStore.WebUI.Models
 {
-    public class Cart {
-        private List<CartLine> lineCollection = new List<CartLine>();
+    public class ShoppingCart {
+        private List<ShoppingCartLine> lineCollection = new List<ShoppingCartLine>();
 
         public int? SaleId { get; private set; }
 
@@ -15,41 +15,38 @@ namespace OnlineStore.WebUI.Models
                 this.SaleId = saleProduct.Id;
             }
 
-            CartLine line = lineCollection
+            ShoppingCartLine line = lineCollection
                 .Where(sp => sp.SaleProduct.Id == saleProduct.Id)
                 .FirstOrDefault();
 
-            if (line == null) {
-                lineCollection.Add(new CartLine {
+           
+                lineCollection.Add(new ShoppingCartLine {
                     
-                   
-                    Quantity = quantity
-                });
-            } else{
-                line.Quantity += quantity;
-            }
+                   SaleProduct = saleProduct,
+                   Quantity = quantity
+                });         
         }
 
-        public void RemoveLine(SaleProduct saleProduct) {
+        public void RemoveLine(OnlineSaleProduct saleProduct) {
             lineCollection.RemoveAll(l => l.SaleProduct.Id == saleProduct.Id);
         }
 
         public decimal ComputeTotalValue() {
-            return lineCollection.Sum(e => e.SaleProduct.PriceIncGST.Value * e.Quantity);
+            return lineCollection.Sum(e => e.SaleProduct.PriceIncGST * e.Quantity);
 
         }
         public void Clear() {
             lineCollection.Clear();
         }
 
-        public IEnumerable<CartLine> Lines {
+        public IEnumerable<ShoppingCartLine> Lines {
             get { return lineCollection; }
         }
     }
 
-    public class CartLine {
-        public SaleProduct SaleProduct { get; set; }
-        public AssetAllocation AssetAllocation { get; set; }
+    public class ShoppingCartLine {
+        public OnlineSaleProduct SaleProduct { get; set; }
+   
         public int Quantity { get; set; }
     }
 }

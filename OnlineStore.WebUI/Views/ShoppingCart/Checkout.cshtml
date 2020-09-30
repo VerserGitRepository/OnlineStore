@@ -177,16 +177,43 @@ span.price {
                     </div>
                 </div>
                 <div class="col-md-4" style="margin-right:0px">
-                
-                        <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-                        <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-                        <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-                        <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-                        <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-                        <hr>
-                        <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-              
-                </div>
+
+                    <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b></b></span></h4>
+                    <table id="cartTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th class="text-right">Price</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Session["Productcart"] != null)
+                            {
+                            foreach (var line in ((OnlineStore.WebUI.Models.ShoppingCart)Session["Productcart"]).Lines)
+                            {
+                                <tr>
+                                    <td>@line.SaleProduct.ProductName</td>
+                                    <td>@line.Quantity</td>
+                                    <td class="text-right">@line.SaleProduct.PriceIncGST.ToString("c")</td>
+                                </tr>
+                            }
+                            }
+                        </tbody>
+                        </table>
+
+
+
+
+                                    @*<p><a href="#">Product 1</a> <span class="price">$15</span></p>
+            <p><a href="#">Product 2</a> </p>
+            <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+            <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+            <hr>
+            <p>Total <span class="price" style="color:black"><b>$30</b></span></p>*@
+
+</div>
       
                 <label>
                     <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing

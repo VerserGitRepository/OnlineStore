@@ -27,13 +27,13 @@
                 {
                     <tr>
                         <td class="text-center">@line.Quantity</td>
-                        <td class="text-left">@line.SaleProduct.Product.ProductName</td>
-                        <td class="text-right">@line.SaleProduct.PriceIncGST.Value.ToString("c")</td>
+                        <td class="text-left">@line.SaleProduct.ProductName</td>
+                        <td class="text-right">@line.SaleProduct.PriceIncGST.ToString("c")</td>
                         <td class="text-right">
-                            @((line.Quantity * line.SaleProduct.PriceIncGST.Value).ToString("c"))
+                            @((line.Quantity * line.SaleProduct.PriceIncGST).ToString("c"))
                         </td>
                         <td>
-                            @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                            @using (Html.BeginForm("RemoveFromShoppingCart", "ShoppingCart"))
                             {
                                 @Html.Hidden("id", line.SaleProduct.Id)
                                 @Html.HiddenFor(x => x.ReturnUrl)
@@ -54,8 +54,7 @@
             </tfoot>
         </table>
         <div class="text-center">
-            @*<a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a>*@
-
+            <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a>
             @Html.ActionLink("Checkout now", "Checkout", null, new { @class = "btn btn-primary" })
         </div>
     </div>

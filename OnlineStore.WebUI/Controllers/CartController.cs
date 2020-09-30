@@ -8,6 +8,7 @@ using System.Net;
 using OnlineStore.WebUI.Models;
 using OnlineStore.WebUI.ApplicationData;
 using OnlineStore.WebUI.Infrastructure;
+using OnlineStore.WebUI.Infrastructure.HelperServices;
 
 namespace OnlineStore.WebUI.Controllers
 {
@@ -38,29 +39,23 @@ namespace OnlineStore.WebUI.Controllers
             }
         }
 
-        public ViewResult Index(Cart cart, string returnUrl)
-        {
-            return View(new CartIndexViewModel
-            {
-                ReturnUrl = returnUrl,
-                Cart = cart
-            });
-        }
+        //public ViewResult Index(Cart cart, string returnUrl)
+        //{
+        //    return View(new CartIndexViewModel
+        //    {
+        //        ReturnUrl = returnUrl,
+        //        Cart = cart
+        //    });
+        //}
 
         public RedirectToRouteResult AddToCart(Cart cart, int id, int? assetAllocationId, string returnUrl)
         {
-            SaleProduct sp = applicationDataContext.SaleProducts.Expand("Product, Sale").Where(x => x.Id == id).FirstOrDefault();
-
-            AssetAllocation aa = null;
-
-            if (assetAllocationId.HasValue)
-            {
-                aa = applicationDataContext.AssetAllocations.Where(x => x.Id == assetAllocationId).Single();
-            }
+            var sp = new OnlineSaleProduct();
+            sp = OrdersServices.OnlineSaleProductById(id).Result;
 
             if (sp != null)
             {
-                cart.AddItem(sp, 1, aa);
+                cart.AddItem(sp, 1);
             }
 
             return RedirectToAction("Index", new { returnUrl });

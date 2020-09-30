@@ -75,5 +75,11 @@ namespace OnlineStore.WebUI.Controllers
             productdeatiledModel = OrdersServices.OnlineSaleProductById(ProductId).Result;
             return PartialView(productdeatiledModel);
         }
+        [HttpPost]
+        public ActionResult AddToCart(int id, string returnUrl)
+        {
+            @ShoppingCart p = new @ShoppingCart();
+            return RedirectToAction("AddToShoppingCart", "ShoppingCart",new {@id=id, @returnUrl  = returnUrl });
+        }
     }
 }
