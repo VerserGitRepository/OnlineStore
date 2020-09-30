@@ -11,7 +11,12 @@ namespace OnlineStore.WebUI.Models
     {
         public ShippingDetailsViewModel()
         {
+            PurchasedSaleProducts = new List<OnlineSaleProduct>();
             this.States = new List<string> { "ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA" };
+            if (PurchasedSaleProducts.ToList().Count > 0)
+            {
+                paymentAmount= PurchasedSaleProducts.Sum(e => e.PriceIncGST * PurchasedSaleProducts.ToList().Count); 
+            }           
         }
         [Required(ErrorMessage = "Please enter your first name")]
         [Display(Name = "First Name")]
@@ -42,7 +47,7 @@ namespace OnlineStore.WebUI.Models
         [Required(ErrorMessage = "Please enter a postcode")]
         public string Postcode { get; set; }
         public int PaymentID { get; set; }
-        public decimal paymentAmount { get; set; }
+       
         public string cardType { get; set; }
         [Required(ErrorMessage = "Please enter a Name On Card")]
         public string nameOnCard { get; set; }
@@ -57,5 +62,6 @@ namespace OnlineStore.WebUI.Models
         public int payment_Order { get; set; }
         public bool PaymentStatus { get; set; }
         public List<OnlineSaleProduct> PurchasedSaleProducts { get; set; }
+        public decimal paymentAmount { get; set; }
     }
 }
