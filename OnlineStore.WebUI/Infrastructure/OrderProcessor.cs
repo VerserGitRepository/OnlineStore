@@ -16,7 +16,7 @@ namespace OnlineStore.WebUI.Infrastructure
         private ApplicationData.ApplicationData context;
         private Cart cart;
         private Order order;
-        
+
         public OrderProcessor(ApplicationData.ApplicationData context, Cart cart, ShippingDetailsViewModel shippingDetails)
         {
             this.context = context;
@@ -40,33 +40,130 @@ namespace OnlineStore.WebUI.Infrastructure
             string handOffUrl = string.Empty;
             try
             {
-            context.AddToOrders(this.order);
-            this.order.Sale.Orders.Add(this.order);
-            context.AddLink(this.order.Sale, "Orders", this.order);
+                context.AddToOrders(this.order);
+                this.order.Sale.Orders.Add(this.order);
+                context.AddLink(this.order.Sale, "Orders", this.order);
 
-            foreach(var l in this.cart.Lines)
-            {
-                var orderDetail = new OrderDetail { Quantity = l.Quantity };
-                context.AddToOrderDetails(orderDetail);
-                context.AddLink(this.order, "OrderDetails", orderDetail);
+                foreach (var l in this.cart.Lines)
+                {
+                    var orderDetail = new OrderDetail { Quantity = l.Quantity };
+                    context.AddToOrderDetails(orderDetail);
+                    context.AddLink(this.order, "OrderDetails", orderDetail);
 
-                orderDetail.SaleProduct = context.SaleProducts.Where(x => x.Id == l.SaleProduct.Id).First();
-                orderDetail.SaleProduct.OrderDetails.Add(orderDetail);
-                context.AddLink(orderDetail.SaleProduct, "OrderDetails", orderDetail);
+                    orderDetail.SaleProduct = context.SaleProducts.Where(x => x.Id == l.SaleProduct.Id).First();
+                    orderDetail.SaleProduct.OrderDetails.Add(orderDetail);
+                    context.AddLink(orderDetail.SaleProduct, "OrderDetails", orderDetail);
 
-                //if (l.AssetAllocation != null)
-                //{
-                //    var assetAllocation = context.AssetAllocations.Where(x => x.Id == l.AssetAllocation.Id).Single();
+                    //if (l.AssetAllocation != null)
+                    //{
+                    //    var assetAllocation = context.AssetAllocations.Where(x => x.Id == l.AssetAllocation.Id).Single();
 
-                //    assetAllocation.Order = this.order;
-                //    this.order.AssetAllocation.Add(l.AssetAllocation);
-                //    context.AddLink(this.order, "AssetAllocation", assetAllocation);
-                //}
+                    //    assetAllocation.Order = this.order;
+                    //    this.order.AssetAllocation.Add(l.AssetAllocation);
+                    //    context.AddLink(this.order, "AssetAllocation", assetAllocation);
+                    //}
+                }
+
+                context.SaveChanges(System.Data.Services.Client.SaveChangesOptions.Batch);
+
+                string tokenRequest = BuildTokenRequest();
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(
+                        WebConfigurationManager.AppSettings["payWayBaseUrl"] + "RequestToken");
+                request.KeepAlive = false;
+                request.Method = "POST";
+                request.Timeout = 60000;
+                request.ContentType = "application/x-www-form-urlencoded; charset=" +
+                    System.Text.Encoding.UTF8.WebName;
+
+                byte[] requestBody = System.Text.Encoding.UTF8.GetBytes(
+                    tokenRequest);
+
+                Stream requestStream = request.GetRequestStream();
+                requestStream.Write(requestBody, 0, requestBody.Length);
+                requestStream.Close();
+                requestStream = null;
+
+                WebResponse response = request.GetResponse();
+
+                Stream responseStream = response.GetResponseStream();
+                StreamReader responseReader = new StreamReader(responseStream, System.Text.Encoding.UTF8);
+                string tokenResponse = responseReader.ReadToEnd();
+                responseStream.Close();
+
+                string[] responseParameters = tokenResponse.Split(new Char[] { '&' });
+                string token = null;
+                for (int i = 0; i < responseParameters.Length; i++)
+                {
+                    string responseParameter = responseParameters[i];
+                    string[] paramNameValue = responseParameter.Split(new Char[] { '=' }, 2);
+                    if ("token".Equals(paramNameValue[0]))
+                    {
+                        token = paramNameValue[1];
+                    }
+                    else if ("error".Equals(paramNameValue[0]))
+                    {
+                        LogService.Error(paramNameValue[1]);
+                        throw new Exception(paramNameValue[1]);
+                    }
+                }
+
+                handOffUrl = WebConfigurationManager.AppSettings["payWayBaseUrl"] + "MakePayment";
+                handOffUrl += "?biller_code=" + HttpUtility.UrlEncode(WebConfigurationManager.AppSettings["billerCode"]) +
+                 "&token=" + HttpUtility.UrlEncode(token);
+                this.cart.Clear();
+                LogService.info(this.order.OrderNo + "Order processed ");
+
+
+                return handOffUrl;
+
             }
+            catch (Exception ex)
+            {
+                LogService.Error(ex.Message + ex.InnerException.StackTrace);
+                return handOffUrl;
+            }
+        }
 
-            context.SaveChanges(System.Data.Services.Client.SaveChangesOptions.Batch);
+        private static string BuildTokenRequest()
+        {
+            StringBuilder tokenRequest = new StringBuilder();
+            tokenRequest.Append("username=");
+            tokenRequest.Append(WebConfigurationManager.AppSettings["payway_username"]);
+            tokenRequest.Append("&password=");
+            tokenRequest.Append(WebConfigurationManager.AppSettings["payway_password"]);
+            tokenRequest.Append("&biller_code=");
+            tokenRequest.Append(WebConfigurationManager.AppSettings["billerCode"]);
+            tokenRequest.Append("&merchant_id=");
+            tokenRequest.Append(WebConfigurationManager.AppSettings["merchantId"]);
+            tokenRequest.Append("&payment_reference=");
+        //    tokenRequest.Append(order.OrderNo);
+            tokenRequest.Append("&payment_reference_change=false");
+            tokenRequest.Append("&surcharge_rates=");
+            tokenRequest.Append(HttpUtility.UrlEncode("VI/MC=1.0,AX=1.0,DC=1.0"));
+            tokenRequest.Append("&receipt_address=");
+          //  tokenRequest.Append(HttpUtility.UrlEncode(this.order.Email));
 
-            string tokenRequest = BuildTokenRequest();
+         
+            //    foreach (var l in this.cart.Lines)
+            //{
+            //    tokenRequest.Append("&");
+            //    tokenRequest.Append(HttpUtility.UrlEncode(l.SaleProduct.Product.ProductName));
+            //    tokenRequest.Append("=");
+            //    tokenRequest.Append(HttpUtility.UrlEncode(string.Format("{0},{1}", l.Quantity, l.SaleProduct.PriceIncGST)));
+            //}
+            LogService.info("Payment URL" + tokenRequest.ToString());
+            return tokenRequest.ToString();
+        }
+
+        public static string ProcessOnlineSaleOrder()
+        {
+            string handOffUrl = string.Empty;
+            try
+            {
+            
+          
+             string tokenRequest = BuildTokenRequest();
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(
                     WebConfigurationManager.AppSettings["payWayBaseUrl"] + "RequestToken");
@@ -76,8 +173,7 @@ namespace OnlineStore.WebUI.Infrastructure
             request.ContentType = "application/x-www-form-urlencoded; charset=" +
                 System.Text.Encoding.UTF8.WebName;
 
-            byte[] requestBody = System.Text.Encoding.UTF8.GetBytes(
-                tokenRequest);
+            byte[] requestBody = System.Text.Encoding.UTF8.GetBytes(tokenRequest);
 
             Stream requestStream = request.GetRequestStream();
             requestStream.Write(requestBody, 0, requestBody.Length);
@@ -102,56 +198,24 @@ namespace OnlineStore.WebUI.Infrastructure
                     token = paramNameValue[1];
                 }
                 else if ("error".Equals(paramNameValue[0]))
-                    {
+                {
                     LogService.Error(paramNameValue[1]);
-                        throw new Exception(paramNameValue[1]);
-                    }
+                    throw new Exception(paramNameValue[1]);
                 }
+            }
 
             handOffUrl = WebConfigurationManager.AppSettings["payWayBaseUrl"] + "MakePayment";
             handOffUrl += "?biller_code=" + HttpUtility.UrlEncode(WebConfigurationManager.AppSettings["billerCode"]) +
              "&token=" + HttpUtility.UrlEncode(token);
-            this.cart.Clear();
-                LogService.info(this.order.OrderNo + "Order processed "  );
-
-
+                //this.cart.Clear();
+           // LogService.info(this.order.OrderNo + "Order processed ");
             return handOffUrl;
-
             }
             catch (Exception ex)
             {
                 LogService.Error(ex.Message + ex.InnerException.StackTrace);
                 return handOffUrl;
             }
-        }
-        private string BuildTokenRequest()
-        {
-            StringBuilder tokenRequest = new StringBuilder();
-            tokenRequest.Append("username=");
-            tokenRequest.Append(WebConfigurationManager.AppSettings["payway_username"]);
-            tokenRequest.Append("&password=");
-            tokenRequest.Append(WebConfigurationManager.AppSettings["payway_password"]);
-            tokenRequest.Append("&biller_code=");
-            tokenRequest.Append(WebConfigurationManager.AppSettings["billerCode"]);
-            tokenRequest.Append("&merchant_id=");
-            tokenRequest.Append(WebConfigurationManager.AppSettings["merchantId"]);
-            tokenRequest.Append("&payment_reference=");
-            tokenRequest.Append(order.OrderNo);
-            tokenRequest.Append("&payment_reference_change=false");
-            tokenRequest.Append("&surcharge_rates=");
-            tokenRequest.Append(HttpUtility.UrlEncode("VI/MC=1.0,AX=1.0,DC=1.0"));
-            tokenRequest.Append("&receipt_address=");
-            tokenRequest.Append(HttpUtility.UrlEncode(this.order.Email));
-
-            foreach (var l in this.cart.Lines)
-            {
-                tokenRequest.Append("&");
-                tokenRequest.Append(HttpUtility.UrlEncode(l.SaleProduct.Product.ProductName));
-                tokenRequest.Append("=");
-                tokenRequest.Append(HttpUtility.UrlEncode(string.Format("{0},{1}", l.Quantity, l.SaleProduct.PriceIncGST)));
-            }
-            LogService.info("Payment URL" + tokenRequest.ToString());
-            return tokenRequest.ToString();
-        }
-    }
+        }  
+}
 }

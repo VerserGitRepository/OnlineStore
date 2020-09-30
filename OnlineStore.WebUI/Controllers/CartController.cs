@@ -92,7 +92,7 @@ namespace OnlineStore.WebUI.Controllers
                     model.Email = assetAllocation.EmployeeEmail;
                 }
             }
-            
+        
             return View(model);
         }
 

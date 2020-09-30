@@ -16,9 +16,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - VERSER ONLINE STORE</title>
-    @*@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")*@
-
 </head>
 <body>
     @{
@@ -84,63 +81,19 @@
                 {
                     <li>@Html.ActionLink("LOGIN", "Login", "Login")</li>
                 }
-            </ul>
-            <div style="vertical-align:bottom; padding-top:20px">              
-                <span class="glyphicon glyphicon-shopping-cart">@Html.ActionLink("Cart","Checkout", "ShoppingCart") </span>
-            </div>
+            </ul>   
+            <div class="navbar-right" style="vertical-align:bottom">
+                <a href=@Url.Action("Checkout", "ShoppingCart", new { returnUrl = Request.Url.PathAndQuery })
+                   class="btn btn-default navbar-btn">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                </a>
+            </div>          
+           
         </div>
     </nav>
-
-    @*<div class="wrapper">
-            <div class="navbar navbar-default">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="@Url.Action("Index", "OnlineSale", new { customerCode = Session["CustomerCode"] })">@Session["CustomerName"]</a>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="font-size:12px;background-color:#e1a149;">
-                    <ul class="nav navbar-nav" style="color:white">
-                        <li>@Html.ActionLink("MOBILE", "Mobile", "OnlineSale")</li>
-                        <li>@Html.ActionLink("LAPTOPS", "Laptop", "OnlineSale")</li>
-                        <li>@Html.ActionLink("MONITOR", "Monitor", "OnlineSale")</li>
-                        <li>@Html.ActionLink("DESKTOP PC", "DesktopPC", "OnlineSale")</li>
-                        <li>@Html.ActionLink("IPAD", "IPad", "OnlineSale")</li>
-
-                        <li>@Html.ActionLink("ACCESSORIES", "Mobile", "OnlineSale")</li>
-                        <li>@Html.ActionLink("PRINTER", "Mobile", "OnlineSale")</li>
-                        <li>@Html.ActionLink("SERVERS", "Mobile", "OnlineSale")</li>
-                        <li>@Html.ActionLink("NETWORK GEARS", "Mobile", "OnlineSale")</li>
-                        <li>@Html.ActionLink("TV'S", "Mobile", "OnlineSale")</li>
-                        <li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
-                        <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
-                        @if (@Session["Username"] != null)
-                        {
-                            <li>@Html.ActionLink("ORDERSLIST", "Index", "OrdersList")</li>
-                            <li>@Html.ActionLink("LOGOUT", "Login", "Login")</li>
-                        }
-                        else
-                        {
-                            <li>@Html.ActionLink("LOGIN", "Login", "Login")</li>
-                        }
-                    </ul>
-                    <div>
-                        @Html.Action("Summary", "Cart")
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
     <div class="container body-content">
         @RenderBody()
     </div>
-    @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/jqueryval")
-        @Scripts.Render("~/Scripts/CustomRequiredIf.js")
-        @Scripts.Render("~/bundles/bootstrap")*@
 
     @RenderSection("scripts", required: false)
     <div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:white;font-size:small">

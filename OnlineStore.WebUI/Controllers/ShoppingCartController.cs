@@ -1,4 +1,5 @@
-﻿using OnlineStore.WebUI.Infrastructure.HelperServices;
+﻿using OnlineStore.WebUI.Infrastructure;
+using OnlineStore.WebUI.Infrastructure.HelperServices;
 using OnlineStore.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,21 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ViewResult Checkout(ShippingDetailsViewModel _checkoutDataModel)
         {
+            paymentCheckoutPage();
             return View();
         }
+
+
+        public ActionResult paymentCheckoutPage()
+        {
+
+            LogService.info("Order Has been Checked out for payment");
+            string url = OrderProcessor.ProcessOnlineSaleOrder();
+            return Redirect(url);
+
+
+        }
+
         public PartialViewResult Summary(ShoppingCart cart)
         {
             ShoppingCart item = (ShoppingCart)Session["Productcart"];
@@ -30,11 +44,13 @@ namespace OnlineStore.WebUI.Controllers
         public ViewResult Index(string returnUrl)
         {
             ShoppingCart item = (ShoppingCart)Session["Productcart"];
+            Session["TotalValue"] = item.ComputeTotalValue();
             return View(new CartIndexViewModel
             {
                 ReturnUrl = returnUrl,
                 Cart = item
             });
+            
         }
 
         public RedirectToRouteResult AddToShoppingCart(int id, string returnUrl)
