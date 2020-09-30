@@ -13,45 +13,49 @@ namespace OnlineStore.WebUI.Models
         {
             this.States = new List<string> { "ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA" };
         }
-
-        [Required(ErrorMessage="Please enter your first name")]
-        [Display(Name="First Name")]
+        [Required(ErrorMessage = "Please enter your first name")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
-
-        [Required(ErrorMessage="Please enter your last name")]
+        [Required(ErrorMessage = "Please enter your last name")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-
         [Required(ErrorMessage = "Please enter Mobile Number")]
         [Display(Name = "Mobile Number")]
-
         public string ContactNumber { get; set; }
-
         [Required(ErrorMessage = "Please enter your email address")]
         [RegularExpression(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-‌​]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$", ErrorMessage = "Please enter a valid email")]
         public string Email { get; set; }
-
-        [Required(ErrorMessage="Please confirm your email address")]
+        [Required(ErrorMessage = "Please confirm your email address")]
         [System.ComponentModel.DataAnnotations.Compare("Email", ErrorMessage = "Email addresses do not match")]
-        [Display(Name="Confirm Email")]
+        [Display(Name = "Confirm Email")]
         public string ConfirmEmail { get; set; }
-
-        [Required(ErrorMessage="Please enter an address")]
+        [Required(ErrorMessage = "Please enter an address")]
         [Display(Name = "Address Line 1")]
         public string AddressLine1 { get; set; }
-
-        [Display(Name="Address Line 2")]
+        [Display(Name = "Address Line 2")]
         public string AddressLine2 { get; set; }
-
-        [Required(ErrorMessage="Please enter a suburb")]
+        [Required(ErrorMessage = "Please enter a suburb")]
         public string Suburb { get; set; }
-
         [Required(ErrorMessage = "Please select a state")]
         public string State { get; set; }
-
         public List<string> States { get; set; }
-
-        [Required(ErrorMessage="Please enter a postcode")]
+        [Required(ErrorMessage = "Please enter a postcode")]
         public string Postcode { get; set; }
+        public int PaymentID { get; set; }
+        public decimal paymentAmount { get; set; }
+        public string cardType { get; set; }
+        [Required(ErrorMessage = "Please enter a Name On Card")]
+        public string nameOnCard { get; set; }
+        [Required(ErrorMessage = "Please enter a CardNumber")]
+        public string CardNumber { get; set; }
+        [Required(ErrorMessage = "Please enter a Expire Month")]
+        public string expmonth { get; set; }
+        [Required(ErrorMessage = "Please enter a Expire year")]
+        public int expyear { get; set; }
+        [Required(ErrorMessage = "Please enter a cvv")]
+        public int cvv { get; set; }
+        public int payment_Order { get; set; }
+        public bool PaymentStatus { get; set; }
+        public List<OnlineSaleProduct> PurchasedSaleProducts { get; set; }
     }
 }
