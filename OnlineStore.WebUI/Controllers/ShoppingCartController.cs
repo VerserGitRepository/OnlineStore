@@ -41,9 +41,13 @@ namespace OnlineStore.WebUI.Controllers
         }
 
   
-        public ViewResult Index(string returnUrl)
+        public ActionResult Index(string returnUrl)
         {
             ShoppingCart item = (ShoppingCart)Session["Productcart"];
+            if (item == null)
+            {
+                return RedirectToAction("Index", "OnlineSale");
+            }
             Session["TotalValue"] = item.ComputeTotalValue();
             return View(new CartIndexViewModel
             {
@@ -67,7 +71,7 @@ namespace OnlineStore.WebUI.Controllers
                 sc.AddItem(sp, 1);
             }
             Session["Productcart"] = sc;
-            return RedirectToAction("Index", new { returnUrl });
+            return RedirectToAction(returnUrl.Split('/')[2], returnUrl.Split('/')[1]);
         }
 
         public RedirectToRouteResult RemoveFromShoppingCart( int id,
