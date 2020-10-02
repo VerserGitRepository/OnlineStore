@@ -71,7 +71,15 @@ namespace OnlineStore.WebUI.Controllers
                 sc.AddItem(sp, 1);
             }
             Session["Productcart"] = sc;
-            return RedirectToAction(returnUrl.Split('/')[2], returnUrl.Split('/')[1]);
+            if (returnUrl == null || returnUrl == string.Empty)
+            {
+                return RedirectToAction("Index","OnlineSale");
+
+            }
+            else
+            {
+                return RedirectToAction(returnUrl.Split('/')[2], returnUrl.Split('/')[1]);
+            }
         }
 
         public RedirectToRouteResult RemoveFromShoppingCart( int id,

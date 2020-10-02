@@ -80,6 +80,11 @@ namespace OnlineStore.WebUI.Controllers
         {
             @ShoppingCart p = new @ShoppingCart();
             return RedirectToAction("AddToShoppingCart", "ShoppingCart",new {@id=id, @returnUrl  = returnUrl });
+        }   
+        public ActionResult AddToCartNoVerb(int id, string returnUrl)
+        {
+            @ShoppingCart p = new @ShoppingCart();
+            return RedirectToAction("AddToShoppingCart", "ShoppingCart", new { @id = id, @returnUrl = returnUrl });
         }
     }
 }

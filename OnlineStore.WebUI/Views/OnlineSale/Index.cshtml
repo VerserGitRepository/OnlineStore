@@ -71,12 +71,11 @@
 
                     </div>
                     <div class="btn-ground text-center">
-                        @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
-                        {
-                            <a href="#" class="btn btn-success btn-sm">
+                       
+                            <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn btn-success btn-sm">
                                 <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
                             </a>
-                        }
+                       
                     </div>
                     <div class="space-ten"></div>
 
@@ -96,11 +95,13 @@
                         <h6>@item.ProductName</h6>
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
-                    <div class="btn-ground text-center">
-                        <a href="#" class="btn btn-success btn-sm">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
-                        </a>
-                    </div>
+                   
+                        <div class="btn-ground text-center">
+                            <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
+                            </a>
+                        </div>
+                  
                     <div class="space-ten"></div>
                 </div>
             </div>
@@ -118,14 +119,13 @@
                         <h6>@item.ProductName</h6>
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
-                    @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
-                    {
+                   
                         <div class="btn-ground text-center">
-                            <a href="#" class="btn btn-success btn-sm">
+                            <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn btn-success btn-sm">
                                 <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
                             </a>
                         </div>
-                    }
+                   
                     <div class="space-ten"></div>
                 </div>
             </div>
@@ -143,11 +143,13 @@
                         <h6>@item.ProductName</h6>
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
-                    <div class="btn-ground text-center">
-                        <a href="#" class="btn btn-success btn-sm">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
-                        </a>
-                    </div>
+                   
+                        <div class="btn-ground text-center">
+                            <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
+                            </a>
+                        </div>
+                   
                     <div class="space-ten"></div>
                 </div>
             </div>
