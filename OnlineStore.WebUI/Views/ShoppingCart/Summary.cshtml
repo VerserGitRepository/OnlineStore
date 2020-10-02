@@ -1,13 +1,18 @@
 ﻿@model OnlineStore.WebUI.Models.ShoppingCart
 
 <div class="navbar-right">
-    <a href=@Url.Action("Index", " ShoppingCart", new { returnUrl = Request.Url.PathAndQuery })
+    <a href=@Url.Action("Index", "ShoppingCart")
        class="btn btn-default navbar-btn">
         <span class="glyphicon glyphicon-shopping-cart"></span>
     </a>
 </div>
 
 <div class="navbar-text navbar-right" style="padding-right:10px">
-    @*@Model.Lines.Sum(x => x.Quantity) item(s),
-    @Model.ComputeTotalValue().ToString("c")*@
+    @if (Model != null)
+    {
+        @Model.Lines.Sum(x => x.Quantity) ;
+        <span>Item(s),</span>
+        @Model.ComputeTotalValue().ToString("c");
+    }
+
 </div>

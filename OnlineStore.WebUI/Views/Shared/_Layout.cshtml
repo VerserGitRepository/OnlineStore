@@ -83,10 +83,8 @@
                 }
             </ul>   
             <div class="navbar-right" style="vertical-align:bottom">
-                <a href=@Url.Action("Checkout", "ShoppingCart", new { returnUrl = Request.Url.PathAndQuery })
-                   class="btn btn-default navbar-btn">
-                    <span class="glyphicon glyphicon-shopping-cart"></span>
-                </a>
+                @Html.Action("Summary", "ShoppingCart")
+            </div>
             </div>          
            
         </div>
