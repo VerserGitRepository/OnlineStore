@@ -32,18 +32,18 @@
     </div>
     <div id="flipkart-navbar" style="background-color:black">
         <div class="container">
-          
-                <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
-                  
-                        <input class="flipkart-navbar-input col-xs-11" placeholder="Search for Products, Brands and more" name="">
-                        <button class="flipkart-navbar-button col-xs-1">
-                            <svg width="15px" height="15px">
-                                <path d="M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 "></path>
-                            </svg>
-                        </button>
-                  
-                </div>
-          
+
+            <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
+
+                <input class="flipkart-navbar-input col-xs-11" placeholder="Search for Products, Brands and more" name="">
+                <button class="flipkart-navbar-button col-xs-1">
+                    <svg width="15px" height="15px">
+                        <path d="M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 "></path>
+                    </svg>
+                </button>
+
+            </div>
+
         </div>
     </div>
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:orange;height:20px;">
@@ -81,7 +81,7 @@
                 {
                     <li>@Html.ActionLink("LOGIN", "Login", "Login")</li>
                 }
-            </ul>   
+            </ul>
             <div class="navbar-right" style="vertical-align:bottom">
                 @Html.Action("Summary", "ShoppingCart")
             </div>
@@ -89,15 +89,57 @@
            
         </div>
     </nav>
+ 
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                  
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Quote Terms & Conditions IMPORTANT - When placing orders please include full End User information - Company Name,
+                    Street Address, Phone Number, Contact Name and Email Address.
+                    PLEASE NOTE: The goods and services as set out in this quotation are accepted as per Ingram Micro's Pty Limited’s
+                    (Verser) Customer Terms of Sale. Please refer to Verser Australia website for full details.
+                    Unless otherwise stated, all prices quoted are in Australian Dollar Currency(AUD) and are exclusive of GST, freight, and
+                    configuration charges.
+                    Freight costs are based on standard road delivery.Air freight or any other form of special delivery will incur additional costs.
+                    Freight costs are based on standard road delivery.Air freight or any other form of special delivery will incur additional costs.
+                    xThe pricing specified above is not combinable with any other offer.
+                    Bundle pricing is subject to change in the event amendments are made to the quantity and/or bundle components
+                    ordered.Please contact your account manager should you require changes to the bundle lines.
+                    This quotation is valid only to the company whose name appears above.
+                    This quote has been prepared for one end user only. If this quotation is for more than one end user, please request separate
+                    quotations for each end user.
+                    The Ingram Micro reference number and all part numbers product descriptions and pricing specified in this quote must be
+                    included in your order.
+                    All trademarks, brand names, and product names are the property of their respective owners.
+                    The items quoted above are correct at time of publishing and issuing the quotation. All errors and omissions are excluded and
+                    no other discounts apply.Ingram Micro is not responsible for compensating the customer should the item(s) listed in this quote
+                    be withdrawn by the Vendor.
+                </div>
+              
+            </div>
+        </div>
+    </div>
     <div class="container body-content">
         @RenderBody()
     </div>
 
     @RenderSection("scripts", required: false)
-    <div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:white;font-size:small">
-        The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
-        <img src="~/Images/Payment Options.PNG" />
-    </div>
+<div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:white;font-size:small">
+    The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
+    <img src="~/Images/Payment Options.PNG" />
+    @*<a href="#myModal" class="btn">Terms and Conditions</a>*@
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Terms and Conditions
+    </button>
+</div>
 </body>
 </html>
 
@@ -127,7 +169,7 @@
     }      
     .smallsearch {
         margin-left: 10px;
-        margin-top: 10px;
+        margin-top: 10px;icon po
     }
     a.cartImage {
       background: url(../Images/cart.png) no-repeat top right;
@@ -135,3 +177,11 @@
       text-indent : -9999px;
     }  
 </style>
+
+<script>
+$('a[href$="#Modal"]').on( "click", function() {
+   $('#Modal').modal('show');
+});
+
+
+</script>
