@@ -25,6 +25,7 @@
             <img src="~/Images/VerserLogo.png" style="width:110px;height:60px;border-color:gray;background-color:black; border-width:thin" />
         </div>
     </div>
+
     <div id="flipkart-navbar" style="background-color:black">
         <div class="container">
             <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
@@ -37,6 +38,7 @@
             </div>
         </div>
     </div>
+
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:orange;height:20px;">
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarTogglerDemo03">
                 <span class="sr-only">Toggle navigation</span>
@@ -111,11 +113,13 @@
     <div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:white;font-size:small">
         The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
         <img src="~/Images/Payment Options.PNG" />
-
+        @*<a href="#myModal" class="btn">Terms and Conditions</a>*@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Terms and Conditions
+            Terms & Conditions
         </button>
     </div>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
 
@@ -127,7 +131,7 @@
         outline: 0 none;
         font-size: 15px;
     }
-
+    .modal-dialog{ max-width: 1000px;}
     a {
         color: white;
         cursor: pointer;
