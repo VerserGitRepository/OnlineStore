@@ -3,9 +3,7 @@
 <head>
     <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="~/Content/bootstrap.css" rel="stylesheet" />
-        @*<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />*@
-        
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />        
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
@@ -51,11 +49,7 @@
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                    
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="nav navbar-nav" style="padding-top:20px; font-size:12px">
@@ -87,18 +81,9 @@
             </div>
             </div>          
     </nav>
- 
-
-    <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:35px;margin:35px">
-        <div class="modal-dialog"@*style="padding:15px;margin:15px"*@>
-            @*<div class="modal-content">*@
-                @*<div class="modal-header">
-                  
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>*@
+        <div class="modal-dialog" @*style="padding:15px;margin:15px"*@>
+        
                 <div class="modal-content"style="padding:35px;margin:35px">
                     Quote Terms & Conditions IMPORTANT - When placing orders please include full End User information - Company Name,
                     Street Address, Phone Number, Contact Name and Email Address.<br>
@@ -120,9 +105,7 @@
                     The items quoted above are correct at time of publishing and issuing the quotation. All errors and omissions are excluded and
                     no other discounts apply.Ingram Micro is not responsible for compensating the customer should the item(s) listed in this quote
                     be withdrawn by the Vendor.<br>
-                </div>
-              
-            @*</div>*@
+                </div>   
         </div>
     </div>
     <div class="container body-content">
@@ -133,7 +116,7 @@
 <div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:white;font-size:small">
     The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
     <img src="~/Images/Payment Options.PNG" />
-    @*<a href="#myModal" class="btn">Terms and Conditions</a>*@
+   
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Terms and Conditions
     </button>
@@ -149,19 +132,7 @@
         outline: 0 none;
         font-size: 15px;
     }
-     /*.btn {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px;
-        margin: 10px 0;
-        border: none;
-        width: 100%;
-        border-radius: 3px;
-        cursor: pointer;
-        font-size: 17px;
-        vertical-align: central;
-    }*/
-
+    
     a {
     color: white;
     cursor: pointer;
