@@ -161,13 +161,22 @@
 </style>
 
 <script>
+
 $('a[href$="#Modal"]').on( "click", function() {
    $('#Modal').modal('show');
 });
+
+    $(document).on('keypress', function (e) {
+        if (e.which == 13) { ShowProduct(); }
+    });
     var product1 = $("#searchProduct").val();
     $("#searchProduct").on('click', function () {
+        ShowProduct();
 
-    $.ajax({
+    });
+
+    function ShowProduct() {
+         $.ajax({
     url: '@Url.Action("AllProducts","OnlineSale")',
         data: { "product": $("#txtSearchProduct").val() },
     contentType: "application/json;charset=utf-8"
@@ -176,6 +185,6 @@ $('a[href$="#Modal"]').on( "click", function() {
 }).fail(function(xhr, a, error) {
       console.log(error);
 });
-    });
+    }
 
 </script>
