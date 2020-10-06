@@ -1,8 +1,6 @@
 ﻿@using System.Linq;
-@model IEnumerable<OnlineStore.WebUI.Models.OnlineSaleProduct>
-@{
-    ViewBag.Title = "Server";
-}
+@model PagedList.IPagedList<OnlineStore.WebUI.Models.OnlineSaleProduct>
+@using PagedList.Mvc;
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -11,13 +9,18 @@
 <!DOCTYPE html>
 <html>
 <body>
+    <div>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, Page_No => Url.Action("Server", "OnlineSale",
+            new { Page_No }))
+    </div>
     <div class="container">
         @foreach (var item in Model)
         {
             <div class="row">
                 <div class="col-xs-4 item-photo">
                     <img style="max-width:100%;" src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg" />
-                    <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()"  />
+                    <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" />
                 </div>
                 <div class="col-xs-5" style="border:0px solid gray">
 
@@ -176,26 +179,26 @@
 </style>
 
 @*<script>
-      function ShowProductDetailPage(ProductId) {
-        $.ajax({
-            type: "GET",
-            data: { "ProductId": ProductId },
-            url: '@Url.Action("ProductDetail", "OnlineSale")',
+          function ShowProductDetailPage(ProductId) {
+            $.ajax({
+                type: "GET",
+                data: { "ProductId": ProductId },
+                url: '@Url.Action("ProductDetail", "OnlineSale")',
 
-            success: function (data) {
-               // alert(data);
-                $.confirm({
-                    boxWidth: '800px',
-                    useBootstrap: false,
-                    title: '',
-                    content: data,
-                    closeIcon: true,
+                success: function (data) {
+                   // alert(data);
+                    $.confirm({
+                        boxWidth: '800px',
+                        useBootstrap: false,
+                        title: '',
+                        content: data,
+                        closeIcon: true,
 
-                    buttons: {
-                        yes: { isHidden: true }
-                    },
-                });
-            }
-        });
-    }
-</script>*@
+                        buttons: {
+                            yes: { isHidden: true }
+                        },
+                    });
+                }
+            });
+        }
+    </script>*@

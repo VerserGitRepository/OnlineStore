@@ -59,6 +59,7 @@ namespace OnlineStore.WebUI.Controllers
 
         public RedirectToRouteResult AddToShoppingCart(int id, string returnUrl)
         {
+
             var sp = new OnlineSaleProduct();
             sp = OrdersServices.OnlineSaleProductById(id).Result;
             ShoppingCart sc = (ShoppingCart)Session["Productcart"];
@@ -78,7 +79,8 @@ namespace OnlineStore.WebUI.Controllers
             }
             else
             {
-                return RedirectToAction(returnUrl.Split('/')[2], returnUrl.Split('/')[1]);
+                int Page_No = returnUrl.IndexOf('?') > 0 ? Convert.ToInt32(returnUrl.Split('/')[2].Split('?')[1].Replace("Page_No=","").Trim()) : 1;
+                return RedirectToAction(returnUrl.IndexOf('?') > 0 ? returnUrl.Split('/')[2].Split('?')[0]: returnUrl.Split('/')[2], returnUrl.Split('/')[1],new { Page_No});
             }
         }
 

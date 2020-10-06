@@ -1,8 +1,6 @@
 ﻿@using System.Linq;
-@model IEnumerable<OnlineStore.WebUI.Models.OnlineSaleProduct>
-@{
-    ViewBag.Title = "IPad";
-}
+@model PagedList.IPagedList<OnlineStore.WebUI.Models.OnlineSaleProduct>
+@using PagedList.Mvc;
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -10,6 +8,11 @@
 <!DOCTYPE html>
 <html>
 <body>
+    <div>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, Page_No => Url.Action("IPad", "OnlineSale",
+            new { Page_No }))
+    </div>
     <div class="container">
         @foreach (var item in Model)
         {
@@ -51,7 +54,7 @@
                     </div>
 
                     <!-- Botones de compra -->
-                    @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
+                    @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Url.Encode(Request.Url.PathAndQuery) }, FormMethod.Post))
                     {
                         <div class="section" style="padding-bottom:5px;">
                             <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
