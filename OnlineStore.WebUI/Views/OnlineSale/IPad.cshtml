@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
 <!DOCTYPE html>
 <html>
@@ -18,21 +20,20 @@
         {
             <div class="row">
                 <div class="col-xs-4 item-photo">
-                    <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" alt="Submit" width="220" height="220">
+                    @*<img style="max-width:100%;" src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg" />*@
+                    <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" />
                 </div>
                 <div class="col-xs-5" style="border:0px solid gray">
-                    <!-- Datos del vendedor y titulo del producto -->
-                    <h3>@item.ProductName</h3>
-                    <h5 style="color:#337ab7">Brand <a href="#">Apple</a> · <small style="color:#337ab7">(5054 SALES)</small></h5>
 
-                    <!-- Precios -->
+                    <h3>@item.ProductName</h3>
+                    <h5 style="color:#337ab7">@item.BrandName</h5>
                     <h6 class="title-price"><small>PRICE</small></h6>
                     <h3 style="margin-top:0px;">AUD @item.PriceIncGST</h3>
 
-                    <!-- Detalles especificos del producto -->
-                    <div class="section">
-                        <h6 class="title-attr" style="margin-top:15px;"><small>COLOR</small></h6>
+                    @*<div class="section">
+                        <h6 class="title-attr" style="margin-top:5px;"><small>COLOR</small></h6>
                         <div>
+
                             <div class="attr" style="width:25px;background:#5a5a5a;"></div>
                             <div class="attr" style="width:25px;background:white;"></div>
                         </div>
@@ -40,24 +41,24 @@
                     <div class="section" style="padding-bottom:5px;">
                         <h6 class="title-attr"><small>MEMORY</small></h6>
                         <div>
-                            <div class="attr2">256 GB</div>
+                            <div class="attr2">16 GB</div>
                             <div class="attr2">32 GB</div>
                         </div>
                     </div>
-                    <div class="section" style="padding-bottom:20px;">
-                        <h6 class="title-attr"><small>AVAILABLE STOCK @item.QtyAvailable</small></h6>
+                    <div class="section" style="padding-bottom:10px;">
+                        <h6 class="title-attr"><small>QUANTITY</small></h6>
                         <div>
                             <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
-                            <input value="1" />
+                            <input value="@item.QtyAvailable" />
                             <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
                         </div>
-                    </div>
+                    </div>*@
 
-                    <!-- Botones de compra -->
-                    @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Url.Encode(Request.Url.PathAndQuery) }, FormMethod.Post))
+                    @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
                     {
-                        <div class="section" style="padding-bottom:5px;">
-                            <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
+                        //@Html.Hidden(item.Id.ToString());
+                        <div class="section">
+                            <button class="btn btn-success"><span style="margin-right:0px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
                             <h6>
                                 <a href="#">
                                     <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
@@ -67,12 +68,10 @@
                         </div>
                     }
                 </div>
-
-
             </div>
-        }
 
-    </div>
+        }
+    </div>    
 </body>
 </html>
 

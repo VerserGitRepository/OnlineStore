@@ -3,8 +3,9 @@
 @using PagedList.Mvc;
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.11.1.min.js">
-</script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <!DOCTYPE html>
 <html>
 <body>
@@ -27,7 +28,7 @@
                     <h6 class="title-price"><small>PRICE</small></h6>
                     <h3 style="margin-top:0px;">AUD @item.PriceIncGST</h3>
 
-                    <div class="section">
+                    @*<div class="section">
                         <h6 class="title-attr" style="margin-top:15px;"><small>COLOR</small></h6>
                         <div>
                             <div class="attr" style="width:25px;background:#5a5a5a;"></div>
@@ -48,7 +49,7 @@
                             <input value="1" />
                             <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
                         </div>
-                    </div>
+                    </div>*@
                     @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
                     {
                         <div class="section" style="padding-bottom:5px;">
