@@ -99,21 +99,23 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult Checkout(Cart cart, ShippingDetailsViewModel shippingDetails)
         {
-            //if (cart.Lines.Count() == 0)
+            ////if (cart.Lines.Count() == 0)
+            ////{
+            ////    ModelState.AddModelError("", "Sorry, your cart is empty!");
+            ////}
+
+            //if (ModelState.IsValid)
             //{
-            //    ModelState.AddModelError("", "Sorry, your cart is empty!");
+            //   // OrderProcessor processor = new OrderProcessor(applicationDataContext, cart, shippingDetails);
+            ////    LogService.info("Order Has been Checked out for payment");
+            //  //  return Redirect(processor.ProcessOrder());
+            //}
+            //else
+            //{
+            //    return View(shippingDetails);
             //}
 
-            if (ModelState.IsValid)
-            {
-                OrderProcessor processor = new OrderProcessor(applicationDataContext, cart, shippingDetails);
-                LogService.info("Order Has been Checked out for payment");
-                return Redirect(processor.ProcessOrder());
-            }
-            else
-            {
-                return View(shippingDetails);
-            }
+            return View(shippingDetails);
         }
     }
 }

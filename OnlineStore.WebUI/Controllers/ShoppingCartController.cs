@@ -20,16 +20,15 @@ namespace OnlineStore.WebUI.Controllers
         }
 
         [HttpPost]
-        public ViewResult Checkout(ShippingDetailsViewModel _checkoutDataModel)
+        public ActionResult Checkout(ShippingDetailsViewModel _checkoutDataModel)
         {
-            paymentCheckoutPage();
+            paymentCheckoutPage(_checkoutDataModel);
             return View();
         }
-        public ActionResult paymentCheckoutPage()
+        public ActionResult paymentCheckoutPage(ShippingDetailsViewModel _checkoutDataModel)
         {
-
             LogService.info("Order Has been Checked out for payment");
-            string url = OrderProcessor.ProcessOnlineSaleOrder();
+            string url = OrderProcessor.ProcessOnlineSaleOrder(_checkoutDataModel);            
             return Redirect(url);
         }
 
@@ -115,24 +114,6 @@ namespace OnlineStore.WebUI.Controllers
             return View(model);
         }
 
-        //[HttpPost]
-        //public ActionResult ShoppingCartCheckout(Cart cart, ShippingDetailsViewModel shippingDetails)
-        //{
-        //    //if (cart.Lines.Count() == 0)
-        //    //{
-        //    //    ModelState.AddModelError("", "Sorry, your cart is empty!");
-        //    //}
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        OrderProcessor processor = new OrderProcessor(applicationDataContext, cart, shippingDetails);
-        //        LogService.info("Order Has been Checked out for payment");
-        //        return Redirect(processor.ProcessOrder());
-        //    }
-        //    else
-        //    {
-        //        return View(shippingDetails);
-        //    }
-        //}
+      
     }
 }

@@ -107,24 +107,55 @@
 <div class="container" style="margin-right:0px">
     @using (Html.BeginForm("Checkout", "ShoppingCart", FormMethod.Post))
     {
-        <div class="col-md-4">
-            <h4>Shipping Address</h4>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", placeholder = "John M. Doe" })
-            @Html.ValidationMessageFor(x => x.FirstName, "", new { @class = "text-danger" })
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "john@example.com" })
-            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+    <div class="col-md-4">
+        <h4>Shipping Address</h4>
+        <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", placeholder = "John M. Doe" })
+        @Html.ValidationMessageFor(x => x.FirstName, "", new { @class = "text-danger" })
+        <label for="email"><i class="fa fa-envelope"></i> Email</label>
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "john@example.com" })
+        @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+        @Html.TextBoxFor(x => x.Shipping_AddressLine1, new { @class = "form-control", placeholder = "542 W. 15th Street" })
+        @Html.ValidationMessageFor(x => x.Shipping_AddressLine1, "", new { @class = "text-danger" })
+        <label for="city"><i class="fa fa-institution"></i>Suburb</label>
+        @Html.TextBoxFor(x => x.Shipping_Suburb, new { @class = "form-control", placeholder = "Sydney" })
+        @Html.ValidationMessageFor(x => x.Shipping_Suburb, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-50">
+                <label for="state">State</label>
+                @Html.DropDownListFor(x => x.Shipping_State, new List<SelectListItem>
+               {
+                           new SelectListItem{ Text="NSW", Value = "NSW" },
+                           new SelectListItem{ Text="QLD", Value = "QLD" },
+                           new SelectListItem{ Text="SA", Value = "SA" },
+                           new SelectListItem{ Text="TAS", Value = "TAS" },
+                           new SelectListItem{ Text="VIC", Value = "VIC" },
+                           new SelectListItem{ Text="WA", Value = "WA" },
+                           new SelectListItem{ Text="ACT", Value = "ACT" },
+                           new SelectListItem{ Text="NT", Value = "NT" }
+               }, "Please select a state", new { @class = "form-control", style = "Height:40px" })
+                @Html.ValidationMessageFor(x => x.Shipping_State, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-50">
+                <label for="zip">PostCode</label>
+                @Html.TextBoxFor(x => x.Shipping_Postcode, new { @class = "form-control", placeholder = "2410" })
+                @Html.ValidationMessageFor(x => x.Shipping_Postcode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Different Billing Address? @Html.CheckBoxFor(x => x.IsBillingAddressDifferent, new { @onchange= "EnableBillingAdressDivModel(this);" })
+
+        <div id="EnableBillingAdressDivID" class="well" style="display:none;" >
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            @Html.TextBoxFor(x => x.AddressLine1, new { @class = "form-control", placeholder = "542 W. 15th Street" })
-            @Html.ValidationMessageFor(x => x.AddressLine1, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(x => x.Billing_AddressLine1, new { @class = "form-control", placeholder = "542 W. 15th Street" })
+            @Html.ValidationMessageFor(x => x.Billing_AddressLine1, "", new { @class = "text-danger" })
             <label for="city"><i class="fa fa-institution"></i>Suburb</label>
-            @Html.TextBoxFor(x => x.Suburb, new { @class = "form-control", placeholder = "Sydney" })
-            @Html.ValidationMessageFor(x => x.Suburb, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(x => x.Billing_Suburb, new { @class = "form-control", placeholder = "Sydney" })
+            @Html.ValidationMessageFor(x => x.Billing_Suburb, "", new { @class = "text-danger" })
             <div class="row">
                 <div class="col-50">
                     <label for="state">State</label>
-                    @Html.DropDownListFor(x => x.State, new List<SelectListItem>
+                    @Html.DropDownListFor(x => x.Billing_State, new List<SelectListItem>
                    {
                                new SelectListItem{ Text="NSW", Value = "NSW" },
                                new SelectListItem{ Text="QLD", Value = "QLD" },
@@ -135,29 +166,30 @@
                                new SelectListItem{ Text="ACT", Value = "ACT" },
                                new SelectListItem{ Text="NT", Value = "NT" }
                    }, "Please select a state", new { @class = "form-control", style = "Height:40px" })
-                    @Html.ValidationMessageFor(x => x.State, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(x => x.Shipping_State, "", new { @class = "text-danger" })
                 </div>
                 <div class="col-50">
                     <label for="zip">PostCode</label>
-                    @Html.TextBoxFor(x => x.Postcode, new { @class = "form-control", placeholder = "2410" })
-                    @Html.ValidationMessageFor(x => x.Postcode, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.Billing_Postcode, new { @class = "form-control", placeholder = "2410" })
+                    @Html.ValidationMessageFor(x => x.Billing_Postcode, "", new { @class = "text-danger" })
                 </div>
             </div>
+
         </div>
-        <div class="col-md-4">
+    </div>
+
+       
+        @*<div class="col-md-4">
             <h4>Payment</h4>         
             <div class="icon-container">
                 <i class="fa fa-cc-visa" style="color:navy;"></i>
                 <i class="fa fa-cc-amex" style="color:blue;"></i>
-                <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                <i class="fa fa-cc-discover" style="color:orange;"></i>
-                <i class="fa fa-cc-paypal" style="color:Highlight;"></i>
-
+                <i class="fa fa-cc-mastercard" style="color:red;"></i>               
             </div>
             <label for="cname">Name on Card</label>
             @Html.TextBoxFor(x => x.nameOnCard, new { @class = "form-control", placeholder = "John More Doe" })
             @Html.ValidationMessageFor(x => x.nameOnCard, "", new { @class = "text-danger" })
-            <label for="ccnum">Credit card number</label>
+            <label for="ccnum">Credit Card Number</label>
             @Html.TextBoxFor(x => x.CardNumber, new { @class = "form-control", placeholder = "1111-2222-3333-4444" })
             @Html.ValidationMessageFor(x => x.CardNumber, "", new { @class = "text-danger" })
             <label for="expmonth">Exp Month</label>
@@ -175,7 +207,7 @@
                     @Html.ValidationMessageFor(x => x.cvv, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>
+        </div>*@
         <div class="col-md-4" style="margin-right:0px">
             <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b></b></span></h4>
             <table id="cartTable" class="table">
@@ -210,3 +242,16 @@
         <input type="submit" value="Continue to checkout" class="btn1">
     }
 </div>
+<script>
+
+    function EnableBillingAdressDivModel(control)
+    {
+        if (($(control)[0]).checked) {
+            $("#EnableBillingAdressDivID").show(1000);
+
+        }
+        else {
+            $("#EnableBillingAdressDivID").hide(1000);
+        }
+    }
+</script>

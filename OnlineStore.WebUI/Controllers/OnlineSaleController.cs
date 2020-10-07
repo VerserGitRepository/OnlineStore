@@ -28,8 +28,7 @@ namespace OnlineStore.WebUI.Controllers
         }
 
         public ActionResult Mobile( int Page_No=1)
-        {
-           
+        {           
             var size = SaleProducts.Where(m => m.ItemType_ID == 15);
             int Size_Of_Page = 10;
             int No_Of_Page = Page_No;
@@ -109,9 +108,7 @@ namespace OnlineStore.WebUI.Controllers
             var size = SaleProducts.Where(m => m.ProductName.ToLower().Contains(product.ToLower()));
             int Size_Of_Page = 10;
             int No_Of_Page = Page_No;
-
             return View(size.ToPagedList(No_Of_Page, Size_Of_Page));
-
         }
         public ActionResult ProductDetail()
         {

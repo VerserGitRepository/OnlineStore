@@ -17,23 +17,23 @@ namespace OnlineStore.WebUI.Infrastructure
         private Cart cart;
         private Order order;
 
-        public OrderProcessor(ApplicationData.ApplicationData context, Cart cart, ShippingDetailsViewModel shippingDetails)
-        {
-            this.context = context;
-            this.cart = cart;
-            this.order = new Order
-            {
-                OrderDate = DateTime.Now,
-                Email = shippingDetails.Email,
-                Sale = context.Sales.Where(x => x.Id == cart.SaleId).First(),
-                ShipTo = shippingDetails.FirstName + " " + shippingDetails.LastName,
-                ShippingAddressLine1 = shippingDetails.AddressLine1,
-                ShippingAddressLine2 = shippingDetails.AddressLine2,
-                Suburb = shippingDetails.Suburb,
-                State = shippingDetails.State,
-                Postcode = shippingDetails.Postcode
-            };
-        }
+        //public OrderProcessor(ApplicationData.ApplicationData context, Cart cart, ShippingDetailsViewModel shippingDetails)
+        //{
+        //    this.context = context;
+        //    this.cart = cart;
+        //    this.order = new Order
+        //    {
+        //        OrderDate = DateTime.Now,
+        //        Email = shippingDetails.Email,
+        //        Sale = context.Sales.Where(x => x.Id == cart.SaleId).First(),
+        //        ShipTo = shippingDetails.FirstName + " " + shippingDetails.LastName,
+        //        ShippingAddressLine1 = shippingDetails.AddressLine1,
+        //        ShippingAddressLine2 = shippingDetails.AddressLine2,
+        //        Suburb = shippingDetails.Suburb,
+        //        State = shippingDetails.State,
+        //        Postcode = shippingDetails.Postcode
+        //    };
+        //}
 
         public string ProcessOrder()
         {
@@ -137,15 +137,15 @@ namespace OnlineStore.WebUI.Infrastructure
             tokenRequest.Append("&merchant_id=");
             tokenRequest.Append(WebConfigurationManager.AppSettings["merchantId"]);
             tokenRequest.Append("&payment_reference=");
-        //    tokenRequest.Append(order.OrderNo);
+     //  tokenRequest.Append(order.OrderNo);
             tokenRequest.Append("&payment_reference_change=false");
             tokenRequest.Append("&surcharge_rates=");
             tokenRequest.Append(HttpUtility.UrlEncode("VI/MC=1.0,AX=1.0,DC=1.0"));
             tokenRequest.Append("&receipt_address=");
-          //  tokenRequest.Append(HttpUtility.UrlEncode(this.order.Email));
+           // tokenRequest.Append(HttpUtility.UrlEncode(this.order.Email));
 
-         
-            //    foreach (var l in this.cart.Lines)
+
+            //foreach (var l in this.cart.Lines)
             //{
             //    tokenRequest.Append("&");
             //    tokenRequest.Append(HttpUtility.UrlEncode(l.SaleProduct.Product.ProductName));
@@ -156,14 +156,49 @@ namespace OnlineStore.WebUI.Infrastructure
             return tokenRequest.ToString();
         }
 
-        public static string ProcessOnlineSaleOrder()
+        private static string BuildTokenRequestForOnlineSaleOrder(ShippingDetailsViewModel _checkoutDataModel)
+        {
+            StringBuilder tokenRequest = new StringBuilder();
+            tokenRequest.Append("username=");
+            tokenRequest.Append(WebConfigurationManager.AppSettings["payway_username"]);
+            tokenRequest.Append("&password=");
+            tokenRequest.Append(WebConfigurationManager.AppSettings["payway_password"]);
+            tokenRequest.Append("&biller_code=");
+            tokenRequest.Append(WebConfigurationManager.AppSettings["billerCode"]);
+            tokenRequest.Append("&merchant_id=");
+            tokenRequest.Append(WebConfigurationManager.AppSettings["merchantId"]);
+            tokenRequest.Append("&payment_reference=");
+             tokenRequest.Append("ORD001");
+            tokenRequest.Append("&payment_reference_change=false");
+            tokenRequest.Append("&surcharge_rates=");
+            tokenRequest.Append(HttpUtility.UrlEncode("VI/MC=1.0,AX=1.0,DC=1.0"));
+            tokenRequest.Append("&receipt_address=");
+            tokenRequest.Append(HttpUtility.UrlEncode(_checkoutDataModel.Email));
+
+
+            ShoppingCart item = (ShoppingCart)HttpContext.Current.Session["Productcart"];
+            if (item != null)
+            {
+                foreach (var l in item.Lines)
+                {
+                    tokenRequest.Append("&");
+                    tokenRequest.Append(HttpUtility.UrlEncode(l.SaleProduct.ProductName));
+                    tokenRequest.Append("=");
+                    tokenRequest.Append(HttpUtility.UrlEncode(string.Format("{0},{1}", 1, l.SaleProduct.PriceIncGST)));
+                }
+            }
+            LogService.info("Payment URL" + tokenRequest.ToString());
+            return tokenRequest.ToString();
+        }
+
+        public static string ProcessOnlineSaleOrder(ShippingDetailsViewModel _checkoutDataModel)
         {
             string handOffUrl = string.Empty;
             try
             {
             
           
-             string tokenRequest = BuildTokenRequest();
+             string tokenRequest = BuildTokenRequestForOnlineSaleOrder(_checkoutDataModel);
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(
                     WebConfigurationManager.AppSettings["payWayBaseUrl"] + "RequestToken");

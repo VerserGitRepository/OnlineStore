@@ -12,11 +12,12 @@ namespace OnlineStore.WebUI.Models
         public ShippingDetailsViewModel()
         {
             PurchasedSaleProducts = new List<OnlineSaleProduct>();
-            this.States = new List<string> { "ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA" };
-            if (PurchasedSaleProducts.ToList().Count > 0)
-            {
-                paymentAmount= PurchasedSaleProducts.Sum(e => e.PriceIncGST * PurchasedSaleProducts.ToList().Count); 
-            }           
+            this.Billing_States = new List<string> { "ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA" };
+            this.Shipping_States = new List<string> { "ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA" };
+            //if (PurchasedSaleProducts.ToList().Count > 0)
+            //{
+            //    paymentAmount= PurchasedSaleProducts.Sum(e => e.PriceIncGST * PurchasedSaleProducts.ToList().Count); 
+            //}           
         }
         [Required(ErrorMessage = "Please enter your first name")]
         [Display(Name = "First Name")]
@@ -34,34 +35,49 @@ namespace OnlineStore.WebUI.Models
         [System.ComponentModel.DataAnnotations.Compare("Email", ErrorMessage = "Email addresses do not match")]
         [Display(Name = "Confirm Email")]
         public string ConfirmEmail { get; set; }
+
+        public bool IsBillingAddressDifferent { get; set; }
+        //Shipping Address
         [Required(ErrorMessage = "Please enter an address")]
         [Display(Name = "Address Line 1")]
-        public string AddressLine1 { get; set; }
+        public string Shipping_AddressLine1 { get; set; }
         [Display(Name = "Address Line 2")]
-        public string AddressLine2 { get; set; }
+        public string Shipping_AddressLine2 { get; set; }
         [Required(ErrorMessage = "Please enter a suburb")]
-        public string Suburb { get; set; }
+        public string Shipping_Suburb { get; set; }
         [Required(ErrorMessage = "Please select a state")]
-        public string State { get; set; }
-        public List<string> States { get; set; }
+        public string Shipping_State { get; set; }
+        public List<string> Shipping_States { get; set; }
         [Required(ErrorMessage = "Please enter a postcode")]
-        public string Postcode { get; set; }
-        public int PaymentID { get; set; }
+        public string Shipping_Postcode { get; set; }
+
+        //Billing Address
        
-        public string cardType { get; set; }
-        [Required(ErrorMessage = "Please enter a Name On Card")]
-        public string nameOnCard { get; set; }
-        [Required(ErrorMessage = "Please enter a CardNumber")]
-        public string CardNumber { get; set; }
-        [Required(ErrorMessage = "Please enter a Expire Month")]
-        public string expmonth { get; set; }
-        [Required(ErrorMessage = "Please enter a Expire year")]
-        public int expyear { get; set; }
-        [Required(ErrorMessage = "Please enter a cvv")]
-        public int cvv { get; set; }
-        public int payment_Order { get; set; }
-        public bool PaymentStatus { get; set; }
-        public List<OnlineSaleProduct> PurchasedSaleProducts { get; set; }
+        public string Billing_AddressLine1 { get; set; }      
+        public string Billing_AddressLine2 { get; set; }        
+        public string Billing_Suburb { get; set; }       
+        public string Billing_State { get; set; }
+        public List<string> Billing_States { get; set; }      
+        public string Billing_Postcode { get; set; }
         public decimal paymentAmount { get; set; }
+
+        //public int PaymentID { get; set; }
+        //public string cardType { get; set; }
+        //[Required(ErrorMessage = "Please enter a Name On Card")]
+        //public string nameOnCard { get; set; }
+        //[Required(ErrorMessage = "Please enter a CardNumber")]
+        //public string CardNumber { get; set; }
+        //[Required(ErrorMessage = "Please enter a Expire Month")]
+        //public string expmonth { get; set; }
+        //[Required(ErrorMessage = "Please enter a Expire year")]
+        //public int expyear { get; set; }
+        //[Required(ErrorMessage = "Please enter a cvv")]
+        //public int cvv { get; set; }
+        //public int payment_Order { get; set; }
+        //public bool PaymentStatus { get; set; }
+
+
+        public List<OnlineSaleProduct> PurchasedSaleProducts { get; set; }
+       
     }
 }

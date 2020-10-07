@@ -149,12 +149,14 @@
     <Content Include="Content\Site.css" />
     <Content Include="EmailTemplates\OrderDetail.html" />
     <Content Include="Global.asax" />
+    <Content Include="Images\amex.gif" />
     <Content Include="Images\apple.jpeg" />
     <Content Include="Images\cart.png" />
     <Content Include="Images\Dell-xps-13.jpg" />
     <Content Include="Images\dell.png" />
     <Content Include="Images\DellMonitor.jpg" />
     <Content Include="Images\Desktop.jpg" />
+    <Content Include="Images\diners.gif" />
     <Content Include="Images\Galaxy S10plus.jpg" />
     <Content Include="Images\galaxys9.jpg" />
     <Content Include="Images\hp.png" />
@@ -162,6 +164,7 @@
     <Content Include="Images\ipad2.jpg" />
     <Content Include="Images\iphone-xs-silver.jpg" />
     <Content Include="Images\iPhone11ProMax.jpg" />
+    <Content Include="Images\jcb.gif" />
     <Content Include="Images\laptop.jfif" />
     <Content Include="Images\laptop2.jfif" />
     <Content Include="Images\logolenovo.jpg" />
@@ -170,12 +173,14 @@
     <Content Include="Images\mac3.jpg" />
     <Content Include="Images\mac4.jpg" />
     <Content Include="Images\macbookpro5.jpg" />
+    <Content Include="Images\mastercard.gif" />
     <Content Include="Images\microsoftlogo.jpg" />
     <Content Include="Images\Payment Options.PNG" />
     <Content Include="Images\samsung.png" />
     <Content Include="Images\sufacepro1.jpg" />
     <Content Include="Images\SurfacePro2.jpg" />
     <Content Include="Images\VerserLogo.png" />
+    <Content Include="Images\visa.gif" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
