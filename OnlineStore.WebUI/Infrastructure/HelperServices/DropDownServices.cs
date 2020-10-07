@@ -57,6 +57,21 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             return returnmodel;
         }
 
+        public static async Task<List<ListItems>> ColoursList()
+        {
+            List<ListItems> returnmodel = new List<ListItems>();
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(CostModelAPIURL);
+                HttpResponseMessage response = client.GetAsync(string.Format("inventorycontrol/colours/listitems")).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnmodel = await response.Content.ReadAsAsync<List<ListItems>>();
+                }
+            }
+            return returnmodel;
+        }
+
         public static async Task<List<ListItems>> models(int makeId, int itemTypeId)
         {
             List<ListItems> returnmodel = new List<ListItems>();
