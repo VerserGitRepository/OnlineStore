@@ -14,10 +14,10 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <div>
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    <div class="offset-sm-8">
+
         @Html.PagedListPager(Model, Page_No => Url.Action("ShowProducts", "OnlineSale",
-            new { Page_No}))
+            new { Page_No }))
     </div>
     <div class="container">
         @foreach (var item in Model)
