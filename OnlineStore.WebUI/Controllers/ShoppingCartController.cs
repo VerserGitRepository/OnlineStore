@@ -2,7 +2,10 @@
 using OnlineStore.WebUI.Infrastructure.HelperServices;
 using OnlineStore.WebUI.Models;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -71,9 +74,11 @@ namespace OnlineStore.WebUI.Controllers
             }
             else
             {
-                int Page_No = returnUrl.IndexOf('?') > 0 ? Convert.ToInt32(returnUrl.Split('/')[3].Split('?')[2].Replace("Page_No=","").Trim()) : 1;
-                return RedirectToAction(returnUrl.IndexOf('?') > 0 ? returnUrl.Split('/')[3].Split('?')[0]: returnUrl.Split('/')[3], returnUrl.Split('/')[1],new { Page_No});
+                int Page_No = returnUrl.IndexOf('?') > 0 ? Convert.ToInt32(returnUrl.Split('/')[3].Split('?')[1].Replace("Page_No=","").Trim()) : 1;
+                return RedirectToAction(returnUrl.IndexOf('?') > 0 ? returnUrl.Split('/')[3].Split('?')[0]: returnUrl.Split('/')[3], returnUrl.Split('/')[2],new { Page_No});
             }
+            
+            
         }
 
         public RedirectToRouteResult RemoveFromShoppingCart( int id,
