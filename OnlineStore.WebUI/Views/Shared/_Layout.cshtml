@@ -12,6 +12,10 @@
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
 
@@ -110,11 +114,11 @@
     </div>
 
     @RenderSection("scripts", required: false)
-    <div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:white;font-size:small">
+    <div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:white;font-size:smaller">
         The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
         <img src="~/Images/Payment Options.PNG" />
         @*<a href="#myModal" class="btn">Terms and Conditions</a>*@
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
             Terms & Conditions
         </button>
     </div>

@@ -8,8 +8,8 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <div>
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    <div class="offset-sm-8">
+        @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
         @Html.PagedListPager(Model, Page_No => Url.Action("IPad", "OnlineSale",
             new { Page_No }))
     </div>

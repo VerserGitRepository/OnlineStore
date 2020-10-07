@@ -22,25 +22,19 @@ namespace OnlineStore.WebUI.Controllers
             paymentCheckoutPage();
             return View();
         }
-
-
         public ActionResult paymentCheckoutPage()
         {
 
             LogService.info("Order Has been Checked out for payment");
             string url = OrderProcessor.ProcessOnlineSaleOrder();
             return Redirect(url);
-
-
         }
 
         public PartialViewResult Summary(ShoppingCart cart)
         {
             ShoppingCart item = (ShoppingCart)Session["Productcart"];
             return PartialView(item);
-        }
-
-  
+        }  
         public ActionResult Index(string returnUrl)
         {
             ShoppingCart item = (ShoppingCart)Session["Productcart"];
@@ -53,10 +47,8 @@ namespace OnlineStore.WebUI.Controllers
             {
                 ReturnUrl = returnUrl,
                 Cart = item
-            });
-            
+            });            
         }
-
         public RedirectToRouteResult AddToShoppingCart(int id, string returnUrl)
         {
 
@@ -94,7 +86,6 @@ namespace OnlineStore.WebUI.Controllers
             {
                 sc.RemoveLine(saleProduct.SaleProduct);
             }
-
             return RedirectToAction("Index", new { returnUrl });
         }
 
@@ -116,7 +107,6 @@ namespace OnlineStore.WebUI.Controllers
                     model.Email = assetAllocation.EmployeeEmail;
                 }
             }
-
             return View(model);
         }
 
