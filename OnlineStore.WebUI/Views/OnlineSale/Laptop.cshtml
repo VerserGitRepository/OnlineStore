@@ -1,15 +1,10 @@
 ﻿@using System.Linq;
 @model PagedList.IPagedList<OnlineStore.WebUI.Models.OnlineSaleProduct>
 @using PagedList.Mvc;
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 <!DOCTYPE html>
 <html>
 <body>
-    <div>
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    <div class="offset-sm-8">      
         @Html.PagedListPager(Model, Page_No => Url.Action("Laptop", "OnlineSale",
             new { Page_No }))
     </div>
