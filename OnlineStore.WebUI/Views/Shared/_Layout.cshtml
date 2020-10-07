@@ -83,12 +83,11 @@
 
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:35px;margin:35px">
-        <div class="modal-dialog" @*style="padding:15px;margin:15px"*@>
+        <div class="modal-dialog">
 
-            <div class="modal-content" style="padding:35px;margin:35px">
-                Quote Terms & Conditions IMPORTANT - When placing orders please include full End User information - Company Name,
-                Street Address, Phone Number, Contact Name and Email Address.<br>
-                PLEASE NOTE: The goods and services as set out in this quotation are accepted as per Ingram Micro's Pty Limited’s
+            <div class="modal-content" style="padding:35px;margin:35px;font-size:small">
+                <P>IMPORTANT ONLINESALE TERMS & CONDITIONS</P>
+                PLEASE NOTE: The goods and services as shipped out accepted as per  Verser Technology Lifecycles
                 (Verser) Customer Terms of Sale. Please refer to Verser Australia website for full details.<br>
                 Unless otherwise stated, all prices quoted are in Australian Dollar Currency(AUD) and are exclusive of GST, freight, and
                 configuration charges.<br>
@@ -97,15 +96,13 @@
                 xThe pricing specified above is not combinable with any other offer.<br>
                 Bundle pricing is subject to change in the event amendments are made to the quantity and/or bundle components
                 ordered.Please contact your account manager should you require changes to the bundle lines.<br>
-                This quotation is valid only to the company whose name appears above.<br>
-                This quote has been prepared for one end user only. If this quotation is for more than one end user, please request separate
-                quotations for each end user.<br>
-                The Ingram Micro reference number and all part numbers product descriptions and pricing specified in this quote must be
+                This sale is valid only to the customer whose name appears above.<br>
+                This sale has been prepared shipped upon producted purchased.<br>
+                The Verser Technology Lifecycles Order reference number and  product descriptions and pricing specified in the order invoice must be
                 included in your order.<br>
                 All trademarks, brand names, and product names are the property of their respective owners.<br>
-                The items quoted above are correct at time of publishing and issuing the quotation. All errors and omissions are excluded and
-                no other discounts apply.Ingram Micro is not responsible for compensating the customer should the item(s) listed in this quote
-                be withdrawn by the Vendor.<br>
+                The sale product posted above are correct at time of publishing and issuing the purchasing. All errors and omissions are excluded and
+                no other discounts apply.<br>
             </div>
         </div>
     </div>
@@ -117,7 +114,7 @@
     <div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:white;font-size:smaller">
         The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
         <img src="~/Images/Payment Options.PNG" />
-        @*<a href="#myModal" class="btn">Terms and Conditions</a>*@
+    
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
             Terms & Conditions
         </button>
