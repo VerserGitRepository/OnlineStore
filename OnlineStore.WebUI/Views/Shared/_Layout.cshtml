@@ -77,8 +77,11 @@
                 <div class="navbar-right" style="vertical-align:bottom;margin-right:10px">
                     @Html.Action("Summary", "ShoppingCart")
                 </div>
-                <input type="hidden" id="productinfo" value='@Session["productinformation"].ToString()' />
-                </div>
+                @if (@Session["productinformation"] != null)
+                {
+                    <input type="hidden" id="productinfo" value='@Session["productinformation"].ToString()' />
+                }
+            </div>
         </nav>
 
 
