@@ -13,7 +13,7 @@ namespace OnlineStore.WebUI.Controllers
     public class OrdersListController : Controller
     {
         // GET: OrdersList
-        [OutputCache(CacheProfile = "Cache5Min")]
+        //[OutputCache(CacheProfile = "Cache5Min")]
         public ActionResult Index()
         {
             if (Session["Username"] != null)

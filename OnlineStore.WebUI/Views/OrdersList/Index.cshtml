@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>jQuery UI Tabs - Default functionality</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
@@ -20,11 +19,12 @@
 <body>
     <div id="tabs">
         <ul>
-            <li><a href="#tabs-1">ORDERS</a></li>
-            <li><a href="#tabs-2">MANUAL ORDER</a></li>
-            <li><a href="#tabs-3">PRODUCTS LIST</a></li>
-            <li><a href="#tabs-4">SHIPMENTS</a></li>
-            <li><a href="#tabs-5">MANAGE</a></li>
+            <li><a href="#tabs-1">ONLINE-STORE ORDERS</a></li>
+            <li><a href="#tabs-2">THIRD-PARTY ORDERS</a></li>
+            <li><a href="#tabs-3">CREATE MANUAL ORDER</a></li>
+            <li><a href="#tabs-4">PRODUCTS LIST</a></li>
+            <li><a href="#tabs-5">SHIPPED ORDERS</a></li>
+            <li><a href="#tabs-6">MANAGE</a></li>
         </ul>
         <div id="tabs-1">
             <table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
@@ -72,9 +72,54 @@
             </table>
         </div>
         <div id="tabs-2">
+            <table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
+                <thead style="background-color:#959ca1;color:white">
+                    <tr>
+                        <th>Orderno</th>
+                        <th>SKU</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Suburb</th>
+                        <th>Postcode</th>
+                        <th>Address</th>
+                        <th>State</th>
+                        <th>ContactNo</th>
+                        <th>Email</th>
+                        <th>JobNo</th>
+                        <th>Status</th>
+                        <th>SSN</th>
+                        <th>OrderRef</th>
+                        <th>AmazonOder</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OnlineSaleOrdersList)
+                    {
+                        <tr>
+                            <td>@item.Orderno</td>
+                            <td></td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.Suburb</td>
+                            <td>@item.Postcode</td>
+                            <td>@item.AddressLine1 </td>
+                            <td>@item.State</td>
+                            <td>@item.ContactNumber</td>
+                            <td>@item.Email</td>
+                            <td>@item.JobNo</td>
+                            <td>@item.OrderStatus</td>
+                            <td>@item.SSN</td>
+                            <td>@item.OrderRef</td>
+                            <td>@item.AmazonOrderNo</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div id="tabs-3" class="table-bordered">
             @using (Html.BeginForm("ProcessManualOrder", "OrdersList", FormMethod.Post))
             {
-                <div class="col-md-5 table-bordered" style="margin:2px;padding-bottom:15px;">
+                <div class="col-md-5">
                     <div class="col-md-6">
                         <label class="control-label">Surname</label>
                         @Html.EditorFor(model => model.ManualOrdersViewModel.Salutation, "", new { })
@@ -191,7 +236,7 @@
                 </div>
             }
         </div>
-        <div id="tabs-3">
+        <div id="tabs-4">
             <div class="row pull-right">
                 <div class="col-md-1">
                     <div class="col-md-1">
@@ -225,9 +270,9 @@
                             <td>
 
                                 @*@if (item.ProductImage.Length > 0)
-                                    {
-                                        <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" alt="@item.ProductName" width="200" height="150"/>
-                                    }*@
+                                {
+                                    <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" alt="@item.ProductName" width="200" height="150"/>
+                                }*@
 
                                 @if (item.Images.Count > 0)
                                 {
@@ -248,7 +293,10 @@
                 </tbody>
             </table>
         </div>
-        <div id="tabs-4">
+        <div id="tabs-5">
+            MANAGEDISPATCHORDER
+        </div>
+        <div id="tabs-6">
             MANAGEDISPATCHORDER
         </div>
     </div>
