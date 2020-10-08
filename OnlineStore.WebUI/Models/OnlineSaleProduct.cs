@@ -20,6 +20,7 @@ namespace OnlineStore.WebUI.Models
         public int? ItemType_ID { get; set; }
         public int? Brand_ID { get; set; }
         public int? Model_ID { get; set; }
+        public int PurchasedQty { get; set; }
         public decimal PriceExGST { get; set; }
         public decimal GSTAmount { get; set; }
         public decimal PriceIncGST { get; set; }
@@ -34,8 +35,7 @@ namespace OnlineStore.WebUI.Models
         public SelectList Sizes { get; set; }
         public string SKU { get; set; }
         public SelectList Models { get; set; }
-        public List<string> Images { get; set; }
-        public int PurchasedQty { get; set; }
+        public List<string> Images { get; set; }      
         public HttpPostedFileBase[] files { get; set; }
     }
 }

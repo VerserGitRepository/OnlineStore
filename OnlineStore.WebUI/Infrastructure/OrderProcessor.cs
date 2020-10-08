@@ -143,8 +143,6 @@ namespace OnlineStore.WebUI.Infrastructure
             tokenRequest.Append(HttpUtility.UrlEncode("VI/MC=1.0,AX=1.0,DC=1.0"));
             tokenRequest.Append("&receipt_address=");
            // tokenRequest.Append(HttpUtility.UrlEncode(this.order.Email));
-
-
             //foreach (var l in this.cart.Lines)
             //{
             //    tokenRequest.Append("&");
@@ -175,7 +173,6 @@ namespace OnlineStore.WebUI.Infrastructure
             tokenRequest.Append("&receipt_address=");
             tokenRequest.Append(HttpUtility.UrlEncode(_checkoutDataModel.Email));
 
-
             ShoppingCart item = (ShoppingCart)HttpContext.Current.Session["Productcart"];
             if (item != null)
             {
@@ -197,9 +194,7 @@ namespace OnlineStore.WebUI.Infrastructure
             try
             {
             
-          
-             string tokenRequest = BuildTokenRequestForOnlineSaleOrder(_checkoutDataModel);
-
+            string tokenRequest = BuildTokenRequestForOnlineSaleOrder(_checkoutDataModel);
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(
                     WebConfigurationManager.AppSettings["payWayBaseUrl"] + "RequestToken");
             request.KeepAlive = false;
@@ -214,7 +209,6 @@ namespace OnlineStore.WebUI.Infrastructure
             requestStream.Write(requestBody, 0, requestBody.Length);
             requestStream.Close();
             requestStream = null;
-
             WebResponse response = request.GetResponse();
 
             Stream responseStream = response.GetResponseStream();
@@ -238,7 +232,6 @@ namespace OnlineStore.WebUI.Infrastructure
                     throw new Exception(paramNameValue[1]);
                 }
             }
-
             handOffUrl = WebConfigurationManager.AppSettings["payWayBaseUrl"] + "MakePayment";
             handOffUrl += "?biller_code=" + HttpUtility.UrlEncode(WebConfigurationManager.AppSettings["billerCode"]) +
              "&token=" + HttpUtility.UrlEncode(token);

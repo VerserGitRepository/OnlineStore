@@ -12,6 +12,7 @@ namespace OnlineStore.WebUI.Controllers
         public ActionResult FAQ()
         {
             return View();
+            //    return Redirect("https://www.payway.com.au/OnlinePaymentServlet2?ActionContextId=FjgYvYtDhVV8AejclwJmMw&communityCode=PAYWAY&page=enterAccountDetails"); //124.170.239.130 home IP
         }
 
         public ActionResult Terms()

@@ -35,7 +35,6 @@ namespace OnlineStore.WebUI.Models
         [System.ComponentModel.DataAnnotations.Compare("Email", ErrorMessage = "Email addresses do not match")]
         [Display(Name = "Confirm Email")]
         public string ConfirmEmail { get; set; }
-
         public bool IsBillingAddressDifferent { get; set; }
         //Shipping Address
         [Required(ErrorMessage = "Please enter an address")]
@@ -50,9 +49,7 @@ namespace OnlineStore.WebUI.Models
         public List<string> Shipping_States { get; set; }
         [Required(ErrorMessage = "Please enter a postcode")]
         public string Shipping_Postcode { get; set; }
-
-        //Billing Address
-       
+        //Billing Address       
         public string Billing_AddressLine1 { get; set; }      
         public string Billing_AddressLine2 { get; set; }        
         public string Billing_Suburb { get; set; }       
@@ -60,8 +57,7 @@ namespace OnlineStore.WebUI.Models
         public List<string> Billing_States { get; set; }      
         public string Billing_Postcode { get; set; }
         public decimal paymentAmount { get; set; }
-
-        //public int PaymentID { get; set; }
+        //public string PaymentID { get; set; }
         //public string cardType { get; set; }
         //[Required(ErrorMessage = "Please enter a Name On Card")]
         //public string nameOnCard { get; set; }
@@ -75,8 +71,6 @@ namespace OnlineStore.WebUI.Models
         //public int cvv { get; set; }
         //public int payment_Order { get; set; }
         //public bool PaymentStatus { get; set; }
-
-
         public List<OnlineSaleProduct> PurchasedSaleProducts { get; set; }
        
     }
