@@ -18,15 +18,16 @@ namespace OnlineStore.WebUI.Controllers
             var MainpageproductView = new MainPageProductsViewModel();            
             SaleProducts = OrdersServices.OnlineSaleProductsList().Result;
             MainpageproductView.OnlineSaleProductModel = MainPageProductService.MainPageProductsList().Result;
-
-            //var OnlinesaleproductModelFeed =  // new List<OnlineSaleProduct>();          
-            // OnlinesaleproductModelFeed.Where(p => p.ItemType_ID == 15).OrderByDescending(m=>m.Id).Take(4).ToList();
-            //   MainpageproductView.MainPageLaptopProduct = OnlinesaleproductModelFeed.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.Id).Take(4).ToList();
-      
-
+            var prods = SaleProducts.Select(m => m.ProductName).ToArray<string>();
+            string prodinfo = "";
+            foreach (string s in prods)
+            {
+                prodinfo += s + ",";
+            }
+            
+            Session["productinformation"] = prodinfo;
             return View(MainpageproductView);
         }
-
         public ActionResult Mobile( int Page_No=1)
         {           
             var size = SaleProducts.Where(m => m.ItemType_ID == 15);
