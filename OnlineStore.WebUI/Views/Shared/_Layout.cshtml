@@ -190,15 +190,6 @@ $('a[href$="#Modal"]').on( "click", function() {
     }
 
     $(function () {
-        var availableTags = [
-            "ipad",
-            "apple",
-            "lenovo",
-            "samsung",
-            "iphone",
-            "dell",
-            "acer"
-        ];
         var names = $("#productinfo").val().split(',');
         $("#txtSearchProduct").autocomplete({
             source: names
