@@ -2,12 +2,7 @@
 using OnlineStore.WebUI.Infrastructure.HelperServices;
 using OnlineStore.WebUI.Models;
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace OnlineStore.WebUI.Controllers
@@ -22,8 +17,32 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult Checkout(ShippingDetailsViewModel _checkoutDataModel)
         {
-            paymentCheckoutPage(_checkoutDataModel);
-            return View();
+            var sc = (ShoppingCart)Session["Productcart"];
+            if (sc.Lines.Count() > 0)
+            {
+                foreach (var soldproducts in sc.Lines)
+                {
+                    _checkoutDataModel.PurchasedSaleProducts.Add(new OnlineSaleProduct {
+                        ProductName= soldproducts.SaleProduct.ProductName,
+                        Id = soldproducts.SaleProduct.Id,
+                        PriceIncGST = soldproducts.SaleProduct.PriceIncGST,
+                        PriceExGST = soldproducts.SaleProduct.PriceExGST,
+                        GSTAmount = soldproducts.SaleProduct.GSTAmount,
+                        PurchasedQty = soldproducts.SaleProduct.PurchasedQty
+                    });
+                }
+            }
+            LogService.info("Order Has been Checked out for payment");
+            var returnflag =  OrdersServices.OnlineStoreCheckoutOrder(_checkoutDataModel).Result;
+            if (returnflag)
+            {
+                string url = OrderProcessor.ProcessOnlineSaleOrder(_checkoutDataModel);
+                if (url !=null)
+                {
+                    return Redirect(url);
+                }
+            }
+            return RedirectToAction("Index", "ShoppingCart");
         }
         public ActionResult paymentCheckoutPage(ShippingDetailsViewModel _checkoutDataModel)
         {
