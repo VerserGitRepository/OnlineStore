@@ -41,71 +41,44 @@
             </div>
         </div>
     </div>
-    @*<nav>
-        <div class="logo">
-            <img src="logo.svg" alt="Logo Image">
-        </div>
-        <div class="hamburger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Solutions</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><button class="login-button" href="#">Login</button></li>
-            <li><button class="join-button" href="#">Join</button></li>
-        </ul>
-    </nav>*@
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:orange;height:15px;">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarTogglerDemo03">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="nav navbar-nav" style="padding-top:7px; font-size:12px">
-                <li>@Html.ActionLink("ONLINESTORE", "Index", "OnlineSale")</li>
-                <li>@Html.ActionLink("MOBILE", "Mobile", "OnlineSale")</li>
-                <li>@Html.ActionLink("LAPTOPS", "Laptop", "OnlineSale")</li>
-                <li>@Html.ActionLink("MONITOR", "Monitor", "OnlineSale")</li>
-                <li>@Html.ActionLink("DESKTOP PC", "DesktopPC", "OnlineSale")</li>
-                <li>@Html.ActionLink("IPAD", "IPad", "OnlineSale")</li>
-                <li>@Html.ActionLink("ACCESSORIES", "Mobile", "OnlineSale")</li>
-                <li>@Html.ActionLink("PRINTER", "Printer", "OnlineSale")</li>
-                <li>@Html.ActionLink("SERVERS", "Server", "OnlineSale")</li>
-                <li>@Html.ActionLink("NETWORK GEARS", "NetworkGear", "OnlineSale")</li>
-                <li>@Html.ActionLink("TV'S", "TV", "OnlineSale")</li>
-                <li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
-                <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
-                @if (@Session["Username"] != null)
-                {
-                    <li>@Html.ActionLink("ORDERSLIST", "Index", "OrdersList")</li>
-                    <li>@Html.ActionLink("LOGOUT", "Login", "Login")</li>
-                }
-                else
-                {
-                    <li>@Html.ActionLink("LOGIN", "Login", "Login")</li>
-                }
-            </ul>
-            @*<div class="flipkart-navbar-search smallsearch col-sm-2 col-xs-2">
-                    <input class="flipkart-navbar-input col-xs-11" placeholder="Search for Products, Brands and more" name="" id="txtSearchProduct">
-                    <button class="flipkart-navbar-button col-xs-1" id="searchProduct">
-                        <svg width="15px" height="15px">
-                            <path d="M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 "></path>
-                        </svg>
-                    </button>
-                </div>*@
-            <div class="navbar-right" style="vertical-align:bottom;margin-right:10px">
-                @Html.Action("Summary", "ShoppingCart")
-            </div>
-        </div>
-    </nav>
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:orange;height:15px;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarTogglerDemo03">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="nav navbar-nav" style="padding-top:7px; font-size:12px">
+                    <li>@Html.ActionLink("ONLINESTORE", "Index", "OnlineSale")</li>
+                    <li>@Html.ActionLink("MOBILE", "Mobile", "OnlineSale")</li>
+                    <li>@Html.ActionLink("LAPTOPS", "Laptop", "OnlineSale")</li>
+                    <li>@Html.ActionLink("MONITOR", "Monitor", "OnlineSale")</li>
+                    <li>@Html.ActionLink("DESKTOP PC", "DesktopPC", "OnlineSale")</li>
+                    <li>@Html.ActionLink("IPAD", "IPad", "OnlineSale")</li>
+                    <li>@Html.ActionLink("ACCESSORIES", "Mobile", "OnlineSale")</li>
+                    <li>@Html.ActionLink("PRINTER", "Printer", "OnlineSale")</li>
+                    <li>@Html.ActionLink("SERVERS", "Server", "OnlineSale")</li>
+                    <li>@Html.ActionLink("NETWORK GEARS", "NetworkGear", "OnlineSale")</li>
+                    <li>@Html.ActionLink("TV'S", "TV", "OnlineSale")</li>
+                    <li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
+                    <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+                    @if (@Session["Username"] != null)
+                    {
+                        <li>@Html.ActionLink("ORDERSLIST", "Index", "OrdersList")</li>
+                        <li>@Html.ActionLink("LOGOUT", "Login", "Login")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("LOGIN", "Login", "Login")</li>
+                    }
+                </ul>
+                <div class="navbar-right" style="vertical-align:bottom;margin-right:10px">
+                    @Html.Action("Summary", "ShoppingCart")
+                </div>
+                </div>
+        </nav>
 
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:35px;margin:35px">
@@ -137,205 +110,20 @@
     </div>
 
     @RenderSection("scripts", required: false)
-<div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:white;font-size:smaller">
-    The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
-    @*<img src="~/Images/Payment Options.PNG" />*@
-    <img src="~/Images/amex.gif" />
-    <img src="~/Images/visa.gif" />
-    <img src="~/Images/jcb.gif" />
-    <img src="~/Images/mastercard.gif" />
-   
-    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-        Terms & Conditions
-    </button>
-</div>
-    <script src="nav.js"></script>
+    <div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:white;font-size:smaller">
+        The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
+        <img src="~/Images/Payment Options.PNG" />
+    
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+            Terms & Conditions
+        </button>
+    </div>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
 
 <style type="text/css">
-    *{
-    margin: 0;
-    padding: 0;
-    color: #f2f5f7;
-    font-family: sans-serif;
-    letter-spacing: 1px;
-    font-weight: 300;
-}
-body{
-    overflow-x: hidden;
-}
-nav{
-    height: 6rem;
-    width: 100vw;
-    background-color: #131418;
-    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
-    display: flex;
-    position: fixed;
-    z-index: 10;
-}
-
-/*Styling logo*/
-.logo{
-    padding:1vh 1vw;
-    text-align: center;
-}
-.logo img {
-    height: 5rem;
-    width: 5rem;
-}
-
-/*Styling Links*/
-.nav-links{
-    display: flex;
-    list-style: none; 
-    width: 88vw;
-    padding: 0 0.7vw;
-    justify-content: space-evenly;
-    align-items: center;
-    text-transform: uppercase;
-}
-.nav-links li a{
-    text-decoration: none;
-    margin: 0 0.7vw;
-}
-.nav-links li a:hover {
-    color: red;
-}
-.nav-links li {
-    position: relative;
-}
-.nav-links li a::before {
-    content: "";
-    display: block;
-    height: 3px;
-    width: 0%;
-    background-color: #61DAFB;
-    position: absolute;
-    transition: all ease-in-out 250ms;
-    margin: 0 0 0 10%;
-}
-.nav-links li a:hover::before{
-    width: 80%;
-}
-
-/*Styling Buttons*/
-.login-button{
-    background-color: transparent;
-    border: 1.5px solid #f2f5f7;
-    border-radius: 2em;
-    padding: 0.6rem 0.8rem;
-    margin-left: 2vw;
-    font-size: 1rem;
-    cursor: pointer;
-
-}
-.login-button:hover {
-    color: #131418;
-    background-color: #f2f5f7;
-    border:1.5px solid #f2f5f7;
-    transition: all ease-in-out 350ms;
-}
-.join-button{
-    color: #131418;
-    background-color: #61DAFB;
-    border: 1.5px solid #61DAFB;
-    border-radius: 2em;
-    padding: 0.6rem 0.8rem;
-    font-size: 1rem;
-    cursor: pointer;
-}
-.join-button:hover {
-    color: #f2f5f7;
-    background-color: transparent;
-    border:1.5px solid #f2f5f7;
-    transition: all ease-in-out 350ms;
-}
-
-/*Styling Hamburger Icon*/
-.hamburger div{
-    width: 30px;
-    height:3px;
-    background: #f2f5f7;
-    margin: 5px;
-    transition: all 0.3s ease;
-}
-.hamburger{
-    display: none;
-}
-
-/*Stying for small screens*/
-
-    .hamburger{
-        display:block;
-        position: absolute;
-        cursor: pointer;
-        right: 5%;
-        top: 50%;
-        transform: translate(-5%, -50%);
-        z-index: 2;
-        transition: all 0.7s ease;
-    }
-    .nav-links{
-        position: fixed;
-        background: #131418;
-        height: 100vh;
-        width: 100%;
-        flex-direction: column;
-        clip-path: circle(50px at 90% -20%);
-        -webkit-clip-path: circle(50px at 90% -10%);
-        transition: all 1s ease-out;
-        pointer-events: none;
-    }
-    .nav-links.open{
-        clip-path: circle(1000px at 90% -10%);
-        -webkit-clip-path: circle(1000px at 90% -10%);
-        pointer-events: all;
-    }
-    .nav-links li{
-        opacity: 0;
-    }
-    .nav-links li:nth-child(1){
-        transition: all 0.5s ease 0.2s;
-    }
-    .nav-links li:nth-child(2){
-        transition: all 0.5s ease 0.4s;
-    }
-    .nav-links li:nth-child(3){
-        transition: all 0.5s ease 0.6s;
-    }
-    .nav-links li:nth-child(4){
-        transition: all 0.5s ease 0.7s;
-    }
-    .nav-links li:nth-child(5){
-        transition: all 0.5s ease 0.8s;
-    }
-    .nav-links li:nth-child(6){
-        transition: all 0.5s ease 0.9s;
-        margin: 0;
-    }
-    .nav-links li:nth-child(7){
-        transition: all 0.5s ease 1s;
-        margin: 0;
-    }
-    li.fade{
-        opacity: 1;
-    }
-}
-/*Animating Hamburger Icon on Click*/
-.toggle .line1{
-    transform: rotate(-45deg) translate(-5px,6px);
-}
-.toggle .line2{
-    transition: all 0.7s ease;
-    width:0;
-}
-.toggle .line3{
-    transform: rotate(45deg) translate(-5px,-6px);
-}
-
     .flipkart-navbar-input {
         padding: 11px 10px;
         border-radius: 2px 0 0 2px;
@@ -373,7 +161,6 @@ nav{
         display: block;
         text-indent: -9999px;
     }
-
 </style>
 
 <script>
@@ -382,8 +169,8 @@ $('a[href$="#Modal"]').on( "click", function() {
    $('#Modal').modal('show');
 });
 
- $(document).on('keypress', function (e) {
-  if (e.which == 13) { ShowProduct(); }
+    $(document).on('keypress', function (e) {
+        if (e.which == 13) { ShowProduct(); }
     });
     var product1 = $("#searchProduct").val();
     $("#searchProduct").on('click', function () {
