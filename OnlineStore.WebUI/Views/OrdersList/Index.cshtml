@@ -16,8 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
-
-
 </head>
 <body>
     <div id="tabs">
@@ -203,7 +201,7 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-bordered table-responsive" table-responsive table-hover" id="ProductsTable" style="font-size:smaller">
+            <table class="table table-bordered table-responsive" table-responsive table-hover" width="150%" id="ProductsTable" style="font-size:smaller">
                 <thead style="background-color:#959ca1;color:white">
                     <tr>
                         <th>ID</th>
@@ -216,7 +214,7 @@
                         <th>GSTAmount</th>
                         <th>PriceIncGST</th>
                         <th>Quantity</th>
-                        <th>Description</th>
+                        @*<th>Description</th>*@
                     </tr>
                 </thead>
                 <tbody>
@@ -233,7 +231,7 @@
 
                                 @if (item.Images.Count > 0)
                                 {
-                                    <img src="~/ProductImages/@item.Images.FirstOrDefault()" width="10" height="10" />
+                                    <img src="~/ProductImages/@item.Images.FirstOrDefault()" width="70" height="50" />
                                 }
                             </td>
                             <td>@item.ProductName</td>
@@ -244,7 +242,7 @@
                             <td>@item.GSTAmount</td>
                             <td>@item.PriceIncGST</td>
                             <td>@item.QtyAvailable</td>
-                            <td>@item.Description</td>
+                            @*<td>@item.Description</td>*@
                         </tr>
                     }
                 </tbody>
