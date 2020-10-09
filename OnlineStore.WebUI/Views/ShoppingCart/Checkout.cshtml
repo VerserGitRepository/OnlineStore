@@ -115,6 +115,11 @@
         <label for="email"><i class="fa fa-envelope"></i> Email</label>
         @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "john@example.com" })
         @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+
+    <label for="email"><i class="fa fa-mobile"></i> ContactNo</label>
+        @Html.TextBoxFor(x => x.ContactNumber, new { @class = "form-control", placeholder = "john@example.com" })
+        @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+      
         <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
         @Html.TextBoxFor(x => x.Shipping_AddressLine1, new { @class = "form-control", placeholder = "542 W. 15th Street" })
         @Html.ValidationMessageFor(x => x.Shipping_AddressLine1, "", new { @class = "text-danger" })
@@ -143,9 +148,9 @@
                 @Html.ValidationMessageFor(x => x.Shipping_Postcode, "", new { @class = "text-danger" })
             </div>
         </div>
-        Different Billing Address? @Html.CheckBoxFor(x => x.IsBillingAddressDifferent, new { @onchange= "EnableBillingAdressDivModel(this);" })
+        Different Billing Address? @Html.CheckBoxFor(x => x.IsBillingAddressDifferent, new { @onchange = "EnableBillingAdressDivModel(this);" })
 
-        <div id="EnableBillingAdressDivID" class="well" style="display:none;" >
+        <div id="EnableBillingAdressDivID" class="well" style="display:none;">
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
             @Html.TextBoxFor(x => x.Billing_AddressLine1, new { @class = "form-control", placeholder = "542 W. 15th Street" })
             @Html.ValidationMessageFor(x => x.Billing_AddressLine1, "", new { @class = "text-danger" })
@@ -177,8 +182,6 @@
 
         </div>
     </div>
-
-       
         @*<div class="col-md-4">
             <h4>Payment</h4>         
             <div class="icon-container">

@@ -1,4 +1,5 @@
-﻿using OnlineStore.WebUI.Infrastructure;
+﻿using Newtonsoft.Json;
+using OnlineStore.WebUI.Infrastructure;
 using OnlineStore.WebUI.Infrastructure.HelperServices;
 using OnlineStore.WebUI.Models;
 using System;
@@ -13,33 +14,56 @@ namespace OnlineStore.WebUI.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult Checkout(ShippingDetailsViewModel _checkoutDataModel)
         {
-            var sc = (ShoppingCart)Session["Productcart"];
-            if (sc.Lines.Count() > 0)
+            if (_checkoutDataModel != null)
             {
-                foreach (var soldproducts in sc.Lines)
+                var CheckoutOrdersPaymentRequestdata = new CheckoutOrdersPaymentModel();
+                _checkoutDataModel.OrderType = "OnlineStore";
+
+                var sc = (ShoppingCart)Session["Productcart"];
+                if (sc.Lines.Count() > 0)
                 {
-                    _checkoutDataModel.PurchasedSaleProducts.Add(new OnlineSaleProduct {
-                        ProductName= soldproducts.SaleProduct.ProductName,
-                        Id = soldproducts.SaleProduct.Id,
-                        PriceIncGST = soldproducts.SaleProduct.PriceIncGST,
-                        PriceExGST = soldproducts.SaleProduct.PriceExGST,
-                        GSTAmount = soldproducts.SaleProduct.GSTAmount,
-                        PurchasedQty = soldproducts.SaleProduct.PurchasedQty
-                    });
+                    foreach (var soldproducts in sc.Lines)
+                    {
+                        _checkoutDataModel.PurchasedSaleProducts.Add(new OnlineSaleProduct
+                        {
+                            ProductName = soldproducts.SaleProduct.ProductName,
+                            Id = soldproducts.SaleProduct.Id,
+                            PriceIncGST = soldproducts.SaleProduct.PriceIncGST,
+                            PriceExGST = soldproducts.SaleProduct.PriceExGST,
+                            GSTAmount = soldproducts.SaleProduct.GSTAmount,
+                            PurchasedQty = soldproducts.SaleProduct.PurchasedQty
+                        });
+                    }
                 }
-            }
-            LogService.info("Order Has been Checked out for payment");
-            var returnflag =  OrdersServices.OnlineStoreCheckoutOrder(_checkoutDataModel).Result;
-            if (returnflag)
-            {
-                string url = OrderProcessor.ProcessOnlineSaleOrder(_checkoutDataModel);
-                if (url !=null)
+                //var jsondata= JsonConvert.SerializeObject(_checkoutDataModel);
+                CheckoutOrdersPaymentRequestdata.CardNumber = _checkoutDataModel.CardNumber;
+                CheckoutOrdersPaymentRequestdata.nameOnCard = _checkoutDataModel.nameOnCard;
+                CheckoutOrdersPaymentRequestdata.cardType = _checkoutDataModel.cardType;
+                CheckoutOrdersPaymentRequestdata.cvv = _checkoutDataModel.cvv;
+                CheckoutOrdersPaymentRequestdata.expmonth = _checkoutDataModel.expmonth;
+                CheckoutOrdersPaymentRequestdata.expyear = _checkoutDataModel.expyear;
+                CheckoutOrdersPaymentRequestdata.paymentAmount = _checkoutDataModel.paymentAmount;
+                CheckoutOrdersPaymentRequestdata.payment_OrderID = _checkoutDataModel.payment_OrderID;
+                CheckoutOrdersPaymentRequestdata.PaymentStatus = _checkoutDataModel.PaymentStatus;
+                CheckoutOrdersPaymentRequestdata.PaymentID = _checkoutDataModel.PaymentID;
+
+                var jsondata2 = JsonConvert.SerializeObject(CheckoutOrdersPaymentRequestdata);
+
+               LogService.info("Order Has been Checked out for payment");
+
+                var returnflag = OrdersServices.OnlineStoreCheckoutOrder(_checkoutDataModel).Result;
+                if (returnflag.IsSuccess)
                 {
-                    return Redirect(url);
+                    CheckoutOrdersPaymentRequestdata.payment_OrderID = returnflag.Id;
+                    string url = OrderProcessor.ProcessOnlineSaleOrder(_checkoutDataModel);
+                    if (url != null)
+                    {                       
+                        return Redirect(url);
+                        // var confirmationRequestReturnFlag = OrdersServices.CheckoutOrdersPaymentRequest(CheckoutOrdersPaymentRequestdata).Result;
+                    }
                 }
             }
             return RedirectToAction("Index", "ShoppingCart");
