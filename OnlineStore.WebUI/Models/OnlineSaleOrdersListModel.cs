@@ -7,6 +7,10 @@ namespace OnlineStore.WebUI.Models
 {
     public class OnlineSaleOrdersListModel
     {
+        public OnlineSaleOrdersListModel()
+        {
+            OnlineSalePurchasedProducts = new List<OnlineSaleProduct>();
+        }
         public int Id { get; set; }
         public int Orderno { get; set; }
         public string OrderRef { get; set; }
@@ -27,5 +31,6 @@ namespace OnlineStore.WebUI.Models
         public string JobNo { get; set; }
         public string SSN { get; set; }
         public int? AssetId { get; set; }
+        public List<OnlineSaleProduct> OnlineSalePurchasedProducts { get; set; }
     }
 }
