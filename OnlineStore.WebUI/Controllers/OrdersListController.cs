@@ -21,6 +21,7 @@ namespace OnlineStore.WebUI.Controllers
                 var LoadViewModel = new OrderViewModel();
                 LoadViewModel.OnlineSaleOrdersList = OrdersServices.OnlineSaleOrdersList().Result;
                 LoadViewModel.OnlineSaleProductList = OrdersServices.OnlineSaleProductsList().Result;
+                
                 LoadViewModel.ManualOrdersViewModel.CustomerProject = new SelectList(DropDownServices.ProjectList().Result, "ID", "Value");
                 LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
                 LoadViewModel.OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
@@ -89,7 +90,15 @@ namespace OnlineStore.WebUI.Controllers
             //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
             return PartialView(OnlineSaleProduct);
         }
+        public ActionResult UpdateProduct(int productId)
+        {
+            var OnlineSaleProduct =  OrdersServices.OnlineSaleProductById(productId).Result;
 
+            OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
+            OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
+            //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
+            return PartialView("AddProduct",OnlineSaleProduct);
+        }
         public void imageimport()
         {
             //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");

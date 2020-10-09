@@ -10,13 +10,13 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    @*<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">*@
 
 
-    <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    @*<script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>*@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,49 +42,90 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:orange;height:15px;">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarTogglerDemo03">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="nav navbar-nav" style="padding-top:7px; font-size:12px">
-                    <li>@Html.ActionLink("ONLINESTORE", "Index", "OnlineSale")</li>
-                    <li>@Html.ActionLink("MOBILE", "Mobile", "OnlineSale")</li>
-                    <li>@Html.ActionLink("LAPTOPS", "Laptop", "OnlineSale")</li>
-                    <li>@Html.ActionLink("MONITOR", "Monitor", "OnlineSale")</li>
-                    <li>@Html.ActionLink("DESKTOP PC", "DesktopPC", "OnlineSale")</li>
-                    <li>@Html.ActionLink("IPAD", "IPad", "OnlineSale")</li>
-                    <li>@Html.ActionLink("ACCESSORIES", "Mobile", "OnlineSale")</li>
-                    <li>@Html.ActionLink("PRINTER", "Printer", "OnlineSale")</li>
-                    <li>@Html.ActionLink("SERVERS", "Server", "OnlineSale")</li>
-                    <li>@Html.ActionLink("NETWORK GEARS", "NetworkGear", "OnlineSale")</li>
-                    <li>@Html.ActionLink("TV'S", "TV", "OnlineSale")</li>
-                    <li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
-                    <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
-                    @if (@Session["Username"] != null)
-                    {
-                        <li>@Html.ActionLink("ORDERSLIST", "Index", "OrdersList")</li>
-                        <li>@Html.ActionLink("LOGOUT", "Login", "Login")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("LOGIN", "Login", "Login")</li>
-                    }
-                </ul>
-                <div class="navbar-right" style="vertical-align:bottom;margin-right:10px">
-                    @Html.Action("Summary", "ShoppingCart")
-                </div>
-                @if (@Session["productinformation"] != null)
+    @*<nav class="navbar navbar-expand-sm navbar-dark" style="background-color:orange;height:15px;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarTogglerDemo03">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="nav navbar-nav" style="padding-top:7px; font-size:12px">
+                <li>@Html.ActionLink("ONLINESTORE", "Index", "OnlineSale")</li>
+                <li>@Html.ActionLink("MOBILE", "Mobile", "OnlineSale")</li>
+                <li>@Html.ActionLink("LAPTOPS", "Laptop", "OnlineSale")</li>
+                <li>@Html.ActionLink("MONITOR", "Monitor", "OnlineSale")</li>
+                <li>@Html.ActionLink("DESKTOP PC", "DesktopPC", "OnlineSale")</li>
+                <li>@Html.ActionLink("IPAD", "IPad", "OnlineSale")</li>
+                <li>@Html.ActionLink("ACCESSORIES", "Mobile", "OnlineSale")</li>
+                <li>@Html.ActionLink("PRINTER", "Printer", "OnlineSale")</li>
+                <li>@Html.ActionLink("SERVERS", "Server", "OnlineSale")</li>
+                <li>@Html.ActionLink("NETWORK GEARS", "NetworkGear", "OnlineSale")</li>
+                <li>@Html.ActionLink("TV'S", "TV", "OnlineSale")</li>
+                <li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
+                <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+                @if (@Session["Username"] != null)
                 {
-                    <input type="hidden" id="productinfo" value='@Session["productinformation"].ToString()' />
+                    <li>@Html.ActionLink("ORDERSLIST", "Index", "OrdersList")</li>
+                    <li>@Html.ActionLink("LOGOUT", "Login", "Login")</li>
                 }
+                else
+                {
+                    <li>@Html.ActionLink("LOGIN", "Login", "Login")</li>
+                }
+            </ul>
+            <div class="navbar-right" style="vertical-align:bottom;margin-right:10px">
+                @Html.Action("Summary", "ShoppingCart")
             </div>
-        </nav>
+            @if (@Session["productinformation"] != null)
+            {
+                <input type="hidden" id="productinfo" value='@Session["productinformation"].ToString()' />
+            }
+        </div>
+    </nav>*@
 
+    <nav class="navbar navbar-expand-lg navbar-light">
+        @*<a class="navbar-brand" href="#">Navbar</a>*@
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"style="background-color:orange;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav" style="padding-top:7px; font-size:12px">
+                <li>@Html.ActionLink("ONLINESTORE", "Index", "OnlineSale")</li>
+                <li>@Html.ActionLink("MOBILE", "Mobile", "OnlineSale")</li>
+                <li>@Html.ActionLink("LAPTOPS", "Laptop", "OnlineSale")</li>
+                <li>@Html.ActionLink("MONITOR", "Monitor", "OnlineSale")</li>
+                <li>@Html.ActionLink("DESKTOP PC", "DesktopPC", "OnlineSale")</li>
+                <li>@Html.ActionLink("IPAD", "IPad", "OnlineSale")</li>
+                <li>@Html.ActionLink("ACCESSORIES", "Mobile", "OnlineSale")</li>
+                <li>@Html.ActionLink("PRINTER", "Printer", "OnlineSale")</li>
+                <li>@Html.ActionLink("SERVERS", "Server", "OnlineSale")</li>
+                <li>@Html.ActionLink("NETWORK GEARS", "NetworkGear", "OnlineSale")</li>
+                <li>@Html.ActionLink("TV'S", "TV", "OnlineSale")</li>
+                <li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
+                <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+                @if (@Session["Username"] != null)
+                {
+                    <li>@Html.ActionLink("ORDERSLIST", "Index", "OrdersList")</li>
+                    <li>@Html.ActionLink("LOGOUT", "Login", "Login")</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("LOGIN", "Login", "Login")</li>
+                }
+            </ul>
+            <div class="navbar-right" style="vertical-align:bottom;margin-right:10px">
+                @Html.Action("Summary", "ShoppingCart")
+            </div>
+            @if (@Session["productinformation"] != null)
+            {
+                <input type="hidden" id="productinfo" value='@Session["productinformation"].ToString()' />
+            }
+        </div>
+          
+       
+    </nav>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:35px;margin:35px">
         <div class="modal-dialog">
 
@@ -117,7 +158,7 @@
     <div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:white;font-size:smaller">
         The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
         <img src="~/Images/Payment Options.PNG" />
-    
+
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
             Terms & Conditions
         </button>
@@ -126,6 +167,18 @@
 </html>
 
 <style type="text/css">
+    .navbar-collapse
+    {
+        background-color:orange;
+       
+    }
+
+
+    .btn-default {
+    color: #333;
+    background-color: lightblue;
+    border-color: #ccc;
+}
     .flipkart-navbar-input {
         padding: 11px 10px;
         border-radius: 2px 0 0 2px;
@@ -161,6 +214,7 @@
     a.cartImage {
         background: url(../Images/cart.png) no-repeat top right;
         display: block;
+        color:blue;
         text-indent: -9999px;
     }
 </style>

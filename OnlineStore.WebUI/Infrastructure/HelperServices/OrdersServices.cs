@@ -92,6 +92,23 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return returnmessage;
         }
+
+        //[OutputCache(CacheProfile = "Cache5Min")]
+        //public async static Task<List<OnlineSaleProduct>> OnlineSaleProduct()
+        //{
+        //    var returnmessage = new List<OnlineSaleProduct>();
+
+        //    using (HttpClient client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri(BaseUri);
+        //        HttpResponseMessage response = client.GetAsync("OnlineSaleOrders/OnlineStoreSaleOrdersList").Result;
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            returnmessage = await response.Content.ReadAsAsync<List<OnlineSaleProduct>>();
+        //        }
+        //    }
+        //    return returnmessage;
+        //}
         [OutputCache(CacheProfile = "Cache5Min")]
         public async static Task<List<OnlineSaleProduct>> OnlineSaleProductsList()
         {
