@@ -435,6 +435,8 @@
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\OrderProcessor.cs" />
     <Compile Include="Models\CarouselProductsViewModel.cs" />
+    <Compile Include="Models\CheckoutOrdersPaymentModel.cs" />
+    <Compile Include="Models\ReturnValidationModel.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartIndexViewModel.cs" />
