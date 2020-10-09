@@ -7,13 +7,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>jQuery UI Tabs - Default functionality</title>
+
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 
 </head>
 <body>
@@ -279,7 +282,7 @@
                                     <img src="~/ProductImages/@item.Images.FirstOrDefault()" width="70" height="50" />
                                 }
                             </td>
-                            <td>@item.ProductName</td>
+                            <td><a href="javascript:void(0);" class="ProductName" data-id="@item.Id">@Html.DisplayFor(modelItem => item.ProductName)</a></td>
                             <td>@item.Brand_ID</td>
                             <td>@item.ItemType_ID</td>
                             <td>@item.Model_ID</td>
@@ -331,5 +334,34 @@
                 },
                 error: function (result) { alert(result); console.log(result);}
             });
+        });
+
+    $(function () {
+        $("#ProductsTable").on("click", ".ProductName", function () {
+               debugger;
+            var $buttonClicked = $(this);
+            var ProjectName = $buttonClicked.attr('data-id');
+            var AddSiteURL = '@Url.Action("UpdateProduct", "OrdersList")'
+            $.ajax({
+                type: "GET",
+                url: AddSiteURL,
+                data: { "productId": ProjectName},
+            success: function (data) {
+
+            $.confirm({
+            boxWidth: '800px',
+            useBootstrap: false,
+            title: '',
+            content: data,
+            closeIcon: true,
+            buttons: {
+            yes: { isHidden: true }
+            },  
             });
+                },
+                error: function (result) { alert(result); console.log(result);}
+            });
+        });
+        });
+
 </script>
