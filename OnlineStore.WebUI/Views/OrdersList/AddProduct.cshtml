@@ -42,7 +42,7 @@
         <div class="row" style="padding-top:10px">
             <div class="form-group  required col-md-6" tabindex=3>
                 <label class="control-label">Model</label>
-                @Html.DropDownListFor(model => model.Model_ID, Model.Makes, "Model", new { @class = "form-control", @id = "ddlModel", @style = "width:200px;", @multiple = "multiple" })
+                @Html.DropDownListFor(model => model.Model_ID, new SelectList(Enumerable.Empty<SelectListItem>()), new { @class = "form-control", @id = "ddlModel", @style = "width:200px;", @multiple = "multiple" })
                 @Html.ValidationMessageFor(model => Model.Model_ID, "", new { @class = "text-danger" })
             </div>
             <div class="form-group  required col-md-6" tabindex=4>
@@ -103,6 +103,36 @@
         enableFiltering: true,
         enableCaseInsensitiveFiltering: true
     });
+    $('#ddlBrand').removeAttr('multiple')
+    $('#ddlBrand').multiselect('rebuild');
+    $('#ddlItemType').removeAttr('multiple')
+    $('#ddlItemType').multiselect('rebuild');
+
+    $('#ddlItemType').change(function () {
+       // FetchModels();
+    });
+    $('#ddlBrand').change(function () {
+        FetchModels();
+    });
+    function FetchModels() {
+        var ActivityUrl = '@Url.Action("Models", "OrdersList")';
+
+                     //var jobno = $('#JobID');
+        var itemid = $('#ddlItemType').val();
+        //alert(itemid);
+        var makeid = $('#ddlBrand').val();
+        //alert(makeid);
+        $.getJSON(ActivityUrl, { makeId: makeid, itemTypeId: itemid }, function (response) {
+                       // jobno.empty();
+            $('#ddlModel').append($('<option></option>').text("Select Job").val(null));
+                            $.each(response, function (index, item) {
+                                $('#ddlModel').append($('<option></option>').text(item.Value).val(item.Value));
+
+                                });
+            $('#ddlModel').removeAttr('multiple')
+            $('#ddlModel').multiselect('rebuild');
+    });
+    }
 </script>
 <style>
     .form-control-100 {
