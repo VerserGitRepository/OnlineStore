@@ -4,8 +4,10 @@
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
-<script src="~/Scripts/jquery.validate.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<script src="~/Scripts/bootstrap-multiselect.js"></script>
+<link href="~/Scripts/bootstrap-multiselect.css" rel="stylesheet" />
+
 <div class="table table-responsive" id="tblCustomers" style="padding-left:50px;padding-bottom:30px;border-color:lightgray">
 
     @using (Html.BeginForm("AddUpdateProduct", "OrdersList", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -28,19 +30,19 @@
         <div class="row" style="padding-top:10px">
             <div class="form-group  required col-md-6" tabindex=3>
                 <label class="control-label">ItemType</label>
-                @Html.DropDownListFor(model => model.ItemType_ID, Model.ItemTypes, "ItemType", new { @class = "form-control", id = "ddlItemType", @style = "width:200px;" })
+                @Html.DropDownListFor(model => model.ItemType_ID, Model.ItemTypes, "ItemType", new { @class = "form-control", id = "ddlItemType", @style = "width:200px;", @multiple = "multiple" })
             </div>
             <div class="form-group  required col-md-6" tabindex=4>
                 <label class="control-label">Brand</label>
 
-                @Html.DropDownListFor(model => model.Brand_ID, Model.Makes, "Brands", new { @class = "form-control", id = "ddlBrand", @style = "width:200px;" })
+                @Html.DropDownListFor(model => model.Brand_ID, Model.Makes, "Brands", new { @class = "form-control", id = "ddlBrand", @style = "width:200px;", @multiple = "multiple" })
                 @Html.ValidationMessageFor(model => model.Brand_ID, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row" style="padding-top:10px">
             <div class="form-group  required col-md-6" tabindex=3>
                 <label class="control-label">Model</label>
-                @Html.DropDownListFor(model => model.Model_ID, Model.Makes, "Model", new { @class = "form-control", @id = "ddlModel", @style = "width:200px;" })
+                @Html.DropDownListFor(model => model.Model_ID, Model.Makes, "Model", new { @class = "form-control", @id = "ddlModel", @style = "width:200px;", @multiple = "multiple" })
                 @Html.ValidationMessageFor(model => Model.Model_ID, "", new { @class = "text-danger" })
             </div>
             <div class="form-group  required col-md-6" tabindex=4>
@@ -78,7 +80,30 @@
     }
 
 </div>
-
+<script>
+    $.validator.unobtrusive.parse(document);
+    $('#ddlModel').multiselect({
+        includeSelectAllOption: false,
+        maxHeight: 250,
+        buttonWidth: '200px',
+        enableFiltering: true,
+        enableCaseInsensitiveFiltering: true
+    });
+    $('#ddlBrand').multiselect({
+        includeSelectAllOption: false,
+        maxHeight: 250,
+        buttonWidth: '200px',
+        enableFiltering: true,
+        enableCaseInsensitiveFiltering: true
+    });
+    $('#ddlItemType').multiselect({
+        includeSelectAllOption: false,
+        maxHeight: 250,
+        buttonWidth: '200px',
+        enableFiltering: true,
+        enableCaseInsensitiveFiltering: true
+    });
+</script>
 <style>
     .form-control-100 {
         max-width: 100%;

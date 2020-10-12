@@ -195,6 +195,8 @@
     <None Include="Properties\PublishProfiles\dc-webdev1.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
+    <Content Include="Scripts\bootstrap-multiselect.css" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
