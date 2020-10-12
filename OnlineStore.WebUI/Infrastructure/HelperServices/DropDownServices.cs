@@ -78,7 +78,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri(CostModelAPIURL);
-                HttpResponseMessage response = client.GetAsync(string.Format("inventorycontrol/models/listitems/{0}/{1}",makeId, itemTypeId)).Result;
+                HttpResponseMessage response = client.GetAsync(string.Format("inventorycontrol/GetModels/{0}/{1}/listitems", makeId, itemTypeId)).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     returnmodel = await response.Content.ReadAsAsync<List<ListItems>>();

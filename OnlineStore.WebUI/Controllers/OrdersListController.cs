@@ -75,9 +75,12 @@ namespace OnlineStore.WebUI.Controllers
         {
             foreach (HttpPostedFileBase file in OnlineSaleProductModel.files)
             {
-               file.SaveAs(Path.Combine(Server.MapPath(".") + "//ProductImages//", OnlineSaleProductModel.ProductName+".jpg"));
+                string path= @"C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\";
+                
+               //file.SaveAs(Path.Combine(Server.MapPath(.) + "//ProductImages//", OnlineSaleProductModel.ProductName+".jpg"));
             }
-            var resp = OrdersServices.AddUpdateProduct(OnlineSaleProductModel);
+            OnlineSaleProductModel.Images.Add("PowerEdge_R710_1.jpg");
+           var resp = OrdersServices.AddUpdateProduct(OnlineSaleProductModel);
             return RedirectToAction("Index", "OrdersList");
         }
        
