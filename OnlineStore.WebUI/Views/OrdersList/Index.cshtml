@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>jQuery UI Tabs - Default functionality</title>
-
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -17,6 +16,8 @@
     <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
 </head>
 <body>
@@ -29,282 +30,284 @@
             <li><a href="#tabs-5">SHIPPED ORDERS</a></li>
             <li><a href="#tabs-6">MANAGE</a></li>
         </ul>
-        <div id="tabs-1">
-            <table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
-                <thead style="background-color:#959ca1;color:white">
-                    <tr>
-                        <th>BrandName</th>
-                        @*<th>Brand_ID</th>*@
-                        <th>CreatedBy</th>
-                        <th>Description</th>
-                        <th>GSTAmount</th>
-                        <th>Images</th>
-                        <th>ItemTypeName</th>
-                        <th>ModelName</th>
-                        <th>PriceExGST</th>
-                        <th>PriceIncGST</th>
-                        <th>ProductImage</th>
-                        <th>ProductName</th>
-                        <th>QtyAvailable</th>
-                        <th>SKU</th>
-                        @*<th>AmazonOder</th>*@
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.OnlineSaleProductList)
-                    {
-                    <tr>
-                        <td>@item.BrandName</td>
-                        <td>@item.CreatedBy</td>
-                        <td>@item.Description</td>
-                        <td>@item.GSTAmount</td>
-                        @*<td>@item.Id </td>*@
-                        <td>@item.Images</td>
-                        @*<td>@item.IsSKU</td>*@
-                        <td>@item.ItemTypeName</td>
-                        @*<td>@item.ItemType_ID</td>*@
-                        <td>@item.ModelName</td>
-                        @*<td>@item.Model_ID</td>*@
-                        <td>@item.PriceExGST</td>
-                        <td>@item.PriceIncGST</td>
-                        <td>@item.ProductImage</td>
-                        <td>@item.ProductName</td>
-                        <td>@item.QtyAvailable</td>
-                        <td>@item.SKU</td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-        <div id="tabs-2">
-            <table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
-                <thead style="background-color:#959ca1;color:white">
-                    <tr>
-                        <th>Orderno</th>
-                        <th>SKU</th>
-                        <th>FirstName</th>
-                        <th>LastName</th>
-                        <th>Suburb</th>
-                        <th>Postcode</th>
-                        <th>Address</th>
-                        <th>State</th>
-                        <th>ContactNo</th>
-                        <th>Email</th>
-                        <th>JobNo</th>
-                        <th>Status</th>
-                        <th>SSN</th>
-                        <th>OrderRef</th>
-                        <th>AmazonOder</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.OnlineSaleOrdersList)
-                    {
+        <div class="panel-body" style="border-color:gray;">
+            <div id="tabs-1">
+                <table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
+                    <thead style="background-color:#959ca1;color:white">
                         <tr>
-                            <td>@item.Orderno</td>
-                            <td></td>
-                            <td>@item.FirstName</td>
-                            <td>@item.LastName</td>
-                            <td>@item.Suburb</td>
-                            <td>@item.Postcode</td>
-                            <td>@item.AddressLine1 </td>
-                            <td>@item.State</td>
-                            <td>@item.ContactNumber</td>
-                            <td>@item.Email</td>
-                            <td>@item.JobNo</td>
-                            <td>@item.OrderStatus</td>
-                            <td>@item.SSN</td>
-                            <td>@item.OrderRef</td>
-                            <td>@item.AmazonOrderNo</td>
+                            <th>BrandName</th>
+                            @*<th>Brand_ID</th>*@
+                            <th>CreatedBy</th>
+                            <th>Description</th>
+                            <th>GSTAmount</th>
+                            <th>Images</th>
+                            <th>ItemTypeName</th>
+                            <th>ModelName</th>
+                            <th>PriceExGST</th>
+                            <th>PriceIncGST</th>
+                            <th>ProductImage</th>
+                            <th>ProductName</th>
+                            <th>QtyAvailable</th>
+                            <th>SKU</th>
+                            @*<th>AmazonOder</th>*@
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-        <div id="tabs-3" class="table-bordered">
-            @using (Html.BeginForm("ProcessManualOrder", "OrdersList", FormMethod.Post))
-            {
-                <div class="col-md-5">
-                    <div class="col-md-6">
-                        <label class="control-label">Surname</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.Salutation, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Salutation, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">First Name</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.FirstName, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.FirstName, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Last Name</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.LastName, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.LastName, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Contact Number</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.ContactNumber, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.ContactNumber, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-12">
-                        <label class="control-label">Email</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.Email, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="col-md-5 table-bordered" style="margin:2px">
-                    <div class="col-md-6">
-                        <label class="control-label">AddressLine1</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.AddressLine1, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AddressLine1, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">AddressLine2</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.AddressLine2, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AddressLine2, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Locality</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.Locality, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Locality, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Postcode</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.Postcode, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Postcode, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-12">
-                        <label class="control-label">State</label>
-                        @Html.DropDownList("State", new List<SelectListItem>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OnlineSaleProductList)
                         {
-                           new SelectListItem{ Text="NSW", Value = "NSW" },
-                           new SelectListItem{ Text="QLD", Value = "QLD" },
-                           new SelectListItem{ Text="SA", Value = "SA" },
-                           new SelectListItem{ Text="TAS", Value = "TAS" },
-                           new SelectListItem{ Text="VIC", Value = "VIC" },
-                           new SelectListItem{ Text="WA", Value = "WA" },
-                           new SelectListItem{ Text="ACT", Value = "ACT" },
-                           new SelectListItem{ Text="NT", Value = "NT" } },
-                        new { @class = "form-control", style = "Height:35px" })
-
-                    </div>
-                </div>
-                <div class="col-md-10 table-bordered" style="margin:5px">
-                    <div class="col-md-6">
-                        <label class="control-label">SSN</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.SSN, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.SSN, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Height</label>
-                        @Html.DropDownListFor(m => m.ManualOrdersViewModel.Height, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Weight</label>
-                        @Html.DropDownListFor(m => m.ManualOrdersViewModel.Weight, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Width</label>
-
-                        @Html.DropDownListFor(m => m.ManualOrdersViewModel.Width, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Length</label>
-                        @Html.DropDownListFor(m => m.ManualOrdersViewModel.Length, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">No Of Items</label>
-                        @Html.DropDownListFor(m => m.ManualOrdersViewModel.NoOfItems, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">AmazonOrderNo</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.AmazonOrderNo, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AmazonOrderNo, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">SKU</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.SKU, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.SKU, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Ref No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        @Html.EditorFor(model => model.ManualOrdersViewModel.RefNo, "", new { })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.RefNo, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Project</label>
-                        @Html.DropDownListFor(model => model.ManualOrdersViewModel.ProjectId, Model.ManualOrdersViewModel.CustomerProject, "Projects", new { @class = "form-control ItemType", @id = "ddlProjects", style = "Height:40px" })
-                        @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.CustomerProject, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-sm-6">
-                        <button type="submit" class="btn btn-primary">Complete Order</button>
-                    </div>
-                </div>
-            }
-        </div>
-        <div id="tabs-4">
-            <div class="row pull-right">
-                <div class="col-md-1">
-                    <div class="col-md-1">
-                        <button type="submit" class="btn btn-default btn-sm" id="addProduct" data-toggle="tooltip" data-placement="left">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                    </div>
-                </div>
+                            <tr>
+                                <td>@item.BrandName</td>
+                                <td>@item.CreatedBy</td>
+                                <td>@item.Description</td>
+                                <td>@item.GSTAmount</td>
+                                @*<td>@item.Id </td>*@
+                                <td>@item.Images</td>
+                                @*<td>@item.IsSKU</td>*@
+                                <td>@item.ItemTypeName</td>
+                                @*<td>@item.ItemType_ID</td>*@
+                                <td>@item.ModelName</td>
+                                @*<td>@item.Model_ID</td>*@
+                                <td>@item.PriceExGST</td>
+                                <td>@item.PriceIncGST</td>
+                                <td>@item.ProductImage</td>
+                                <td>@item.ProductName</td>
+                                <td>@item.QtyAvailable</td>
+                                <td>@item.SKU</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
-            <table class="table table-bordered table-responsive" table-responsive table-hover" width="150%" id="ProductsTable" style="font-size:smaller">
-                <thead style="background-color:#959ca1;color:white">
-                    <tr>
-                        <th>ID</th>
-                        <th></th>
-                        <th>Product</th>
-                        <th>ItemType</th>
-                        <th>Brand</th>
-                        <th>Model</th>
-                        <th>PriceExGST</th>
-                        <th>GSTAmount</th>
-                        <th>PriceIncGST</th>
-                        <th>Quantity</th>
-                        @*<th>Description</th>*@
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.OnlineSaleProductList)
-                    {
+            <div id="tabs-2">
+                <table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
+                    <thead style="background-color:#959ca1;color:white">
                         <tr>
-                            <td>@item.Id</td>
-                            <td>
-
-                                @*@if (item.ProductImage.Length > 0)
-                                {
-                                    <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" alt="@item.ProductName" width="200" height="150"/>
-                                }*@
-
-                                @if (item.Images.Count > 0)
-                                {
-                                    <img src="~/ProductImages/@item.Images.FirstOrDefault()" width="70" height="50" />
-                                }
-                            </td>
-                            <td><a href="javascript:void(0);" class="ProductName" data-id="@item.Id">@Html.DisplayFor(modelItem => item.ProductName)</a></td>
-                            <td>@item.Brand_ID</td>
-                            <td>@item.ItemType_ID</td>
-                            <td>@item.Model_ID</td>
-                            <td>@item.PriceExGST</td>
-                            <td>@item.GSTAmount</td>
-                            <td>@item.PriceIncGST</td>
-                            <td>@item.QtyAvailable</td>
-                            @*<td>@item.Description</td>*@
+                            <th>Orderno</th>
+                            <th>SKU</th>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>Suburb</th>
+                            <th>Postcode</th>
+                            <th>Address</th>
+                            <th>State</th>
+                            <th>ContactNo</th>
+                            <th>Email</th>
+                            <th>JobNo</th>
+                            <th>Status</th>
+                            <th>SSN</th>
+                            <th>OrderRef</th>
+                            <th>AmazonOder</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OnlineSaleOrdersList)
+                        {
+                            <tr>
+                                <td>@item.Orderno</td>
+                                <td></td>
+                                <td>@item.FirstName</td>
+                                <td>@item.LastName</td>
+                                <td>@item.Suburb</td>
+                                <td>@item.Postcode</td>
+                                <td>@item.AddressLine1 </td>
+                                <td>@item.State</td>
+                                <td>@item.ContactNumber</td>
+                                <td>@item.Email</td>
+                                <td>@item.JobNo</td>
+                                <td>@item.OrderStatus</td>
+                                <td>@item.SSN</td>
+                                <td>@item.OrderRef</td>
+                                <td>@item.AmazonOrderNo</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div id="tabs-3" class="table-bordered">
+                @using (Html.BeginForm("ProcessManualOrder", "OrdersList", FormMethod.Post))
+                {
+                    <div class="col-md-5">
+                        <div class="col-md-6">
+                            <label class="control-label">Surname</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.Salutation, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Salutation, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">First Name</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.FirstName, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Last Name</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.LastName, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.LastName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Contact Number</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.ContactNumber, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.ContactNumber, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-12">
+                            <label class="control-label">Email</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.Email, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-5 table-bordered" style="margin:2px">
+                        <div class="col-md-6">
+                            <label class="control-label">AddressLine1</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.AddressLine1, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AddressLine1, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">AddressLine2</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.AddressLine2, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AddressLine2, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Locality</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.Locality, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Locality, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Postcode</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.Postcode, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Postcode, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-12">
+                            <label class="control-label">State</label>
+                            @Html.DropDownList("State", new List<SelectListItem>
+                            {
+                               new SelectListItem{ Text="NSW", Value = "NSW" },
+                               new SelectListItem{ Text="QLD", Value = "QLD" },
+                               new SelectListItem{ Text="SA", Value = "SA" },
+                               new SelectListItem{ Text="TAS", Value = "TAS" },
+                               new SelectListItem{ Text="VIC", Value = "VIC" },
+                               new SelectListItem{ Text="WA", Value = "WA" },
+                               new SelectListItem{ Text="ACT", Value = "ACT" },
+                               new SelectListItem{ Text="NT", Value = "NT" } },
+                            new { @class = "form-control", style = "Height:35px" })
+
+                        </div>
+                    </div>
+                    <div class="col-md-10 table-bordered" style="margin:5px">
+                        <div class="col-md-6">
+                            <label class="control-label">SSN</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.SSN, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.SSN, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Height</label>
+                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.Height, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Weight</label>
+                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.Weight, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Width</label>
+
+                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.Width, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Length</label>
+                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.Length, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">No Of Items</label>
+                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.NoOfItems, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">AmazonOrderNo</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.AmazonOrderNo, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AmazonOrderNo, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">SKU</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.SKU, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.SKU, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Ref No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            @Html.EditorFor(model => model.ManualOrdersViewModel.RefNo, "", new { })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.RefNo, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Project</label>
+                            @Html.DropDownListFor(model => model.ManualOrdersViewModel.ProjectId, Model.ManualOrdersViewModel.CustomerProject, "Projects", new { @class = "form-control ItemType", @id = "ddlProjects", style = "Height:40px" })
+                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.CustomerProject, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-primary">Complete Order</button>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div id="tabs-4">
+                <div class="row pull-right">
+                    <div class="col-md-1">
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-default btn-sm" id="addProduct" data-toggle="tooltip" data-placement="left">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered table-responsive" table-responsive table-hover" width="150%" id="ProductsTable" style="font-size:smaller">
+                    <thead style="background-color:#959ca1;color:white">
+                        <tr>
+                            <th>ID</th>
+                            <th></th>
+                            <th>Product</th>
+                            <th>ItemType</th>
+                            <th>Brand</th>
+                            <th>Model</th>
+                            <th>PriceExGST</th>
+                            <th>GSTAmount</th>
+                            <th>PriceIncGST</th>
+                            <th>Quantity</th>
+                            @*<th>Description</th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OnlineSaleProductList)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>
+
+                                    @*@if (item.ProductImage.Length > 0)
+                                    {
+                                        <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" alt="@item.ProductName" width="200" height="150"/>
+                                    }*@
+
+                                    @if (item.Images.Count > 0)
+                                    {
+                                        <img src="~/ProductImages/@item.Images.FirstOrDefault()" width="70" height="50" />
+                                    }
+                                </td>
+                                <td><a href="javascript:void(0);" class="ProductName" data-id="@item.Id">@Html.DisplayFor(modelItem => item.ProductName)</a></td>
+                                <td>@item.Brand_ID</td>
+                                <td>@item.ItemType_ID</td>
+                                <td>@item.Model_ID</td>
+                                <td>@item.PriceExGST</td>
+                                <td>@item.GSTAmount</td>
+                                <td>@item.PriceIncGST</td>
+                                <td>@item.QtyAvailable</td>
+                                @*<td>@item.Description</td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div id="tabs-5">
+                MANAGEDISPATCHORDER
+            </div>
+            <div id="tabs-6">
+                MANAGEDISPATCHORDER
+            </div>
         </div>
-        <div id="tabs-5">
-            MANAGEDISPATCHORDER
         </div>
-        <div id="tabs-6">
-            MANAGEDISPATCHORDER
-        </div>
-    </div>
 </body>
 <script>
         $(function () {
