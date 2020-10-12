@@ -19,7 +19,6 @@
             <li data-target="#myCarousel" data-slide-to="3"></li>
             <li data-target="#myCarousel" data-slide-to="4"></li>
         </ol>
-
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
@@ -29,7 +28,6 @@
             <div class="item">
                 <img src="~/Images/SurfacePro2.jpg" alt="Chicago" style="width:20%;" class="img-responsive">
             </div>
-
             <div class="item">
                 <img src="~/Images/galaxys9.jpg" alt="New york" style="width:15%;" class="img-responsive">
             </div>
@@ -40,7 +38,6 @@
                 <img src="~/Images/mac4.jpg" alt="New york" style="width:18%;" class="img-responsive">
             </div>
         </div>
-
         <!-- Left and right controls -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -52,7 +49,6 @@
         </a>
     </div>
 </div>
-
 <div class="container">
     <div class="row">
         @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 15).OrderByDescending(m => m.Id).Take(4).ToList())
@@ -63,17 +59,13 @@
                         <h5 class="pull-right">$@item.PriceIncGST</h5>
                         <h6>@item.ProductName</h6>
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>
-
                     </div>
                     <div class="btn-ground text-center">
-
                         <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn btn-success btn-sm">
                             <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
                         </a>
-
                     </div>
                     <div class="space-ten"></div>
-
                 </div>
             </div>
         }
@@ -96,7 +88,6 @@
                             <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
                         </a>
                     </div>
-
                     <div class="space-ten"></div>
                 </div>
             </div>
@@ -114,13 +105,11 @@
                         <h6>@item.ProductName</h6>
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
-
                     <div class="btn-ground text-center">
                         <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn btn-success btn-sm">
                             <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
                         </a>
                     </div>
-
                     <div class="space-ten"></div>
                 </div>
             </div>
@@ -138,7 +127,6 @@
                         <h6>@item.ProductName</h6>
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
-
                     <div class="btn-ground text-center">
                         <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn btn-success btn-sm">
                             <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
@@ -151,31 +139,28 @@
         }
     </div>
 </div>
-
-<div class="container">
+<div class="container" style="margin-bottom:40px;">
     @*<div class="row">*@
     <div class="col-sm-2">
-        <div class="item" style="vertical-align:central"> <img style="max-width: 100%;vertical-align: central" src="~/Images/apple.jpeg" alt="Submit" width="150" height="80"></div>
+        <div class="item" style="vertical-align:central"> <img style="max-width: 100%;vertical-align: central" src="~/Images/apple.jpeg" alt="Submit" width="100" height="70"></div>
     </div>
     <div class="col-sm-2">
-        <div class="item"> <img style="max-width:100%;" src="~/Images/samsung.png" alt="Submit" width="130" height="100"></div>
+        <div class="item"> <img style="max-width:100%;" src="~/Images/samsung.png" alt="Submit" width="80" height="60"></div>
     </div>
     <div class="col-sm-2">
-        <div class="item"> <img style="max-width:100%;" src="~/Images/dell.png" alt="Submit" width="130" height="100"></div>
+        <div class="item"> <img style="max-width:100%;" src="~/Images/dell.png" alt="Submit" width="80" height="60"></div>
     </div>
     <div class="col-sm-2">
-        <div class="item"> <img style="max-width:100%;" src="~/Images/hp.png" alt="Submit" width="130" height="100"></div>
+        <div class="item"> <img style="max-width:100%;" src="~/Images/hp.png" alt="Submit" width="80" height="60"></div>
     </div>
     <div class="col-sm-2">
-        <div class="item"> <img style="max-width:100%;" src="~/Images/microsoftlogo.jpg" alt="Submit" width="150" height="100"></div>
+        <div class="item"> <img style="max-width:100%;" src="~/Images/microsoftlogo.jpg" alt="Submit" width="90" height="80"></div>
     </div>
     <div class="col-sm-2">
-        <div class="item"> <img style="max-width:100%;" src="~/Images/logolenovo.jpg" alt="Submit" width="180" height="100"></div>
+        <div class="item"> <img style="max-width:100%;" src="~/Images/logolenovo.jpg" alt="Submit" width="80" height="60"></div>
     </div>
     @*</div>*@
 </div>
-
-
 <script>
     $('.carousel').carousel({
         interval: 2000

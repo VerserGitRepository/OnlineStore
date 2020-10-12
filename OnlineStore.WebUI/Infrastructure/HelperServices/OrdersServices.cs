@@ -29,17 +29,33 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             return returnmessage;
         }
 
-        public async static Task<bool> OnlineStoreCheckoutOrder(ShippingDetailsViewModel _checkoutDataModel)
+        public async static Task<ReturnValidationModel> OnlineStoreCheckoutOrder(ShippingDetailsViewModel _checkoutDataModel)
         {
-            bool returnmessage = false;
+            var returnmessage =new ReturnValidationModel();
 
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri(BaseUri);
-                HttpResponseMessage response = client.PostAsJsonAsync("OnlineSaleOrders/CreateandProcessManualOrder", _checkoutDataModel).Result;
+                HttpResponseMessage response = client.PostAsJsonAsync("OnlineSaleOrders/CreateStoreCheckoutOrder", _checkoutDataModel).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    returnmessage = await response.Content.ReadAsAsync<bool>();
+                    returnmessage = await response.Content.ReadAsAsync<ReturnValidationModel>();
+                }
+            }
+            return returnmessage;
+        }
+
+        public async static Task<ReturnValidationModel> CheckoutOrdersPaymentRequest(CheckoutOrdersPaymentModel _checkoutpaymentDataModel)
+        {
+            var returnmessage =new ReturnValidationModel();
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.PostAsJsonAsync("OnlineSaleOrders/CheckoutOrdersPaymentRequest", _checkoutpaymentDataModel).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnmessage = await response.Content.ReadAsAsync<ReturnValidationModel>();
                 }
             }
             return returnmessage;

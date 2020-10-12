@@ -49,6 +49,7 @@ namespace OnlineStore.WebUI.Models
         public List<string> Shipping_States { get; set; }
         [Required(ErrorMessage = "Please enter a postcode")]
         public string Shipping_Postcode { get; set; }
+        public string OrderType { get; set; }
         //Billing Address       
         public string Billing_AddressLine1 { get; set; }      
         public string Billing_AddressLine2 { get; set; }        
@@ -57,20 +58,20 @@ namespace OnlineStore.WebUI.Models
         public List<string> Billing_States { get; set; }      
         public string Billing_Postcode { get; set; }
         public decimal paymentAmount { get; set; }
-        //public string PaymentID { get; set; }
-        //public string cardType { get; set; }
-        //[Required(ErrorMessage = "Please enter a Name On Card")]
-        //public string nameOnCard { get; set; }
-        //[Required(ErrorMessage = "Please enter a CardNumber")]
-        //public string CardNumber { get; set; }
-        //[Required(ErrorMessage = "Please enter a Expire Month")]
-        //public string expmonth { get; set; }
-        //[Required(ErrorMessage = "Please enter a Expire year")]
-        //public int expyear { get; set; }
-        //[Required(ErrorMessage = "Please enter a cvv")]
-        //public int cvv { get; set; }
-        //public int payment_Order { get; set; }
-        //public bool PaymentStatus { get; set; }
+        public string PaymentID { get; set; }
+        public string cardType { get; set; }
+       // [Required(ErrorMessage = "Please enter a Name On Card")]
+        public string nameOnCard { get; set; }
+       // [Required(ErrorMessage = "Please enter a CardNumber")]
+        public string CardNumber { get; set; }
+      //  [Required(ErrorMessage = "Please enter a Expire Month")]
+        public string expmonth { get; set; }
+     //   [Required(ErrorMessage = "Please enter a Expire year")]
+        public int expyear { get; set; }
+      //  [Required(ErrorMessage = "Please enter a cvv")]
+        public int cvv { get; set; }
+        public int payment_OrderID { get; set; }
+        public string PaymentStatus { get; set; }
         public List<OnlineSaleProduct> PurchasedSaleProducts { get; set; }
        
     }

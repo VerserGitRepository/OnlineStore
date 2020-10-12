@@ -40,12 +40,12 @@ namespace OnlineStore.WebUI.Controllers
             }
             var manualorderviewmodel = new ManualOrdersViewModel
             {
-                FirstName= _OrderModel.ManualOrdersViewModel.FirstName,
+                FirstName = _OrderModel.ManualOrdersViewModel.FirstName,
                 LastName = _OrderModel.ManualOrdersViewModel.LastName,
                 Salutation = _OrderModel.ManualOrdersViewModel.Salutation,
                 AddressLine1 = _OrderModel.ManualOrdersViewModel.AddressLine1,
                 AddressLine2 = _OrderModel.ManualOrdersViewModel.AddressLine2,
-                Locality = _OrderModel.ManualOrdersViewModel.Locality,               
+                Locality = _OrderModel.ManualOrdersViewModel.Locality,
                 Email = _OrderModel.ManualOrdersViewModel.Email,
                 State = _OrderModel.ManualOrdersViewModel.State,
                 Postcode = _OrderModel.ManualOrdersViewModel.Postcode,
@@ -58,10 +58,12 @@ namespace OnlineStore.WebUI.Controllers
                 SSN = _OrderModel.ManualOrdersViewModel.SSN,
                 IsExport = _OrderModel.ManualOrdersViewModel.IsExport,
                 OrderDate = DateTime.Now,
-               AmazonOrderNo= _OrderModel.ManualOrdersViewModel.AmazonOrderNo,
-               ProjectId = _OrderModel.ManualOrdersViewModel.ProjectId,
-               RefNo= _OrderModel.ManualOrdersViewModel.RefNo,
+                AmazonOrderNo = _OrderModel.ManualOrdersViewModel.AmazonOrderNo,
+                ProjectId = _OrderModel.ManualOrdersViewModel.ProjectId,
+                RefNo = _OrderModel.ManualOrdersViewModel.RefNo,
+                OrderType = "ThirdPartyOrder",
                Comments =_OrderModel.ManualOrdersViewModel.Comments
+               
 
             };
              var resp=  OrdersServices.ProcessManualOrders(manualorderviewmodel);
@@ -121,6 +123,17 @@ namespace OnlineStore.WebUI.Controllers
             //        continue;
             //    }               
             //}
+
+        }
+        public JsonResult Models(int makeId, int itemTypeId)
+        {
+            List<ListItems> Models = new List<ListItems>();
+            Models = DropDownServices.models(makeId,itemTypeId).Result.Select(x => new ListItems()
+            {
+                ID = x.ID,
+                Value = x.Value
+            }).ToList();
+            return Json(Models, JsonRequestBehavior.AllowGet);
         }
     }
 }
