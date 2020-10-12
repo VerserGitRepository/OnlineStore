@@ -123,6 +123,17 @@ namespace OnlineStore.WebUI.Controllers
             //        continue;
             //    }               
             //}
+
+        }
+        public JsonResult Models(int makeId, int itemTypeId)
+        {
+            List<ListItems> Models = new List<ListItems>();
+            Models = DropDownServices.models(makeId,itemTypeId).Result.Select(x => new ListItems()
+            {
+                ID = x.ID,
+                Value = x.Value
+            }).ToList();
+            return Json(Models, JsonRequestBehavior.AllowGet);
         }
     }
 }
