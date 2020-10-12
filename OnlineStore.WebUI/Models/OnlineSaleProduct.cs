@@ -45,6 +45,7 @@ namespace OnlineStore.WebUI.Models
         public SelectList Models { get; set; }
         public List<string> Images { get; set; }
         [Required(ErrorMessage = "ProductImage Is Mandatory")]
+        [Newtonsoft.Json.JsonIgnore]
         public HttpPostedFileBase[] files { get; set; }
         public bool IsProductActive { get; set; }
         public bool IsMainPageProduct { get; set; }

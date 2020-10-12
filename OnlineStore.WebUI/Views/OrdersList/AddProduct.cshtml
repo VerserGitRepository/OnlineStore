@@ -123,9 +123,9 @@
         //alert(makeid);
         $.getJSON(ActivityUrl, { makeId: makeid, itemTypeId: itemid }, function (response) {
                        // jobno.empty();
-            $('#ddlModel').append($('<option></option>').text("Select Job").val(null));
+            $('#ddlModel').append($('<option></option>').text("Select Model").val(null));
                             $.each(response, function (index, item) {
-                                $('#ddlModel').append($('<option></option>').text(item.Value).val(item.Value));
+                                $('#ddlModel').append($('<option></option>').text(item.Value).val(item.ID));
 
                                 });
             $('#ddlModel').removeAttr('multiple')
