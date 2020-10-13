@@ -16,7 +16,7 @@
     <div class="container">
         @foreach (var item in Model)
         {
-            <div class="row">
+            <div class="row" style="border: 1px solid #ddd; padding-right: 0px;margin-right: 0px;">
                 <div class="col-xs-4 item-photo">
                     <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" alt="Submit" width="230" height="230">
                 </div>

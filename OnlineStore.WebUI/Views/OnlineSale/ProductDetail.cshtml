@@ -10,9 +10,9 @@
     @*<div class="panel-heading" align="center" style="height:30PX;background-color:#FFA500;color:white;vertical-align:top">PRODUCT DETAILS</div>*@
     <div class="panel-body" style="font-size:small;color:grey;border-color:gray;padding:0px">
         <br>
-        <div class="row">
+        <div class="row" style="border: 1px solid #ddd; padding-right: 0px;margin-right: 0px;">
             <div class="col-xs-4 item-photo">
-                 <img style="max-width:100%;" src="~/ProductImages/@Model.Images.FirstOrDefault()" />
+                <img style="max-width:100%;" src="~/ProductImages/@Model.Images.FirstOrDefault()" />
             </div>
             <div class="col-md-8" style="border:0px solid gray">
 
@@ -44,15 +44,15 @@
                     <div class="col-md-12">
                         <br /> <label class="control-label">QtyAvailable:</label>
                         @Html.DisplayFor(model => model.QtyAvailable)
-                    </div>                                
+                    </div>
                     <div class="col-md-12">
                         <br />  <label class="control-label">Colour:</label>
                         @Html.DisplayFor(model => model.SKU)
-                 <label class="control-label">Memory:</label>
+                        <label class="control-label">Memory:</label>
                         @Html.DisplayFor(model => model.SKU)
                     </div>
-                    </div>
                 </div>
+            </div>
         </div>
 
         <div class="panel-footer pull-left" align="left" style="height:50px;width:100% ;vertical-align:top;padding-bottom:10px;margin-bottom:10px;padding-left:0px">
