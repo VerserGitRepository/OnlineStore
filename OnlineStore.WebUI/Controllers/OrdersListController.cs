@@ -134,7 +134,7 @@ namespace OnlineStore.WebUI.Controllers
             Models = DropDownServices.models(makeId,itemTypeId).Result.Select(x => new ListItems()
             {
                 ID = x.ID,
-                Value = x.Value
+                Value = x.ModelName
             }).ToList();
             return Json(Models, JsonRequestBehavior.AllowGet);
         }
