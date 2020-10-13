@@ -20,7 +20,7 @@
 
 </head>
 <body>
-    <div id="tabs">
+    <div id="tabs" style="margin-left:initial">
         <ul>
             <li><a href="#tabs-1">ONLINE-STORE ORDERS</a></li>
             <li><a href="#tabs-2">THIRD-PARTY ORDERS</a></li>
@@ -125,7 +125,7 @@
             <div id="tabs-3" class="table-bordered">
                 @using (Html.BeginForm("ProcessManualOrder", "OrdersList", FormMethod.Post))
                 {
-                    <div class="col-md-5">
+                    <div class="col-md-5 table-bordered">
                         <div class="col-md-6">
                             <label class="control-label">Surname</label>
                             @Html.EditorFor(model => model.ManualOrdersViewModel.Salutation, "", new { })
@@ -147,7 +147,7 @@
                             @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.ContactNumber, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-12">
-                            <label class="control-label">Email</label>
+                            <label class="control-label">Email</label><br />
                             @Html.EditorFor(model => model.ManualOrdersViewModel.Email, "", new { })
                             @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Email, "", new { @class = "text-danger" })
                         </div>
