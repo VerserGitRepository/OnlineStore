@@ -73,11 +73,16 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult AddUpdateProduct(OnlineSaleProduct OnlineSaleProductModel)
         {
+            string filePath = Path.Combine(Server.MapPath(".") + "//ProductImages//");
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
             foreach (HttpPostedFileBase file in OnlineSaleProductModel.files)
             {
-                string path= @"C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\";
+                //string path= @"C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\";
                 
-               //file.SaveAs(Path.Combine(Server.MapPath(.) + "//ProductImages//", OnlineSaleProductModel.ProductName+".jpg"));
+               file.SaveAs(filePath+ OnlineSaleProductModel.ProductName+".jpg");
             }
             OnlineSaleProductModel.Images.Add("PowerEdge_R710_1.jpg");
            var resp = OrdersServices.AddUpdateProduct(OnlineSaleProductModel);
