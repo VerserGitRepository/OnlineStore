@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="~/Scripts/ProductPage.js"></script>
 
     <div class="offset-sm-8">
         @Html.PagedListPager(Model, Page_No => Url.Action("Mobile", "OnlineSale",
@@ -30,28 +31,28 @@
                             <h3 style="margin-top:0px;">AUD @item.PriceIncGST</h3>
 
                             @*<div class="section">
-                            <h6 class="title-attr" style="margin-top:5px;"><small>COLOR</small></h6>
-                            <div>
+                                    <h6 class="title-attr" style="margin-top:5px;"><small>COLOR</small></h6>
+                                    <div>
 
-                                <div class="attr" style="width:25px;background:#5a5a5a;"></div>
-                                <div class="attr" style="width:25px;background:white;"></div>
-                            </div>
-                        </div>
-                        <div class="section" style="padding-bottom:5px;">
-                            <h6 class="title-attr"><small>MEMORY</small></h6>
-                            <div>
-                                <div class="attr2">16 GB</div>
-                                <div class="attr2">32 GB</div>
-                            </div>
-                        </div>
-                        <div class="section" style="padding-bottom:10px;">
-                            <h6 class="title-attr"><small>QUANTITY</small></h6>
-                            <div>
-                                <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
-                                <input value="@item.QtyAvailable" />
-                                <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
-                            </div>
-                        </div>*@
+                                        <div class="attr" style="width:25px;background:#5a5a5a;"></div>
+                                        <div class="attr" style="width:25px;background:white;"></div>
+                                    </div>
+                                </div>
+                                <div class="section" style="padding-bottom:5px;">
+                                    <h6 class="title-attr"><small>MEMORY</small></h6>
+                                    <div>
+                                        <div class="attr2">16 GB</div>
+                                        <div class="attr2">32 GB</div>
+                                    </div>
+                                </div>
+                                <div class="section" style="padding-bottom:10px;">
+                                    <h6 class="title-attr"><small>QUANTITY</small></h6>
+                                    <div>
+                                        <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
+                                        <input value="@item.QtyAvailable" />
+                                        <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
+                                    </div>
+                                </div>*@
 
                             @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
                             {
@@ -73,7 +74,7 @@
 
             }
         </div>
-        </div>
+    </div>
 
 </body>
 </html>

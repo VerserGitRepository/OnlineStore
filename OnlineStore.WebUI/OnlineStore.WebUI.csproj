@@ -173,7 +173,6 @@
     <Content Include="Images\mastercard.gif" />
     <Content Include="Images\microsoftlogo.jpg" />
     <Content Include="Images\Payment Options.PNG" />
-    <Content Include="Images\PaymentOptions.PNG" />
     <Content Include="Images\samsung.png" />
     <Content Include="Images\sufacepro1.jpg" />
     <Content Include="Images\SurfacePro2.jpg" />
@@ -374,6 +373,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\ProductPage.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />

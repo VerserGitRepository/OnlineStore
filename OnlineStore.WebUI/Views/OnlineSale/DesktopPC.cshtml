@@ -5,8 +5,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.11.1.min.js">
-</script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="~/Scripts/ProductPage.js"></script>
 <!DOCTYPE html>
 <html>
 <body>
@@ -68,33 +68,7 @@
     </div>
 </body>
 </html>
-<script>
-     function ShowProductDetailPage(ProductId) {
-       // alert(ProductId)
-        //var theurl = "./ShowProductDetail";
-       // alert(theurl);
-        $.ajax({
-            type: "GET",
-            data: { "ProductId": ProductId },
-            url: '@Url.Action("ProductDetail", "OnlineSale")',
 
-            success: function (data) {
-               // alert(data);
-                $.confirm({
-                    boxWidth: '800px',
-                    useBootstrap: false,
-                    title: '',
-                    content: data,
-                    closeIcon: true,
-
-                    buttons: {
-                        yes: { isHidden: true }
-                    },
-                });
-            }
-        });
-    }
-</script>
 <style>
     ul > li {
         margin-right: 0px;

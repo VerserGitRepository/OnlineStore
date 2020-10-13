@@ -109,15 +109,17 @@ namespace OnlineStore.WebUI.Controllers
                 sc.AddItem(sp, 1);
             }
             Session["Productcart"] = sc;
-            if (returnUrl == null || returnUrl == string.Empty)
+            if (returnUrl == null || returnUrl == string.Empty || returnUrl.IndexOf("ProductId") > 0)
             {
-                return RedirectToAction("Index","OnlineSale");
+                return RedirectToAction("Index", "OnlineSale");
 
             }
             else
             {
-                int Page_No = returnUrl.IndexOf('?') > 0 ? Convert.ToInt32(returnUrl.Split('/')[3].Split('?')[1].Replace("Page_No=","").Trim()) : 1;
-                return RedirectToAction(returnUrl.IndexOf('?') > 0 ? returnUrl.Split('/')[3].Split('?')[0]: returnUrl.Split('/')[3], returnUrl.Split('/')[2],new { Page_No});
+               
+                int Page_No = returnUrl.IndexOf('?') > 0 ? Convert.ToInt32(returnUrl.Split('/')[3].Split('?')[1].Replace("Page_No=", "").Trim()) : 1;
+                return RedirectToAction(returnUrl.IndexOf('?') > 0 ? returnUrl.Split('/')[3].Split('?')[0] : returnUrl.Split('/')[3], returnUrl.Split('/')[2], new { Page_No });
+                
             }
             
             

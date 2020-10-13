@@ -6,6 +6,7 @@
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="~/Scripts/ProductPage.js"></script>
 <!DOCTYPE html>
 <html>
 <body>
@@ -19,7 +20,7 @@
         {
             <div class="row">
                 <div class="col-xs-4 item-photo">
-                    <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" alt="Submit" width="220" height="220">
+                    <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" alt="Submit" width="220" height="220">
                 </div>
                 <div class="col-xs-5" style="border:0px solid gray">
                     <h3>@item.ProductName</h3>
