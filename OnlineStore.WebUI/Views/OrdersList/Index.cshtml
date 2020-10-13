@@ -3,37 +3,24 @@
 @{
     ViewBag.Title = "MANAGEORDERS";
 }
-    <head>
-        
-        <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
-        <link href="~/Content/bootstrap.css" rel="stylesheet" />
-        <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
-        <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        <script src=" https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="~/Scripts/bootstrap-multiselect.js"></script>
-        <script src="~/Scripts/scrollForever.js"></script>
-        <link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
-        <link href="~/Content/scroll.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Tabs - Default functionality</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
-
-    </head>
-<body >
-    <div class="containerr">
-    <div id="tabs" style="margin-left:0px; width:130%">
+</head>
+<body>
+    <div id="tabs" style="margin-left:initial">
         <ul>
             <li><a href="#tabs-1">ONLINE-STORE ORDERS</a></li>
             <li><a href="#tabs-2">THIRD-PARTY ORDERS</a></li>
@@ -44,53 +31,51 @@
         </ul>
         <div class="panel-body" style="border-color:gray;">
             <div id="tabs-1">
-                <div class="col-md-6">
-                    <table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller;width:80%">
-                        <thead style="background-color:#959ca1;color:white">
+                <table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
+                    <thead style="background-color:#959ca1;color:white">
+                        <tr>
+                            <th>BrandName</th>
+                            @*<th>Brand_ID</th>*@
+                            <th>CreatedBy</th>
+                            <th>Description</th>
+                            <th>GSTAmount</th>
+                            <th>Images</th>
+                            <th>ItemTypeName</th>
+                            <th>ModelName</th>
+                            <th>PriceExGST</th>
+                            <th>PriceIncGST</th>
+                            <th>ProductImage</th>
+                            <th>ProductName</th>
+                            <th>QtyAvailable</th>
+                            <th>SKU</th>
+                            @*<th>AmazonOder</th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OnlineSaleProductList)
+                        {
                             <tr>
-                                <th>BrandName</th>
-                                @*<th>Brand_ID</th>*@
-                                <th>CreatedBy</th>
-                                <th>Description</th>
-                                <th>GSTAmount</th>
-                                <th>Images</th>
-                                <th>ItemTypeName</th>
-                                <th>ModelName</th>
-                                <th>PriceExGST</th>
-                                <th>PriceIncGST</th>
-                                <th>ProductImage</th>
-                                <th>ProductName</th>
-                                <th>QtyAvailable</th>
-                                <th>SKU</th>
-                                @*<th>AmazonOder</th>*@
+                                <td>@item.BrandName</td>
+                                <td>@item.CreatedBy</td>
+                                <td>@item.Description</td>
+                                <td>@item.GSTAmount</td>
+                                @*<td>@item.Id </td>*@
+                                <td>@item.Images</td>
+                                @*<td>@item.IsSKU</td>*@
+                                <td>@item.ItemTypeName</td>
+                                @*<td>@item.ItemType_ID</td>*@
+                                <td>@item.ModelName</td>
+                                @*<td>@item.Model_ID</td>*@
+                                <td>@item.PriceExGST</td>
+                                <td>@item.PriceIncGST</td>
+                                <td>@item.ProductImage</td>
+                                <td>@item.ProductName</td>
+                                <td>@item.QtyAvailable</td>
+                                <td>@item.SKU</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.OnlineSaleProductList)
-                            {
-                                <tr>
-                                    <td>@item.BrandName</td>
-                                    <td>@item.CreatedBy</td>
-                                    <td>@item.Description</td>
-                                    <td>@item.GSTAmount</td>
-                                    @*<td>@item.Id </td>*@
-                                    <td>@item.Images</td>
-                                    @*<td>@item.IsSKU</td>*@
-                                    <td>@item.ItemTypeName</td>
-                                    @*<td>@item.ItemType_ID</td>*@
-                                    <td>@item.ModelName</td>
-                                    @*<td>@item.Model_ID</td>*@
-                                    <td>@item.PriceExGST</td>
-                                    <td>@item.PriceIncGST</td>
-                                    <td>@item.ProductImage</td>
-                                    <td>@item.ProductName</td>
-                                    <td>@item.QtyAvailable</td>
-                                    <td>@item.SKU</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                        }
+                    </tbody>
+                </table>
             </div>
             <div id="tabs-2">
                 <table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
@@ -291,9 +276,9 @@
                                 <td>
 
                                     @*@if (item.ProductImage.Length > 0)
-                                    {
-                                        <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" alt="@item.ProductName" width="200" height="150"/>
-                                    }*@
+                                        {
+                                            <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" alt="@item.ProductName" width="200" height="150"/>
+                                        }*@
 
                                     @if (item.Images.Count > 0)
                                     {
@@ -321,8 +306,7 @@
                 MANAGEDISPATCHORDER
             </div>
         </div>
-        </div>
-        </div>
+    </div>
 </body>
 <script>
         $(function () {
@@ -376,7 +360,7 @@
             closeIcon: true,
             buttons: {
             yes: { isHidden: true }
-            },  
+            },
             });
                 },
                 error: function (result) { alert(result); console.log(result);}
@@ -385,18 +369,3 @@
         });
 
 </script>
-
-<style>
-    .containerr {
-    padding-right: 15px;
-    padding-left: 0px;
-    margin-right: auto;
-    margin-left:  10px;
-}
-        .body {
-    padding-right: 15px;
-    padding-left: 0px;
-    margin-right: auto;
-    margin-left:  10px;
-}
-    </style>

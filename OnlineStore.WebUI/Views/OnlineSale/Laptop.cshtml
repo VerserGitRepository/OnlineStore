@@ -17,7 +17,7 @@
         {
             <div class="row">
                 <div class="col-xs-4 item-photo">
-                    <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" alt="Submit" width="230" height="230">
+                    <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" alt="Submit" width="230" height="230">
                 </div>
                 <div class="col-xs-5" style="border:0px solid gray">
 
@@ -66,7 +66,33 @@
     </div>
 </body>
 </html>
+<script>
+     function ShowProductDetailPage(ProductId) {
+       // alert(ProductId)
+        //var theurl = "./ShowProductDetail";
+       // alert(theurl);
+        $.ajax({
+            type: "GET",
+            data: { "ProductId": ProductId },
+            url: '@Url.Action("ProductDetail", "OnlineSale")',
 
+            success: function (data) {
+               // alert(data);
+                $.confirm({
+                    boxWidth: '800px',
+                    useBootstrap: false,
+                    title: '',
+                    content: data,
+                    closeIcon: true,
+
+                    buttons: {
+                        yes: { isHidden: true }
+                    },
+                });
+            }
+        });
+    }
+</script>
 <style>
     ul > li {
         margin-right: 25px;
