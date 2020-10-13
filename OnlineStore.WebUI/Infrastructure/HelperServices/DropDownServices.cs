@@ -72,16 +72,16 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             return returnmodel;
         }
 
-        public static async Task<List<ListItems>> models(int makeId, int itemTypeId)
+        public static async Task<List<ProductModel>> models(int makeId, int itemTypeId)
         {
-            List<ListItems> returnmodel = new List<ListItems>();
+            List<ProductModel> returnmodel = new List<ProductModel>();
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri(CostModelAPIURL);
                 HttpResponseMessage response = client.GetAsync(string.Format("inventorycontrol/GetModels/{0}/{1}/listitems", makeId, itemTypeId)).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    returnmodel = await response.Content.ReadAsAsync<List<ListItems>>();
+                    returnmodel = await response.Content.ReadAsAsync<List<ProductModel>>();
                 }
             }
             return returnmodel;
