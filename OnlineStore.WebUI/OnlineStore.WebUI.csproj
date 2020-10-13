@@ -173,6 +173,7 @@
     <Content Include="Images\mastercard.gif" />
     <Content Include="Images\microsoftlogo.jpg" />
     <Content Include="Images\Payment Options.PNG" />
+    <Content Include="Images\PaymentOptions.PNG" />
     <Content Include="Images\samsung.png" />
     <Content Include="Images\sufacepro1.jpg" />
     <Content Include="Images\SurfacePro2.jpg" />
@@ -195,6 +196,8 @@
     <None Include="Properties\PublishProfiles\dc-webdev1.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
+    <Content Include="ProductImages\PowerEdge1950.jpg" />
+    <Content Include="ProductImages\PowerEdge_R710_1.jpg" />
     <Content Include="Scripts\bootstrap-multiselect.css" />
     <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\bootstrap.js" />
