@@ -42,54 +42,10 @@
         </div>
     </div>
 
-    @*<nav class="navbar navbar-expand-sm navbar-dark" style="background-color:orange;height:15px;">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarTogglerDemo03">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="nav navbar-nav" style="padding-top:7px; font-size:12px">
-                <li>@Html.ActionLink("ONLINESTORE", "Index", "OnlineSale")</li>
-                <li>@Html.ActionLink("MOBILE", "Mobile", "OnlineSale")</li>
-                <li>@Html.ActionLink("LAPTOPS", "Laptop", "OnlineSale")</li>
-                <li>@Html.ActionLink("MONITOR", "Monitor", "OnlineSale")</li>
-                <li>@Html.ActionLink("DESKTOP PC", "DesktopPC", "OnlineSale")</li>
-                <li>@Html.ActionLink("IPAD", "IPad", "OnlineSale")</li>
-                <li>@Html.ActionLink("ACCESSORIES", "Mobile", "OnlineSale")</li>
-                <li>@Html.ActionLink("PRINTER", "Printer", "OnlineSale")</li>
-                <li>@Html.ActionLink("SERVERS", "Server", "OnlineSale")</li>
-                <li>@Html.ActionLink("NETWORK GEARS", "NetworkGear", "OnlineSale")</li>
-                <li>@Html.ActionLink("TV'S", "TV", "OnlineSale")</li>
-                <li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
-                <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
-                @if (@Session["Username"] != null)
-                {
-                    <li>@Html.ActionLink("ORDERSLIST", "Index", "OrdersList")</li>
-                    <li>@Html.ActionLink("LOGOUT", "Login", "Login")</li>
-                }
-                else
-                {
-                    <li>@Html.ActionLink("LOGIN", "Login", "Login")</li>
-                }
-            </ul>
-            <div class="navbar-right" style="vertical-align:bottom;margin-right:10px">
-                @Html.Action("Summary", "ShoppingCart")
-            </div>
-            @if (@Session["productinformation"] != null)
-            {
-                <input type="hidden" id="productinfo" value='@Session["productinformation"].ToString()' />
-            }
-        </div>
-    </nav>*@
-
-    <nav class="navbar navbar-expand-lg navbar-light">
-        @*<a class="navbar-brand" href="#">Navbar</a>*@
+    <nav class="navbar navbar-expand-lg navbar-light">       
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"style="background-color:orange;">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav" style="padding-top:7px; font-size:12px">
                 <li>@Html.ActionLink("ONLINESTORE", "Index", "OnlineSale")</li>
@@ -102,8 +58,7 @@
                 <li>@Html.ActionLink("PRINTER", "Printer", "OnlineSale")</li>
                 <li>@Html.ActionLink("SERVERS", "Server", "OnlineSale")</li>
                 <li>@Html.ActionLink("NETWORK GEARS", "NetworkGear", "OnlineSale")</li>
-                <li>@Html.ActionLink("TV'S", "TV", "OnlineSale")</li>
-                @*<li id="contactUs">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>*@
+                <li>@Html.ActionLink("TV'S", "TV", "OnlineSale")</li>               
                 <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
                 @if (@Session["Username"] != null)
                 {
@@ -129,28 +84,51 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:35px;margin:35px">
         <div class="modal-dialog">
 
-            <div class="modal-content" style="padding:35px;margin:35px;font-size:small">
+            <div class="modal-content" style="padding:25px;margin:35px;font-size:smaller">
                 <div class="modal-header">
+                    <h4 class="modal-title" id="lineModalLabel">IMPORTANT ONLINESALE TERMS & CONDITIONS</h4>
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <h3 class="modal-title" id="lineModalLabel">IMPORTANT ONLINESALE TERMS & CONDITIONS</h3>
                 </div>
-                @*<P>IMPORTANT ONLINESALE TERMS & CONDITIONS</P>*@
-                PLEASE NOTE: The goods and services as shipped out accepted as per  Verser Technology Lifecycles
-                (Verser) Customer Terms of Sale. Please refer to Verser Australia website for full details.<br><br>
-                Unless otherwise stated, all prices quoted are in Australian Dollar Currency(AUD) and are exclusive of GST, freight, and
-                configuration charges.<br><br>
-                Freight costs are based on standard road delivery.Air freight or any other form of special delivery will incur additional costs.<br><br>
-                Freight costs are based on standard road delivery.Air freight or any other form of special delivery will incur additional costs.<br><br>
-                The pricing specified above is not combinable with any other offer.<br><br>
-                Bundle pricing is subject to change in the event amendments are made to the quantity and/or bundle components
-                ordered.Please contact your account manager should you require changes to the bundle lines.<br><br>
-                This sale is valid only to the customer whose name appears above.<br><br>
-                This sale has been prepared shipped upon producted purchased.<br><br>
-                The Verser Technology Lifecycles Order reference number and  product descriptions and pricing specified in the order invoice must be
-                included in your order.<br><br>
-                All trademarks, brand names, and product names are the property of their respective owners.<br><br>
-                The sale product posted above are correct at time of publishing and issuing the purchasing. All errors and omissions are excluded and
-                no other discounts apply.<br><br>
+                <ul style="padding-top:15px;">
+                    <li>
+                        PLEASE NOTE: The goods and services as shipped out accepted as per  Verser Technology Lifecycles
+                        (Verser) Customer Terms of Sale. Please refer to Verser Australia website for full details.
+                    </li>
+                    <li>
+                        Unless otherwise stated, all prices quoted are in Australian Dollar Currency(AUD) and are exclusive of GST, freight, and
+                        configuration charges.
+                    </li>
+                    <li>
+                        Freight costs are based on standard road delivery.Air freight or any other form of special delivery will incur additional costs.
+                    <li>
+                        Freight costs are based on standard road delivery.Air freight or any other form of special delivery will incur additional costs.
+                    </li>
+                    <li>
+                        The pricing specified above is not combinable with any other offer.
+                    </li>
+                    <li>
+                        Bundle pricing is subject to change in the event amendments are made to the quantity and/or bundle components
+                        ordered.Please contact your account manager should you require changes to the bundle lines.
+                    </li>
+                    <li>
+
+                        This sale is valid only to the customer whose name appears above.
+                    </li>
+                    <li>
+                        This sale has been prepared shipped upon producted purchased.
+                    </li>
+                    <li>
+                        The Verser Technology Lifecycles Order reference number and  product descriptions and pricing specified in the order invoice must be
+                        included in your order.
+                    </li>
+                    <li>
+                        All trademarks, brand names, and product names are the property of their respective owners.
+                    </li>
+                    <li>
+                        The sale product posted above are correct at time of publishing and issuing the purchasing. All errors and omissions are excluded and
+                        no other discounts apply.
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -159,14 +137,15 @@
     </div>
 
     @RenderSection("scripts", required: false)
-    <div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:white;font-size:smaller">
-        The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
-        <img src="~/Images/Payment Options.PNG" />
+<div class="my_footer text-center text-muted" style="bottom:0;position: fixed; width:100%;background-color:lightgray;color:dodgerblue;font-size:smaller">
+    The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
+    <img src="~/Images/PaymentOptions.PNG" />
 
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-            Terms & Conditions
-        </button>
-    </div>
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+        Terms & Conditions
+    </button>
+    ContactUs: <a href="tel:+61 1800 732 668" style="color:dodgerblue">+61 1800 732 668</a>  Mail: <a href="mailto:Support@verser.com.au" style="color:dodgerblue">Support@verser.com.au</a>
+</div>
 </body>
 </html>
 
