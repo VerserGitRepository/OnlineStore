@@ -78,7 +78,7 @@
                 </table>
             </div>
             <div id="tabs-2">
-                <table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
+                <table class="table table-bordered table-responsive table-hover" id="OrdersTable1" style="font-size:smaller">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
                             <th>Orderno</th>
@@ -150,7 +150,7 @@
                             <label class="control-label">Email</label><br />
                             @Html.EditorFor(model => model.ManualOrdersViewModel.Email, "", new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Email, "", new { @class = "text-danger" })
-                        </div>
+                        </div><br>
                     </div>
                     <div class="col-md-5 table-bordered" style="margin:2px">
                         <div class="col-md-6">
@@ -188,7 +188,7 @@
                             new { @class = "form-control", style = "Height:35px" })
 
                         </div>
-                    </div>
+                    </div><br>
                     <div class="col-md-10 table-bordered" style="margin:5px">
                         <div class="col-md-6">
                             <label class="control-label">SSN</label>
@@ -315,6 +315,7 @@
         $(document).ready(function () {
             $('#ProductsTable').DataTable();
             $('#OrdersTable').DataTable();
+              $('#OrdersTable1').DataTable();
             $('.dataTables_filter').addClass('pull-right');
         });
         $('#addProduct').click(function () {

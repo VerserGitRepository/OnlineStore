@@ -13,22 +13,13 @@
             new { Page_No }))
     </div>
     <div class="container">
-        <div class="row">
+        @*<div class="row">*@
             @foreach (var item in Model)
             {
-                @*<div class="card-group">
-                    <div class="card">
-                        <div class="col-xs-3 item-photo">
-                            <img class="card-img-top" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" alt="Card image cap">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">@item.ProductName</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>*@
-                    <div class="row" style="border: 1px solid #ddd; padding-right: 0px;margin-right: 0px;">
+
+                <div class="row" style="margin-top: 30px;background: #eee;padding: 3em;line-height: 1.5em;">
+      
+                  
                         <div class="col-xs-4 item-photo">
                             <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" />
                         </div>
@@ -67,21 +58,24 @@
                                 //@Html.Hidden(item.Id.ToString());
                                 <div class="section">
                                     <button class="btn btn-success"><span style="margin-right:0px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
-                                    @*<h6>
-                                    <a href="#">
-                                        <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
-                                        Add to wish list
-                                    </a>
-                                </h6>*@
+                                    <h6>
+                                        <a href="#">
+                                            <button class="btn btn-outline-primary">
+                                                <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
+                                                Add to wish list
+                                            </button>
+</a>
+                                    </h6>
                                 </div>
 
                             }
                         </div>
-                    </div>
-                    }
-                </div>
+                  
             </div>
 
+            }
+        </div>
+   
 </body>
 </html>
 <style>
