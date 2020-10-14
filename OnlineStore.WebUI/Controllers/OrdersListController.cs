@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using OnlineStore.WebUI.Infrastructure.HelperServices;
 using System.Drawing;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace OnlineStore.WebUI.Controllers
 {
@@ -73,7 +74,7 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult AddUpdateProduct(OnlineSaleProduct OnlineSaleProductModel)
         {
-            string filePath = Path.Combine(Server.MapPath(".") + "//ProductImages//");
+            string filePath = Path.Combine(Server.MapPath(".."),@"ProductImages\");
             if (!Directory.Exists(filePath))
             {
                 Directory.CreateDirectory(filePath);
@@ -82,10 +83,11 @@ namespace OnlineStore.WebUI.Controllers
             {
                 //string path= @"C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\";
                 
-               file.SaveAs(filePath+ OnlineSaleProductModel.ProductName+".jpg");
+               file.SaveAs(filePath+ file.FileName+".jpg");
+                OnlineSaleProductModel.Images.Add(file.FileName + ".jpg");
             }
-            OnlineSaleProductModel.Images.Add("PowerEdge_R710_1.jpg");
-           var resp = OrdersServices.AddUpdateProduct(OnlineSaleProductModel);
+            var jsondata = JsonConvert.SerializeObject(OnlineSaleProductModel);
+            var resp = OrdersServices.AddUpdateProduct(OnlineSaleProductModel);
             return RedirectToAction("Index", "OrdersList");
         }
        

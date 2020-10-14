@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <script src="~/Scripts/ProductPage.js"></script>
@@ -17,102 +16,98 @@
         <div class="row">
             @foreach (var item in Model)
             {
-
-                <div class="row" style="border: 1px solid #ddd; padding-right: 0px;margin-right: 0px;">
-                    <div class="col-xs-4 item-photo">
-                        @*<img style="max-width:100%;" src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg" />*@
-                        <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" />
-                    </div>
-                    <div class="col-xs-5">
+                @*<div class="card-group">
+                    <div class="card">
+                        <div class="col-xs-3 item-photo">
+                            <img class="card-img-top" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@item.ProductName</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="row" style="border: 1px solid #ddd; padding-right: 0px;margin-right: 0px;">
+                        <div class="col-xs-4 item-photo">
+                            <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" />
+                        </div>
                         <div class="col-xs-5">
                             <h3>@item.ProductName</h3>
                             <h5 style="color:#337ab7">@item.BrandName</h5>
                             <h6 class="title-price"><small>PRICE</small></h6>
-                            <h3 style="margin-top:0px;">AUD @item.PriceIncGST</h3>
+                            <h4 style="margin-top:0px;">AUD $@item.PriceIncGST</h4>
 
                             @*<div class="section">
-                                    <h6 class="title-attr" style="margin-top:5px;"><small>COLOR</small></h6>
-                                    <div>
+                            <h6 class="title-attr" style="margin-top:5px;"><small>COLOR</small></h6>
+                            <div>
 
-                                        <div class="attr" style="width:25px;background:#5a5a5a;"></div>
-                                        <div class="attr" style="width:25px;background:white;"></div>
-                                    </div>
-                                </div>
-                                <div class="section" style="padding-bottom:5px;">
-                                    <h6 class="title-attr"><small>MEMORY</small></h6>
-                                    <div>
-                                        <div class="attr2">16 GB</div>
-                                        <div class="attr2">32 GB</div>
-                                    </div>
-                                </div>
-                                <div class="section" style="padding-bottom:10px;">
-                                    <h6 class="title-attr"><small>QUANTITY</small></h6>
-                                    <div>
-                                        <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
-                                        <input value="@item.QtyAvailable" />
-                                        <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
-                                    </div>
-                                </div>*@
+                                <div class="attr" style="width:25px;background:#5a5a5a;"></div>
+                                <div class="attr" style="width:25px;background:white;"></div>
+                            </div>
+                        </div>
+                        <div class="section" style="padding-bottom:5px;">
+                            <h6 class="title-attr"><small>MEMORY</small></h6>
+                            <div>
+                                <div class="attr2">16 GB</div>
+                                <div class="attr2">32 GB</div>
+                            </div>
+                        </div>
+                        <div class="section" style="padding-bottom:10px;">
+                            <h6 class="title-attr"><small>QUANTITY</small></h6>
+                            <div>
+                                <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
+                                <input value="@item.QtyAvailable" />
+                                <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
+                            </div>
+                        </div>*@
 
                             @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
                             {
                                 //@Html.Hidden(item.Id.ToString());
                                 <div class="section">
                                     <button class="btn btn-success"><span style="margin-right:0px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
-                                    <h6>
-                                        <a href="#">
-                                            <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
-                                            Add to wish list
-                                        </a>
-                                    </h6>
+                                    @*<h6>
+                                    <a href="#">
+                                        <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
+                                        Add to wish list
+                                    </a>
+                                </h6>*@
                                 </div>
 
                             }
                         </div>
                     </div>
+                    }
                 </div>
-
-            }
-        </div>
-    </div>
+            </div>
 
 </body>
 </html>
 <style>
     .thumbnail {
-        border: 1px solid #ddd;
-        /*display: block;
-        padding: 4px;
-        margin-bottom: 20px;
-        line-height: 1.42857143;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        -webkit-transition: border .2s ease-in-out;
-        -o-transition: border .2s ease-in-out;
-        transition: border .2s ease-in-out;*/
+        border: 1px solid #ddd;       
     }
+
     ul > li {
         margin-right: 0px;
         font-weight: lighter;
         cursor: pointer
     }
-     div.row {
-      /*//  border:0.002px solid;*/
+
+    div.row {      
         border: 0px;
         border-radius: 0px;
-      }
+    }
     li.active {
         border-bottom: 3px solid silver;
     }
-
     .item-photo {
         display: flex;
         justify-content: center;
         align-items: center;
         border-right: 1px solid #f6f6f6;
     }
-
     .menu-items {
         list-style-type: none;
         font-size: 11px;
@@ -120,12 +115,10 @@
         margin-bottom: 0;
         margin-top: 20px
     }
-
     .btn-success {
         width: 100%;
         border-radius: 0;
     }
-
     .section {
         width: 70%;
         margin-left: -15px;
@@ -134,19 +127,16 @@
         padding-right: 5px;
         background: #f8f9f9
     }
-
     .title-price {
         margin-top: 30px;
         margin-bottom: 0;
         color: black
     }
-
     .title-attr {
         margin-top: 0;
         margin-bottom: 0;
         color: black;
     }
-
     .btn-minus {
         cursor: pointer;
         font-size: 7px;
@@ -159,7 +149,6 @@
         border-radius: 2px;
         border-right: 0;
     }
-
     .btn-plus {
         cursor: pointer;
         font-size: 7px;
@@ -172,12 +161,10 @@
         border-radius: 2px;
         border-left: 0;
     }
-
     div.section > div {
         width: 100%;
         display: inline-flex;
     }
-
         div.section > div > input {
             margin: 0;
             padding-left: 5px;
@@ -209,8 +196,7 @@
             data: { "ProductId": ProductId },
             url: '@Url.Action("ProductDetail", "OnlineSale")',
 
-            success: function (data) {
-               // alert(data);
+            success: function (data) {             
                 $.confirm({
                     boxWidth: '800px',
                     useBootstrap: false,

@@ -62,7 +62,8 @@ namespace OnlineStore.WebUI.Controllers
                     if (url != null)
                     {                       
                         return Redirect(url);
-                        // var confirmationRequestReturnFlag = OrdersServices.CheckoutOrdersPaymentRequest(CheckoutOrdersPaymentRequestdata).Result;
+                        //this has to be called upon successfull payment made
+                         var confirmationRequestReturnFlag = OrdersServices.CheckoutOrdersPaymentRequest(CheckoutOrdersPaymentRequestdata).Result;
                     }
                 }
             }
@@ -112,19 +113,13 @@ namespace OnlineStore.WebUI.Controllers
             if (returnUrl == null || returnUrl == string.Empty || returnUrl.IndexOf("ProductId") > 0)
             {
                 return RedirectToAction("Index", "OnlineSale");
-
             }
             else
-            {
-               
+            {               
                 int Page_No = returnUrl.IndexOf('?') > 0 ? Convert.ToInt32(returnUrl.Split('/')[3].Split('?')[1].Replace("Page_No=", "").Trim()) : 1;
-                return RedirectToAction(returnUrl.IndexOf('?') > 0 ? returnUrl.Split('/')[3].Split('?')[0] : returnUrl.Split('/')[3], returnUrl.Split('/')[2], new { Page_No });
-                
-            }
-            
-            
+                return RedirectToAction(returnUrl.IndexOf('?') > 0 ? returnUrl.Split('/')[3].Split('?')[0] : returnUrl.Split('/')[3], returnUrl.Split('/')[2], new { Page_No });                
+            }                       
         }
-
         public RedirectToRouteResult RemoveFromShoppingCart( int id,
                 string returnUrl)
         {
