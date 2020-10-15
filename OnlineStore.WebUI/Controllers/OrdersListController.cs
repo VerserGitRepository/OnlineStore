@@ -74,6 +74,8 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult AddUpdateProduct(OnlineSaleProduct OnlineSaleProductModel)
         {
+            if(!ModelState.IsValid)
+                return RedirectToAction("Index", "OrdersList");
             string filePath = Path.Combine(Server.MapPath(".."),@"ProductImages\");
             if (!Directory.Exists(filePath))
             {
@@ -81,10 +83,11 @@ namespace OnlineStore.WebUI.Controllers
             }
             foreach (HttpPostedFileBase file in OnlineSaleProductModel.files)
             {
-                //string path= @"C:\Users\bpatil\Source\Repos\OnlineStoreGitRepo\OnlineStore\OnlineStore.WebUI\";
-                
-               file.SaveAs(filePath+ file.FileName+".jpg");
-                OnlineSaleProductModel.Images.Add(file.FileName + ".jpg");
+                if (file != null)
+                {
+                    file.SaveAs(filePath + file.FileName + ".jpg");
+                    OnlineSaleProductModel.Images.Add(file.FileName + ".jpg");
+                }
             }
             var jsondata = JsonConvert.SerializeObject(OnlineSaleProductModel);
             var resp = OrdersServices.AddUpdateProduct(OnlineSaleProductModel);
@@ -94,7 +97,7 @@ namespace OnlineStore.WebUI.Controllers
         public ActionResult AddProduct()
         {
             var OnlineSaleProduct = new OnlineSaleProduct();
-           
+            OnlineSaleProduct.IsUpdateProduct = false;
             OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
             OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
             //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
@@ -103,10 +106,9 @@ namespace OnlineStore.WebUI.Controllers
         public ActionResult UpdateProduct(int productId)
         {
             var OnlineSaleProduct =  OrdersServices.OnlineSaleProductById(productId).Result;
-
+            OnlineSaleProduct.IsUpdateProduct = true;
             OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
             OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
-            //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
             return PartialView("AddProduct",OnlineSaleProduct);
         }
         public void imageimport()

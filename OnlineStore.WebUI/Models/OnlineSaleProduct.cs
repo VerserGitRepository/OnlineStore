@@ -14,7 +14,7 @@ namespace OnlineStore.WebUI.Models
             Images = new List<string>();
         }
         public int Id { get; set; }
-        [Required(ErrorMessage = "ProductImage Is Mandatory")]
+        [RequiredIf("IsUpdateProduct", false, "Model is mandatory")]
         public byte[] ProductImage { get; set; }
         [Required(ErrorMessage = "ProductName Is Mandatory")]
         public string ProductName { get; set; }
@@ -24,7 +24,7 @@ namespace OnlineStore.WebUI.Models
         public int? ItemType_ID { get; set; }
         [Required(ErrorMessage = "Brand Is Mandatory")]
         public int? Brand_ID { get; set; }
-        [Required(ErrorMessage = "Model Is Mandatory")]
+        [RequiredIf("IsUpdateProduct",false, "Model is mandatory")]
         public int? Model_ID { get; set; }
         public int PurchasedQty { get; set; }
         public decimal PriceExGST { get; set; }
@@ -44,11 +44,45 @@ namespace OnlineStore.WebUI.Models
         public string SKU { get; set; }
         public SelectList Models { get; set; }
         public List<string> Images { get; set; }
-        [Required(ErrorMessage = "ProductImage Is Mandatory")]
+        [RequiredIf("IsUpdateProduct",false, "File is mandatory")]
         [Newtonsoft.Json.JsonIgnore]
         public HttpPostedFileBase[] files { get; set; }
-        public bool IsProductActive { get; set; }
-        public bool IsMainPageProduct { get; set; }
+        public bool IsProductActive { get; set; } = true;
+        public bool IsMainPageProduct { get; set; }= true;
+        public bool IsUpdateProduct { get; set; }
 
+    }
+    public class RequiredIfAttribute : ValidationAttribute
+    {
+        private string PropertyName { get; set; }
+        private string ErrorMessage { get; set; }
+        private Object DesiredValue { get; set; }
+
+        public RequiredIfAttribute(String propertyName, Object desiredvalue, String errormessage)
+        {
+            this.PropertyName = propertyName;
+            this.DesiredValue = desiredvalue;
+            this.ErrorMessage = errormessage;
+        }
+
+        protected override ValidationResult IsValid(object value, ValidationContext context)
+        {
+            Object instance = context.ObjectInstance;
+            Type type = instance.GetType();
+            Object proprtyvalue = type.GetProperty(PropertyName).GetValue(instance, null);
+            if (proprtyvalue.ToString() == DesiredValue.ToString() )
+            {
+                return new ValidationResult(ErrorMessage);
+            }
+            return ValidationResult.Success;
+        }
+        public System.Collections.Generic.IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
+        {
+            var rule = new ModelClientValidationRule();
+            rule.ErrorMessage = FormatErrorMessage(metadata.GetDisplayName());
+            rule.ValidationParameters.Add("string", ErrorMessage);
+            rule.ValidationType = "required";
+            yield return rule;
+        }
     }
 }
