@@ -50,6 +50,7 @@ namespace OnlineStore.WebUI.Models
         public bool IsProductActive { get; set; } = true;
         public bool IsMainPageProduct { get; set; }= true;
         public bool IsUpdateProduct { get; set; }
+        public bool IsViewTypeGrid { get; set; }
 
     }
     public class RequiredIfAttribute : ValidationAttribute

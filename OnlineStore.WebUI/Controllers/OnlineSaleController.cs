@@ -135,5 +135,12 @@ namespace OnlineStore.WebUI.Controllers
             @ShoppingCart p = new @ShoppingCart();
             return RedirectToAction("AddToShoppingCart", "ShoppingCart", new { @id = id, @returnUrl = returnUrl });
         }
+       
+        public ActionResult RenderView(string view,string viewName)
+        {
+
+            SaleProducts.ToList().ForEach(c => c.IsViewTypeGrid = view == "gridViewBtn");
+            return RedirectToAction(viewName);
+        }
     }
 }
