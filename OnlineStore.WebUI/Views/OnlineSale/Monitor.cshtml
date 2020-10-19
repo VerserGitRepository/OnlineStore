@@ -27,7 +27,7 @@
             </button>
         </div>
     </div>
-    @if (Model.First().IsViewTypeGrid)
+   @if (Model.Count() > 0 && Model.First().IsViewTypeGrid)
     {
         <div class="container">
             @foreach (var item in Model)
@@ -98,11 +98,12 @@
                                 <h6>@item.ProductName</h6>
                                 <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>
                             </div>
-                            <div class="btn-ground text-center">
-                                <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn btn-success btn-sm">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
-                                </a>
-                            </div>
+                            @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
+                            {
+                                <div class="section" style="padding-bottom:5px;">
+                                    <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
+                                </div>
+                            }
                             <div class="space-ten"></div>
                         </div>
                     </div>
