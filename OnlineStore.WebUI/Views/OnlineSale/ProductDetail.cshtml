@@ -6,72 +6,46 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css" rel="stylesheet">
 
-<div class="table-bordered" style="width:700px;padding:0px">
-    @*<div class="panel-heading" align="center" style="height:30PX;background-color:#FFA500;color:white;vertical-align:top">PRODUCT DETAILS</div>*@
-    <div class="panel-body" style="font-size:small;color:grey;border-color:gray;padding:0px">
-        <br>
-        <div class="row" style="border: 1px solid #ddd; padding-right: 0px;margin-right: 0px;">
-            <div class="col-xs-4 item-photo">
-                <img style="max-width:100%;" src="~/ProductImages/@Model.Images.FirstOrDefault()" />
-            </div>
-            <div class="col-md-8" style="border:0px solid gray">
+<div class="panel-body" style="font-size:small;color:grey;border-color:gray;padding:0px">
+    <br>
+    <div class="row" style="border:1px solid #ddd; border-left:solid;border-width:thin; padding-right: 0px;margin-right: 0px;">
+        <div class="col-xs-4 item-photo">
+            <img style="max-width:100%;" src="~/ProductImages/@Model.Images.FirstOrDefault()" />
+        </div>
+        <div class="col-md-8" style="border:0px solid gray">
 
-                <div class="row">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.DisplayFor(model => model.BrandName)  @Html.DisplayFor(model => model.ModelName)  @Html.DisplayFor(model => model.ProductName)
+                </div>
+                <div class="col-md-12">
+                    <br />
+                    <label class="control-label">Description:</label>
+                    @Html.DisplayFor(model => model.Description)
+                </div>
 
-                    <div class="col-md-12">
-                        @Html.DisplayFor(model => model.ItemTypeName)<br />
-                        @Html.DisplayFor(model => model.BrandName)  @Html.DisplayFor(model => model.ModelName)  @Html.DisplayFor(model => model.ProductName)
-                    </div>
-
-                    <div class="col-md-12">
-                        <br />
-                        <label class="control-label">Description:</label>
-                        @Html.DisplayFor(model => model.Description)
-                    </div>
-                    <div class="col-md-12">
-                        <br />   <label class="control-label">PriceExGST:</label>
-                        @Html.DisplayFor(model => model.PriceExGST)
-                    </div>
-
-                    <div class="col-md-12">
-                        <br />   <label class="control-label">GSTAmount:</label>
-                        @Html.DisplayFor(model => model.GSTAmount)
-                    </div>
-                    <div class="col-md-12">
-                        <br /> <label class="control-label">PriceIncGST:</label>
-                        @Html.DisplayFor(model => model.PriceIncGST)
-                    </div>
-                    <div class="col-md-12">
-                        <br /> <label class="control-label">QtyAvailable:</label>
-                        @Html.DisplayFor(model => model.QtyAvailable)
-                    </div>
-                    <div class="col-md-12">
-                        <br />  <label class="control-label">Colour:</label>
-                        @Html.DisplayFor(model => model.SKU)
-                        <label class="control-label">Memory:</label>
-                        @Html.DisplayFor(model => model.SKU)
-                    </div>
+                <div class="col-md-12">
+                    <br /> <label class="control-label">PriceIncGST:</label>
+                    @Html.DisplayFor(model => model.PriceIncGST)
+                </div>
+                <div class="col-md-12">
+                    <br /> <label class="control-label">Available:</label>
+                    @Html.DisplayFor(model => model.QtyAvailable)
+                </div>
+                <div class="col-md-12">
+                    <br />  <label class="control-label">Colour:</label>
+                    @Html.DisplayFor(model => model.SKU)
+                    <label class="control-label">Memory:</label>
+                    @Html.DisplayFor(model => model.SKU)
                 </div>
             </div>
-        </div>
-
-        <div class="panel-footer pull-left" align="left" style="height:50px;width:100% ;vertical-align:top;padding-bottom:10px;margin-bottom:10px;padding-left:0px">
-
             @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = Model.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
             {
-                //@Html.Hidden(item.Id.ToString());
                 <div class="section">
                     <button class="btn btn-success"><span style="margin-right:0px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
-                    <h6>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>
-                            Add to wish list
-                        </a>
-                    </h6>
                 </div>
             }
         </div>
     </div>
 </div>
 
-<br>

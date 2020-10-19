@@ -21,7 +21,6 @@ namespace OnlineStore.WebUI.Controllers
             {
                 var CheckoutOrdersPaymentRequestdata = new CheckoutOrdersPaymentModel();
                 _checkoutDataModel.OrderType = "OnlineStore";
-
                 var sc = (ShoppingCart)Session["Productcart"];
                 if (sc.Lines.Count() > 0)
                 {
@@ -49,21 +48,24 @@ namespace OnlineStore.WebUI.Controllers
                 CheckoutOrdersPaymentRequestdata.payment_OrderID = _checkoutDataModel.payment_OrderID;
                 CheckoutOrdersPaymentRequestdata.PaymentStatus = _checkoutDataModel.PaymentStatus;
                 CheckoutOrdersPaymentRequestdata.PaymentID = _checkoutDataModel.PaymentID;
-
-                var jsondata2 = JsonConvert.SerializeObject(CheckoutOrdersPaymentRequestdata);
+              
+                //  var jsondata2 = JsonConvert.SerializeObject(CheckoutOrdersPaymentRequestdata);
 
                LogService.info("Order Has been Checked out for payment");
 
                 var returnflag = OrdersServices.OnlineStoreCheckoutOrder(_checkoutDataModel).Result;
-                if (returnflag.IsSuccess)
+
+                if (returnflag.IsSuccess && returnflag.Value !=null)
                 {
                     CheckoutOrdersPaymentRequestdata.payment_OrderID = returnflag.Id;
+                    CheckoutOrdersPaymentRequestdata.payment_OrderNo = Convert.ToInt32(returnflag?.Value);
+                    _checkoutDataModel.payment_OrderID= returnflag.Id;
+                    _checkoutDataModel.payment_OrderNo = Convert.ToInt32(returnflag?.Value);
+
                     string url = OrderProcessor.ProcessOnlineSaleOrder(_checkoutDataModel);
                     if (url != null)
                     {                       
                         return Redirect(url);
-                        //this has to be called upon successfull payment made
-                         var confirmationRequestReturnFlag = OrdersServices.CheckoutOrdersPaymentRequest(CheckoutOrdersPaymentRequestdata).Result;
                     }
                 }
             }
