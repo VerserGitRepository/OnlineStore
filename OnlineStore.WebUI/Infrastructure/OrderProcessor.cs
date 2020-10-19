@@ -166,7 +166,7 @@ namespace OnlineStore.WebUI.Infrastructure
             tokenRequest.Append("&merchant_id=");
             tokenRequest.Append(WebConfigurationManager.AppSettings["merchantId"]);
             tokenRequest.Append("&payment_reference=");
-             tokenRequest.Append("ORD001");
+             tokenRequest.Append(_checkoutDataModel.payment_OrderNo);
             tokenRequest.Append("&payment_reference_change=false");
             tokenRequest.Append("&surcharge_rates=");
             tokenRequest.Append(HttpUtility.UrlEncode("VI/MC=1.0,AX=1.0,DC=1.0"));

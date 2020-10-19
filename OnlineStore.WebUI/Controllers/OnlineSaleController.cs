@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
+using OnlineStore.WebUI.Infrastructure;
 using OnlineStore.WebUI.Infrastructure.HelperServices;
 using OnlineStore.WebUI.Models;
 using PagedList;
@@ -141,6 +144,48 @@ namespace OnlineStore.WebUI.Controllers
 
             SaleProducts.ToList().ForEach(c => c.IsViewTypeGrid = view == "gridViewBtn");
             return RedirectToAction(viewName);
+        }
+
+        [HttpPost]
+        public ActionResult PaymentReceipt()
+        {
+            var CheckoutOrdersPaymentRequestdata = new CheckoutOrdersPaymentModel();
+
+            try
+            {
+                string username = Request.Form["username"];
+                string password = Request.Form["password"];
+                LogService.info(username + password + "PaymentReceipt Request Form Data");
+                int orderNo = Convert.ToInt32(Request.Form["payment_reference"]);
+                decimal paymentAmount = Convert.ToDecimal(Request.Form["am_payment"]);
+                string cardType = Request.Form["nm_card_scheme"];
+                string nameOnCard = Request.Form["nm_card_holder"];
+                string truncatedCardNumber = Request.Form["TruncatedCardNumber"];
+                int paymentStatus = Convert.ToInt32(Request.Form["fl_success"]);
+
+                if (username != WebConfigurationManager.AppSettings["payway_username"] || password != WebConfigurationManager.AppSettings["payway_password"])
+                {
+                    LogService.Error(username + password + "Not Matched");
+                    return new HttpUnauthorizedResult();
+                }
+
+                CheckoutOrdersPaymentRequestdata.payment_OrderID = orderNo;
+                CheckoutOrdersPaymentRequestdata.paymentAmount = paymentAmount;
+                CheckoutOrdersPaymentRequestdata.cardType = cardType;
+                CheckoutOrdersPaymentRequestdata.nameOnCard = nameOnCard;
+                CheckoutOrdersPaymentRequestdata.CardNumber = truncatedCardNumber;
+                CheckoutOrdersPaymentRequestdata.PaymentStatus = paymentStatus.ToString();            
+
+
+                var confirmationRequestReturnFlag = OrdersServices.CheckoutOrdersPaymentRequest(CheckoutOrdersPaymentRequestdata).Result;
+                LogService.info("PaymentReceipt processed");
+                return RedirectToAction("Index","OnlineSale");
+            }
+            catch (Exception ex)
+            {
+                LogService.Error(ex.Message + ex.InnerException.StackTrace);
+                return new HttpStatusCodeResult(HttpStatusCode.ExpectationFailed);
+            }
         }
     }
 }

@@ -71,6 +71,7 @@ namespace OnlineStore.WebUI.Models
       //  [Required(ErrorMessage = "Please enter a cvv")]
         public int cvv { get; set; }
         public int payment_OrderID { get; set; }
+        public int payment_OrderNo { get; set; }
         public string PaymentStatus { get; set; }
         public List<OnlineSaleProduct> PurchasedSaleProducts { get; set; }
        

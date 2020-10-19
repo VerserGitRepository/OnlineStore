@@ -16,6 +16,7 @@ namespace OnlineStore.WebUI.Models
         public int expyear { get; set; }
         public int cvv { get; set; }
         public int payment_OrderID { get; set; }
+        public int payment_OrderNo { get; set; }
         public string PaymentStatus { get; set; }
     }
 }
