@@ -22,7 +22,7 @@
 <body>
     <div id="tabs" style="margin-left:initial">
         <ul>
-            <li><a href="#tabs-1">ONLINE-STORE ORDERS</a></li>
+            @*<li><a href="#tabs-1">ONLINE-STORE ORDERS</a></li>*@
             <li><a href="#tabs-2">THIRD-PARTY ORDERS</a></li>
             <li><a href="#tabs-3">CREATE MANUAL ORDER</a></li>
             <li><a href="#tabs-4">PRODUCTS LIST</a></li>
@@ -31,11 +31,11 @@
         </ul>
         <div class="panel-body" style="border-color:gray;">
             <div id="tabs-1">
-                <table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
+                @*<table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
                             <th>BrandName</th>
-                            @*<th>Brand_ID</th>*@
+                            <th>Brand_ID</th>
                             <th>CreatedBy</th>
                             <th>Description</th>
                             <th>GSTAmount</th>
@@ -48,7 +48,7 @@
                             <th>ProductName</th>
                             <th>QtyAvailable</th>
                             <th>SKU</th>
-                            @*<th>AmazonOder</th>*@
+                            <th>AmazonOder</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,13 +59,13 @@
                                 <td>@item.CreatedBy</td>
                                 <td>@item.Description</td>
                                 <td>@item.GSTAmount</td>
-                                @*<td>@item.Id </td>*@
+                                <td>@item.Id </td>
                                 <td>@item.Images</td>
-                                @*<td>@item.IsSKU</td>*@
+                                <td>@item.IsSKU</td>
                                 <td>@item.ItemTypeName</td>
-                                @*<td>@item.ItemType_ID</td>*@
+                                <td>@item.ItemType_ID</td>
                                 <td>@item.ModelName</td>
-                                @*<td>@item.Model_ID</td>*@
+                                <td>@item.Model_ID</td>
                                 <td>@item.PriceExGST</td>
                                 <td>@item.PriceIncGST</td>
                                 <td>@item.ProductImage</td>
@@ -75,7 +75,7 @@
                             </tr>
                         }
                     </tbody>
-                </table>
+                </table>*@
             </div>
             <div id="tabs-2">
                 <table class="table table-bordered table-responsive table-hover" id="OrdersTable1" style="font-size:smaller">
@@ -300,7 +300,36 @@
                 </table>
             </div>
             <div id="tabs-5">
-                MANAGEDISPATCHORDER
+                <table class="table table-bordered table-responsive table-hover" id="OrdersTable1" style="font-size:smaller">
+                    <thead style="background-color:#959ca1;color:white">
+                        <tr>
+                            @*<th>Orderno</th>*@
+                            <th>BrandName </th>
+                            <th>Description </th>
+                            <th>GSTAmount</th>
+                            <th>ItemTypeName </th>
+                            <th>ModelName </th>
+                            <th>PriceExGST</th>
+                            <th>ProductName</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OnlineSalePurchasedProducts)
+                        {
+                            <tr>
+                                <td>@item.BrandName</td>
+                                <td>@item.Description</td>
+                                <td>@item.GSTAmount</td>
+                                <td>@item.ItemTypeName</td>
+                                <td>@item.ModelName</td>
+                                <td>@item.PriceExGST </td>
+                                <td>@item.ProductName</td>
+                                
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
             <div id="tabs-6">
                 MANAGEDISPATCHORDER
@@ -315,7 +344,7 @@
         $(document).ready(function () {
             $('#ProductsTable').DataTable();
             $('#OrdersTable').DataTable();
-              $('#OrdersTable1').DataTable();
+             $('#OrdersTable1').DataTable();
             $('.dataTables_filter').addClass('pull-right');
         });
         $('#addProduct').click(function () {
