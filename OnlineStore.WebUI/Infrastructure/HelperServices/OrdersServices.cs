@@ -13,6 +13,22 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
     public class OrdersServices
     {
         public static readonly string BaseUri = ConfigurationManager.AppSettings["AMSBaseURL"];
+
+        public async static Task<OnlineSaleProduct> OnlineSaleShippedOrder()
+        {
+            var returnmessage = new OnlineSaleProduct();
+            using (HttpClient client = new HttpClient())
+            {
+                client.Timeout = TimeSpan.FromMinutes(10);
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.GetAsync("OnlineSaleOrders/OnlineSaleOrdersList").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnmessage = await response.Content.ReadAsAsync<OnlineSaleProduct>();
+                }
+            }
+            return returnmessage;
+        }
         public async static Task<bool> ProcessManualOrders(ManualOrdersViewModel manualordermodel)
         {
             bool returnmessage =false;
