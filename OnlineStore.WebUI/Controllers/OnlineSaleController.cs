@@ -149,8 +149,11 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult PaymentReceipt()
         {
-            var CheckoutOrdersPaymentRequestdata = new CheckoutOrdersPaymentModel();
+            Session.Abandon();
+            Session.Clear();
+            Session.RemoveAll();
 
+            var CheckoutOrdersPaymentRequestdata = new CheckoutOrdersPaymentModel();
             try
             {
                 string username = Request.Form["username"];
@@ -174,8 +177,7 @@ namespace OnlineStore.WebUI.Controllers
                 CheckoutOrdersPaymentRequestdata.cardType = cardType;
                 CheckoutOrdersPaymentRequestdata.nameOnCard = nameOnCard;
                 CheckoutOrdersPaymentRequestdata.CardNumber = truncatedCardNumber;
-                CheckoutOrdersPaymentRequestdata.PaymentStatus = paymentStatus.ToString();            
-
+                CheckoutOrdersPaymentRequestdata.PaymentStatus = paymentStatus.ToString();   
 
                 var confirmationRequestReturnFlag = OrdersServices.CheckoutOrdersPaymentRequest(CheckoutOrdersPaymentRequestdata).Result;
                 LogService.info("PaymentReceipt processed");
