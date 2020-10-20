@@ -14,7 +14,7 @@ namespace OnlineStore.WebUI.Models
             Images = new List<string>();
         }
         public int Id { get; set; }
-        [RequiredIf("IsUpdateProduct", false, "Model is mandatory")]
+        //[Required("Model is mandatory")]
         public byte[] ProductImage { get; set; }
         [Required(ErrorMessage = "ProductName Is Mandatory")]
         public string ProductName { get; set; }
@@ -24,7 +24,7 @@ namespace OnlineStore.WebUI.Models
         public int? ItemType_ID { get; set; }
         [Required(ErrorMessage = "Brand Is Mandatory")]
         public int? Brand_ID { get; set; }
-        [RequiredIf("IsUpdateProduct",false, "Model is mandatory")]
+        [Required(ErrorMessage = "Model is mandatory")]
         public int? Model_ID { get; set; }
         public int PurchasedQty { get; set; }
         public decimal PriceExGST { get; set; }
@@ -44,7 +44,7 @@ namespace OnlineStore.WebUI.Models
         public string SKU { get; set; }
         public SelectList Models { get; set; }
         public List<string> Images { get; set; }
-        [RequiredIf("IsUpdateProduct",false, "File is mandatory")]
+        [Required(ErrorMessage = "File is mandatory")]
         [Newtonsoft.Json.JsonIgnore]
         public HttpPostedFileBase[] files { get; set; }
         public bool IsProductActive { get; set; } = true;
