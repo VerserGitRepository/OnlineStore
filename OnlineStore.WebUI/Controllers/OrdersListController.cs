@@ -22,7 +22,7 @@ namespace OnlineStore.WebUI.Controllers
                 var LoadViewModel = new OrderViewModel();
                 LoadViewModel.OnlineSaleOrdersList = OrdersServices.OnlineSaleOrdersList().Result;
                 LoadViewModel.OnlineSaleProductList = OrdersServices.OnlineSaleProductsList().Result;
-             //  LoadViewModel.OnlineSalePurchasedProducts = OrdersServices.OnlineSaleShippedOrder().Result;
+            //  LoadViewModel.OnlineSalePurchasedProducts = OrdersServices.OnlineSaleShippedOrder().Result;
 
                 LoadViewModel.ManualOrdersViewModel.CustomerProject = new SelectList(DropDownServices.ProjectList().Result, "ID", "Value");
                 LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");

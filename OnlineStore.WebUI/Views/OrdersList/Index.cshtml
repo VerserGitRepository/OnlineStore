@@ -20,7 +20,7 @@
 
 </head>
 <body>
-    <div id="tabs" style="margin-left:initial">
+    <div id="tabs" style="margin-left:initial;width:70%">
         <ul>
             @*<li><a href="#tabs-1">ONLINE-STORE ORDERS</a></li>*@
             <li><a href="#tabs-2">THIRD-PARTY ORDERS</a></li>
@@ -29,56 +29,10 @@
             <li><a href="#tabs-5">SHIPPED ORDERS</a></li>
             <li><a href="#tabs-6">MANAGE</a></li>
         </ul>
-        <div class="panel-body" style="border-color:gray;">
-            <div id="tabs-1">
-                @*<table class="table table-bordered table-responsive table-hover" id="OrdersTable" style="font-size:smaller">
-                    <thead style="background-color:#959ca1;color:white">
-                        <tr>
-                            <th>BrandName</th>
-                            <th>Brand_ID</th>
-                            <th>CreatedBy</th>
-                            <th>Description</th>
-                            <th>GSTAmount</th>
-                            <th>Images</th>
-                            <th>ItemTypeName</th>
-                            <th>ModelName</th>
-                            <th>PriceExGST</th>
-                            <th>PriceIncGST</th>
-                            <th>ProductImage</th>
-                            <th>ProductName</th>
-                            <th>QtyAvailable</th>
-                            <th>SKU</th>
-                            <th>AmazonOder</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.OnlineSaleProductList)
-                        {
-                            <tr>
-                                <td>@item.BrandName</td>
-                                <td>@item.CreatedBy</td>
-                                <td>@item.Description</td>
-                                <td>@item.GSTAmount</td>
-                                <td>@item.Id </td>
-                                <td>@item.Images</td>
-                                <td>@item.IsSKU</td>
-                                <td>@item.ItemTypeName</td>
-                                <td>@item.ItemType_ID</td>
-                                <td>@item.ModelName</td>
-                                <td>@item.Model_ID</td>
-                                <td>@item.PriceExGST</td>
-                                <td>@item.PriceIncGST</td>
-                                <td>@item.ProductImage</td>
-                                <td>@item.ProductName</td>
-                                <td>@item.QtyAvailable</td>
-                                <td>@item.SKU</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>*@
-            </div>
+        <div class="panel-body" style="border-color:gray;width:80%">
+            
             <div id="tabs-2">
-                <table class="table table-bordered table-responsive table-hover" id="OrdersTable1" style="font-size:smaller">
+                <table class="table table-bordered table-responsive table-hover" id="OrdersTable1" style="font-size:smaller;">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
                             <th>Orderno</th>
@@ -403,3 +357,4 @@
         });
 
 </script>
+<style>     </style>
