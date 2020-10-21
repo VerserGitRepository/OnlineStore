@@ -41,9 +41,9 @@
             </div>
             @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = Model.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
             {
-                <div class="section">
-                    <button class="btn btn-success"><span style="margin-right:0px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
-                </div>
+        <div>
+            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+        </div>
             }
         </div>
     </div>

@@ -61,8 +61,8 @@
                         <h6>@item.ProductName</h6>
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>
                     </div>
-                    <div class="btn-ground text-center">
-                        <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn btn-success btn-sm">
+                    <div class="btn-success">
+                        <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn-success">
                             <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
                         </a>
                     </div>
@@ -84,8 +84,8 @@
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
 
-                    <div class="btn-ground text-center">
-                        <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn btn-success btn-sm">
+                    <div class="btn-success">
+                        <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn-success">
                             <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
                         </a>
                     </div>
@@ -106,8 +106,8 @@
                         <h6>@item.ProductName</h6>
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
-                    <div class="btn-ground text-center">
-                        <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn btn-success btn-sm">
+                    <div class="btn-success">
+                        <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn-success">
                             <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
                         </a>
                     </div>
@@ -128,8 +128,8 @@
                         <h6>@item.ProductName</h6>
                         <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;" class="img-responsive" /></p>
                     </div>
-                    <div class="btn-ground text-center">
-                        <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn btn-success btn-sm">
+                    <div class="btn-success">
+                        <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn-success">
                             <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
                         </a>
                     </div>
@@ -221,5 +221,9 @@
     .img-thumbnail {
         border: 0px;
         border-radius: 0px;
+    }
+    .btn-success {
+        width: 100%;
+        border-radius: 0;
     }
 </style>

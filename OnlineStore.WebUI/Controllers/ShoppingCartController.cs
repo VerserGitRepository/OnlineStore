@@ -117,9 +117,10 @@ namespace OnlineStore.WebUI.Controllers
                 return RedirectToAction("Index", "OnlineSale");
             }
             else
-            {               
-                int Page_No = returnUrl.IndexOf('?') > 0 ? Convert.ToInt32(returnUrl.Split('/')[3].Split('?')[1].Replace("Page_No=", "").Trim()) : 1;
-                return RedirectToAction(returnUrl.IndexOf('?') > 0 ? returnUrl.Split('/')[3].Split('?')[0] : returnUrl.Split('/')[3], returnUrl.Split('/')[2], new { Page_No });                
+            {
+                int countChars = returnUrl.Split('/').Count()-1;
+                int Page_No = returnUrl.IndexOf('?') > 0 ? Convert.ToInt32(returnUrl.Split('/')[countChars].Split('?')[1].Replace("Page_No=", "").Trim()) : 1;
+                return RedirectToAction(returnUrl.IndexOf('?') > 0 ? returnUrl.Split('/')[countChars].Split('?')[0] : returnUrl.Split('/')[countChars], returnUrl.Split('/')[countChars-1], new { Page_No });                
             }                       
         }
         public RedirectToRouteResult RemoveFromShoppingCart( int id,
