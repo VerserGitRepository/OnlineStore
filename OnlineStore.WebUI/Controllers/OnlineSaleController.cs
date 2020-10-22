@@ -62,7 +62,7 @@ namespace OnlineStore.WebUI.Controllers
         }
         public ActionResult IPad(int Page_No = 1)
         {
-            var size = SaleProducts.Where(m => m.ItemType_ID == 11);
+            var size = SaleProducts.Where(m => m.ItemType_ID == 39 || m.ItemType_ID == 40);
             int Size_Of_Page = 10;
             int No_Of_Page = Page_No;
             return View(size.ToPagedList(No_Of_Page, Size_Of_Page));
