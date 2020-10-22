@@ -29,7 +29,7 @@
         </div>
         <div class="row" style="padding-top:10px">
             <div class="form-group  required col-md-6" tabindex=3>
-                <label class="control-label">ItemType</label><br/>
+                <label class="control-label">ItemType</label><br />
                 @Html.DropDownListFor(model => model.ItemType_ID, Model.ItemTypes, "ItemType", new { @class = "form-control", id = "ddlItemType", @style = "width:220px;", @multiple = "multiple" })
             </div>
             <div class="form-group  required col-md-6" tabindex=4>
@@ -63,23 +63,31 @@
                 @Html.ValidationMessageFor(model => model.IsMainPageProduct, null, new { @class = "text-danger" })
             </div>
         </div>
-        <div class="row" style="padding-top:10px">
-            <label class="control-label">Description </label><br /><br />
-            @Html.TextAreaFor(model => model.Description, new { @class = "form-control-60 textarea", style = "border:solid 1px lightgray;" })
-            @Html.ValidationMessageFor(model => Model.Description, "", new { @class = "text-danger" })
-        </div>
-        <div class="row" style="padding-top:10px">
-            @Html.TextBoxFor(model => model.files, new { type = "file", accept = ".png, .jpg, .jpeg" })
-            @Html.ValidationMessageFor(model => Model.files, "", new { @class = "text-danger" })
-        </div>
-        <div class="col-sm-6">
-            <br />
-            <button type="submit" class="btn btn-primary">SUBMIT</button>
-        </div>
 
-    }
+        <div class="row" style="padding-top:10px">
+            <div class="form-group  required col-md-6" tabindex=4>
+                <label class="control-label">SKU</label><br />
+                @Html.EditorFor(model => model.SKU, "", new { @class = "form-control", @style = "width:200px;" })
+                @Html.ValidationMessageFor(model => Model.SKU, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row" style="padding-top:10px">
 
-</div>
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control-60 textarea", style = "border:solid 1px lightgray;", placeholder = "Enter description here..." })
+                @Html.ValidationMessageFor(model => Model.Description, "", new { @class = "text-danger" })
+            </div>
+            <div class="row" style="padding-top:10px">
+                @Html.TextBoxFor(model => model.files, new { type = "file", accept = ".png, .jpg, .jpeg" })
+                @Html.ValidationMessageFor(model => Model.files, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-6">
+                <br />
+                <button type="submit" class="btn btn-primary">SUBMIT</button>
+            </div>
+
+            }
+
+        </div>
 <script>
     $.validator.unobtrusive.parse(document);
     $('#ddlModel').multiselect({

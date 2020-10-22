@@ -41,6 +41,7 @@ namespace OnlineStore.WebUI.Models
         public SelectList Makes { get; set; }
         public SelectList Colours { get; set; }
         public SelectList Sizes { get; set; }
+        [Required(ErrorMessage = "SKU is mandatory")]
         public string SKU { get; set; }
         public SelectList Models { get; set; }
         public List<string> Images { get; set; }
