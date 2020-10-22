@@ -33,11 +33,10 @@
             @foreach (var item in Model)
             {
 
-                <div class="row" style="margin-top: 30px;background: #eee;padding: 3em;line-height: 1.5em;">
+                <div class="row" style="margin-top:30px;background: #eee;padding: 3em;line-height: 1.5em;">
 
-
-                    <div class="col-xs-4 item-photo">
-                        <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" />
+                    <div class="item-photo">
+                        <img  src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:320px;height:280px;" class="img-responsive" />
                     </div>
                     <div class="col-xs-5">
                         <h3>@item.ProductName</h3>
