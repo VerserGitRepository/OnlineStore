@@ -90,6 +90,7 @@
             color: white;
         }
 
+    
     a {
         color: #2196F3;
     }
@@ -104,10 +105,10 @@
     }
 </style>
 
-<div class="container1" style="margin-left:50px;width:80%">
+<div class="container1" style="margin-left:90px;width:50%">
     @using (Html.BeginForm("Checkout", "ShoppingCart", FormMethod.Post))
     {
-    <div class="col-md-4">
+    <div class="col-md-5">
         <h4>Shipping Address</h4>
         <label for="fname"><i class="fa fa-user"></i> Full Name</label>
         @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", placeholder = "John M. Doe" })
@@ -211,7 +212,7 @@
                 </div>
             </div>
         </div>*@
-        <div class="col-md-4" style="margin-right:0px">
+        <div class="col-md-7" style="margin-right:0px">
             <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b></b></span></h4>
             <table id="cartTable" class="table">
                 <thead>
@@ -235,14 +236,14 @@
                         }
                         <tr>
                             <td colspan="3" align="right">
-                            Total:    @Session["TotalValue"]
+                                <p style="font-weight:600">  Total (Inclusive GST):    @Session["TotalValue"]</p>
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
-        <input type="submit" value="Continue to checkout" class="btn1">
+        <input type="submit" value="CONTINUE TO CHECKOUT" class="btn1" style="border-radius:40PX;" id="checkoutbtn">
     }
 </div>
 <script>

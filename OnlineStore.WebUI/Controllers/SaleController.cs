@@ -163,6 +163,8 @@ namespace OnlineStore.WebUI.Controllers
                 LogService.Error(ex.Message + ex.InnerException.StackTrace);
                 return new HttpStatusCodeResult(HttpStatusCode.ExpectationFailed);
             }         
-        }        
+        }
+
+       
     }
 }
