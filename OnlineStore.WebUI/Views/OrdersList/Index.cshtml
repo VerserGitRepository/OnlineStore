@@ -20,7 +20,7 @@
 
 </head>
 <body>
-    <div id="tabs" style="margin-left:initial;width:70%">
+    <div id="tabs" style="margin-left:initial;width:100%">
         <ul>
             @*<li><a href="#tabs-1">ONLINE-STORE ORDERS</a></li>*@
             <li><a href="#tabs-2">ORDERS</a></li>
@@ -29,7 +29,7 @@
             <li><a href="#tabs-5">SHIPPED ORDERS</a></li>
             <li><a href="#tabs-6">MANAGE</a></li>
         </ul>
-        <div class="panel-body" style="border-color:gray;width:80%">
+        <div class="panel-body" style="border-color:gray;width:100%">
             
             <div id="tabs-2">
                 <table class="table table-bordered table-responsive table-hover" id="OrdersTable1" style="font-size:smaller;">
@@ -50,13 +50,16 @@
                             <th>SSN</th>
                             <th>OrderRef</th>
                             <th>AmazonOder</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model.OnlineSaleOrdersList)
                         {
                             <tr>
-                                <td>@item.Orderno</td>
+                                <td>
+                                    <input type="submit" class="btn btn-secondary" value="@item.Orderno" />           
+                                     </td>
                                 <td></td>
                                 <td>@item.FirstName</td>
                                 <td>@item.LastName</td>
@@ -71,6 +74,9 @@
                                 <td>@item.SSN</td>
                                 <td>@item.OrderRef</td>
                                 <td>@item.AmazonOrderNo</td>
+                                <td>
+                                    <input type="submit" class="btn btn-outline-success"  value="SHIP ORDER" />
+                                </td>
                             </tr>
                         }
                     </tbody>
@@ -190,8 +196,8 @@
                             @Html.DropDownListFor(model => model.ManualOrdersViewModel.ProjectId, Model.ManualOrdersViewModel.CustomerProject, "Projects", new { @class = "form-control ItemType", @id = "ddlProjects", style = "Height:40px" })
                             @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.CustomerProject, "", new { @class = "text-danger" })
                         </div>
-                        <div class="col-sm-6">
-                            <button type="submit" class="btn btn-primary">Complete Order</button>
+                        <div class="col-sm-6" style="padding-top:15px;">
+                            <button type="submit" class="btn btn-primary">COMPLETE MANUAL ORDER</button>
                         </div>
                     </div>
                 }
@@ -206,7 +212,7 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered table-responsive" table-responsive table-hover" width="150%" id="ProductsTable" style="font-size:smaller">
+                <table class="table table-bordered table-responsive" table-responsive table-hover" width="250%" id="ProductsTable" style="font-size:smaller">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
                             <th>ID</th>
@@ -236,10 +242,10 @@
 
                                     @if (item.Images.Count > 0)
                                     {
-                                        <img src="~/ProductImages/@item.Images.FirstOrDefault()" width="70" height="50" />
+                                        <img src="~/ProductImages/@item.Images.FirstOrDefault()" width="90" height="60"  />
                                     }
                                 </td>
-                                <td><a href="javascript:void(0);" class="ProductName" data-id="@item.Id">@Html.DisplayFor(modelItem => item.ProductName)</a></td>
+                                <td><a href="javascript:void(0);" class="ProductName" data-id="@item.Id" style="font-weight:600;color:dodgerblue">@Html.DisplayFor(modelItem => item.ProductName) </a></td>
                                 <td>@item.Brand_ID</td>
                                 <td>@item.ItemType_ID</td>
                                 <td>@item.Model_ID</td>
