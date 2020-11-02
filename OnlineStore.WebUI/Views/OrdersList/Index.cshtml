@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>jQuery UI Tabs - Default functionality</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
@@ -17,10 +20,13 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+
 
 </head>
 <body>
-    <div id="tabs" style="margin-left:initial;width:70%">
+    <div id="tabs" style="margin-left:initial;width:100%">
         <ul>
             @*<li><a href="#tabs-1">ONLINE-STORE ORDERS</a></li>*@
             <li><a href="#tabs-2">ORDERS</a></li>
@@ -29,9 +35,9 @@
             <li><a href="#tabs-5">SHIPPED ORDERS</a></li>
             <li><a href="#tabs-6">MANAGE</a></li>
         </ul>
-        <div class="panel-body" style="border-color:gray;width:80%">
+        <div class="panel-body" style="border-color:gray;width:100%">
             
-            <div id="tabs-2">
+            <div id="tabs-2" class="container">
                 <table class="table table-bordered table-responsive table-hover" id="OrdersTable1" style="font-size:smaller;">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
@@ -50,12 +56,13 @@
                             <th>SSN</th>
                             <th>OrderRef</th>
                             <th>AmazonOder</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model.OnlineSaleOrdersList)
                         {
-                            <tr>
+                            <tr data-toggle="popover" data-trigger="click" title=@item.OnlineSalePurchasedProductsDesc data-placement="top" data-content='@item.OnlineSalePurchasedProductsDesc'>
                                 <td>@item.Orderno</td>
                                 <td></td>
                                 <td>@item.FirstName</td>
@@ -71,6 +78,9 @@
                                 <td>@item.SSN</td>
                                 <td>@item.OrderRef</td>
                                 <td>@item.AmazonOrderNo</td>
+                                <td>
+                                    <button type="button" class="btn btn-secondary"> Process </button>
+                                </td>
                             </tr>
                         }
                     </tbody>
@@ -292,6 +302,8 @@
     </div>
 </body>
 <script>
+
+    
         $(function () {
             $("#tabs").tabs();
         });
@@ -300,6 +312,9 @@
             $('#OrdersTable').DataTable();
              $('#OrdersTable1').DataTable();
             $('.dataTables_filter').addClass('pull-right');
+            $('[data-toggle="popover"]').popover({
+                container: 'body'
+            });  
         });
         $('#addProduct').click(function () {
             debugger;
@@ -357,4 +372,8 @@
         });
 
 </script>
-<style>     </style>
+<style>
+    .popover-content {
+        white-space: pre-line;
+    }
+</style>

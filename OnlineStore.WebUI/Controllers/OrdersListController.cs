@@ -21,6 +21,13 @@ namespace OnlineStore.WebUI.Controllers
             {
                 var LoadViewModel = new OrderViewModel();
                 LoadViewModel.OnlineSaleOrdersList = OrdersServices.OnlineSaleOrdersList().Result;
+                foreach (OnlineSaleOrdersListModel s in LoadViewModel.OnlineSaleOrdersList)
+                {
+                    foreach (OnlineSaleProduct t in s.OnlineSalePurchasedProducts)
+                    {
+                        s.OnlineSalePurchasedProductsDesc += t.ProductName + "-" + t.ModelName + Environment.NewLine;
+                    }
+                }
                 LoadViewModel.OnlineSaleProductList = OrdersServices.OnlineSaleProductsList().Result;
             //  LoadViewModel.OnlineSalePurchasedProducts = OrdersServices.OnlineSaleShippedOrder().Result;
 
