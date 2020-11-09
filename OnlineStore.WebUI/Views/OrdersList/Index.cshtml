@@ -63,7 +63,7 @@
                             <tr>
                                 <td>
                                     <a href="javascript:void(0);" class="OrderDesc" data-id="@item.Id">@Html.DisplayFor(modelItem => item.Id)</a>
-                                    <input type="hidden" id="hiddenDesc" value=" = @item.OnlineSalePurchasedProductsDesc" />
+                                    <input class ="hiddenVal" type="hidden" id="hiddenDesc" value="@item.OnlineSalePurchasedProductsDesc" />
                                 </td>
                                 <td></td>
                                 <td>@item.FirstName</td>
@@ -299,13 +299,6 @@
             </div>
         </div>
     </div>
-    <div id='myModal' class='modal'>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div id='myModalContent'></div>
-            </div>
-        </div>
-    </div>
 </body>
 <script>
 
@@ -353,11 +346,20 @@
         var CandidateName = buttonClicked.attr('data-id');
         var options = { "backdrop": "static", keyboard: true };
         var row = $(buttonClicked).closest("tr");
-        var desc = row.find("#hiddenDesc");
+        var desc = row.find(".hiddenVal").val();
         // debugger;
-        $('#myModalContent').html(desc);
-        $('#myModal').modal(options);
-        $('#myModal').modal('show');
+        $.confirm({
+            boxWidth: '400px',
+            backgroundDismiss: true,
+
+            useBootstrap: false,
+            title: '',
+            content: desc.split('-'),
+            closeIcon: true,
+            buttons: {
+                yes: { isHidden: true }
+            },
+        });
             
     });
     $('#myModal').on('hidden.bs.modal', function (e) {
