@@ -11,32 +11,32 @@
 <script src="~/Scripts/ProductPage.js"></script>
 <div class="container">
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" >
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="0" class="active" style="background-color:orange"></li>
+            <li data-target="#myCarousel" data-slide-to="1" style="background-color:lightcyan"></li>
+            <li data-target="#myCarousel" data-slide-to="2" style="background-color:lightgray"></li>
+            <li data-target="#myCarousel" data-slide-to="3" style="background-color:lightskyblue"></li>
+            <li data-target="#myCarousel" data-slide-to="4" style="background-color:black"></li>
         </ol>
         <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            <div class="item active">
+        <div class="carousel-inner align-content-center">
+            <div class="item active" style="background-color:orange">
                 <img src="~/Images/macbookpro5.jpg" alt="Los Angeles" style="width:20%;" class="img-responsive">
             </div>
 
-            <div class="item">
+            <div class="item" style="background-color:lightcyan">
                 <img src="~/Images/SurfacePro2.jpg" alt="Chicago" style="width:20%;" class="img-responsive">
             </div>
-            <div class="item">
+            <div class="item" style="background-color:lightgray">
                 <img src="~/Images/galaxys9.jpg" alt="New york" style="width:15%;" class="img-responsive">
             </div>
-            <div class="item">
+            <div class="item" style="background-color:lightskyblue">
                 <img src="~/Images/ipad2.jpg" alt="New york" style="width:30%;" class="img-responsive">
             </div>
-            <div class="item">
-                <img src="~/Images/mac4.jpg" alt="New york" style="width:18%;" class="img-responsive">
+            <div class="item" style="background-color:mediumspringgreen" >
+                <img src="~/Images/mac4.jpg" alt="New york" style="width:15%;" class="img-responsive" >
             </div>
         </div>
         <!-- Left and right controls -->
@@ -53,6 +53,28 @@
 <div class="container">
     <div class="row">
         @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 15).OrderByDescending(m => m.Id).Take(4).ToList())
+        {
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h5 class="pull-right">$@item.PriceIncGST</h5>
+                        <h6>@item.ProductName</h6>
+                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>
+                    </div>
+                    <div class="btn-success">
+                        <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty })" class="btn-success">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
+                        </a>
+                    </div>
+                    <div class="space-ten"></div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID ==40).OrderByDescending(m => m.Id).Take(4).ToList())
         {
             <div class="col-md-3">
                 <div class="thumbnail">
@@ -198,15 +220,6 @@
         overflow: hidden;
         margin-top: 0px;
     }
-
-        /*.modal {
-        background: white;
-        position: absolute;
-        float: left;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }*/
 
         .item img {
             -webkit-transition: 0.6s ease;

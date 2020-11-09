@@ -20,7 +20,7 @@
 
 </head>
 <body>
-    <div id="tabs" style="margin-left:initial;width:100%">
+    <div id="tabs" style="margin-left:initial;width:80%">
         <ul>
             @*<li><a href="#tabs-1">ONLINE-STORE ORDERS</a></li>*@
             <li><a href="#tabs-2">ORDERS</a></li>
@@ -45,11 +45,9 @@
                             <th>State</th>
                             <th>ContactNo</th>
                             <th>Email</th>
-                            <th>JobNo</th>
-                            <th>Status</th>
-                            <th>SSN</th>
-                            <th>OrderRef</th>
-                            <th>AmazonOder</th>
+                            <th>SalesOrder</th>
+                            <th>Status</th>                          
+                            <th>OrderRef</th>                           
                             <th></th>
                         </tr>
                     </thead>
@@ -70,10 +68,8 @@
                                 <td>@item.ContactNumber</td>
                                 <td>@item.Email</td>
                                 <td>@item.JobNo</td>
-                                <td>@item.OrderStatus</td>
-                                <td>@item.SSN</td>
-                                <td>@item.OrderRef</td>
-                                <td>@item.AmazonOrderNo</td>
+                                <td>@item.OrderStatus</td>                             
+                                <td>@item.OrderRef</td>                              
                                 <td>
                                     <input type="submit" class="btn btn-outline-success"  value="SHIP ORDER" />
                                 </td>
