@@ -36,7 +36,7 @@
             <li><a href="#tabs-6">MANAGE</a></li>
         </ul>
         <div class="panel-body" style="border-color:gray;width:100%">
-            
+
             <div id="tabs-2" class="container">
                 <table class="table table-bordered table-responsive table-hover" id="OrdersTable1" style="font-size:smaller;">
                     <thead style="background-color:#959ca1;color:white">
@@ -62,8 +62,11 @@
                     <tbody>
                         @foreach (var item in Model.OnlineSaleOrdersList)
                         {
-                            <tr data-toggle="popover" data-trigger="click" title=@item.OnlineSalePurchasedProductsDesc data-placement="top" data-content='@item.OnlineSalePurchasedProductsDesc'>
-                                <td>@item.Orderno</td>
+                            <tr>
+                                <td>
+                                    <a href="javascript:void(0);" class="OrderDesc" data-id="@item.Id">@Html.DisplayFor(modelItem => item.Id)</a>
+                                    <input type="hidden" id="hiddenDesc" value=" = @item.OnlineSalePurchasedProductsDesc" />
+                                </td>
                                 <td></td>
                                 <td>@item.FirstName</td>
                                 <td>@item.LastName</td>
@@ -79,7 +82,7 @@
                                 <td>@item.OrderRef</td>
                                 <td>@item.AmazonOrderNo</td>
                                 <td>
-                                    <button type="button" class="btn btn-secondary"> Process </button>
+                                    <input type="submit" class="btn btn-outline-success" value="SHIP ORDER" />
                                 </td>
                             </tr>
                         }
@@ -200,8 +203,8 @@
                             @Html.DropDownListFor(model => model.ManualOrdersViewModel.ProjectId, Model.ManualOrdersViewModel.CustomerProject, "Projects", new { @class = "form-control ItemType", @id = "ddlProjects", style = "Height:40px" })
                             @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.CustomerProject, "", new { @class = "text-danger" })
                         </div>
-                        <div class="col-sm-6">
-                            <button type="submit" class="btn btn-primary">Complete Order</button>
+                        <div class="col-sm-6" style="padding-top:15px;">
+                            <button type="submit" class="btn btn-primary">COMPLETE MANUAL ORDER</button>
                         </div>
                     </div>
                 }
@@ -216,7 +219,7 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered table-responsive" table-responsive table-hover" width="150%" id="ProductsTable" style="font-size:smaller">
+                <table class="table table-bordered table-responsive" table-responsive table-hover" width="250%" id="ProductsTable" style="font-size:smaller">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
                             <th>ID</th>
@@ -246,10 +249,10 @@
 
                                     @if (item.Images.Count > 0)
                                     {
-                                        <img src="~/ProductImages/@item.Images.FirstOrDefault()" width="70" height="50" />
+                                        <img src="~/ProductImages/@item.Images.FirstOrDefault()" width="90" height="60" />
                                     }
                                 </td>
-                                <td><a href="javascript:void(0);" class="ProductName" data-id="@item.Id">@Html.DisplayFor(modelItem => item.ProductName)</a></td>
+                                <td><a href="javascript:void(0);" class="ProductName" data-id="@item.Id" style="font-weight:600;color:dodgerblue">@Html.DisplayFor(modelItem => item.ProductName) </a></td>
                                 <td>@item.Brand_ID</td>
                                 <td>@item.ItemType_ID</td>
                                 <td>@item.Model_ID</td>
@@ -275,7 +278,7 @@
                             <th>ModelName </th>
                             <th>PriceExGST</th>
                             <th>ProductName</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -289,7 +292,7 @@
                                 <td>@item.ModelName</td>
                                 <td>@item.PriceExGST </td>
                                 <td>@item.ProductName</td>
-                                
+
                             </tr>
                         }
                     </tbody>
@@ -297,6 +300,13 @@
             </div>
             <div id="tabs-6">
                 MANAGEDISPATCHORDER
+            </div>
+        </div>
+    </div>
+    <div id='myModal' class='modal'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id='myModalContent'></div>
             </div>
         </div>
     </div>
@@ -341,6 +351,22 @@
             });
         });
 
+    $("#OrdersTable1").on("click", ".OrderDesc", function () {
+        // debugger;
+        var buttonClicked = $(this);
+        var CandidateName = buttonClicked.attr('data-id');
+        var options = { "backdrop": "static", keyboard: true };
+        var row = $(buttonClicked).closest("tr");
+        var desc = row.find("#hiddenDesc");
+        // debugger;
+        $('#myModalContent').html(desc);
+        $('#myModal').modal(options);
+        $('#myModal').modal('show');
+            
+    });
+    $('#myModal').on('hidden.bs.modal', function (e) {
+        location.reload();
+    })
     $(function () {
         $("#ProductsTable").on("click", ".ProductName", function () {
                debugger;
