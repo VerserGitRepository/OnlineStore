@@ -78,8 +78,8 @@
                                 <td>@item.OrderStatus</td>                             
                                 <td>@item.OrderRef</td>                              
                                 <td>
-                                    <input type="submit" class="btn btn-outline-success" value="SHIP ORDER" />
-                                </td>
+                                    <input type="submit" class="btn btn-outline-success" value="SHIP ORDER" id="SubmitOrder"/>
+                                </td>                               
                             </tr>
                         }
                     </tbody>
@@ -302,7 +302,7 @@
 </body>
 <script>
 
-    
+
         $(function () {
             $("#tabs").tabs();
         });
@@ -313,7 +313,7 @@
             $('.dataTables_filter').addClass('pull-right');
             $('[data-toggle="popover"]').popover({
                 container: 'body'
-            });  
+            });
         });
         $('#addProduct').click(function () {
             debugger;
@@ -327,7 +327,7 @@
             boxWidth: '800px',
             useBootstrap: false,
             backgroundDismiss: true,
-               
+
             title: '',
             content: data,
             closeIcon: true,
@@ -340,6 +340,34 @@
             });
         });
 
+       $('#SubmitOrder').click(function () {
+           debugger;
+           var buttonClicked = $(this).closest("tr");
+           var theId = buttonClicked.find(".OrderDesc").text();
+          
+            var AddSiteURL = '@Url.Action("ProductList", "OrdersList")'
+            $.ajax({
+            type: "GET",
+            data: { "id": theId },
+            url: AddSiteURL,
+            success: function (data) {
+
+            $.confirm({
+            boxWidth: '600px',
+            useBootstrap: false,
+            
+
+            title: 'ProductList',
+            content: data,
+            closeIcon: true,
+            buttons: {
+            yes: { isHidden: true }
+            },
+            });
+                },
+                error: function (result) { alert(result); console.log(result);}
+            });
+        });
     $("#OrdersTable1").on("click", ".OrderDesc", function () {
         // debugger;
         var buttonClicked = $(this);
@@ -360,7 +388,7 @@
                 yes: { isHidden: true }
             },
         });
-            
+
     });
     $('#myModal').on('hidden.bs.modal', function (e) {
         location.reload();
@@ -380,7 +408,7 @@
             $.confirm({
             boxWidth: '800px',
             backgroundDismiss: true,
-              
+
             useBootstrap: false,
             title: '',
             content: data,
