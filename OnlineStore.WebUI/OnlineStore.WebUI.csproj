@@ -195,6 +195,9 @@
     <None Include="Properties\PublishProfiles\dc-webdev1.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
+    <Content Include="ProductImages\Dell Server R720xd 2013.jpg" />
+    <Content Include="ProductImages\hp-laserjet-mfp-m477.jpg" />
+    <Content Include="ProductImages\ipad_pro_12_9-in_cellular_space_gray.jpg" />
     <Content Include="ProductImages\PowerEdge1950.jpg" />
     <Content Include="ProductImages\PowerEdge_R710_1.jpg" />
     <Content Include="Scripts\bootstrap-multiselect.css" />
