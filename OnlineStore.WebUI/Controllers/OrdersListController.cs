@@ -29,7 +29,7 @@ namespace OnlineStore.WebUI.Controllers
                     }
                 }
                 LoadViewModel.OnlineSaleProductList = OrdersServices.OnlineSaleProductsList().Result;
-            //  LoadViewModel.OnlineSalePurchasedProducts = OrdersServices.OnlineSaleShippedOrder().Result;
+                //LoadViewModel.OnlineSalePurchasedProducts = OrdersServices.OnlineSaleShippedOrder().Result;
 
                 LoadViewModel.ManualOrdersViewModel.CustomerProject = new SelectList(DropDownServices.ProjectList().Result, "ID", "Value");
                 LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
@@ -110,6 +110,14 @@ namespace OnlineStore.WebUI.Controllers
             OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
             //LoadViewModel.OnlineSaleProduct.Models = new SelectList(DropDownServices.models().Result, "ID", "Value");
             return PartialView(OnlineSaleProduct);
+        }
+
+        public ActionResult ProductList(int id)
+        {
+            var LoadViewModel = new OrderViewModel();
+            LoadViewModel.OnlineSaleOrdersList = OrdersServices.OnlineSaleOrdersList().Result;
+            LoadViewModel.OnlineSaleOrdersList = LoadViewModel.OnlineSaleOrdersList.Where(i => i.Id == id).ToList();
+            return PartialView(LoadViewModel.OnlineSaleOrdersList.First());
         }
         public ActionResult UpdateProduct(int productId)
         {
