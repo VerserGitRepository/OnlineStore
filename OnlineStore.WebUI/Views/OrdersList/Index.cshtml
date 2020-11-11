@@ -22,8 +22,6 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 
-
-
 </head>
 <body>
     <div id="tabs" style="margin-left:initial;width:80%">
@@ -35,16 +33,14 @@
             <li><a href="#tabs-5">SHIPPED ORDERS</a></li>
             <li><a href="#tabs-6">MANAGE</a></li>
         </ul>
-        <div class="panel-body" style="border-color:gray;width:100%">
-
-            <div id="tabs-2" class="container">
+        <div class="panel-body" style="border-color:gray;width:80%">
+            <div id="tabs-2">
                 <table class="table table-bordered table-responsive table-hover" id="OrdersTable1" style="font-size:smaller;">
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
                             <th>Orderno</th>
                             <th>SKU</th>
-                            <th>FirstName</th>
-                            <th>LastName</th>
+                            <th>Customer</th>  
                             <th>Suburb</th>
                             <th>Postcode</th>
                             <th>Address</th>
@@ -62,12 +58,11 @@
                         {
                             <tr>
                                 <td>
-                                    <a href="javascript:void(0);" class="OrderDesc" data-id="@item.Id">@Html.DisplayFor(modelItem => item.Id)</a>
+                                    <a href="javascript:void(0);" class="btn btn-secondary OrderDesc" data-id="@item.Id">@Html.DisplayFor(modelItem => item.Id)</a>
                                     <input class ="hiddenVal" type="hidden" id="hiddenDesc" value="@item.OnlineSalePurchasedProductsDesc" />
                                 </td>
                                 <td></td>
-                                <td>@item.FirstName</td>
-                                <td>@item.LastName</td>
+                                <td>@item.FirstName &nbsp; @item.LastName</td>                              
                                 <td>@item.Suburb</td>
                                 <td>@item.Postcode</td>
                                 <td>@item.AddressLine1 </td>
@@ -324,7 +319,7 @@
             success: function (data) {
 
             $.confirm({
-            boxWidth: '800px',
+            boxWidth: '700px',
             useBootstrap: false,
             backgroundDismiss: true,
 
@@ -406,7 +401,7 @@
             success: function (data) {
 
             $.confirm({
-            boxWidth: '800px',
+            boxWidth: '700px',
             backgroundDismiss: true,
 
             useBootstrap: false,
