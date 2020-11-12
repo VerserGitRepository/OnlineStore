@@ -158,5 +158,20 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return returnmessage;
         }
+        public async static Task<ReturnShippedOrdersModel> SendShipment(ShipStoreOrderModel shipmentModel)
+        {
+            var returnModel = new ReturnShippedOrdersModel();
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.PostAsJsonAsync("OnlineStoreShipment/EParcelShipmentAndLabelOrder", shipmentModel).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnModel = await response.Content.ReadAsAsync<ReturnShippedOrdersModel>();
+                }
+            }
+            return returnModel;
+        }
     }
 }

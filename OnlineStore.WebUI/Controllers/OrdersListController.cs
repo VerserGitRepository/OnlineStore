@@ -119,6 +119,17 @@ namespace OnlineStore.WebUI.Controllers
             LoadViewModel.OnlineSaleOrdersList = LoadViewModel.OnlineSaleOrdersList.Where(i => i.Id == id).ToList();
             return PartialView(LoadViewModel.OnlineSaleOrdersList.First());
         }
+
+        [HttpPost]
+        public ActionResult SendShipment(OnlineSaleOrdersListModel model)
+        {
+            var shipOrderModel = new ShipStoreOrderModel();
+            shipOrderModel.Orderno = model.Id;
+            shipOrderModel.Products = model.OnlineSalePurchasedProducts.Select(t => new StoreProductsModel { ProductID = t.Id, SSN = model.SSN }).ToList();
+
+            var returnModel = OrdersServices.SendShipment(shipOrderModel);
+            return RedirectToAction("Index");
+        }
         public ActionResult UpdateProduct(int productId)
         {
             var OnlineSaleProduct =  OrdersServices.OnlineSaleProductById(productId).Result;

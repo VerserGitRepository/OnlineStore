@@ -1,24 +1,27 @@
 ﻿@model OnlineStore.WebUI.Models.OnlineSaleOrdersListModel
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
-<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 
-<script src="~/Scripts/bootstrap-multiselect.js"></script>
-<link href="~/Scripts/bootstrap-multiselect.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
-<div class="table table-responsive" id="tblCustomers" style="padding-left:50px;padding-bottom:30px;border-color:lightgray">
-    @foreach (var item in Model.OnlineSalePurchasedProducts)
-    {
-<div class="row" style="padding-top:10px">
-    <div class="form-group" tabindex=1>
-        <label class="control-label">@item.ProductName</label>&nbsp;&nbsp;
+@using (Html.BeginForm("SendShipment", "OrdersList", FormMethod.Post))
+{
+    <div class="table table-responsive" id="tblCustomers" style="padding-left:50px;padding-bottom:30px;border-color:lightgray">
+        @foreach (var item in Model.OnlineSalePurchasedProducts)
+        {
+            <div class="row" style="padding-top:10px">
+                <div class="form-group" tabindex=1>
+                    <label class="control-label">@item.ProductName</label>&nbsp;&nbsp;
+                </div>
+                <div class="form-group" tabindex=1>
+                    @Html.EditorFor(id => item.SSN);
+                    @Html.ValidationMessageFor(id => item.SSN, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        }
+        <div class="row" style="padding-top:10px">
+            <input type="submit" value="Process" />
+        </div>
     </div>
-    <div class="form-group" tabindex=1>
-        <input type="text" placeholder="SSN" />&nbsp;&nbsp;
-    </div>
-    <div class="form-group" tabindex=1>
-        <input type="submit" value="Process"/>
-    </div>
-</div>
-    }
-</div>
+}

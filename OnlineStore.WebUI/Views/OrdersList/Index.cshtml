@@ -56,7 +56,7 @@
                     <tbody>
                         @foreach (var item in Model.OnlineSaleOrdersList)
                         {
-                            <tr>
+                            <tr class="submitOrder">
                                 <td>
                                     <a href="javascript:void(0);" class="btn btn-secondary OrderDesc" data-id="@item.Id">@Html.DisplayFor(modelItem => item.Id)</a>
                                     <input class ="hiddenVal" type="hidden" id="hiddenDesc" value="@item.OnlineSalePurchasedProductsDesc" />
@@ -334,8 +334,8 @@
                 error: function (result) { alert(result); console.log(result);}
             });
         });
-
-       $('#SubmitOrder').click(function () {
+    $(".submitOrder").click(function () { 
+     
            debugger;
            var buttonClicked = $(this).closest("tr");
            var theId = buttonClicked.find(".OrderDesc").text();

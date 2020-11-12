@@ -43,6 +43,8 @@ namespace OnlineStore.WebUI.Models
         public SelectList Sizes { get; set; }
         [Required(ErrorMessage = "SKU is mandatory")]
         public string SKU { get; set; }
+        [Required(ErrorMessage = "SSN is mandatory")]
+        public string SSN { get; set; }
         public SelectList Models { get; set; }
         public List<string> Images { get; set; }
         [Required(ErrorMessage = "File is mandatory")]
