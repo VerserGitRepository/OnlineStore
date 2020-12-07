@@ -1,22 +1,21 @@
 ﻿@model OnlineStore.WebUI.Models.OnlineSaleProduct
 
-@{
-    ViewBag.Title = "Index";
-}
+
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css" rel="stylesheet">
-
+<script src="~/Scripts/jquery.elevateZoom-3.0.8.min.js"></script>
+<script src="~/Scripts/jquery.elevatezoom.js"></script>
 <div class="panel-body" style="font-size:small;color:grey;border-color:gray;padding:0px">
     <br>
     <div class="row" style="border:1px solid #ddd; border-left:solid;border-width:thin; padding-right: 0px;margin-right: 0px;">
         <div class="col-xs-4 item-photo">
-            <img style="max-width:100%;" src="~/ProductImages/@Model.Images.FirstOrDefault()"  id="myimage" onmouseover="imageZoom('myimage', 'myresult');"/>
+            <img style="max-width:100%;" id="zoom_01" src="/ProductImages/@Model.Images.FirstOrDefault()" data-zoom-image="/ProductImages/@Model.Images.FirstOrDefault()" />
+
+
 
         </div>
         <div class="col-md-8" style="border:0px solid gray">
-            <div class="img-zoom-container" style="display:none;">
-                <div id="myresult" class="img-zoom-result"></div>
-            </div>
+
             <div class="row">
                 <div class="col-md-12" style="font-weight:600">
                     @Html.DisplayFor(model => model.BrandName)  @Html.DisplayFor(model => model.ModelName)  @Html.DisplayFor(model => model.ProductName)
@@ -51,134 +50,68 @@
                                 }, "Colours", new { @class = "form-control", style = "Height:40px;font-size:small" })
                     </div>
                     <div class="col-sm-3">
-                            Memory
-                            @*@Html.DropDownListFor(m => m.Size, Model.Sizes, "Select Colour", new { @class = "form-control", @id = "ddlOrderID", @multiple = "multiple" })*@
+                        Memory
+                        @*@Html.DropDownListFor(m => m.Size, Model.Sizes, "Select Colour", new { @class = "form-control", @id = "ddlOrderID", @multiple = "multiple" })*@
 
-                            @Html.DropDownListFor(model => model.Colour, new List<SelectListItem>
-                                   {
-                                               new SelectListItem{ Text="16GB", Value = "16GB" },
-                                               new SelectListItem{ Text="32GB", Value = "32GB" },
-                                               new SelectListItem{ Text="128GB", Value = "128GB" },
-                                               new SelectListItem{ Text="256GB", Value = "256GB" },
-                                               new SelectListItem{ Text="512GB", Value = "512GB" },
-                                               new SelectListItem{ Text="1TB", Value = "1TB" },
-                                               new SelectListItem{ Text="1.5TB", Value = "1.5TB" },
-                                               new SelectListItem{ Text="2TB", Value = "2TB" }
-                                   }, "Sizes", new { @class = "form-control", style = "Height:40px;font-size:small" })
-                        </div>                     
-                        <div class="col-sm-3">
-                            Quantity
-                            @Html.DropDownListFor(m => m.PurchasedQty, Enumerable.Range(1, 500).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control", style = "font-size:small", placeholder = "Quantity" })
-                            @Html.ValidationMessageFor(model => model.PurchasedQty, null, new { @class = "text-danger" })
-                        </div>
-                        </div>
-                        <br />
+                        @Html.DropDownListFor(model => model.Colour, new List<SelectListItem>
+                               {
+                                           new SelectListItem{ Text="16GB", Value = "16GB" },
+                                           new SelectListItem{ Text="32GB", Value = "32GB" },
+                                           new SelectListItem{ Text="128GB", Value = "128GB" },
+                                           new SelectListItem{ Text="256GB", Value = "256GB" },
+                                           new SelectListItem{ Text="512GB", Value = "512GB" },
+                                           new SelectListItem{ Text="1TB", Value = "1TB" },
+                                           new SelectListItem{ Text="1.5TB", Value = "1.5TB" },
+                                           new SelectListItem{ Text="2TB", Value = "2TB" }
+                               }, "Sizes", new { @class = "form-control", style = "Height:40px;font-size:small" })
                     </div>
-                    @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = Model.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
-                    {
-                        <div>
-                            <button class="btn-success" style="align-content:center;border-radius:30px"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
-                        </div>
-                    }
-                    <br />
-                    <div class="col-md-12" style="font-size:smaller">
-                        <div class="col-md-4">
-                            <a href="#" id="promocodeCheckLink">Apply PromoCode?</a>
-                        </div>
-                        <div class="col-md-4" style="font-size:smaller">
-                            <input type="text" id="PromoCodetxt" style="font-size:small;vertical-align:top" placeholder="Promocode Here.." />
-                        </div>
-                        <div class="col-md-4">
-                            <input type="submit" class="btn-outline-success btn-sm" value="Apply" />
-                        </div>
+                    <div class="col-sm-3">
+                        Quantity
+                        @Html.DropDownListFor(m => m.PurchasedQty, Enumerable.Range(1, 500).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control", style = "font-size:small", placeholder = "Quantity" })
+                        @Html.ValidationMessageFor(model => model.PurchasedQty, null, new { @class = "text-danger" })
                     </div>
                 </div>
+                <br />
+            </div>
+            @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = Model.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
+            {
+                <div>
+                    <button class="btn-success" style="align-content:center;border-radius:30px"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                </div>
+            }
+            <br />
+            <div class="col-md-12" style="font-size:smaller">
+                <div class="col-md-4">
+                    <a href="#" id="promocodeCheckLink">Apply PromoCode?</a>
+                </div>
+                <div class="col-md-4" style="font-size:smaller">
+                    <input type="text" id="PromoCodetxt" style="font-size:small;vertical-align:top" placeholder="Promocode Here.." />
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" class="btn-outline-success btn-sm" value="Apply" />
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<script>
+    $("#zoom_01").elevateZoom({zoomWindowPosition: 10});
 
-
+    //pass the images to Fancybox
+    //$("#zoom_01").bind("click", function (e) {
+    //    var ez = $('#zoom_01').data('elevateZoom');
+    //    $.fancybox(ez.getGalleryList());
+    //    return false;
+    //});
+</script>
 <style>
-    * {
-        box-sizing: border-box;
+    #gallery_01 img {
+        border: 2px solid white;
     }
 
-    .img-zoom-container {
-        position: relative;
-    }
-
-    .img-zoom-lens {
-        position: absolute;
-        border: 1px solid #d4d4d4;
-        /*set the size of the lens:*/
-        width: 40px;
-        height: 40px;
-    }
-
-    .img-zoom-result {
-        border: 1px solid #d4d4d4;
-        /*set the size of the result div:*/
-        width: 300px;
-        height: 300px;
+    /*Change the colour*/
+    .active img {
+        border: 2px solid #333 !important;
     }
 </style>
-<script>
-    function HideDiv() {
-        $(".img-zoom-container").hide();
-    }
-    function imageZoom(imgID, resultID) {
-        $(".img-zoom-container").show();
-        var img, lens, result, cx, cy;
-        img = document.getElementById(imgID);
-        result = document.getElementById(resultID);
-        /*create lens:*/
-        lens = document.createElement("DIV");
-        lens.setAttribute("class", "img-zoom-lens");
-        /*insert lens:*/
-        img.parentElement.insertBefore(lens, img);
-        /*calculate the ratio between result DIV and lens:*/
-        cx = result.offsetWidth / lens.offsetWidth;
-        cy = result.offsetHeight / lens.offsetHeight;
-        /*set background properties for the result DIV:*/
-        result.style.backgroundImage = "url('" + img.src + "')";
-        result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
-        /*execute a function when someone moves the cursor over the image, or the lens:*/
-        lens.addEventListener("mousemove", moveLens);
-        img.addEventListener("mousemove", moveLens);
-        /*and also for touch screens:*/
-        lens.addEventListener("touchmove", moveLens);
-        img.addEventListener("touchmove", moveLens);
-        function moveLens(e) {
-            var pos, x, y;
-            /*prevent any other actions that may occur when moving over the image:*/
-            e.preventDefault();
-            /*get the cursor's x and y positions:*/
-            pos = getCursorPos(e);
-            /*calculate the position of the lens:*/
-            x = pos.x - (lens.offsetWidth / 2);
-            y = pos.y - (lens.offsetHeight / 2);
-            /*prevent the lens from being positioned outside the image:*/
-            if (x > img.width - lens.offsetWidth) { x = img.width - lens.offsetWidth; }
-            if (x < 0) { x = 0; }
-            if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
-            if (y < 0) { y = 0; }
-            /*set the position of the lens:*/
-            lens.style.left = x + "px";
-            lens.style.top = y + "px";
-            /*display what the lens "sees":*/
-            result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
-        }
-        function getCursorPos(e) {
-            var a, x = 0, y = 0;
-            e = e || window.event;
-            /*get the x and y positions of the image:*/
-            a = img.getBoundingClientRect();
-            /*calculate the cursor's x and y coordinates, relative to the image:*/
-            x = e.pageX - a.left;
-            y = e.pageY - a.top;
-            /*consider any page scrolling:*/
-            x = x - window.pageXOffset;
-            y = y - window.pageYOffset;
-            return { x: x, y: y };
-        }
-    }
-</script>
+
