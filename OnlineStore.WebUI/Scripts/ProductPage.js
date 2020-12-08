@@ -1,11 +1,12 @@
-﻿function ShowProductDetailPage(ProductId) {
+﻿
+function ShowProductDetailPage(ProductId) {
     // alert(ProductId)
-    //var theurl = "./ShowProductDetail";
+    var theurl = "./ProductDetail";
     // alert(theurl);
     $.ajax({
         type: "GET",
         data: { "ProductId": ProductId },
-        url: '@Url.Action("ProductDetail", "OnlineSale")',
+        url: theurl,
 
         success: function (data) {
             // alert(data);

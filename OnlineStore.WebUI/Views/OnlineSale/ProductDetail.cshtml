@@ -1,16 +1,17 @@
 ﻿@model OnlineStore.WebUI.Models.OnlineSaleProduct
 
-@{
-    ViewBag.Title = "Index";
-}
+
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css" rel="stylesheet">
-
+<script src="~/Scripts/jquery.elevateZoom-3.0.8.min.js"></script>
+<script src="~/Scripts/jquery.elevatezoom.js"></script>
 <div class="panel-body" style="font-size:small;color:grey;border-color:gray;padding:0px">
     <br>
     <div class="row" style="border:1px solid #ddd; border-left:solid;border-width:thin; padding-right: 0px;margin-right: 0px;">
         <div class="col-xs-4 item-photo">
-            <img style="max-width:100%;" src="~/ProductImages/@Model.Images.FirstOrDefault()" />
+            <img style="max-width:100%;" id="zoom_01" src="/ProductImages/@Model.Images.FirstOrDefault()" data-zoom-image="/ProductImages/@Model.Images.FirstOrDefault()" />
+
+
 
         </div>
         <div class="col-md-8" style="border:0px solid gray">
@@ -87,23 +88,23 @@
                     <input type="text" id="PromoCodetxt" style="font-size:small;vertical-align:top" placeholder="Promocode Here.." />
                 </div>
                 <div class="col-md-4">
-                    <input type="submit" class="btn-outline-success btn-sm" value="Apply" onclick="applypromocode('','')" />
+                    <input type="submit" class="btn-outline-success btn-sm" value="Apply" />
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    function applypromocode(ProductId,Promocode) {
-        $.ajax({
-            type: "GET",
-            data: { "ProductId": ProductId },
-            url: '@Url.Action("ProductDetail", "OnlineSale")',
+    $("#zoom_01").elevateZoom({zoomWindowPosition: 10});
 
-            success: function (data) {
-             alert(data);
-       
-            }
-            });
-            }
+    //pass the images to Fancybox
+    //$("#zoom_01").bind("click", function (e) {
+    //    var ez = $('#zoom_01').data('elevateZoom');
+    //    $.fancybox(ez.getGalleryList());
+    //    return false;
+    //});
+
 </script>
+
+            
+
