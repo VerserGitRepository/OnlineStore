@@ -195,17 +195,17 @@
 
             success: function (data) {
                // alert(data);
-                //$.confirm({
-                //    boxWidth: '800px',
-                //    useBootstrap: false,
-                //    title: '',
-                //    content: data,
-                //    closeIcon: true,
+                $.confirm({
+                    boxWidth: '800px',
+                    useBootstrap: false,
+                    title: '',
+                    content: data,
+                    closeIcon: true,
 
-                //    buttons: {
-                //        yes: { isHidden: true }
-                //    },
-                //});
+                    buttons: {
+                        yes: { isHidden: true }
+                    },
+                });
             }
         });
     }
