@@ -14,22 +14,8 @@
 
 
         </div>
-        
         <div class="col-md-8" style="border:0px solid gray">
-            <div id="gal1" style="width: 500px;float:left" ;>
-                <a href="#" class="elevatezoom-gallery" data-update="" data-image="/ProductImages/@Model.Images.FirstOrDefault()" data-zoom-image="/ProductImages/@Model.Images.FirstOrDefault()">
-                    <img id="img_01" src="/ProductImages/@Model.Images.FirstOrDefault()" width="100">
-                </a>
-                <a href="#" class="elevatezoom-gallery" data-image="/ProductImages/@Model.Images.FirstOrDefault()" data-zoom-image="/ProductImages/@Model.Images.FirstOrDefault()">
-                    <img id="" src="/ProductImages/@Model.Images.FirstOrDefault()" width="100">
-                </a>
-                <a href="#" class="elevatezoom-gallery zoomGalleryActive" data-image="/ProductImages/@Model.Images.FirstOrDefault()" data-zoom-image="/ProductImages/@Model.Images.FirstOrDefault()">
-                    <img id="" src="/ProductImages/@Model.Images.FirstOrDefault()" width="100">
-                </a>
-                <a href="#" class="elevatezoom-gallery" data-image="/ProductImages/@Model.Images.FirstOrDefault()" data-zoom-image="/ProductImages/@Model.Images.FirstOrDefault()">
-                    <img id="" src="/ProductImages/@Model.Images.FirstOrDefault()" width="100">
-                </a>
-            </div>
+
             <div class="row">
                 <div class="col-md-12" style="font-weight:600">
                     @Html.DisplayFor(model => model.BrandName)  @Html.DisplayFor(model => model.ModelName)  @Html.DisplayFor(model => model.ProductName)
@@ -109,29 +95,14 @@
     </div>
 </div>
 <script>
-    //$("#zoom_01").elevateZoom({zoomWindowPosition: 10});
-
-    //$("#zoom_01").elevateZoom({
-    //    zoomType: "inner",
-    //    cursor: "crosshair"
-    //});
+    $("#zoom_01").elevateZoom({zoomWindowPosition: 10});
 
     //pass the images to Fancybox
     //$("#zoom_01").bind("click", function (e) {
     //    var ez = $('#zoom_01').data('elevateZoom');
     //    $.fancybox(ez.getGalleryList());
     //    return false;
-    //});p
-
-    $("#zoom_01").elevateZoom({ gallery: 'gal1', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, zoomWindowPosition: 10});
-
-    //pass the images to Fancybox
-    $("#zoom_01").bind("click", function (e) {
-        var ez = $('#zoom_01').data('elevateZoom');
-        $.fancybox(ez.getGalleryList());
-        return false;
-    });
-
+    //});
 </script>
 
             
