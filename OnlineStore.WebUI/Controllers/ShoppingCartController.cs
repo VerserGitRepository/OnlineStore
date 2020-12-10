@@ -109,7 +109,7 @@ namespace OnlineStore.WebUI.Controllers
                 {
                     sc = new ShoppingCart();
                 }
-                sp.PriceExGST = price;
+                sp.PriceIncGST = price / quantity;
                 sc.AddItem(sp, quantity);
             }
             Session["Productcart"] = sc;
