@@ -14,11 +14,11 @@ namespace OnlineStore.WebUI.Controllers
 {
     public class OnlineSaleController : Controller
     {
-      public static  List<OnlineSaleProduct> SaleProducts = new List<OnlineSaleProduct>();
-       
+        public static List<OnlineSaleProduct> SaleProducts = new List<OnlineSaleProduct>();
+
         public ActionResult Index()
         {
-            var MainpageproductView = new MainPageProductsViewModel();            
+            var MainpageproductView = new MainPageProductsViewModel();
             SaleProducts = OrdersServices.OnlineSaleProductsList().Result;
             MainpageproductView.OnlineSaleProductModel = MainPageProductService.MainPageProductsList().Result;
             var prods = SaleProducts.Select(m => m.ProductName).ToArray<string>();
@@ -27,17 +27,17 @@ namespace OnlineStore.WebUI.Controllers
             {
                 prodinfo += s + ",";
             }
-            
+
             Session["productinformation"] = prodinfo;
             return View(MainpageproductView);
         }
-        public ActionResult Mobile( int Page_No=1)
-        {           
+        public ActionResult Mobile(int Page_No = 1)
+        {
             var size = SaleProducts.Where(m => m.ItemType_ID == 15);
             int Size_Of_Page = 10;
             int No_Of_Page = Page_No;
             return View(size.ToPagedList(No_Of_Page, Size_Of_Page));
-            
+
         }
         public ActionResult Laptop(int Page_No = 1)
         {
@@ -95,13 +95,12 @@ namespace OnlineStore.WebUI.Controllers
             int No_Of_Page = Page_No;
             return View(size.ToPagedList(No_Of_Page, Size_Of_Page));
         }
-     
-        public ActionResult AllProducts(string product="")
+        public ActionResult AllProducts(string product = "")
         {
             if (product != "")
             {
-                Session["product"] = product;                              
-                return Json(new { newUrl = Url.Action("ShowProducts", "OnlineSale") },JsonRequestBehavior.AllowGet);
+                Session["product"] = product;
+                return Json(new { newUrl = Url.Action("ShowProducts", "OnlineSale") }, JsonRequestBehavior.AllowGet);
             }
             return RedirectToAction("Index");
 
@@ -118,10 +117,9 @@ namespace OnlineStore.WebUI.Controllers
         {
             return PartialView();
         }
-
-      [HttpGet]      
+        [HttpGet]
         public ActionResult ProductDetail(int ProductId)
-        {    
+        {
 
             var productdeatiledModel = new OnlineSaleProduct();
             productdeatiledModel = OrdersServices.OnlineSaleProductById(ProductId).Result;
@@ -131,21 +129,19 @@ namespace OnlineStore.WebUI.Controllers
         public ActionResult AddToCart(int id, string returnUrl)
         {
             @ShoppingCart p = new @ShoppingCart();
-            return RedirectToAction("AddToShoppingCart", "ShoppingCart",new {@id=id, @returnUrl  = returnUrl });
-        }   
+            return RedirectToAction("AddToShoppingCart", "ShoppingCart", new { @id = id, @returnUrl = returnUrl });
+        }
         public ActionResult AddToCartNoVerb(int id, string returnUrl)
         {
             @ShoppingCart p = new @ShoppingCart();
             return RedirectToAction("AddToShoppingCart", "ShoppingCart", new { @id = id, @returnUrl = returnUrl });
         }
-       
-        public ActionResult RenderView(string view,string viewName)
+        public ActionResult RenderView(string view, string viewName)
         {
 
             SaleProducts.ToList().ForEach(c => c.IsViewTypeGrid = view == "gridViewBtn");
             return RedirectToAction(viewName);
         }
-
         [HttpPost]
         public ActionResult PaymentReceipt()
         {
@@ -177,17 +173,24 @@ namespace OnlineStore.WebUI.Controllers
                 CheckoutOrdersPaymentRequestdata.cardType = cardType;
                 CheckoutOrdersPaymentRequestdata.nameOnCard = nameOnCard;
                 CheckoutOrdersPaymentRequestdata.CardNumber = truncatedCardNumber;
-                CheckoutOrdersPaymentRequestdata.PaymentStatus = paymentStatus.ToString();   
+                CheckoutOrdersPaymentRequestdata.PaymentStatus = paymentStatus.ToString();
 
                 var confirmationRequestReturnFlag = OrdersServices.CheckoutOrdersPaymentRequest(CheckoutOrdersPaymentRequestdata).Result;
                 LogService.info("PaymentReceipt processed");
-                return RedirectToAction("Index","OnlineSale");
+                return RedirectToAction("Index", "OnlineSale");
             }
             catch (Exception ex)
             {
                 LogService.Error(ex.Message + ex.InnerException.StackTrace);
                 return new HttpStatusCodeResult(HttpStatusCode.ExpectationFailed);
             }
+        }
+
+        public ActionResult applypromocode(int ProductId, string Promocode)
+        {
+            var productdeatiledModel = new OnlineSaleProduct();
+
+            return PartialView(productdeatiledModel);
         }
     }
 }
