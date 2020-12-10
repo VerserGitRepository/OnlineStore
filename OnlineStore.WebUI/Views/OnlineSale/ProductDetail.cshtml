@@ -14,8 +14,17 @@
 
 
         </div>
+       
         <div class="col-md-8" style="border:0px solid gray">
-
+            <div id="gal1" style="width: 500px;float:left" ;>
+                @foreach (var item in Model.Images)
+                {
+                    <a href="#" class="elevatezoom-gallery" data-update="" data-image="/ProductImages/@item" data-zoom-image="/ProductImages/@item">
+                        <img id="img_01" src="/ProductImages/@item" width="100">
+                    </a>
+                  
+                }
+                </div>
             <div class="row">
                 <div class="col-md-12" style="font-weight:600">
                     @Html.DisplayFor(model => model.BrandName)  @Html.DisplayFor(model => model.ModelName)  @Html.DisplayFor(model => model.ProductName)
@@ -27,7 +36,8 @@
                 </div>
                 <div class="col-md-12">
                     <br /> <label class="control-label">PriceIncGST:</label>
-                    @Html.DisplayFor(model => model.PriceIncGST)
+                    <span id="priceLabel"> @Html.DisplayFor(model => model.PriceIncGST, new { })</span>
+                    @Html.HiddenFor(model => model.PriceIncGST, new {@id="hiddenPrice" })
                 </div>
                 <div class="col-md-12">
                     <br /> <label class="control-label">Available:</label>
@@ -67,7 +77,7 @@
                     </div>
                     <div class="col-sm-3">
                         Quantity
-                        @Html.DropDownListFor(m => m.PurchasedQty, Enumerable.Range(1, 500).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control", style = "font-size:small", placeholder = "Quantity" })
+                        @Html.DropDownListFor(m => m.PurchasedQty, Enumerable.Range(1, 500).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control", style = "font-size:small", placeholder = "Quantity",@id="ddlQuantity" })
                         @Html.ValidationMessageFor(model => model.PurchasedQty, null, new { @class = "text-danger" })
                     </div>
                 </div>
@@ -75,9 +85,11 @@
             </div>
             @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = Model.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
             {
-                <div>
-                    <button class="btn-success" style="align-content:center;border-radius:30px"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
-                </div>
+        <div>
+            <input type="hidden" id="hdnQty" name="hdnQty" />
+            <input type="hidden" id="hdnprice" name="hdnprice" />
+            <button class="btn-success" style="align-content:center;border-radius:30px"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+        </div>
             }
             <br />
             <div class="col-md-12" style="font-size:smaller">
@@ -88,7 +100,7 @@
                     <input type="text" id="PromoCodetxt" style="font-size:small;vertical-align:top" placeholder="Promocode Here.." />
                 </div>
                 <div class="col-md-4">
-                    <input type="submit" class="btn-outline-success btn-sm" value="Apply" />
+                    <input type="submit" class="btn-outline-success btn-sm" value="Apply"  onclick="ApplyPromoCode();"/>
                 </div>
             </div>
         </div>
@@ -103,6 +115,34 @@
     //    $.fancybox(ez.getGalleryList());
     //    return false;
     //});
+
+    $('#ddlQuantity').change(function () {
+        var selectedVal = $('#ddlQuantity').val();
+        $("#hdnQty").val($("#ddlQuantity :selected").val());
+        var total = $("#hiddenPrice").val() * selectedVal;
+        $("#priceLabel").text(total);
+        $("#hdnprice").val($("#priceLabel").text());
+    });
+
+    function ApplyPromoCode() {
+        var promocode = $("#PromoCodetxt").val();
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("ApplyPromoCode", "OnlineSale")',
+            contentType: "application/json; charset=utf-8",
+            data: { "promoCode": promocode },
+            datatype: "json",
+            success: function (data) {
+                var discountedRate = (data / 100) * $("#priceLabel").text();
+                discountedRate = $("#priceLabel").text() - discountedRate;
+                $("#priceLabel").text(discountedRate);
+                $("#hdnprice").val($("#priceLabel").text());
+            },
+            error: function () {
+                alert("Dynamic content load failed.");
+            }
+        });
+    }
 </script>
 <style>
     #gallery_01 img {
