@@ -1,5 +1,6 @@
 ﻿using OnlineStore.WebUI.Infrastructure.HelperServices;
 using OnlineStore.WebUI.Models;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -40,6 +41,15 @@ namespace OnlineStore.WebUI.Controllers
                 Session["Username"] = login.UserName;
                 Session["FullName"] = userReturn.Result.FullName;
                 Session["ErrorMessage"] = null;
+                var Roles = LoginService.UserRoleList(login.UserName).Result;
+                if (Roles.Where(x=>x.Value.Contains("Administrator") || x.Value.Contains("Accounts") || x.Value.Contains("Verser Admin") || x.Value.Contains("Salesperson")).FirstOrDefault() !=null)
+                {
+                    Session["SiteAdmin"] = "True";
+                }
+                else
+                {
+                    Session["SiteAdmin"] = "False";
+                }                               
                 return RedirectToAction("Index", "OrdersList");
             }
             else
@@ -50,6 +60,18 @@ namespace OnlineStore.WebUI.Controllers
                 return View("Login");
             }
         }
+
+        public ActionResult _RegisterNewUser()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult RegisterNewUser(LoginModel NewUserRegisterModel)
+        {
+            return RedirectToAction("Index","OnlineSale");
+        }
+
         public ActionResult Logout(LoginModel login)
         {
             Session["Username"] = null;
