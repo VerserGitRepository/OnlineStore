@@ -128,15 +128,15 @@ namespace OnlineStore.WebUI.Controllers
             return PartialView(productdeatiledModel);
         }
         [HttpPost]
-        public ActionResult AddToCart(int id, string returnUrl)
+        public ActionResult AddToCart(int id, string returnUrl, FormCollection  coll)
         {
             @ShoppingCart p = new @ShoppingCart();
-            return RedirectToAction("AddToShoppingCart", "ShoppingCart",new {@id=id, @returnUrl  = returnUrl });
+            return RedirectToAction("AddToShoppingCart", "ShoppingCart",new {@id=id, @returnUrl  = returnUrl,@quantity= coll["hdnQty"], price = coll["hdnprice"] });
         }   
-        public ActionResult AddToCartNoVerb(int id, string returnUrl)
+        public ActionResult AddToCartNoVerb(int id, string returnUrl,int quantity)
         {
             @ShoppingCart p = new @ShoppingCart();
-            return RedirectToAction("AddToShoppingCart", "ShoppingCart", new { @id = id, @returnUrl = returnUrl });
+            return RedirectToAction("AddToShoppingCart", "ShoppingCart", new { @id = id, @returnUrl = returnUrl, @quantity = quantity });
         }
        
         public ActionResult RenderView(string view,string viewName)
@@ -188,6 +188,30 @@ namespace OnlineStore.WebUI.Controllers
                 LogService.Error(ex.Message + ex.InnerException.StackTrace);
                 return new HttpStatusCodeResult(HttpStatusCode.ExpectationFailed);
             }
+        }
+        [HttpPost]
+        public ActionResult ApplyPromoCode(OrderViewModel model)
+        {
+            var promocodemodel = new PromoCodeModel { PromoDiscountPercent = model.promoCodeModel.PromoDiscountPercent, PromoEndDate = model.promoCodeModel.PromoEndDate, PromoCode = model.promoCodeModel.PromoCode, PromoStartDate = model.promoCodeModel.PromoStartDate, ProductID_FK = model.promoCodeModel.ProductID_FK };
+            var result = OrdersServices.ApplyPromoCode(promocodemodel);
+            return RedirectToAction("Index", "OrdersList");
+        }
+
+        [HttpGet]
+        public ActionResult ApplyPromoCode(string PromoCode)
+        {
+
+            var model = new PromoCodeModel();
+            model = OrdersServices.ApplyPromoCode(PromoCode).Result;
+            if (model.IsValidPromo)
+            {
+                return Json(model.PromoDiscountPercent, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(0, JsonRequestBehavior.AllowGet);
+            }
+           
         }
     }
 }

@@ -14,8 +14,10 @@ namespace OnlineStore.WebUI.Models
             OnlineSaleOrdersList = new List<OnlineSaleOrdersListModel>();
             OnlineSaleProductList = new List<OnlineSaleProduct>();
             OnlineSalePurchasedProducts = new List<OnlineSaleProduct>();
+            promoCodeModel = new PromoCodeModel();
         }
         public ManualOrdersViewModel ManualOrdersViewModel { get; set; }
+        public PromoCodeModel promoCodeModel { get; set; }
         public OnlineSaleProduct OnlineSaleProduct { get; set; }
         public List<OnlineSaleProduct> OnlineSaleProductList { get; set; }
         public List<OnlineSaleOrdersListModel> OnlineSaleOrdersList { get; set; }

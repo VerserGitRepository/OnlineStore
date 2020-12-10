@@ -173,5 +173,35 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return returnModel;
         }
+        public async static Task<bool> ApplyPromoCode(PromoCodeModel model)
+        {
+            var returnModel = new ReturnShippedOrdersModel();
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.PostAsJsonAsync("OnlineSaleOrders/CreateSalePromoCode", model).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnModel = await response.Content.ReadAsAsync<ReturnShippedOrdersModel>();
+                }
+            }
+            return true;
+        }
+        public async static Task<PromoCodeModel> ApplyPromoCode(string promoCode)
+        {
+            var returnmessage = new PromoCodeModel();
+            using (HttpClient client = new HttpClient())
+            {
+                client.Timeout = TimeSpan.FromMinutes(10);
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.GetAsync(string.Format("OnlineSaleOrders/{0}/PromoCodeValidation",promoCode)).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnmessage = await response.Content.ReadAsAsync<PromoCodeModel>();
+                }
+            }
+            return returnmessage;
+        }
     }
 }

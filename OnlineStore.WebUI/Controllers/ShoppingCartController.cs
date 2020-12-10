@@ -97,7 +97,7 @@ namespace OnlineStore.WebUI.Controllers
                 Cart = item
             });            
         }
-        public RedirectToRouteResult AddToShoppingCart(int id, string returnUrl)
+        public RedirectToRouteResult AddToShoppingCart(int id, string returnUrl,int quantity,decimal price)
         {
 
             var sp = new OnlineSaleProduct();
@@ -109,7 +109,8 @@ namespace OnlineStore.WebUI.Controllers
                 {
                     sc = new ShoppingCart();
                 }
-                sc.AddItem(sp, 1);
+                sp.PriceExGST = price;
+                sc.AddItem(sp, quantity);
             }
             Session["Productcart"] = sc;
             if (returnUrl == null || returnUrl == string.Empty || returnUrl.IndexOf("ProductId") > 0)
