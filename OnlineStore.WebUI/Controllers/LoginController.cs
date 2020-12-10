@@ -69,6 +69,7 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult RegisterNewUser(LoginModel NewUserRegisterModel)
         {
+           var _t= OrdersServices.CreateOnlineStoreUserAccount(NewUserRegisterModel);
             return RedirectToAction("Index","OnlineSale");
         }
 

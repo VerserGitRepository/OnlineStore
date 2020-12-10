@@ -203,5 +203,21 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return returnmessage;
         }
+
+        public async static Task<string> CreateOnlineStoreUserAccount(LoginModel CreateNewUser)
+        {
+            string returnmessage=string.Empty;
+            using (HttpClient client = new HttpClient())
+            {
+                client.Timeout = TimeSpan.FromMinutes(10);
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.PostAsJsonAsync("SalesList/CreateOnlineStoreUserAccount", CreateNewUser).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnmessage = await response.Content.ReadAsAsync<string>();
+                }
+            }
+            return returnmessage;
+        }
     }
 }
