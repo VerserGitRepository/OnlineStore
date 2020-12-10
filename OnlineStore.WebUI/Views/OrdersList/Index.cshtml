@@ -73,7 +73,7 @@
                                 <td>@item.OrderStatus</td>                             
                                 <td>@item.OrderRef</td>                              
                                 <td>
-                                    <input type="submit" class="btn btn-outline-success" value="SHIP ORDER" id="SubmitOrder"/>
+                                    <input type="submit" class="btn btn-outline-success" value="SHIP ORDER" id="SubmitOrder" onclick="SubmitOrder(this);"/>
                                 </td>                               
                             </tr>
                         }
@@ -334,10 +334,10 @@
                 error: function (result) { alert(result); console.log(result);}
             });
         });
-    $(".submitOrder").click(function () { 
+    function SubmitOrder(row) {
      
            debugger;
-           var buttonClicked = $(this).closest("tr");
+        var buttonClicked = $(row).closest("tr");
            var theId = buttonClicked.find(".OrderDesc").text();
           
             var AddSiteURL = '@Url.Action("ProductList", "OrdersList")'
@@ -362,7 +362,7 @@
                 },
                 error: function (result) { alert(result); console.log(result);}
             });
-        });
+        }
     $("#OrdersTable1").on("click", ".OrderDesc", function () {
         // debugger;
         var buttonClicked = $(this);
