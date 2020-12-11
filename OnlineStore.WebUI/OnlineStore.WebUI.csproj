@@ -132,6 +132,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -141,7 +145,6 @@
     <Content Include="Content\Images\no_product_image.jpg" />
     <Content Include="Content\Images\verserLogo.png" />
     <Content Include="Content\Images\Windows7.jpg" />
-    <Content Include="Content\magiczoomplus.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="EmailTemplates\OrderDetail.html" />
@@ -190,6 +193,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -219,8 +226,6 @@
     <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="Scripts\jquery.elevateZoom-3.0.8.min.js" />
     <Content Include="Scripts\jquery.elevatezoom.js" />
-    <Content Include="Scripts\magiczoomplus.js" />
-    <Content Include="Scripts\mootools.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -253,7 +258,6 @@
       <Generator>DataServicesCoreClientGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Scripts\Zoomer.js" />
     <Content Include="Scripts\zoomove.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -271,6 +275,7 @@
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\OnlineSaleController.cs" />
     <Compile Include="Controllers\OrdersListController.cs" />
+    <Compile Include="Controllers\PublicUserProfileController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
@@ -287,6 +292,7 @@
     <Compile Include="Models\CarouselProductsViewModel.cs" />
     <Compile Include="Models\CheckoutOrdersPaymentModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\PromoCodeModel.cs" />
     <Compile Include="Models\ReturnShippedOrdersModel.cs" />
     <Compile Include="Models\ReturnValidationModel.cs" />
     <Compile Include="Models\ShipStoreOrderModel.cs" />
@@ -362,6 +368,8 @@
     <Content Include="Views\OnlineSale\NetworkGear.cshtml" />
     <Content Include="Views\OnlineSale\ShowProducts.cshtml" />
     <Content Include="Views\OrdersList\ProductList.cshtml" />
+    <Content Include="Views\Login\_RegisterNewUser.cshtml" />
+    <Content Include="Views\PublicUserProfile\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
