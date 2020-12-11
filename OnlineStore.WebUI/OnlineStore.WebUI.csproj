@@ -291,6 +291,7 @@
     <Compile Include="Infrastructure\OrderProcessor.cs" />
     <Compile Include="Models\CarouselProductsViewModel.cs" />
     <Compile Include="Models\CheckoutOrdersPaymentModel.cs" />
+    <Compile Include="Models\PromoCodeModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\PromoCodeModel.cs" />
     <Compile Include="Models\ReturnShippedOrdersModel.cs" />
@@ -370,6 +371,7 @@
     <Content Include="Views\OrdersList\ProductList.cshtml" />
     <Content Include="Views\Login\_RegisterNewUser.cshtml" />
     <Content Include="Views\PublicUserProfile\Index.cshtml" />
+    <Content Include="Views\OrdersList\PromoCode.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

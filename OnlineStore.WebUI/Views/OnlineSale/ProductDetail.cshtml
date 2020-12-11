@@ -8,23 +8,23 @@
 <div class="panel-body" style="font-size:small;color:grey;border-color:gray;padding:0px">
     <br>
     <div class="row" style="border:1px solid #ddd; border-left:solid;border-width:thin; padding-right: 0px;margin-right: 0px;">
-        <div class="col-xs-4 item-photo">
+        <div class="col-md-4 item-photo">
             <img style="max-width:100%;" id="zoom_01" src="/ProductImages/@Model.Images.FirstOrDefault()" data-zoom-image="/ProductImages/@Model.Images.FirstOrDefault()" />
-
-
-
-        </div>
-       
-        <div class="col-md-8" style="border:0px solid gray">
-            <div id="gal1" style="width: 500px;float:left" ;>
+            <div id="gal1">
                 @foreach (var item in Model.Images)
                 {
                     <a href="#" class="elevatezoom-gallery" data-update="" data-image="/ProductImages/@item" data-zoom-image="/ProductImages/@item">
                         <img id="img_01" src="/ProductImages/@item" width="100">
                     </a>
-                  
+
                 }
-                </div>
+            </div>
+
+
+        </div>
+       
+        <div class="col-md-8" style="border:0px solid gray">
+            
             <div class="row">
                 <div class="col-md-12" style="font-weight:600">
                     @Html.DisplayFor(model => model.BrandName)  @Html.DisplayFor(model => model.ModelName)  @Html.DisplayFor(model => model.ProductName)
