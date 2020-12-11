@@ -34,6 +34,7 @@ namespace OnlineStore.WebUI.Controllers
                 LoadViewModel.ManualOrdersViewModel.CustomerProject = new SelectList(DropDownServices.ProjectList().Result, "ID", "Value");
                 LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
                 LoadViewModel.OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
+                Session["OrderViewModel"] = LoadViewModel;
                 return View(LoadViewModel);
             }
 
@@ -173,6 +174,12 @@ namespace OnlineStore.WebUI.Controllers
                 Value = x.ModelName
             }).ToList();
             return Json(Models, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public ActionResult AddPromo()
+        {
+            var LoadViewModel = (OrderViewModel)Session["OrderViewModel"];
+            return PartialView("PromoCode", LoadViewModel);
         }
     }
 }

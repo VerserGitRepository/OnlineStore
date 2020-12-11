@@ -286,6 +286,7 @@
     <Compile Include="Infrastructure\OrderProcessor.cs" />
     <Compile Include="Models\CarouselProductsViewModel.cs" />
     <Compile Include="Models\CheckoutOrdersPaymentModel.cs" />
+    <Compile Include="Models\PromoCodeModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ReturnShippedOrdersModel.cs" />
     <Compile Include="Models\ReturnValidationModel.cs" />
@@ -362,6 +363,7 @@
     <Content Include="Views\OnlineSale\NetworkGear.cshtml" />
     <Content Include="Views\OnlineSale\ShowProducts.cshtml" />
     <Content Include="Views\OrdersList\ProductList.cshtml" />
+    <Content Include="Views\OrdersList\PromoCode.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

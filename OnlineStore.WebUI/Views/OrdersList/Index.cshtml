@@ -31,8 +31,7 @@
             <li><a href="#tabs-3">CREATE MANUAL ORDER</a></li>
             <li><a href="#tabs-4">PRODUCTS LIST</a></li>
             <li><a href="#tabs-5">SHIPPED ORDERS</a></li>
-            <li><a href="#tabs-6">MANAGE</a></li>
-            <li><a href="#tabs-7">CREATE PROMO CODE</a></li>
+            <li><a href="#tabs-6">MANAGE</a></li>          
         </ul>
         <div class="panel-body" style="border-color:gray;width:80%">
             <div id="tabs-2">
@@ -224,7 +223,7 @@
                             <th>GSTAmount</th>
                             <th>PriceIncGST</th>
                             <th>Quantity</th>
-                            @*<th>Description</th>*@
+                            <th>PromoCode</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -252,7 +251,12 @@
                                 <td>@item.GSTAmount</td>
                                 <td>@item.PriceIncGST</td>
                                 <td>@item.QtyAvailable</td>
-                                @*<td>@item.Description</td>*@
+                                <td>
+                                    <a class="Update btn btn-success a-btn-slide-text" href="javascript:;"  id="AddPromo">
+                                       
+                                        <span><strong>Add Promo Code</strong></span>
+                                    </a>
+                                </td>
                             </tr>
                         }
                     </tbody>
@@ -295,39 +299,7 @@
             </div>
 
             <div id="tabs-7">
-                <div class="table table-responsive" id="tblCustomers" style="padding-left:50px;padding-bottom:0px;border-color:lightgray">
-                    @using (Html.BeginForm("ApplyPromoCode", "OnlineSale", FormMethod.Post))
-                    {
-
-                        
-                    <div class="col-md-6" tabindex=1>
-                        <label class="control-label">Promo Code</label>
-                        @Html.EditorFor(model => model.promoCodeModel.PromoCode, new { htmlAttributes = new { @class = "form-control", @id = "promoCode", @style = "width:200px;" } })
-                        @Html.ValidationMessageFor(model => model.promoCodeModel.PromoCode, "", new { @class = "text-danger" })
-
-                        <label class="control-label">Promo Discount Percentage</label>
-                        <br />
-                        @Html.EditorFor(model => model.promoCodeModel.PromoDiscountPercent, new { htmlAttributes = new { @class = "form-control", @id = "discount", @style = "width:200px;" } })
-                        @Html.ValidationMessageFor(model => model.promoCodeModel.PromoDiscountPercent, "", new { @class = "text-danger" })
-
-                        <label>Start Date</label>
-                        @Html.EditorFor(model => model.promoCodeModel.PromoStartDate, new { htmlAttributes = new { @class = "form-control date-picker", Id = "DatePickId", @style = "width:200px;" } })
-                        @Html.ValidationMessageFor(model => model.promoCodeModel.PromoStartDate, "", new { @class = "text-danger" })
-
-                        <label class="control-label">End Date</label>
-                        @Html.EditorFor(model => model.promoCodeModel.PromoEndDate, new { htmlAttributes = new { @class = "form-control date-picker", Id = "DatePickId", @style = "width:200px;" } })
-                        @Html.ValidationMessageFor(model => model.promoCodeModel.PromoEndDate, "", new { @class = "text-danger" })<br/>
-                        <button type="submit" class="btn btn-warning btn-lg" id="btnregister">
-                            <span class="glyphicon glyphicon-ok-sign"></span> Save
-                        </button>
-                    </div>
-                       
-                       
-                           
-                     
-                    }
-
-                </div>
+               
             </div>
         </div>
     </div>
@@ -372,12 +344,36 @@
                 error: function (result) { alert(result); console.log(result);}
             });
         });
+    $('#AddPromo').click(function () {
+            debugger;
+            var AddSiteURL = '@Url.Action("AddPromo", "OrdersList")'
+            $.ajax({
+            type: "GET",
+            url: AddSiteURL,
+            success: function (data) {
+
+            $.confirm({
+            boxWidth: '400px',
+            useBootstrap: false,
+            backgroundDismiss: true,
+
+            title: '',
+            content: data,
+            closeIcon: true,
+            buttons: {
+            yes: { isHidden: true }
+            },
+            });
+                },
+                error: function (result) { alert(result); console.log(result);}
+            });
+        });
     function SubmitOrder(row) {
-     
+
            debugger;
         var buttonClicked = $(row).closest("tr");
            var theId = buttonClicked.find(".OrderDesc").text();
-          
+
             var AddSiteURL = '@Url.Action("ProductList", "OrdersList")'
             $.ajax({
             type: "GET",
@@ -388,7 +384,7 @@
             $.confirm({
             boxWidth: '600px',
             useBootstrap: false,
-            
+
 
             title: 'ProductList',
             content: data,
