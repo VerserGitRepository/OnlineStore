@@ -217,6 +217,7 @@
 <script>
     function ShowProductDetailPage(ProductId) {
         var objSpinner = null;
+
         $.ajax({
             type: "GET",
             data: { "ProductId": ProductId },
