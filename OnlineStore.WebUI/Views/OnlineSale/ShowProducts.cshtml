@@ -31,7 +31,7 @@
             </button>
         </div>
     </div>
-   @if (Model.Count() > 0 && Model.First().IsViewTypeGrid)
+    @if (Model.Count() > 0 && Model.First().IsViewTypeGrid)
     {
         <div class="container">
             @foreach (var item in Model)
@@ -74,9 +74,9 @@
                         @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
                         {
                             //@Html.Hidden(item.Id.ToString());
-                    <div>
-                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
-                    </div>
+                            <div>
+                                <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                            </div>
                         }
                     </div>
                 </div>
@@ -101,9 +101,9 @@
                             @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
                             {
                                 //@Html.Hidden(item.Id.ToString());
-                        <div>
-                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
-                        </div>
+                                <div>
+                                    <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                                </div>
                             }
                             <div class="space-ten"></div>
                         </div>
@@ -112,6 +112,9 @@
             </div>
         </div>
     }
+    <div id="spinner" style="display:none;">
+        <img src="~/Images/ajax-loader.gif" />
+    </div>
 
 </body>
 </html>
@@ -223,14 +226,26 @@
 </style>
 
 <script>
-      function ShowProductDetailPage(ProductId) {
+    function ShowProductDetailPage(ProductId) {
+        var objSpinner = null;
         $.ajax({
             type: "GET",
             data: { "ProductId": ProductId },
             url: '@Url.Action("ProductDetail", "OnlineSale")',
-
+            beforeSend: function () {
+                objSpinner = $.alert({
+                    boxWidth: '50px',
+                    useBootstrap: false,
+                    title: '',
+                    content: $("#spinner").html(),
+                    buttons: {
+                        yes: { isHidden: true }
+                    }
+                })
+            },
             success: function (data) {
-               // alert(data);
+                $("#spinner").hide();
+                objSpinner.close();
                 $.confirm({
                     boxWidth: '800px',
                     useBootstrap: false,

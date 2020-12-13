@@ -147,6 +147,7 @@
     <Content Include="EmailTemplates\OrderDetail.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\amex.gif" />
     <Content Include="Images\apple.jpeg" />
     <Content Include="Images\cart.png" />

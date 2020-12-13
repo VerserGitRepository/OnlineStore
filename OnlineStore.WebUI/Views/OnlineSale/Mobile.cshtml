@@ -17,7 +17,7 @@
                 View as
             </span>
             <button class="utils-viewtoggle-button" id="gridViewBtn" onclick="ReloadPageWithDifferentView(this);">
-                
+
                 <svg class="icon-list " aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">      <path fill="currentColor" fill-rule="nonzero" d="M2 0h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 2v16h16V2H2zm3 3h10v2H5V5zm0 4h10v2H5V9zm0 4h10v2H5v-2z"></path>    </svg>
             </button>
             <button class="utils-viewtoggle-button active" id="listViewBtn" onclick="ReloadPageWithDifferentView(this);">
@@ -25,8 +25,8 @@
             </button>
         </div>
     </div>
-   <input type="hidden" value="true" id="viewType" />
-   @if (Model.Count() > 0 && Model.First().IsViewTypeGrid)
+    <input type="hidden" value="true" id="viewType" />
+    @if (Model.Count() > 0 && Model.First().IsViewTypeGrid)
     {
         <div class="container">
             @*<div class="row">*@
@@ -36,7 +36,7 @@
                 <div class="row" style="margin-top:30px;background: #eee;padding: 3em;line-height: 1.5em;">
 
                     <div class="item-photo">
-                        <img  src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:320px;height:280px;" class="img-responsive" />
+                        <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:320px;height:280px;" class="img-responsive" />
                     </div>
                     <div class="col-xs-5">
                         <h3>@item.ProductName</h3>
@@ -46,9 +46,9 @@
                         @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
                         {
                             //@Html.Hidden(item.Id.ToString());
-                    <div>
-                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
-                    </div>
+                            <div>
+                                <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                            </div>
 
                         }
                     </div>
@@ -75,9 +75,9 @@
                             @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
                             {
                                 //@Html.Hidden(item.Id.ToString());
-                        <div>
-                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
-                        </div>
+                                <div>
+                                    <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                                </div>
 
                             }
                             <div class="space-ten"></div>
@@ -87,6 +87,9 @@
             </div>
         </div>
     }
+    <div id="spinner" style="display:none;">
+        <img src="~/Images/ajax-loader.gif" />
+    </div>
 </body>
 </html>
 <style>
@@ -195,13 +198,26 @@
 </style>
 
 <script>
-      function ShowProductDetailPage(ProductId) {
+    function ShowProductDetailPage(ProductId) {
+        var objSpinner = null;
         $.ajax({
             type: "GET",
             data: { "ProductId": ProductId },
             url: '@Url.Action("ProductDetail", "OnlineSale")',
-
+            beforeSend: function () {
+                objSpinner = $.alert({
+                    boxWidth: '50px',
+                    useBootstrap: false,
+                    title: '',
+                    content: $("#spinner").html(),
+                    buttons: {
+                        yes: { isHidden: true }
+                    }
+                })
+            },
             success: function (data) {
+                $("#spinner").hide();
+                objSpinner.close();
                 $.confirm({
                     boxWidth: '800px',
                     useBootstrap: false,

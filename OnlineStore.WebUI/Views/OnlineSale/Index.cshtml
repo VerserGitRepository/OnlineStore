@@ -182,19 +182,34 @@
     </div>
     @*</div>*@
 </div>
+<div id="spinner" style="display:none;">
+    <img src="~/Images/ajax-loader.gif" />
+</div>
 <script>
     $('.carousel').carousel({
         interval: 2000
     });
 
-      function ShowProductDetailPage(ProductId) {
+    function ShowProductDetailPage(ProductId) {
+        var objSpinner = null;
         $.ajax({
             type: "GET",
             data: { "ProductId": ProductId },
             url: '@Url.Action("ProductDetail", "OnlineSale")',
-
+            beforeSend: function () {
+                objSpinner = $.alert({
+                    boxWidth: '50px',
+                    useBootstrap: false,
+                    title: '',
+                    content: $("#spinner").html(),
+                    buttons: {
+                        yes: { isHidden: true }
+                    }
+                })
+            },
             success: function (data) {
-               // alert(data);
+                $("#spinner").hide();
+                objSpinner.close();
                 $.confirm({
                     boxWidth: '800px',
                     useBootstrap: false,
