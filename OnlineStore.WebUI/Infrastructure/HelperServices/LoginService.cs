@@ -12,6 +12,8 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
     public class LoginService
     {
         public static readonly string BaseUri = ConfigurationManager.AppSettings["LoginManagerBase"];
+        public static readonly string JMSBaseUri = ConfigurationManager.AppSettings["AMSBaseURL"];
+
         public async static Task<LoginModel> Login(LoginModel login)
         {
             LoginModel returnmessage = new LoginModel();
@@ -44,6 +46,22 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
                     {
                         returnmessage.Add(new ListItems() { ID = p.ID, Value = p.Value });
                     }
+                }
+            }
+            return returnmessage;
+        }
+
+        public async static Task<LoginModel> OnlineStoreLogin(LoginModel CreateNewUser)
+        {
+            var returnmessage = new LoginModel();
+            using (HttpClient client = new HttpClient())
+            {
+                client.Timeout = TimeSpan.FromMinutes(10);
+                client.BaseAddress = new Uri(JMSBaseUri);
+                HttpResponseMessage response = client.PostAsJsonAsync("SalesList/OnlineStoreUserLogin", CreateNewUser).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnmessage = await response.Content.ReadAsAsync<LoginModel>();
                 }
             }
             return returnmessage;

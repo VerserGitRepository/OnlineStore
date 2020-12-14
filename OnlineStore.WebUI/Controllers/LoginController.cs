@@ -45,12 +45,20 @@ namespace OnlineStore.WebUI.Controllers
                 if (Roles.Where(x=>x.Value.Contains("Administrator") || x.Value.Contains("Accounts") || x.Value.Contains("Verser Admin") || x.Value.Contains("Salesperson")).FirstOrDefault() !=null)
                 {
                     Session["SiteAdmin"] = "True";
+                    return RedirectToAction("Index", "OrdersList");
                 }
                 else
                 {
+                   
                     Session["SiteAdmin"] = "False";
-                }                               
-                return RedirectToAction("Index", "OrdersList");
+                    return RedirectToAction("Index", "PublicUserProfile");
+                }
+            }
+            else if (LoginService.OnlineStoreLogin(login).Result.IsLoggedIn)
+            {
+                Session["SiteAdmin"] = "False";
+                Session["Username"] = login.UserName;
+                return RedirectToAction("Index", "PublicUserProfile");
             }
             else
             {
