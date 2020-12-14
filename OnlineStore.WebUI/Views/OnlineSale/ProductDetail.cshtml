@@ -5,26 +5,27 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css" rel="stylesheet">
 <script src="~/Scripts/jquery.elevateZoom-3.0.8.min.js"></script>
 <script src="~/Scripts/jquery.elevatezoom.js"></script>
+<div id="gal1">
+    @foreach (var item in Model.Images)
+    {
+        <a href="#" class="elevatezoom-gallery" data-update="" data-image="/ProductImages/@item" data-zoom-image="/ProductImages/@item">
+            <img id="img_01" src="/ProductImages/@item" width="50">
+        </a>
+
+    }
+</div>
 <div class="panel-body" style="font-size:small;color:grey;border-color:gray;padding:0px">
     <br>
     <div class="row" style="border:1px solid #ddd; border-left:solid;border-width:thin; padding-right: 0px;margin-right: 0px;">
         <div class="col-md-4 item-photo">
             <img style="max-width:100%;" id="zoom_01" src="/ProductImages/@Model.Images.FirstOrDefault()" data-zoom-image="/ProductImages/@Model.Images.FirstOrDefault()" />
-            <div id="gal1">
-                @foreach (var item in Model.Images)
-                {
-                    <a href="#" class="elevatezoom-gallery" data-update="" data-image="/ProductImages/@item" data-zoom-image="/ProductImages/@item">
-                        <img id="img_01" src="/ProductImages/@item" width="100">
-                    </a>
 
-                }
-            </div>
 
 
         </div>
-       
+
         <div class="col-md-8" style="border:0px solid gray">
-            
+
             <div class="row">
                 <div class="col-md-12" style="font-weight:600">
                     @Html.DisplayFor(model => model.BrandName)  @Html.DisplayFor(model => model.ModelName)  @Html.DisplayFor(model => model.ProductName)
@@ -37,7 +38,7 @@
                 <div class="col-md-12">
                     <br /> <label class="control-label">PriceIncGST:</label>
                     <span id="priceLabel"> @Html.DisplayFor(model => model.PriceIncGST, new { })</span>
-                    @Html.HiddenFor(model => model.PriceIncGST, new {@id="hiddenPrice" })
+                    @Html.HiddenFor(model => model.PriceIncGST, new { @id = "hiddenPrice" })
                 </div>
                 <div class="col-md-12">
                     <br /> <label class="control-label">Available:</label>
@@ -77,7 +78,7 @@
                     </div>
                     <div class="col-sm-3">
                         Quantity
-                        @Html.DropDownListFor(m => m.PurchasedQty, Enumerable.Range(1, 500).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control", style = "font-size:small", placeholder = "Quantity",@id="ddlQuantity" })
+                        @Html.DropDownListFor(m => m.PurchasedQty, Enumerable.Range(1, 500).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control", style = "font-size:small", placeholder = "Quantity", @id = "ddlQuantity" })
                         @Html.ValidationMessageFor(model => model.PurchasedQty, null, new { @class = "text-danger" })
                     </div>
                 </div>
@@ -85,11 +86,11 @@
             </div>
             @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = Model.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
             {
-        <div>
-            <input type="hidden" id="hdnQty" name="hdnQty" />
-            <input type="hidden" id="hdnprice" name="hdnprice" />
-            <button class="btn-success" style="align-content:center;border-radius:30px"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
-        </div>
+                <div>
+                    <input type="hidden" id="hdnQty" name="hdnQty" />
+                    <input type="hidden" id="hdnprice" name="hdnprice" />
+                    <button class="btn-success" style="align-content:center;border-radius:30px"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                </div>
             }
             <br />
             <div class="col-md-12" style="font-size:smaller">
@@ -100,21 +101,21 @@
                     <input type="text" id="PromoCodetxt" style="font-size:small;vertical-align:top" placeholder="Promocode Here.." />
                 </div>
                 <div class="col-md-4">
-                    <input type="submit" class="btn-outline-success btn-sm" value="Apply"  onclick="ApplyPromoCode();"/>
+                    <input type="submit" class="btn-outline-success btn-sm" value="Apply" onclick="ApplyPromoCode();" />
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    $("#zoom_01").elevateZoom({zoomWindowPosition: 10});
+    $("#zoom_01").elevateZoom({ gallery: 'gal1', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, zoomWindowPosition: 10 });
 
     //pass the images to Fancybox
-    //$("#zoom_01").bind("click", function (e) {
-    //    var ez = $('#zoom_01').data('elevateZoom');
-    //    $.fancybox(ez.getGalleryList());
-    //    return false;
-    //});
+    $("#zoom_01").bind("click", function (e) {
+        var ez = $('#zoom_01').data('elevateZoom');
+        $.fancybox(ez.getGalleryList());
+        return false;
+    });
 
     $('#ddlQuantity').change(function () {
         var selectedVal = $('#ddlQuantity').val();

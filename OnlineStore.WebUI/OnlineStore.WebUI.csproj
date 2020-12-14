@@ -276,7 +276,6 @@
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\OnlineSaleController.cs" />
     <Compile Include="Controllers\OrdersListController.cs" />
-    <Compile Include="Controllers\PublicUserProfileController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
