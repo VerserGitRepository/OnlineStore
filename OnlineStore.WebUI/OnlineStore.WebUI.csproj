@@ -269,6 +269,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AssetAuctionController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -373,6 +374,9 @@
     <Content Include="Views\Login\_RegisterNewUser.cshtml" />
     <Content Include="Views\PublicUserProfile\Index.cshtml" />
     <Content Include="Views\OrdersList\PromoCode.cshtml" />
+    <Content Include="Views\OnlineSale\Auction.cshtml" />
+    <Content Include="Views\AssetAuction\Index.cshtml" />
+    <Content Include="Views\AssetAuction\AuctionAssetBundleBidingDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
