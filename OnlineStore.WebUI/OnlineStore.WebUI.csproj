@@ -141,11 +141,17 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ErrorStyles.css" />
+    <Content Include="Content\Images\Dell-xps-13.jpg" />
+    <Content Include="Content\Images\iphone-xs-silver.jpg" />
+    <Content Include="Content\Images\iPhone11ProMax.jpg" />
+    <Content Include="Content\Images\mac1.jpg" />
+    <Content Include="Content\Images\mac2.jpg" />
     <Content Include="Content\Images\no_image_available.jpg" />
     <Content Include="Content\Images\no_product_image.jpg" />
     <Content Include="Content\Images\verserLogo.png" />
     <Content Include="Content\Images\Windows7.jpg" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\responsive-tiles.css" />
     <Content Include="Content\Site.css" />
     <Content Include="EmailTemplates\OrderDetail.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -373,6 +379,7 @@
     <Content Include="Views\Login\_RegisterNewUser.cshtml" />
     <Content Include="Views\PublicUserProfile\Index.cshtml" />
     <Content Include="Views\OrdersList\PromoCode.cshtml" />
+    <Content Include="Views\OnlineSale\Auction.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
