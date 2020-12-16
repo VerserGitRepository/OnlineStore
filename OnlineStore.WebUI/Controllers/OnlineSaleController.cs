@@ -95,6 +95,10 @@ namespace OnlineStore.WebUI.Controllers
             int No_Of_Page = Page_No;
             return View(size.ToPagedList(No_Of_Page, Size_Of_Page));
         }
+        public ActionResult Auction()
+        {
+            return View();
+        }
         public ActionResult AllProducts(string product = "")
         {
             if (product != "")
