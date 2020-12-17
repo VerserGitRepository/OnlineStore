@@ -30,8 +30,9 @@
             <li><a href="#tabs-2">ORDERS</a></li>
             <li><a href="#tabs-3">CREATE MANUAL ORDER</a></li>
             <li><a href="#tabs-4">PRODUCTS LIST</a></li>
+            <li><a href="#tabs-7">AUCTION ASSET BUNDLES</a></li>
             <li><a href="#tabs-5">SHIPPED ORDERS</a></li>
-            <li><a href="#tabs-6">MANAGE</a></li>          
+            <li><a href="#tabs-6">MANAGE</a></li>
         </ul>
         <div class="panel-body" style="border-color:gray;width:80%">
             <div id="tabs-2">
@@ -299,7 +300,41 @@
             </div>
 
             <div id="tabs-7">
-               
+                <div class="row pull-right">
+                    <div class="col-md-1">
+                        <div class="col-md-1">
+                            @using (Html.BeginForm("_AddNewBundle", "OrdersList", FormMethod.Post))
+                            {
+                                <button type="submit" class="btn btn-warning btn-lg" >
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                                }
+                        </div>
+                    </div>
+                </div>
+                <table class="table caption-top">
+                    <caption>AUCTION ASSET BUNDLES</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Bundle Title</th>
+                            <th scope="col">Start Date&TIme</th>
+                            <th scope="col">End Date&TIme</th>
+                            <th scope="col">BundlePrice</th>
+                            <th scope="col">IsAuctionActive</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>17/12/2020 12:00</td>
+                            <td>27/12/2020 12:00</td>
+                            <td>$50,000</td>
+                            <td>Yes</td>
+                        </tr>                       
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

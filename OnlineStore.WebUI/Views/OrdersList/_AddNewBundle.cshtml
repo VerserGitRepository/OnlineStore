@@ -1,0 +1,60 @@
+﻿<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+<div class="container" style="padding:20px;">
+
+    <div class="card">
+        <div class="card-header">
+            CREATE NEW AUCTION BUNDLE
+        </div>
+        <div class="card-body">
+            <div class="mb-2">
+                <label for="exampleFormControlInput1" class="form-label">Bundle Title</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="BundleTitle">
+            </div>
+            <div class="mb-2">
+                <label for="exampleFormControlInput1" class="form-label">Bundle Base Price</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="$Bundle Base Price">
+            </div>
+            <div class="mb-2">
+                <label for="exampleFormControlInput1" class="form-label">Bundle Quick Bid Price</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="$Bundle Quick Bid Price">
+            </div>
+            <div class="mb-2">
+                <label for="exampleFormControlInput1" class="form-label">Bundle BuyPrice</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="$Bundle BuyPrice">
+            </div>
+            <div class="mb-2">
+                <label for="exampleFormControlInput1" class="form-label">Auction StartDate</label>
+                <input type="datetime" class="form-control" id="exampleFormControlInput1" placeholder="StartDate">
+            </div>
+            <div class="mb-2">
+                <label for="exampleFormControlInput1" class="form-label">Auction EndDate</label>
+                <input type="datetime" class="form-control" id="exampleFormControlInput1" placeholder="EndDate">
+            </div>
+            <div class="mb-2">
+                <label for="exampleFormControlTextarea1" class="form-label">Images</label>
+                <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="EndDate">
+            </div>
+            <div class="mb-2">
+                <label for="exampleFormControlTextarea1" class="form-label">Bundle Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Bundle Description"></textarea>
+            </div>
+            <div class="mb-2">
+                @using (Html.BeginForm("Index", "AssetAuction", FormMethod.Post))
+                {
+                    <input type="submit" class="btn btn-success btn-lg" value="CREATE" id="exampleFormControlInput1">
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
