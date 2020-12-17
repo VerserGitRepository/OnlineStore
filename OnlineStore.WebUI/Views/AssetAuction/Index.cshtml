@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<script type="text/javascript" src="~/Scripts/jquery.countdownTimer.min.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/jquery.countdownTimer.css" />
 <div style="width:100%;padding-left:30px;padding-right:30px;padding-bottom:10px;">
     <div class="card-header border-secondary  mb-3">
         <h5 style="color:darkgray;font:400;align-content:center"> Asset Auction </h5>
@@ -21,8 +22,26 @@
                             {
                                 <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
                             }
-                            <label style="font-weight:700;color:orangered">Auction Timer: </label> <span>@DateTime.Now.TimeOfDay.ToString()</span><label class="pull-right">Current Bid $2100.00 </label>
+                            <label style="font-weight:700;color:orangered">Auction Timer: </label> <label class="pull-right">Current Bid $2100.00 </label>
                         </small>
+                        <table style="border:0px;">
+                            <tr>
+                                <td style="width:50px;text-align:center;">Hours</td>
+                                <td style="width:60px;text-align:center;">Minutes</td>
+                                <td style="width:70px;text-align:center;">Seconds</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><span id="current_timer"></span></td>
+                            </tr>
+                        </table>
+                        <script>
+                            $(function () {
+                                $('#current_timer').countdowntimer({
+                                    currentTime: true,
+                                    size: "lg"
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -39,8 +58,26 @@
                             {
                                 <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
                             }
-                            <label style="font-weight: 700;color: orangered">Auction Timer: </label> <span>@DateTime.Now.TimeOfDay.ToString()</span> <label class="pull-right">Current Bid $2500.00 </label>
+                            <label style="font-weight: 700;color: orangered">Auction Timer: </label> <label class="pull-right">Current Bid $2500.00 </label>
                         </small>
+                        <table style="border:0px;">
+                            <tr>
+                                <td style="width:50px;text-align:center;">Hours</td>
+                                <td style="width:60px;text-align:center;">Minutes</td>
+                                <td style="width:70px;text-align:center;">Seconds</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><span id="current_timer1"></span></td>
+                            </tr>
+                        </table>
+                        <script>
+                            $(function () {
+                                $('#current_timer1').countdowntimer({
+                                    currentTime: true,
+                                    size: "lg"
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -57,8 +94,26 @@
                             {
                                 <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
                             }
-                            <label style="font-weight:700;color:orangered">Auction Timer: </label> <span>@DateTime.Now.TimeOfDay.ToString()</span><label class="pull-right">Current Bid $500.00 </label>
+                            <label style="font-weight:700;color:orangered">Auction Timer: </label> <label class="pull-right">Current Bid $500.00 </label>
                         </small>
+                        <table style="border:0px;">
+                            <tr>
+                                <td style="width:50px;text-align:center;">Hours</td>
+                                <td style="width:60px;text-align:center;">Minutes</td>
+                                <td style="width:70px;text-align:center;">Seconds</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><span id="current_timer2"></span></td>
+                            </tr>
+                        </table>
+                        <script>
+                            $(function () {
+                                $('#current_timer2').countdowntimer({
+                                    currentTime: true,
+                                    size: "lg"
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -75,8 +130,26 @@
                             {
                                 <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
                             }
-                            <label style="font-weight:700;color:orangered">Auction Timer: </label> <span>@DateTime.Now.TimeOfDay.ToString()</span><label class="pull-right">Current Bid $1500.00 </label>
+                            <label style="font-weight:700;color:orangered">Auction Timer: </label> <label class="pull-right">Current Bid $1500.00 </label>
                         </small>
+                        <table style="border:0px;">
+                            <tr>
+                                <td style="width:50px;text-align:center;">Hours</td>
+                                <td style="width:60px;text-align:center;">Minutes</td>
+                                <td style="width:70px;text-align:center;">Seconds</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><span id="current_timer3"></span></td>
+                            </tr>
+                        </table>
+                        <script>
+                            $(function () {
+                                $('#current_timer3').countdowntimer({
+                                    currentTime: true,
+                                    size: "lg"
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
