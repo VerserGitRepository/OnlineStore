@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-5">
                                 <div class="card border-info mb-3">
                                     <div class="card-header">Bundle Full Description</div>
                                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -54,15 +54,10 @@
                                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                 </div>
                             </div>
-                            <div class="col-sm-2">
-                                <div class="card border-info mb-3">
-                                    <div class="card-header">Biding History</div>
-                                    <p class="card-text"><ul id="discussion"></ul></p>
-                                    @*<p class="card-text">Price $1,900.00</p>
-                                        <p class="card-text">Price $1,800.00</p>
-                                        <p class="card-text">Price $1,700.00</p>
-                                        <p class="card-text">Price $1,600.00</p>
-                                        <p class="card-text">Price $1,500.00</p>*@
+                            <div class="col-sm-3">
+                                <div class="card border-info mb-5">
+                                    <div class="card-header" style="color:green;font-weight:700;" >Live Bidings (@DateTime.Now.ToShortDateString())</div>
+                                    <p class="card-text"><p id="discussion"></p>                                
                                 </div>
                             </div>
 
@@ -108,33 +103,35 @@
             // Create a function that the hub can call back to display messages.
             chat.client.addNewMessageToPage = function (name, message) {
                 // Add the message to the page.
-                $('#discussion').append('<li><strong>' + htmlEncode(name)
-                    + '</strong>: ' + htmlEncode(message) + '</li>');
+                $('#discussion').append('<P><strong>' + htmlEncode(message) +'</strong></P>');
             };
             // Get the user name and store it to prepend to messages.
             $('#displayname').val(prompt('Enter your name:', ''));
+
             // Set initial focus to message input box.
             $('#message').focus();
             // Start the connection.
             $.connection.hub.start().done(function () {
                 $('#sendmessage').click(function () {
 
+
                     $.confirm({
                         title: 'Confirm',
                         content: 'Are you sure you want to Bid with this Amount?',
                         buttons: {
-                            confirm: function () {
-                                chat.server.send($('#displayname').val(), $('#message').val());
+                            confirm: function () {                            
+                                var d = new Date();
+                                var BidDateByUser = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+                           // chat.server.send(BidDateByUser +'$'+ $('#message').val());
+                                chat.server.send($('#displayname').val(),'Bid Time:'+ BidDateByUser +'- $'+ $('#message').val());
                                 // Clear text box and reset focus for next comment.
                                 $('#message').val('').focus();
                             },
                             cancel: function () {
-
                             }
                         }
                     });
-
-                    // Call the Send method on the hub.
+                  
 
                 });
             });
