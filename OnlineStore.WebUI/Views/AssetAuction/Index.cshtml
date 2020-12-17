@@ -7,80 +7,89 @@
     <div class="card-header border-secondary  mb-3">
         <h5 style="color:darkgray;font:400;align-content:center"> Asset Auction </h5>
     </div><div class="card-body">
-    <div class="row row-cols-1 row-cols-md-2 g-4 border" style="padding:10px;">
-        <div class="col">
-            <div class="card  border-success mb-3">
-                <img src="~/Images/iPhone11ProMax.jpg" class="card-img-top" style="height:350px" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Mobile Bundle</h5>
-                    <p class="card-text">Bundle Description</p>
+        <div class="row row-cols-1 row-cols-md-2 g-4 border" style="padding:10px;">
+            <div class="col">
+                <div class="card  border-success mb-3">
+                    <img src="~/Images/iPhone11ProMax.jpg" class="card-img-top" style="height:350px" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Mobile Bundle</h5>
+                        <p class="card-text">Bundle Description</p>
+                    </div>
+                    <div class="card-footer" id="updateTime">
+                        <small class="text-muted">
+                            @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", FormMethod.Post))
+                            {
+                                <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
+                            }
+                            <label style="font-weight:700;color:orangered">Auction Timer: </label> <span>@DateTime.Now.TimeOfDay.ToString()</span><label class="pull-right">Current Bid $2100.00 </label>
+                        </small>
+                    </div>
                 </div>
-                <div class="card-footer" id="updateTime">
-                    <small class="text-muted">
-                        @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", FormMethod.Post))
-                        {
-                            <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
-                        }
-                        <label style="font-weight:700;color:orangered">Auction Timer: </label> <span>@DateTime.Now.TimeOfDay.ToString()</span><label class="pull-right">Current Bid $2100.00 </label>
-                    </small>
+            </div>
+            <div class="col">
+                <div class="card border-success mb-3">
+                    <img src="~/Images/Dell-xps-13.jpg" class="card-img-top" style="height:350px" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Laptop Bundle</h5>
+                        <p class="card-text">Bundle Description.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", FormMethod.Post))
+                            {
+                                <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
+                            }
+                            <label style="font-weight: 700;color: orangered">Auction Timer: </label> <span>@DateTime.Now.TimeOfDay.ToString()</span> <label class="pull-right">Current Bid $2500.00 </label>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-success mb-3">
+                    <img src="~/Images/DellMonitor.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Monitor Bundles</h5>
+                        <p class="card-text">Bundle Description</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", FormMethod.Post))
+                            {
+                                <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
+                            }
+                            <label style="font-weight:700;color:orangered">Auction Timer: </label> <span>@DateTime.Now.TimeOfDay.ToString()</span><label class="pull-right">Current Bid $500.00 </label>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-success mb-3">
+                    <img src="~/Images/Galaxy S10plus.jpg" class="card-img-top" style="height:350px" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Samsung Mobile Bundle</h5>
+                        <p class="card-text">Bundle Description</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", FormMethod.Post))
+                            {
+                                <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
+                            }
+                            <label style="font-weight:700;color:orangered">Auction Timer: </label> <span>@DateTime.Now.TimeOfDay.ToString()</span><label class="pull-right">Current Bid $1500.00 </label>
+                        </small>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card border-success mb-3">
-                <img src="~/Images/Dell-xps-13.jpg" class="card-img-top" style="height:350px" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Laptop Bundle</h5>
-                    <p class="card-text">Bundle Description.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">
-                        @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", FormMethod.Post))
-                        {
-                            <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
-                        }
-                        <label style="font-weight: 700;color: orangered">Auction Timer: </label> <span>@DateTime.Now.TimeOfDay.ToString()</span> <label class="pull-right">Current Bid $2500.00 </label>
-                    </small>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card border-success mb-3">
-                <img src="~/Images/DellMonitor.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Monitor Bundles</h5>
-                    <p class="card-text">Bundle Description</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">
-                        @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", FormMethod.Post))
-                        {
-                            <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
-                        }
-                        <label style="font-weight:700;color:orangered">Auction Timer: </label> <span>@DateTime.Now.TimeOfDay.ToString()</span><label class="pull-right">Current Bid $500.00 </label>
-                    </small>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card border-success mb-3">
-                <img src="~/Images/Galaxy S10plus.jpg" class="card-img-top" style="height:350px" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Samsung Mobile Bundle</h5>
-                    <p class="card-text">Bundle Description</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">
-                        @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", FormMethod.Post))
-                        {
-                            <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
-                        }
-                        <label style="font-weight:700;color:orangered">Auction Timer: </label> <span>@DateTime.Now.TimeOfDay.ToString()</span><label class="pull-right">Current Bid $1500.00 </label>
-                    </small>
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
 </div>
 
+<!-- Vertically centered modal -->
+<div class="modal-dialog modal-dialog-centered">
+    ...
+</div>
+
+<!-- Vertically centered scrollable modal -->
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    ...
+</div>
