@@ -15,7 +15,10 @@ namespace OnlineStore.WebUI.Controllers
     public class OnlineSaleController : Controller
     {
         public static List<OnlineSaleProduct> SaleProducts = new List<OnlineSaleProduct>();
-
+        public ActionResult Chat()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             var MainpageproductView = new MainPageProductsViewModel();
