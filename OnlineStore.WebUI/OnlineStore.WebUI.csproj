@@ -406,6 +406,7 @@
     <Content Include="Views\AssetAuction\Index.cshtml" />
     <Content Include="Views\AssetAuction\AuctionAssetBundleBidingDetails.cshtml" />
     <Content Include="Views\OnlineSale\Chat.cshtml" />
+    <Content Include="Views\OrdersList\_AddNewBundle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
