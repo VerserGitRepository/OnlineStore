@@ -16,9 +16,9 @@
 }
 
 .colorDefinition {
-    background: #000000;
+    background: Grey;
     color : #FFFFFF;
-    border-color: #F0068E;
+    border-color: orange;
 }
 
 .size_xl {
