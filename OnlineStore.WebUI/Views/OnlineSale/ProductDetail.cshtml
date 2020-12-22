@@ -63,7 +63,7 @@
                         Memory
                         @*@Html.DropDownListFor(m => m.Size, Model.Sizes, "Select Colour", new { @class = "form-control", @id = "ddlOrderID", @multiple = "multiple" })*@
 
-                        @Html.DropDownListFor(model => model.Colour, new List<SelectListItem>
+                        @Html.DropDownListFor(model => model.Size, new List<SelectListItem>
                                {
                                            new SelectListItem{ Text="16GB", Value = "16GB" },
                                            new SelectListItem{ Text="32GB", Value = "32GB" },
