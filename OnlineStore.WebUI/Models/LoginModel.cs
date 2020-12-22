@@ -15,6 +15,18 @@ namespace OnlineStore.WebUI.Models
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         public bool IsLoggedIn { get; set; }
-
+        public string Salutation { get; set; }
+        public string Addressline1 { get; set; }
+        public string Addressline2 { get; set; }
+        public string Suburb { get; set; }
+        public string State { get; set; }
+        public int PostCode { get; set; }
+        public string Country { get; set; }
+        public string ContactNo { get; set; }
+        public int Id { get; set; }
+        public string UserID { get; set; }
+        public bool? IsActive { get; set; }
+        public int? LoginFailcount { get; set; }
+        public bool? IsAccountLocked { get; set; }
     }
 }
