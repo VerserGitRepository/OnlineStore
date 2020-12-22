@@ -31,7 +31,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
         }
         public async static Task<bool> ProcessManualOrders(ManualOrdersViewModel manualordermodel)
         {
-            bool returnmessage =false;
+            bool returnmessage = false;
 
             using (HttpClient client = new HttpClient())
             {
@@ -39,7 +39,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
                 HttpResponseMessage response = client.PostAsJsonAsync("OnlineSaleOrders/CreateandProcessManualOrder", manualordermodel).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    returnmessage = await response.Content.ReadAsAsync<bool>();                    
+                    returnmessage = await response.Content.ReadAsAsync<bool>();
                 }
             }
             return returnmessage;
@@ -47,7 +47,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
 
         public async static Task<ReturnValidationModel> OnlineStoreCheckoutOrder(ShippingDetailsViewModel _checkoutDataModel)
         {
-            var returnmessage =new ReturnValidationModel();
+            var returnmessage = new ReturnValidationModel();
 
             using (HttpClient client = new HttpClient())
             {
@@ -63,7 +63,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
 
         public async static Task<ReturnValidationModel> CheckoutOrdersPaymentRequest(CheckoutOrdersPaymentModel _checkoutpaymentDataModel)
         {
-            var returnmessage =new ReturnValidationModel();
+            var returnmessage = new ReturnValidationModel();
 
             using (HttpClient client = new HttpClient())
             {
@@ -95,7 +95,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
         [OutputCache(CacheProfile = "Cache5Min")]
         public async static Task<List<OnlineSaleOrdersListModel>> OnlineSaleOrdersList()
         {
-            var returnmessage = new  List<OnlineSaleOrdersListModel>();
+            var returnmessage = new List<OnlineSaleOrdersListModel>();
 
             using (HttpClient client = new HttpClient())
             {
@@ -195,7 +195,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             {
                 client.Timeout = TimeSpan.FromMinutes(10);
                 client.BaseAddress = new Uri(BaseUri);
-                HttpResponseMessage response = client.GetAsync(string.Format("OnlineSaleOrders/{0}/PromoCodeValidation",promoCode)).Result;
+                HttpResponseMessage response = client.GetAsync(string.Format("OnlineSaleOrders/{0}/PromoCodeValidation", promoCode)).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     returnmessage = await response.Content.ReadAsAsync<PromoCodeModel>();
@@ -206,7 +206,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
 
         public async static Task<string> CreateOnlineStoreUserAccount(LoginModel CreateNewUser)
         {
-            string returnmessage=string.Empty;
+            string returnmessage = string.Empty;
             using (HttpClient client = new HttpClient())
             {
                 client.Timeout = TimeSpan.FromMinutes(10);
@@ -219,5 +219,23 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return returnmessage;
         }
+        public async static Task<bool> PostBid(BidModel model)
+        {
+            var returnModel =false;
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.PostAsJsonAsync("OnlineStoreAuction/AddAuctionBids", model).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnModel = await response.Content.ReadAsAsync<bool>();
+                }
+            }
+            return true;
+        }
     }
 }
+
+
+
