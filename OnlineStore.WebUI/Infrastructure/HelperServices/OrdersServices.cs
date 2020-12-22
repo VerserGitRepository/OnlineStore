@@ -132,7 +132,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
 
             using (HttpClient client = new HttpClient())
             {
-                client.Timeout = TimeSpan.FromMinutes(10);
+               // client.Timeout = TimeSpan.FromMinutes(10);
                 client.BaseAddress = new Uri(BaseUri);
                 HttpResponseMessage response = client.GetAsync("OnlineSaleOrders/OnlineSaleProductsList").Result;
                 if (response.IsSuccessStatusCode)
@@ -203,7 +203,6 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return returnmessage;
         }
-
         public async static Task<string> CreateOnlineStoreUserAccount(LoginModel CreateNewUser)
         {
             string returnmessage=string.Empty;

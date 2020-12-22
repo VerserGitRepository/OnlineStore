@@ -12,6 +12,7 @@ namespace OnlineStore.WebUI.Models
         public OnlineSaleProduct()
         {
             Images = new List<string>();
+            
         }
         public int Id { get; set; }
         //[Required("Model is mandatory")]
@@ -39,7 +40,7 @@ namespace OnlineStore.WebUI.Models
         public string ModelName { get; set; }
         public SelectList ItemTypes { get; set; }
         public SelectList Makes { get; set; }
-        public SelectList Colours { get; set; }
+        //public SelectList Colours { get; set; }
         public SelectList Sizes { get; set; }
         [Required(ErrorMessage = "SKU is mandatory")]
         public string SKU { get; set; }

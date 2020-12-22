@@ -19,6 +19,13 @@ namespace OnlineStore.WebUI.Controllers
         {
             return View();
         }
+
+        public ActionResult SampleCardDesingHome()
+        {
+           
+            return View();
+        }
+
         public ActionResult Index()
         {
             var MainpageproductView = new MainPageProductsViewModel();
