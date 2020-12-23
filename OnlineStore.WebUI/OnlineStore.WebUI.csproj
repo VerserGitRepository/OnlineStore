@@ -319,6 +319,7 @@
     <Compile Include="Infrastructure\HelperServices\OrdersServices.cs" />
     <Compile Include="Infrastructure\LogService.cs" />
     <Compile Include="Models\AssetAuctionBundleModel.cs" />
+    <Compile Include="Models\AuctionBundleListModel.cs" />
     <Compile Include="Models\BidModel.cs" />
     <Compile Include="Models\Binders\CartModelBinder.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />

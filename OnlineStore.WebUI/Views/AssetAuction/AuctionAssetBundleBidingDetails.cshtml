@@ -93,10 +93,7 @@
 <div class="container">
     <input type="hidden" id="displayname" />
 </div>
-@section scripts {
-    <!--Script references. -->
-    <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
-    <!--Reference the SignalR library. -->
+@section scripts { 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
@@ -106,7 +103,6 @@
     <script src="~/signalr/hubs"></script>
     <!--SignalR script to update the chat page and send messages.-->
     <script>
-
         $(document).ready(function () {
             $("#message").keydown(function (event) {
                 // Allow only backspace and delete
@@ -121,8 +117,6 @@
                 }
             });
         });
-
-
         $(function () {
             // Reference the auto-generated proxy for the hub.
             var chat = $.connection.chatHub;
@@ -174,6 +168,5 @@
             var encodedValue = $('<div />').text(value).html();
             return encodedValue;
         }
-
     </script>
 }

@@ -13,7 +13,8 @@ namespace OnlineStore.WebUI.Controllers
         // GET: AssetAuction
         public ActionResult Index()
         {
-            return View();
+            var bundleslist = OrdersServices.AuctionBundles().Result;          
+            return View(bundleslist);
         }
         [HttpPost]
         public ActionResult AuctionAssetBundleBidingDetails(int BundleID)

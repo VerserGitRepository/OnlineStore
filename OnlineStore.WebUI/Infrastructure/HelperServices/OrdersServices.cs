@@ -132,7 +132,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
 
             using (HttpClient client = new HttpClient())
             {
-               // client.Timeout = TimeSpan.FromMinutes(10);
+                // client.Timeout = TimeSpan.FromMinutes(10);
                 client.BaseAddress = new Uri(BaseUri);
                 HttpResponseMessage response = client.GetAsync("OnlineSaleOrders/OnlineSaleProductsList").Result;
                 if (response.IsSuccessStatusCode)
@@ -220,7 +220,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
         }
         public async static Task<bool> PostBid(BidModel model)
         {
-            var returnModel =false;
+            var returnModel = false;
 
             using (HttpClient client = new HttpClient())
             {
@@ -262,6 +262,21 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
                 }
             }
             return returnModel;
+        }
+
+        public async static Task<List<AuctionBundleListModel>> AuctionBundles()
+        {
+            var returnModel = new List<AuctionBundleListModel>();
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.GetAsync(string.Format("OnlineStoreAuction/AuctionBundleList")).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnModel = await response.Content.ReadAsAsync<List<AuctionBundleListModel>>();
+                }
+            }
+            return returnModel;       
         }
     }
 }
