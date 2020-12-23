@@ -303,12 +303,11 @@
                 <div class="row pull-right">
                     <div class="col-md-1">
                         <div class="col-md-1">
-                            @using (Html.BeginForm("_AddNewBundle", "OrdersList", FormMethod.Post))
-                            {
-                                <button type="submit" class="btn btn-warning btn-lg" >
+                          
+                                <button type="submit" class="btn btn-warning btn-lg"  onclick="OpenAuctionAssetBundle();">
                                     <span class="glyphicon glyphicon-plus"></span>
                                 </button>
-                                }
+                                
                         </div>
                     </div>
                 </div>
@@ -379,6 +378,31 @@
                 error: function (result) { alert(result); console.log(result);}
             });
         });
+
+    function OpenAuctionAssetBundle() {
+            debugger;
+            var AddSiteURL = '@Url.Action("_AddNewBundle", "OrdersList")'
+            $.ajax({
+            type: "GET",
+            url: AddSiteURL,
+            success: function (data) {
+
+            $.confirm({
+            boxWidth: '700px',
+            useBootstrap: false,
+            backgroundDismiss: true,
+
+            title: '',
+            content: data,
+            closeIcon: true,
+            buttons: {
+            yes: { isHidden: true }
+            },
+            });
+                },
+                error: function (result) { alert(result); console.log(result);}
+            });
+        }
     $('.Update').click(function () {
             debugger;
             var AddSiteURL = '@Url.Action("AddPromo", "OrdersList")'
