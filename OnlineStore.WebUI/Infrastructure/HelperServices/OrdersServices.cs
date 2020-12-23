@@ -233,6 +233,36 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return true;
         }
+
+        public async static Task<bool> CreateAuctionBundle(AssetAuctionBundleModel model)
+        {
+            var returnModel = false;
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.PostAsJsonAsync("OnlineStoreAuction/CreateAuctionBundle", model).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnModel = await response.Content.ReadAsAsync<bool>();
+                }
+            }
+            return true;
+        }
+        public async static Task<AssetAuctionBundleModel> AuctionBundleByID(int AuctionBundleID)
+        {
+            var returnModel = new AssetAuctionBundleModel();
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.GetAsync(string.Format($"OnlineStoreAuction/{AuctionBundleID}/AuctionBundleByID")).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnModel = await response.Content.ReadAsAsync<AssetAuctionBundleModel>();
+                }
+            }
+            return returnModel;
+        }
     }
 }
 

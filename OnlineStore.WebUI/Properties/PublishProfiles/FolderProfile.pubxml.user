@@ -79,6 +79,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/ko/System.Spatial.resources.dll">
       <publishTime>08/09/2020 21:47:15</publishTime>
     </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.Core.dll">
+      <publishTime>05/04/2017 02:25:34</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.SystemWeb.dll">
+      <publishTime>05/04/2017 02:25:40</publishTime>
+    </File>
     <File Include="bin/Microsoft.Data.Edm.dll">
       <publishTime>08/09/2020 21:47:14</publishTime>
     </File>
@@ -87,6 +93,15 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="bin/Microsoft.Data.Services.Client.dll">
       <publishTime>08/09/2020 21:47:15</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>01/18/2019 20:50:30</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>01/18/2019 20:50:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>01/18/2019 20:51:10</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>08/09/2020 21:47:15</publishTime>
@@ -110,10 +125,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/25/2019 19:04:24</publishTime>
     </File>
     <File Include="bin/OnlineStore.WebUI.dll">
-      <publishTime>10/22/2020 13:31:28</publishTime>
+      <publishTime>12/22/2020 17:04:12</publishTime>
     </File>
     <File Include="bin/OnlineStore.WebUI.pdb">
-      <publishTime>10/22/2020 13:31:28</publishTime>
+      <publishTime>12/22/2020 17:04:12</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>11/13/2012 12:19:34</publishTime>
     </File>
     <File Include="bin/PagedList.dll">
       <publishTime>09/30/2013 17:36:38</publishTime>
@@ -184,6 +202,30 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/zh-Hant/System.Spatial.resources.dll">
       <publishTime>08/09/2020 21:47:15</publishTime>
     </File>
+    <File Include="Content/bootstrap-grid.css">
+      <publishTime>09/24/2020 15:37:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.css.map">
+      <publishTime>09/24/2020 15:37:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.min.css">
+      <publishTime>09/24/2020 15:37:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.min.css.map">
+      <publishTime>09/24/2020 15:37:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.css">
+      <publishTime>09/24/2020 15:37:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.css.map">
+      <publishTime>09/24/2020 15:37:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.min.css">
+      <publishTime>09/24/2020 15:37:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.min.css.map">
+      <publishTime>09/24/2020 15:37:36</publishTime>
+    </File>
     <File Include="Content/bootstrap-theme.css">
       <publishTime>09/18/2020 12:19:11</publishTime>
     </File>
@@ -205,6 +247,21 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Content/ErrorStyles.css">
       <publishTime>09/18/2020 12:19:11</publishTime>
     </File>
+    <File Include="Content/Images/Dell-xps-13.jpg">
+      <publishTime>12/16/2020 17:07:01</publishTime>
+    </File>
+    <File Include="Content/Images/iphone-xs-silver.jpg">
+      <publishTime>12/16/2020 17:07:01</publishTime>
+    </File>
+    <File Include="Content/Images/iPhone11ProMax.jpg">
+      <publishTime>12/16/2020 17:07:01</publishTime>
+    </File>
+    <File Include="Content/Images/mac1.jpg">
+      <publishTime>12/16/2020 17:07:01</publishTime>
+    </File>
+    <File Include="Content/Images/mac2.jpg">
+      <publishTime>12/16/2020 17:07:01</publishTime>
+    </File>
     <File Include="Content/Images/no_image_available.jpg">
       <publishTime>09/18/2020 12:19:11</publishTime>
     </File>
@@ -217,11 +274,17 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Content/Images/Windows7.jpg">
       <publishTime>09/18/2020 12:19:11</publishTime>
     </File>
+    <File Include="Content/jquery.countdownTimer.css">
+      <publishTime>12/19/2020 00:01:36</publishTime>
+    </File>
     <File Include="Content/PagedList.css">
       <publishTime>10/07/2020 10:04:53</publishTime>
     </File>
+    <File Include="Content/responsive-tiles.css">
+      <publishTime>12/17/2020 10:02:18</publishTime>
+    </File>
     <File Include="Content/Site.css">
-      <publishTime>09/21/2020 14:05:51</publishTime>
+      <publishTime>10/30/2020 23:17:39</publishTime>
     </File>
     <File Include="EmailTemplates/OrderDetail.html">
       <publishTime>09/18/2020 12:19:11</publishTime>
@@ -243,6 +306,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="Global.asax">
       <publishTime>09/18/2020 12:19:11</publishTime>
+    </File>
+    <File Include="Images/ajax-loader.gif">
+      <publishTime>12/14/2020 11:24:54</publishTime>
     </File>
     <File Include="Images/amex.gif">
       <publishTime>10/07/2020 12:56:37</publishTime>
@@ -350,469 +416,472 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/24/2020 15:37:36</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>10/09/2020 16:46:23</publishTime>
+      <publishTime>12/17/2020 16:02:09</publishTime>
     </File>
     <File Include="ProductImages/100_Apple iPhone 6s Plus 64GB A1687 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/101_Apple iPhone 6S Plus 128GB A1687 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/102_Apple iPhone 6S Plus 128GB A1687 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/103_Apple iPad 4 Retina Display 128GB WiFi A1458 Silver.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/104_Apple iPad 4 Retina Display 64GB WiFi and 4G A1459 Silver.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/105_Apple iPad Air 32GB Space Grey Tablet A1474.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/106_Apple iPhone 5S 16GB A1530 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/107_Apple iPhone 5S 16GB A1530 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/108_Samsung Galaxy S7 32GB Mobile Phone Black.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/109_Samsung Galaxy S7 32GB Mobile Phone Silver.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/10_DELL LATITUDE E6420.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/110_Samsung Galaxy S7 32GB Mobile Phone Gold.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/111_Samsung Galaxy S7 Edge 32GB Mobile Phone Black.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/112_Samsung Galaxy S7 Edge 32GB Mobile Phone Silver.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/113_Samsung Galaxy S7 Edge 32GB Mobile Phone Gold.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/114_Verser eBay Store.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/115_Sonos Home Speaker set up.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/116_Samsung 75 Inch Displays- No stand.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/117_iMac 21_.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/118_Mac Pro.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/119_Mac Mini.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/11_DELL OPTIPLEX 780 + 20_ LCD Bundle.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/120_iMac 21_ 4K Retina.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/121_iMac 21_ 4K Retina.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/122_iMac 27_ Retina.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/123_iMac 27_ Retina.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/124_iMac 27_ Retina.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/125_iMac Pro 27_.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/126_Mac Mini 2.6GHz.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/127_Mac Mini 2.8GHz.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/128_Mac Pro.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/129_Macbook 12_ Rose Gold_Silver_Space Grey.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/12_DELL OPTIPLEX 990 i5 + 20_ LCD Bundle.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/130_Macbook Pro 13_ Silver_Space Grey.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/131_Macbook Pro 13_ Silver_Space Grey.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/132_Macbook Pro 13_ w_Touch Bar Silver_Space Grey.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/133_Macbook Pro 13_ w_Touch Bar Silver_Space Grey.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/134_Macbook Pro 15_ w_Touch Bar Silver_Space Grey.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/135_Macbook Pro 15_ w_Touch Bar Silver_Space Grey.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/136_Beats Studio Wireless Over-Ear-Red_Black-MH8H2X_A-R.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/137_Apple Smart Keyboard for 12.9‑inch iPad Pro — US English- Apple refurbished.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/138_BeatsX Earphones- Black- MLYE2PA_A- Apple refurbished.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/139_Apple iPhone X 64GB Space Grey- Refurbished Handset only.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/13_Office 365.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/140_Apple iPhone 8 64GB Space Grey- Refurbished- Handset only.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/141_Apple Pencil- MK0C2ZA_A- Refurbished from Apple.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/142_Apple Watch Silver Aluminium Case with White Sport Band- 42mm- GPS_Cellluar.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/143_Beats Pill+ Wireless Bluetooth Speaker %28Asphalt Grey%29- Refurbished from Apple.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/144_Apple 13” MacBook Pro MPXV2LL_A - Refurbished from Apple.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/145___Not Available for Purchase __ Apple MacBook Pro %28R1C6%29.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/14_Windows 7 Pro Upgrade.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/15_DELL Latitude E6410.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/16_DELL Latitude E6400.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/17_DELL Optiplex 780 + 22_ LCD Bundle.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/18_DELL Optiplex 990 i5 + 22_ LCD Bundle.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/19_Office 365 Personal.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/20_LATITUDE E4310.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/21_TRAVELMATE 6594.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/22_ASPIRE 3830T.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/23_THINKPAD L430-24652EM.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/24_THINKPAD L420.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/25_LATITUDE E6420.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/26_Office 365.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/27_Samsung 900x.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/28_Apple MacBook Air A1342.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/29_Apple MacBook Air A1465.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/2_DELL OPTIPLEX 980 &amp; 20_ LCD Bundle.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/30_Acer Veriton L4610 + 21.5_ LCD Bundle.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/31_Apple iPad 4 Retina Display 16GB WiFi A1458 Silver.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/32_Apple iPad 2 %28Model A1395%29.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/33_Apple iPad 2 %28Model A1395%29.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/34_Acer Veriton L4610 + 21.5_ LCD Bundle.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/35_DELL Optiplex 780 + 22_ LCD Bundle.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/36_IPHONE 16GB.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/37_Apple iPhone 4 16GB Black.jpg">
-      <publishTime>09/18/2020 16:18:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/38_Apple iPhone 4s 16GB Black.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/39_Apple iPhone 5 16GB Black.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/3_Office 365.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/40_Apple iPhone 5c 16GB Blue.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/41_Apple iPhone 5c 16GB Green.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/42_Apple iPhone 5c 16GB Pink.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/43_Apple iPhone 5c 16GB White.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/44_Apple iPhone 5c 16GB Yellow.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/45_Apple iPhone 5c 32GB White.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/46_Apple iPhone 5c 32GB Pink.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/47_Apple iPhone 5c 32GB Green.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/48_Apple iPhone 5c 32GB Blue.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/49_Apple iPhone 5S 16GB A1530 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/4_HP 8000 ELITE SFF C2Q.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/50_Apple iPhone 5s 16GB Gold.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/51_Apple iPhone 5S 16GB A1530 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/52_Samsung G900I Galaxy S5 16GB Black.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/53_Samsung Galaxy S4 with 4G CAT4 Black.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/54_Apple iPhone 5s 64GB Gold.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/55_Apple iPhone 5S 64GB A1530 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/56_Apple iPhone 5S 64GB A1530 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/57_Sony Xperia Z2 16GB Black.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/58_Sony Xperia Z2 16GB Purple.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/5_HP DC7700 SFF.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/60_Apple iPhone 4 16GB Black.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/61_Samsung Galaxy S4 with 4G CAT4 Black.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/62_Sony Xperia Z2 16GB Black.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/63_Apple iPhone 5s 32GB Silver.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/64_Dell Optiplex 390 Small Form Desktop PC.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/65_Dell Latitude E6320 Notebook PC.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/66_Apple iPhone 4s 16GB Black Handset %28Unlocked%29.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/67_Apple iPhone 4 16GB Black Handset %28Unlocked%29.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/68_Dell Ultrasharp 23 Inch LED Monitor.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/69_Apple iPhone 5c 16GB Blue.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/6_HP DC7900 SFF.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/70_Lenovo ThinkPad 11e Notebook.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/71_Apple iPhone 6 16GB Silver- Certified Pre Owned.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/72___ Not Available for Purchase __ ThinkPad L420 %28R2C5%29 __Not Available for Purchase __.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/73___ Not Available for Purchase ___MacBook Pro %28R2C5%29  __Not Available for Purchase __.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/75_Apple iPhone 6 16GB %284G%29 A1586 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/76_Apple iPhone 6 16GB %284G%29 A1586 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/77_Apple iPhone 6 64GB %284G%29 A1586 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/78_Apple iPhone 6 64GB %284G%29 A1586 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/79_Apple iPhone 6 128GB %284G%29 A1586 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/7_HP 8200 ELITE SFF.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/80_Apple iPhone 6 128GB %284G%29 A1586 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/81_Apple iPhone 6 Plus 16GB %284G%29 A1524 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/82_Apple iPhone 6 Plus 16GB %284G%29 A1524 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/83_Apple iPhone 6 Plus 64GB %284G%29 A1524 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/84_Apple iPhone 6 Plus 64GB %284G%29 A1524 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/85_Apple iPhone 6 Plus 128GB %284G%29 A1524 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/86_Apple iPhone 6 Plus 128GB %284G%29 A1524 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/87_Apple iPhone 5S 32GB A1530 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/88_Apple iPhone 5S 32GB A1530 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/89_Apple iPhone SE 64GB A1723 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/8_DELL LATITUDE E4310.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/90_Apple iPhone SE 64GB A1723 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/91_Apple iPhone 6S 16GB A1688 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/92_Apple iPhone 6S 16GB A1688 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/93_Apple iPhone 6S 64GB A1688 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/94_Apple iPhone 6S 64GB A1688 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/95_Apple iPhone 6S 128GB A1688 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/96_Apple iPhone 6S 128GB A1688 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/97_Apple iPhone 6S Plus 16GB A1687 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/98_Apple iPhone 6S Plus 16GB A1687 SILVER.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/99_Apple iPhone 6s Plus 64GB A1687 SPACE GREY.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/9_DELL LATITUDE E6320.jpg">
-      <publishTime>09/18/2020 16:18:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/DellMonitor24Inch-U2415-3.PNG">
-      <publishTime>09/23/2020 10:26:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/DellMonitor24Inch-U2415.PNG">
-      <publishTime>09/23/2020 10:26:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/DellMonitor24Inch-U2415E-2.PNG">
-      <publishTime>09/23/2020 10:26:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/DellMonitor24Inch-U2415E.PNG">
-      <publishTime>09/23/2020 10:26:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/DellOptiPlex3070.PNG">
-      <publishTime>09/23/2020 10:26:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/DellOptiPlex7070.PNG">
-      <publishTime>09/23/2020 10:26:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="ProductImages/ipad_pro_12_9-in_cellular_space_gray.jpg">
+      <publishTime>09/11/2020 21:37:23</publishTime>
     </File>
     <File Include="ProductImages/Iphone11-64GB-Black.PNG">
-      <publishTime>09/23/2020 10:26:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/iPhone11ProMax.jpg">
-      <publishTime>09/23/2020 10:26:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/IphoneX-64GB-Black.PNG">
-      <publishTime>09/23/2020 10:26:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/IphoneX-64GB-Silver.PNG">
-      <publishTime>09/23/2020 10:26:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/IphoneXS-64GB-Black.PNG">
-      <publishTime>09/23/2020 10:26:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/IphoneXS-64GB-Silver.PNG">
-      <publishTime>09/23/2020 10:26:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ProductImages/PowerEdge1950.jpg">
       <publishTime>10/12/2020 22:42:16</publishTime>
@@ -831,6 +900,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="Scripts/bootstrap.min.js">
       <publishTime>09/24/2020 15:37:36</publishTime>
+    </File>
+    <File Include="Scripts/CustomRequiredIf.js">
+      <publishTime>12/08/2020 12:55:11</publishTime>
+    </File>
+    <File Include="Scripts/ddpowerzoomer.js">
+      <publishTime>12/08/2020 12:55:11</publishTime>
     </File>
     <File Include="Scripts/esm/popper-utils.js">
       <publishTime>09/24/2020 15:37:36</publishTime>
@@ -857,13 +932,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/24/2020 15:37:36</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
-      <publishTime>09/08/2020 21:47:14</publishTime>
+      <publishTime>08/09/2020 21:47:14</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.js">
-      <publishTime>09/08/2020 21:47:14</publishTime>
+      <publishTime>08/09/2020 21:47:14</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.map">
-      <publishTime>09/08/2020 21:47:14</publishTime>
+      <publishTime>08/09/2020 21:47:14</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.8.3.min.js">
+      <publishTime>12/08/2020 12:55:11</publishTime>
     </File>
     <File Include="Scripts/jquery-3.4.1.min.js">
       <publishTime>09/07/2020 09:48:59</publishTime>
@@ -885,6 +963,24 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="Scripts/jquery-3.5.1.slim.min.map">
       <publishTime>09/23/2020 16:23:42</publishTime>
+    </File>
+    <File Include="Scripts/jquery.countdownTimer.js">
+      <publishTime>12/18/2020 10:25:44</publishTime>
+    </File>
+    <File Include="Scripts/jquery.countdownTimer.min.js">
+      <publishTime>12/18/2020 10:25:44</publishTime>
+    </File>
+    <File Include="Scripts/jquery.elevateZoom-3.0.8.min.js">
+      <publishTime>12/08/2020 12:55:11</publishTime>
+    </File>
+    <File Include="Scripts/jquery.elevatezoom.js">
+      <publishTime>12/08/2020 12:55:11</publishTime>
+    </File>
+    <File Include="Scripts/jquery.signalR-2.2.2.js">
+      <publishTime>12/17/2020 16:02:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery.signalR-2.2.2.min.js">
+      <publishTime>12/17/2020 16:02:09</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
       <publishTime>09/18/2020 12:19:11</publishTime>
@@ -920,7 +1016,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/24/2020 15:37:36</publishTime>
     </File>
     <File Include="Scripts/ProductPage.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>12/08/2020 12:55:11</publishTime>
     </File>
     <File Include="Scripts/README.md">
       <publishTime>09/24/2020 15:37:36</publishTime>
@@ -949,6 +1045,15 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Scripts/umd/popper.min.js.map">
       <publishTime>09/24/2020 15:37:36</publishTime>
     </File>
+    <File Include="Scripts/zoomove.js">
+      <publishTime>12/08/2020 12:55:11</publishTime>
+    </File>
+    <File Include="Views/AssetAuction/AuctionAssetBundleBidingDetails.cshtml">
+      <publishTime>12/21/2020 17:31:06</publishTime>
+    </File>
+    <File Include="Views/AssetAuction/Index.cshtml">
+      <publishTime>12/18/2020 17:27:56</publishTime>
+    </File>
     <File Include="Views/Cart/Checkout.cshtml">
       <publishTime>09/25/2020 12:14:05</publishTime>
     </File>
@@ -974,52 +1079,73 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/18/2020 12:19:11</publishTime>
     </File>
     <File Include="Views/Login/Login.cshtml">
-      <publishTime>10/09/2020 16:46:20</publishTime>
+      <publishTime>10/12/2020 17:07:41</publishTime>
+    </File>
+    <File Include="Views/Login/_RegisterNewUser.cshtml">
+      <publishTime>12/22/2020 14:59:54</publishTime>
     </File>
     <File Include="Views/Nav/Menu.cshtml">
       <publishTime>09/18/2020 12:19:11</publishTime>
     </File>
+    <File Include="Views/OnlineSale/Auction.cshtml">
+      <publishTime>12/16/2020 17:07:01</publishTime>
+    </File>
+    <File Include="Views/OnlineSale/Chat.cshtml">
+      <publishTime>12/17/2020 16:02:09</publishTime>
+    </File>
     <File Include="Views/OnlineSale/DesktopPC.cshtml">
-      <publishTime>10/21/2020 15:38:07</publishTime>
+      <publishTime>12/14/2020 11:24:54</publishTime>
     </File>
     <File Include="Views/OnlineSale/Index.cshtml">
-      <publishTime>10/21/2020 15:38:07</publishTime>
+      <publishTime>12/14/2020 11:24:54</publishTime>
     </File>
     <File Include="Views/OnlineSale/IPad.cshtml">
-      <publishTime>10/21/2020 15:38:07</publishTime>
+      <publishTime>12/14/2020 11:24:54</publishTime>
     </File>
     <File Include="Views/OnlineSale/Laptop.cshtml">
-      <publishTime>10/21/2020 15:38:07</publishTime>
+      <publishTime>12/14/2020 11:24:54</publishTime>
     </File>
     <File Include="Views/OnlineSale/Mobile.cshtml">
-      <publishTime>10/22/2020 11:52:27</publishTime>
+      <publishTime>12/14/2020 11:24:54</publishTime>
     </File>
     <File Include="Views/OnlineSale/Monitor.cshtml">
-      <publishTime>10/21/2020 15:38:07</publishTime>
+      <publishTime>12/14/2020 11:24:54</publishTime>
     </File>
     <File Include="Views/OnlineSale/NetworkGear.cshtml">
       <publishTime>09/29/2020 15:36:29</publishTime>
     </File>
     <File Include="Views/OnlineSale/Printer.cshtml">
-      <publishTime>10/21/2020 15:38:07</publishTime>
+      <publishTime>12/14/2020 11:24:54</publishTime>
     </File>
     <File Include="Views/OnlineSale/ProductDetail.cshtml">
-      <publishTime>10/21/2020 15:38:07</publishTime>
+      <publishTime>12/22/2020 14:47:56</publishTime>
     </File>
     <File Include="Views/OnlineSale/Server.cshtml">
-      <publishTime>10/21/2020 15:38:07</publishTime>
+      <publishTime>12/14/2020 11:24:54</publishTime>
     </File>
     <File Include="Views/OnlineSale/ShowProducts.cshtml">
-      <publishTime>10/21/2020 15:38:07</publishTime>
+      <publishTime>12/17/2020 17:08:03</publishTime>
     </File>
     <File Include="Views/OnlineSale/TV.cshtml">
       <publishTime>09/29/2020 15:36:29</publishTime>
     </File>
     <File Include="Views/OrdersList/AddProduct.cshtml">
-      <publishTime>10/22/2020 13:15:41</publishTime>
+      <publishTime>11/12/2020 10:49:53</publishTime>
     </File>
     <File Include="Views/OrdersList/Index.cshtml">
-      <publishTime>10/21/2020 15:38:07</publishTime>
+      <publishTime>12/17/2020 23:11:18</publishTime>
+    </File>
+    <File Include="Views/OrdersList/ProductList.cshtml">
+      <publishTime>11/12/2020 23:15:58</publishTime>
+    </File>
+    <File Include="Views/OrdersList/PromoCode.cshtml">
+      <publishTime>11/12/2020 15:54:38</publishTime>
+    </File>
+    <File Include="Views/OrdersList/_AddNewBundle.cshtml">
+      <publishTime>12/17/2020 23:38:53</publishTime>
+    </File>
+    <File Include="Views/PublicUserProfile/Index.cshtml">
+      <publishTime>12/14/2020 10:01:14</publishTime>
     </File>
     <File Include="Views/Sale/List.cshtml">
       <publishTime>09/18/2020 12:19:11</publishTime>
@@ -1028,13 +1154,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/18/2020 12:19:11</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/21/2020 15:38:07</publishTime>
+      <publishTime>12/17/2020 17:08:03</publishTime>
     </File>
     <File Include="Views/Shared/_MainContent.cshtml">
       <publishTime>09/18/2020 12:19:11</publishTime>
     </File>
     <File Include="Views/ShoppingCart/Checkout.cshtml">
-      <publishTime>10/21/2020 15:38:07</publishTime>
+      <publishTime>10/27/2020 20:17:02</publishTime>
     </File>
     <File Include="Views/ShoppingCart/Index.cshtml">
       <publishTime>10/12/2020 15:01:09</publishTime>
@@ -1049,7 +1175,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/18/2020 12:19:11</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/22/2020 13:31:28</publishTime>
+      <publishTime>12/22/2020 17:04:13</publishTime>
     </File>
   </ItemGroup>
 </Project>

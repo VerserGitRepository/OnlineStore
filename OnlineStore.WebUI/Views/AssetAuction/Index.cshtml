@@ -18,7 +18,8 @@
                     </div>
                     <div class="card-footer" id="updateTime">
                         <small class="text-muted">
-                            @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", FormMethod.Post))
+                            @*@using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", FormMethod.Post, new { BundleID = @Model.Id, enctype = "multipart/form-data" }))*@
+                            @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", new { BundleID = 2 },FormMethod.Post, new{ enctype = "multipart/form-data" }))
                             {
                                 <input type="submit" class="btn btn-success" value="Bid Assets Auction" />
                             }

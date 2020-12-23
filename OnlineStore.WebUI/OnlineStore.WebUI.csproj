@@ -318,6 +318,8 @@
     <Compile Include="Infrastructure\HelperServices\MainPageProductService.cs" />
     <Compile Include="Infrastructure\HelperServices\OrdersServices.cs" />
     <Compile Include="Infrastructure\LogService.cs" />
+    <Compile Include="Models\AssetAuctionBundleModel.cs" />
+    <Compile Include="Models\BidModel.cs" />
     <Compile Include="Models\Binders\CartModelBinder.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\OrderProcessor.cs" />
@@ -410,6 +412,7 @@
     <Content Include="Views\AssetAuction\AuctionAssetBundleBidingDetails.cshtml" />
     <Content Include="Views\OnlineSale\Chat.cshtml" />
     <Content Include="Views\OrdersList\_AddNewBundle.cshtml" />
+    <Content Include="Views\OnlineSale\SampleCardDesingHome.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -449,11 +452,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52980</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52980/</IISUrl>
+          <IISUrl>http://localhost:51000/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

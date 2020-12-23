@@ -180,13 +180,19 @@ namespace OnlineStore.WebUI.Controllers
         {
             var LoadViewModel = (OrderViewModel)Session["OrderViewModel"];
             return PartialView("PromoCode", LoadViewModel);
-        }
-
-       
+        }       
         public ActionResult _AddNewBundle()
         {
          //   var LoadViewModel = (OrderViewModel)Session["OrderViewModel"];
             return PartialView("_AddNewBundle");
-        }        
+        }
+        [HttpPost]
+        public ActionResult AddNewBundle(AssetAuctionBundleModel AddnewBundleModel)
+        {
+            var returnflag = OrdersServices.CreateAuctionBundle(AddnewBundleModel).Result;
+            return RedirectToAction("Index", "OrdersList");
+        }
+
+        
     }
 }

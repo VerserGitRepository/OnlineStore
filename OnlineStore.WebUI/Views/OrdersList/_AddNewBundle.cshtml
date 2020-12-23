@@ -1,4 +1,5 @@
-﻿<link href="~/Content/bootstrap.css" rel="stylesheet" />
+﻿@model OnlineStore.WebUI.Models.AssetAuctionBundleModel
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -14,47 +15,57 @@
         <div class="card-header">
             CREATE NEW AUCTION BUNDLE
         </div>
-        <div class="card-body">
-            <div class="mb-2">
-                <label for="exampleFormControlInput1" class="form-label">Bundle Title</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="BundleTitle">
+        @using (Html.BeginForm("AddNewBundle", "OrdersList", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="card-body">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Bundle Title</label>
+                    @Html.EditorFor(model => model.BundleTitle, new { htmlAttributes = new { @class = "form-control", placeholder = "BundleTitle" } })
+                  
+                </div>
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Bundle Base Price</label>
+                    @Html.EditorFor(model => model.BundleBaseprice, new { htmlAttributes = new { @class = "form-control", placeholder = "$Bundle Base Price" } })
+                   
+                </div>
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Bundle Quick Bid Price</label>
+                    @Html.EditorFor(model => model.BundleQuickBidPrice, new { htmlAttributes = new { @class = "form-control", placeholder = "$Bundle Quick Bid Price" } })
+                   
+                </div>
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Bundle BuyPrice</label>
+                    @Html.EditorFor(model => model.BundleBuyPrice, new { htmlAttributes = new { @class = "form-control", placeholder = "$Bundle BuyPrice" } })
+                    
+                </div>
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Auction StartDate</label>
+                    @Html.EditorFor(model => model.Bundle_Auction_StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "StartDate" } })
+                    
+                </div>
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Auction EndDate</label>
+                    @Html.EditorFor(model => model.Bundle_Auction_EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "EndDate" } })
+                   
+                </div>
+                <div class="mb-2">
+                    <label for="exampleFormControlTextarea1" class="form-label">Images</label>                  
+                    <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Images">
+                </div>
+                <div class="mb-2">
+                    <label for="exampleFormControlTextarea1" class="form-label">Bundle Description</label>
+                    @Html.TextAreaFor(model => model.BundleDescription, new { htmlAttributes = new { @class = "form-control", placeholder = "Bundle Description" } })
+                    
+                </div>
+                <div class="mb-2">
+                    @using (Html.BeginForm("Index", "AssetAuction", FormMethod.Post))
+                    {
+                        <input type="submit" class="btn btn-success btn-lg" value="CREATE" id="exampleFormControlInput1">
+                    }
+                </div>
             </div>
-            <div class="mb-2">
-                <label for="exampleFormControlInput1" class="form-label">Bundle Base Price</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="$Bundle Base Price">
-            </div>
-            <div class="mb-2">
-                <label for="exampleFormControlInput1" class="form-label">Bundle Quick Bid Price</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="$Bundle Quick Bid Price">
-            </div>
-            <div class="mb-2">
-                <label for="exampleFormControlInput1" class="form-label">Bundle BuyPrice</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="$Bundle BuyPrice">
-            </div>
-            <div class="mb-2">
-                <label for="exampleFormControlInput1" class="form-label">Auction StartDate</label>
-                <input type="datetime" class="form-control" id="exampleFormControlInput1" placeholder="StartDate">
-            </div>
-            <div class="mb-2">
-                <label for="exampleFormControlInput1" class="form-label">Auction EndDate</label>
-                <input type="datetime" class="form-control" id="exampleFormControlInput1" placeholder="EndDate">
-            </div>
-            <div class="mb-2">
-                <label for="exampleFormControlTextarea1" class="form-label">Images</label>
-                <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="EndDate">
-            </div>
-            <div class="mb-2">
-                <label for="exampleFormControlTextarea1" class="form-label">Bundle Description</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Bundle Description"></textarea>
-            </div>
-            <div class="mb-2">
-                @using (Html.BeginForm("Index", "AssetAuction", FormMethod.Post))
-                {
-                    <input type="submit" class="btn btn-success btn-lg" value="CREATE" id="exampleFormControlInput1">
-                }
-            </div>
+        }
         </div>
-    </div>
 </div>
 
- 
+

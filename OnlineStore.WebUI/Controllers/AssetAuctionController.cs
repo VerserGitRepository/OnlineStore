@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OnlineStore.WebUI.Infrastructure.HelperServices;
+using OnlineStore.WebUI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,12 +15,12 @@ namespace OnlineStore.WebUI.Controllers
         {
             return View();
         }
-
-        public ActionResult AuctionAssetBundleBidingDetails()
+        [HttpPost]
+        public ActionResult AuctionAssetBundleBidingDetails(int BundleID)
         {
-            return View();
+            var modelDetails = new AssetAuctionBundleModel();
+            var modeldata = OrdersServices.AuctionBundleByID(BundleID).Result;
+            return View(modeldata);
         }
-
-
     }
 }
