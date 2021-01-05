@@ -28,15 +28,15 @@
 }
 
 .size_lg {
-   font-size:40px;
-   border-width: 7px;
-   border-radius: 5px;
+   font-size:30px;
+   border-width: 5px;
+   border-radius: 3px;
 }
 
 .size_md {
-   font-size:30px;
-   border-width: 5px;
-   border-radius: 4px;
+   font-size:20px;
+   border-width:2px;
+   border-radius:2px;
 }
 
 .size_sm {

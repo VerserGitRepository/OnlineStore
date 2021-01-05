@@ -1,0 +1,13 @@
+﻿
+@model OnlineStore.WebUI.Models.AssetAuctionBundleModel
+@{
+    ViewBag.Title = "BidingHistory";
+}
+<div class="container">
+    <div class="border-danger">
+        @foreach (var item in Model.BidTime_Price)
+        {
+            <p>@item</p>
+        }
+    </div>
+</div>
