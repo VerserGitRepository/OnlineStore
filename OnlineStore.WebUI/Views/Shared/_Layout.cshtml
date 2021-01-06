@@ -53,21 +53,22 @@
                 <li>@Html.ActionLink("PRINTER", "Printer", "OnlineSale")</li>
                 <li>@Html.ActionLink("SERVERS", "Server", "OnlineSale")</li>
                 <li>@Html.ActionLink("NETWORK GEARS", "NetworkGear", "OnlineSale")</li>
-                <li>@Html.ActionLink("AUCTION", "Index", "AssetAuction")</li>
-                <li>@Html.ActionLink("TV'S", "TV", "OnlineSale")</li>
+                @*<li>@Html.ActionLink("TV'S", "TV", "OnlineSale")</li>*@
                 <li>@Html.ActionLink("Sample Design", "SampleCardDesingHome", "OnlineSale")</li>
-                
                 <li id="faq">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
                 @if (@Session["Username"] != null)
                 {
                     if (Session["SiteAdmin"] != null && Session["SiteAdmin"].Equals("True"))
                     {
+                        <li>@Html.ActionLink("AUCTION", "Index", "AssetAuction")</li>
                         <li>@Html.ActionLink("ORDERSLIST", "Index", "OrdersList")</li>
                         <li>@Html.ActionLink("LOGOUT", "Login", "Login")</li>
+
                     }
                     else
                     {
-                        <li>@Html.ActionLink("User Profile", "Index", "PublicUserProfile")</li>
+                        <li>@Html.ActionLink("AUCTION", "Index", "AssetAuction")</li>
+                        <li>@Html.ActionLink("USER PROFILE", "Index", "PublicUserProfile")</li>
                         <li>@Html.ActionLink("LOGOUT", "Login", "Login")</li>
                     }
 

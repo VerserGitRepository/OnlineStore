@@ -414,7 +414,6 @@
     <Content Include="Views\OnlineSale\Chat.cshtml" />
     <Content Include="Views\OrdersList\_AddNewBundle.cshtml" />
     <Content Include="Views\OnlineSale\SampleCardDesingHome.cshtml" />
-    <Content Include="Views\AssetAuction\BidingHistories.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

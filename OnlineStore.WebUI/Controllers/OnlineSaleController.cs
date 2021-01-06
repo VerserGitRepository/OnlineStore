@@ -19,13 +19,11 @@ namespace OnlineStore.WebUI.Controllers
         {
             return View();
         }
-
         public ActionResult SampleCardDesingHome()
         {
            
             return View();
         }
-
         public ActionResult Index()
         {
             var MainpageproductView = new MainPageProductsViewModel();
@@ -134,7 +132,6 @@ namespace OnlineStore.WebUI.Controllers
         [HttpGet]
         public ActionResult ProductDetail(int ProductId)
         {
-
             var productdeatiledModel = new OnlineSaleProduct();
             productdeatiledModel = OrdersServices.OnlineSaleProductById(ProductId).Result;
             return PartialView(productdeatiledModel);
@@ -206,7 +203,6 @@ namespace OnlineStore.WebUI.Controllers
             var result = OrdersServices.ApplyPromoCode(promocodemodel);
             return RedirectToAction("Index", "OrdersList");
         }
-
         [HttpGet]
         public ActionResult ApplyPromoCode(string PromoCode)
         {
