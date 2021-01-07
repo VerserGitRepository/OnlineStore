@@ -28,64 +28,62 @@
     <input type="hidden" value="true" id="viewType" />
     @if (Model.Count() > 0 && Model.First().IsViewTypeGrid)
     {
-        <div class="container">
-            @*<div class="row">*@
-            @foreach (var item in Model)
-            {
+<div class="container">
+ 
+    @foreach (var item in Model)
+    {
 
-                <div class="row" style="margin-top:30px;background: #eee;padding: 3em;line-height: 1.5em;">
+        <div class="row" style="margin-top:30px;background: #eee;padding: 3em;line-height: 1.5em;">
+            <div class="item-photo">
+                <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:320px;height:280px;" class="img-responsive" />
+            </div>
+            <div class="col-xs-5">
+                <h3>@item.ProductName</h3>
+                <h5 style="color:#337ab7">@item.BrandName</h5>
+                <h6 class="title-price"><small>PRICE</small></h6>
+                <h4 style="margin-top:0px;">AUD $@item.PriceIncGST</h4>           
 
-                    <div class="item-photo">
-                        <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:320px;height:280px;" class="img-responsive" />
-                    </div>
-                    <div class="col-xs-5">
-                        <h3>@item.ProductName</h3>
-                        <h5 style="color:#337ab7">@item.BrandName</h5>
-                        <h6 class="title-price"><small>PRICE</small></h6>
-                        <h4 style="margin-top:0px;">AUD $@item.PriceIncGST</h4>
-                        @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
-                        {
-                            //@Html.Hidden(item.Id.ToString());
-                            <div>
-                                <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
-                            </div>
+                    @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
+                    {
+                        //@Html.Hidden(item.Id.ToString());
+                        <div>
+                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                        </div>
 
-                        }
-                    </div>
-
-                </div>
-
-            }
+                    }
+            </div>
         </div>
+    }
+</div>
     }
     else
     {
 
-        <div class="container">
-            <div class="row">
-                @foreach (var item in Model)
-                {
-                    <div class="col-md-4">
-                        <div class="thumbnail">
-                            <div class="caption">
-                                <h5 class="pull-right">$@item.PriceIncGST</h5>
-                                <h6>@item.ProductName</h6>
-                                <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>
-                            </div>
-                            @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
-                            {
-                                //@Html.Hidden(item.Id.ToString());
-                                <div>
-                                    <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
-                                </div>
-
-                            }
-                            <div class="space-ten"></div>
-                        </div>
+<div style="padding-left:100px;padding-right:100px;">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h5 class="pull-right">$@item.PriceIncGST</h5>
+                        <h6>@item.ProductName</h6>
+                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:280px;" class="img-responsive" /></p>
                     </div>
-                }
+                    @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
+                    {
+                        //@Html.Hidden(item.Id.ToString());
+                        <div>
+                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                        </div>
+
+                    }
+                    <div class="space-ten"></div>
+                </div>
             </div>
-        </div>
+        }
+    </div>
+</div>
     }
     <div id="spinner" style="display:none;">
         <img src="~/Images/ajax-loader.gif" />

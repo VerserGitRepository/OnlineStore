@@ -29,37 +29,33 @@
                             <div class="col-sm-4">
                                 <div class="card border-info mb-3">
                                     <div class="card-header" style="color:green;font-size:small;font-weight:700">Current Price $@Model.BundleBaseprice  No Reserve</div>
+                                    
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-6 offset-md-3">
-                                                <h5 class="card-title"><input type="submit" class="btn-danger btn-lg" value="Quick Bid $@Model.BundleQuickBidPrice" /></h5>
+                                            <div class="col-md-6 offset-md-1" style="padding-bottom:15px;">
+                                                <input type="submit" class="btn-danger btn-sm" value="Quick Bid $@Model.BundleQuickBidPrice" id="QuickBidBtn" />
+                                                <input type="hidden" value="@Model.PostQuickBidPrice" id="Hdn_BundleQuickBidPrice" />
                                             </div>
-                                            <div class="col-md-12 offset-md-1">
-                                                <input type="hidden" value="@Model.Id" id="Hdn_BundleID" />
+                                            <div class="col-md-9 offset-md-1">
                                                 <input type="text" placeholder="$ Biding Amount Here.." id="message" />
-                                                <a href="#" class="btn btn-success btn-lg" id="sendmessage" value="Send">BID</a>
+                                                <a href="#" class="btn btn-success btn-sm" id="sendmessage" value="Send">BID</a>
+                                                <input type="hidden" value="@Model.Id" id="Hdn_BundleID" />
                                             </div>
-                                            <div class="col-md-6 offset-md-3">
+                                            <div class="col-md-6 offset-md-1">
                                                 <p style="padding-top:20px;">
                                                     <a href="#" class="btn btn-success btn">BUY NOW $@Model.BundleBuyPrice</a>
                                                 </p>
                                             </div>
-                                            <div class="col-md-6 offset-md-3">
-                                                <p style="padding-top:10px;">
-                                                    <table style="border:0px;">
-                                                        <tr>
-                                                            <td colspan="4"><span id="current_timer"></span></td>
-                                                        </tr>
-                                                    </table>
-                                                    <script>
-                                                        $(function () {
-                                                            $('#current_timer').countdowntimer({
-                                                                currentTime: true,
-                                                                size: "md"
-                                                            });
+                                            <div class="col-md-6 offset-md-1" style="padding-top:10px;">
+                                                <span id="current_timer"></span>
+                                                <script>
+                                                    $(function () {
+                                                        $('#current_timer').countdowntimer({
+                                                            currentTime: true,
+                                                            size: "md"
                                                         });
-                                                    </script>
-                                                </p>
+                                                    });
+                                                </script>
                                             </div>
                                         </div>
                                     </div>
@@ -82,7 +78,6 @@
                                     </p>
                                 </div>
                             </div>
-
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-body">
@@ -90,7 +85,7 @@
                                             <input type="submit" class="btn btn-warning" value="Assets Reference List" />
                                         </div>
                                         <div class="pull-left" style="padding-right:20px;">
-                                            <input type="submit" class="btn btn-warning" value="Full History Of Biding" name="btnLink" id="btnLink" />                                       
+                                            <input type="submit" class="btn btn-warning" value="Full History Of Biding" name="btnLink" id="btnLink" />
                                         </div>
                                     </div>
                                 </div>
@@ -131,7 +126,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>              
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -144,7 +139,7 @@
     <script type="text/javascript" src="~/Scripts/jquery.countdownTimer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="~/Content/jquery.countdownTimer.css" />
     <!--Reference the autogenerated SignalR hub script. -->
-    <script src="~/signalr/hubs"></script> 
+    <script src="~/signalr/hubs"></script>
     <!--SignalR script to update the chat page and send messages.-->
     <script>
         $(document).ready(function () {
@@ -207,7 +202,31 @@
                             }
                         }
                     });
+                });
 
+                $('#QuickBidBtn').click(function () {                   
+                    $.confirm({
+                        title: 'Confirm',
+                        content: 'Are you sure you want to Bid with this Amount?',
+                        buttons: {
+                            confirm: function () {
+                                var d = new Date();
+                                var BidDateByUser = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+                                // chat.server.send(BidDateByUser +'$'+ $('#message').val());
+                                let BidId = 1;
+                                let FK_Bid_AuctionCustomerID = 3;
+                                let FK_Bid_AuctionBundleID = $('#Hdn_BundleID').val();
+                                let BidPrice = $('#Hdn_BundleQuickBidPrice').val();
+                                let Bid_TimeStamp = BidDateByUser;
+                                let BidUserId = $('#displayname').val();
+                                chat.server.send($('#displayname').val(), 'Bid Time:' + BidDateByUser + '- $' + $('#Hdn_BundleQuickBidPrice').val(), FK_Bid_AuctionCustomerID, FK_Bid_AuctionBundleID, BidPrice, FK_Bid_AuctionCustomerID);
+                                // Clear text box and reset focus for next comment.
+                                $('#message').val('').focus();
+                            },
+                            cancel: function () {
+                            }
+                        }
+                    });
                 });
             });
         });
