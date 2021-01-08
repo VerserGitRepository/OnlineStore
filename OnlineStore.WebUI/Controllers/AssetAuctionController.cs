@@ -23,5 +23,17 @@ namespace OnlineStore.WebUI.Controllers
             var modeldata = OrdersServices.AuctionBundleByID(BundleID).Result;
             return View(modeldata);
         }
+        [HttpGet]
+        public ActionResult _AuctionAssetList()
+        {
+            var assets = new List<AssetListModel>();
+            return PartialView(assets);
+        }
+        [HttpPost]
+        public ActionResult AuctionAssetList()
+        {
+            var assets = new List<AssetListModel>();
+            return PartialView("_AuctionAssetList",assets);
+        }
     }
 }

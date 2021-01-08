@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OnlineStore.WebUI.Models.AssetListModel>
+@using System.Linq;
+
+<table class="table table-bordered table-responsive table-hover" id="AssetsTable" style="font-size:smaller;">
+    <thead style="background-color:#959ca1;color:white">
+        <tr>
+            <th>SSN</th>
+            <th>MAKE</th>
+            <th>MODEL</th>
+            <th>SERIAL</th>
+            <th>MEMORY</th>
+            <th>COLOUR</th>
+            <th>GRADE</th>
+            <th>ITEMTYPE</th>         
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr> 
+                <td>@item.SSN</td>
+                <td>@item.Make</td>
+                <td>@item.Model</td>
+                <td>@item.Serial </td>
+                <td>@item.Memory</td>
+                <td>@item.Colour</td>
+                <td>@item.Grade</td>
+                <td>@item.ItemType</td>   
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $('#AssetsTable').DataTable();
+        $('.dataTables_filter').addClass('pull-right');
+        $('[data-toggle="popover"]').popover({
+            container: 'body'
+        });
+    });
+</script>

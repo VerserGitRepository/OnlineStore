@@ -82,7 +82,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="pull-left" style="padding-right:20px;">
-                                            <input type="submit" class="btn btn-warning" value="Assets Reference List" />
+                                            <input type="submit" class="btn btn-warning" value="Assets Reference List" id="btnassetList" name="btnassetList"/>
                                         </div>
                                         <div class="pull-left" style="padding-right:20px;">
                                             <input type="submit" class="btn btn-warning" value="Full History Of Biding" name="btnLink" id="btnLink" />
@@ -213,7 +213,7 @@
                     });
                 });
 
-                $('#QuickBidBtn').click(function () {                   
+                $('#QuickBidBtn').click(function () {
                     $.confirm({
                         title: 'Confirm',
                         content: 'Are you sure you want to Bid with this Amount?',
@@ -239,6 +239,33 @@
                         }
                     });
                 });
+
+                $('#btnassetList').click(function () {
+
+           let FK_Bid_AuctionBundleID = $('#Hdn_BundleID').val();
+           var AddSiteURL = '@Url.Action("_AddNewBundle", "OrdersList")'
+            $.ajax({
+            type: "GET",
+            url: AddSiteURL,
+            success: function (data) {
+
+            $.confirm({
+            boxWidth: '700px',
+            useBootstrap: false,
+            backgroundDismiss: true,
+
+            title: '',
+            content: data,
+            closeIcon: true,
+            buttons: {
+            yes: { isHidden: true }
+            },
+            });
+                },
+                error: function (result) { alert(result); console.log(result);}
+            });
+                });
+
             });
         });
 

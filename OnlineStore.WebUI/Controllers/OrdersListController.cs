@@ -17,6 +17,7 @@ namespace OnlineStore.WebUI.Controllers
         //[OutputCache(CacheProfile = "Cache5Min")]
         public ActionResult Index()
         {
+            
             if (Session["Username"] != null)
             {
                 var LoadViewModel = new OrderViewModel();

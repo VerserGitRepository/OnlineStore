@@ -320,6 +320,7 @@
     <Compile Include="Infrastructure\HelperServices\OrdersServices.cs" />
     <Compile Include="Infrastructure\LogService.cs" />
     <Compile Include="Models\AssetAuctionBundleModel.cs" />
+    <Compile Include="Models\AssetListModel.cs" />
     <Compile Include="Models\AuctionBundleListModel.cs" />
     <Compile Include="Models\BidModel.cs" />
     <Compile Include="Models\Binders\CartModelBinder.cs" />
@@ -415,6 +416,7 @@
     <Content Include="Views\OnlineSale\Chat.cshtml" />
     <Content Include="Views\OrdersList\_AddNewBundle.cshtml" />
     <Content Include="Views\OnlineSale\SampleCardDesingHome.cshtml" />
+    <Content Include="Views\AssetAuction\_AuctionAssetList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
