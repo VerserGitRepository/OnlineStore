@@ -20,6 +20,7 @@ namespace OnlineStore.WebUI.Controllers
             if (Session["Username"] != null)
             {
                 var LoadViewModel = new OrderViewModel();
+                LoadViewModel.AuctionBundleList = OrdersServices.AuctionBundles().Result;
                 LoadViewModel.OnlineSaleOrdersList = OrdersServices.OnlineSaleOrdersList().Result;
                 foreach (OnlineSaleOrdersListModel s in LoadViewModel.OnlineSaleOrdersList)
                 {
@@ -30,16 +31,13 @@ namespace OnlineStore.WebUI.Controllers
                 }
                 LoadViewModel.OnlineSaleProductList = OrdersServices.OnlineSaleProductsList().Result;
                 //LoadViewModel.OnlineSalePurchasedProducts = OrdersServices.OnlineSaleShippedOrder().Result;
-
                 LoadViewModel.ManualOrdersViewModel.CustomerProject = new SelectList(DropDownServices.ProjectList().Result, "ID", "Value");
                 LoadViewModel.OnlineSaleProduct.ItemTypes = new SelectList(DropDownServices.itemtypes().Result, "ID", "Value");
                 LoadViewModel.OnlineSaleProduct.Makes = new SelectList(DropDownServices.Makes().Result, "ID", "Value");
                 Session["OrderViewModel"] = LoadViewModel;
                 return View(LoadViewModel);
             }
-
-            return RedirectToAction("Login","Login");
-           
+            return RedirectToAction("Login","Login");           
         }
         [HttpPost]
         public ActionResult ProcessManualOrder(OrderViewModel _OrderModel)

@@ -173,10 +173,18 @@
             $.connection.hub.start().done(function () {
                 $('#sendmessage').click(function () {
                     var bidamount = $('#message').val();
-                    if (bidamount == "" || bidamount == null) {
+                    var highbid = $('#Hdn_BundleQuickBidPrice').val();
+                    if (bidamount == "" || bidamount == null ) {
                         $.confirm({
                             title: 'Warning!',
                             content: 'Bid Amount Is Empty!'
+                        });
+                        return false;
+                    } else if (bidamount <= highbid)
+                    {
+                        $.confirm({
+                            title: 'Warning!',
+                            content: 'Bid Amount Is Not Higher Then Last Bid!'
                         });
                         return false;
                     }
@@ -196,6 +204,7 @@
                                 let BidUserId = $('#displayname').val();
                                 chat.server.send($('#displayname').val(), 'Bid Time:' + BidDateByUser + '- $' + $('#message').val(), FK_Bid_AuctionCustomerID, FK_Bid_AuctionBundleID, BidPrice, FK_Bid_AuctionCustomerID);
                                 // Clear text box and reset focus for next comment.
+                                $(window.location.reload());
                                 $('#message').val('').focus();
                             },
                             cancel: function () {
@@ -221,6 +230,8 @@
                                 let BidUserId = $('#displayname').val();
                                 chat.server.send($('#displayname').val(), 'Bid Time:' + BidDateByUser + '- $' + $('#Hdn_BundleQuickBidPrice').val(), FK_Bid_AuctionCustomerID, FK_Bid_AuctionBundleID, BidPrice, FK_Bid_AuctionCustomerID);
                                 // Clear text box and reset focus for next comment.
+
+                                $(window.location.reload());
                                 $('#message').val('').focus();
                             },
                             cancel: function () {
