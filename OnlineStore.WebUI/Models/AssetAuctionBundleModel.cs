@@ -10,13 +10,14 @@ namespace OnlineStore.WebUI.Models
         public AssetAuctionBundleModel()
         {
 			BidTime_Price = new List<string>();
-			ImageName = new List<string>();
+			ImageName = new List<string>();		
 		}
 		public int Id { get; set; }
 		public string BundleTitle { get; set; }
 		public string BundleDescription { get; set; }
 		public decimal BundleBaseprice { get; set; }
 		public decimal BundleQuickBidPrice { get; set; }
+		public decimal PostQuickBidPrice { get; set; }
 		public decimal BundleBuyPrice { get; set; }
 		public string AuctionStatus { get; set; }
 		public DateTime Bundle_Auction_StartDate { get; set; }

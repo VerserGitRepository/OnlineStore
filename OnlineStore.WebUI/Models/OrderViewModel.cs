@@ -15,13 +15,14 @@ namespace OnlineStore.WebUI.Models
             OnlineSaleProductList = new List<OnlineSaleProduct>();
             OnlineSalePurchasedProducts = new List<OnlineSaleProduct>();
             promoCodeModel = new PromoCodeModel();
+            AuctionBundleList = new List<AuctionBundleListModel>();
         }
         public ManualOrdersViewModel ManualOrdersViewModel { get; set; }
         public PromoCodeModel promoCodeModel { get; set; }
         public OnlineSaleProduct OnlineSaleProduct { get; set; }
         public List<OnlineSaleProduct> OnlineSaleProductList { get; set; }
         public List<OnlineSaleOrdersListModel> OnlineSaleOrdersList { get; set; }
-
         public List<OnlineSaleProduct> OnlineSalePurchasedProducts { get; set; }
+        public List<AuctionBundleListModel> AuctionBundleList { get; set; }        
     }
 }

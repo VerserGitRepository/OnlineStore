@@ -142,10 +142,10 @@ namespace OnlineStore.WebUI.Controllers
             @ShoppingCart p = new @ShoppingCart();
             return RedirectToAction("AddToShoppingCart", "ShoppingCart",new {@id=id, @returnUrl  = returnUrl,@quantity= coll["hdnQty"], price = coll["hdnprice"] });
         }   
-        public ActionResult AddToCartNoVerb(int id, string returnUrl,int quantity)
+        public ActionResult AddToCartNoVerb(int id, string returnUrl,int quantity,decimal ItemPrice)
         {
             @ShoppingCart p = new @ShoppingCart();
-            return RedirectToAction("AddToShoppingCart", "ShoppingCart", new { @id = id, @returnUrl = returnUrl, @quantity = quantity });
+            return RedirectToAction("AddToShoppingCart", "ShoppingCart", new { @id = id, @returnUrl = returnUrl, @quantity = quantity, @price = ItemPrice });
         }
         public ActionResult RenderView(string view, string viewName)
         {

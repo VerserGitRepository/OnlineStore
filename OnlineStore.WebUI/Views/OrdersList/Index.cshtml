@@ -324,15 +324,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>17/12/2020 12:00</td>
-                            <td>27/12/2020 12:00</td>
-                            <td>$50,000</td>
-                            <td>Yes</td>
-                        </tr>                       
-                    </tbody>
+                        @foreach (var item in Model.AuctionBundleList)
+                        {
+                            <tr>
+                                <th scope="row">@item.Id</th>
+                                <td>@item.BundleTitle</td>
+                                <td>@item.Bundle_Auction_StartDate</td>
+                                <td>@item.Bundle_Auction_EndDate</td>
+                                <td>@item.BundleBaseprice</td>
+                                <td>@item.IsAuctionBundleActive</td>
+                            </tr>
+                        }
+                        </tbody>
                 </table>
             </div>
         </div>
