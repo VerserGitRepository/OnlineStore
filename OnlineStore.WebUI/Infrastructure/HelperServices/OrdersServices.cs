@@ -278,6 +278,21 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return returnModel;       
         }
+
+        public async static Task<List<AssetListModel>> AuctionAssetList(int bundleid)
+        {
+            var returnModel = new List<AssetListModel>();
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.GetAsync(string.Format("OnlineStoreAuction/{0}/AuctionAssetList", bundleid)).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnModel = await response.Content.ReadAsAsync<List<AssetListModel>>();
+                }
+            }
+            return returnModel;
+        }
     }
 }
 

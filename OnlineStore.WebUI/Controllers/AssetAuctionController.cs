@@ -30,9 +30,9 @@ namespace OnlineStore.WebUI.Controllers
             return PartialView(assets);
         }
         [HttpPost]
-        public ActionResult AuctionAssetList()
+        public ActionResult AuctionAssetList(int BundleId)
         {
-            var assets = new List<AssetListModel>();
+            var assets = OrdersServices.AuctionAssetList(BundleId).Result;
             return PartialView("_AuctionAssetList",assets);
         }
     }

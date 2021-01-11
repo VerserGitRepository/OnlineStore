@@ -15,6 +15,6 @@ namespace OnlineStore.WebUI.Models
         public string Colour { get; set; }
         public string Memory { get; set; }
         public string Grade { get; set; }
-        public string ItemType { get; set; }
+        public string ItemTypeName { get; set; }
     }
 }
