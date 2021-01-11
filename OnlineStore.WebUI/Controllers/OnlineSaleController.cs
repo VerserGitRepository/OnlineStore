@@ -137,10 +137,12 @@ namespace OnlineStore.WebUI.Controllers
             return PartialView(productdeatiledModel);
         }
         [HttpPost]
-        public ActionResult AddToCart(int id, string returnUrl, FormCollection  coll)
+        public ActionResult AddToCart(int id, string returnUrl,  FormCollection  coll, int quantity = 0, decimal price = 0.0M)
         {
             @ShoppingCart p = new @ShoppingCart();
-            return RedirectToAction("AddToShoppingCart", "ShoppingCart",new {@id=id, @returnUrl  = returnUrl,@quantity= coll["hdnQty"], price = coll["hdnprice"] });
+            quantity =  string.IsNullOrEmpty(coll["hdnQty"]) ? quantity : Convert.ToInt32(coll["hdnQty"]); 
+            price = string.IsNullOrEmpty(coll["hdnprice"]) ? price : Convert.ToDecimal(coll["hdnprice"]);
+            return RedirectToAction("AddToShoppingCart", "ShoppingCart",new {@id=id, @returnUrl  = returnUrl,@quantity= quantity,@price=price });
         }   
         public ActionResult AddToCartNoVerb(int id, string returnUrl,int quantity,decimal ItemPrice)
         {

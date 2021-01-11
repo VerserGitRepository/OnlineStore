@@ -107,6 +107,14 @@
     </div>
 </div>
 <script>
+    $(document).ready(function () {
+        var selectedVal = $('#ddlQuantity').val();
+        $("#hdnQty").val($("#ddlQuantity :selected").val());
+        var total = $("#hiddenPrice").val() * selectedVal;
+        $("#priceLabel").text(total);
+        $("#hdnprice").val($("#priceLabel").text());
+    });
+
     $("#zoom_01").elevateZoom({zoomWindowPosition: 10});
 
     //pass the images to Fancybox

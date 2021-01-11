@@ -42,7 +42,7 @@
                         <h5 style="color:#337ab7">@item.BrandName</h5>
                         <h6 class="title-price"><small>PRICE</small></h6>
                         <h3 style="margin-top:0px;">AUD @item.PriceIncGST</h3>
-                        @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
+                        @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery, @quantity = 1, @price = item.PriceIncGST }, FormMethod.Post))
                         {
                             //@Html.Hidden(item.Id.ToString());
                             <div>
@@ -68,7 +68,7 @@
                                 <h6>@item.ProductName</h6>
                                 <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>
                             </div>
-                            @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
+                            @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery, @quantity = 1, @price = item.PriceIncGST }, FormMethod.Post))
                             {
                                 //@Html.Hidden(item.Id.ToString());
                                 <div>
