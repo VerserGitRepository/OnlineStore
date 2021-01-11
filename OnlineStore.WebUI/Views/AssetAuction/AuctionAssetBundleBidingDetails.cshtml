@@ -70,7 +70,7 @@
                             <div class="col-sm-3" style="overflow-y: scroll;">
                                 <div class="card border-info mb-5">
                                     <div class="card-header" style="color:green;font-weight:700;">Live Bidings (@DateTime.Now.ToShortDateString())</div>
-                                    <p class="card-text"><p id="discussion">
+                                    <p class="card-text"><p id="discussion"  style="height: 200px;overflow-y: scroll;">
                                         @foreach (var _bids in Model.BidTime_Price)
                                         {
                                             @_bids<br />
@@ -116,7 +116,7 @@
                     <div class="card border-info">
                         <div class="card-header" style="color:green;font-weight:700;">Live Bidings (@DateTime.Now.ToShortDateString())</div>
                         <p class="card-text">
-                        <p id="discussion">
+                        <p id="discussion" style="overflow-y: scroll;">
                             @foreach (var _bids in Model.BidTime_Price)
                             {
                                 @_bids<br />
