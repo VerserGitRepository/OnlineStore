@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
         <div class="row row-cols-1 row-cols-md-2 g-4 border" style="padding:10px;">
-            @foreach (var item in Model.Take(4).ToList())
+            @foreach (var item in Model)
             {
                 <div class="col">
                     <div class="card  border-success mb-3">
@@ -28,7 +28,7 @@
                             </small>
                             <table style="border:0px;">
                                 <tr>
-                                    <td colspan="4"><span id="current_timer"></span></td>
+                                    <td colspan="4"><span id="current_timer" class="current_timer"></span></td>
                                 </tr>
                             </table>
                         </div>
@@ -40,7 +40,7 @@
 </div>
 <script>
     $(function () {
-        $('#current_timer').countdowntimer({
+        $('.current_timer').countdowntimer({
             currentTime: true,
             size: "sm"
         });
