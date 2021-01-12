@@ -12,6 +12,7 @@
         <div class="row row-cols-1 row-cols-md-2 g-4 border" style="padding:10px;">
             @foreach (var item in Model)
             {
+                <input type="hidden" id="hdnStartTime" value="@item.Bundle_Auction_StartDate" />
                 <div class="col">
                     <div class="card  border-success mb-3">
                         <img src="~/Images/iPhone11ProMax.jpg" class="card-img-top" style="height:350px;" alt="...">
@@ -39,10 +40,19 @@
     </div>
 </div>
 <script>
+    //$(function () {
+    //    $('.current_timer').countdowntimer({
+    //        currentTime: true,
+    //        size: "sm"
+    //    });
+    //});
+
     $(function () {
-        $('.current_timer').countdowntimer({
-            currentTime: true,
-            size: "sm"
+        $(".current_timer").countdowntimer({
+            dateAndTime: $("#hdnStartTime").val(),
+            size: "sm",
+            regexpMatchFormat: "([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})",
+            regexpReplaceWith: "$1<sup>days</sup>/$2<sup>hours</sup>/$3<sup>minutes</sup>/$4<sup>seconds</sup>"
         });
     });
 </script>
