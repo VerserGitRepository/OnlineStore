@@ -29,7 +29,7 @@ namespace OnlineStore.WebUI.Controllers
             var assets = new List<AssetListModel>();
             return PartialView(assets);
         }
-        [HttpPost]
+        [HttpGet]
         public ActionResult AuctionAssetList(int BundleId)
         {
             var assets = OrdersServices.AuctionAssetList(BundleId).Result;
