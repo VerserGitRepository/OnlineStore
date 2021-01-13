@@ -11,13 +11,13 @@
             <th>MEMORY</th>
             <th>COLOUR</th>
             <th>GRADE</th>
-            <th>ITEMTYPE</th>         
+            <th>ITEMTYPE</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr> 
+            <tr>
                 <td>@item.SSN</td>
                 <td>@item.Make</td>
                 <td>@item.Model</td>
@@ -25,7 +25,7 @@
                 <td>@item.Memory</td>
                 <td>@item.Colour</td>
                 <td>@item.Grade</td>
-                <td>@item.ItemTypeName</td>   
+                <td>@item.ItemTypeName</td>
             </tr>
         }
     </tbody>
