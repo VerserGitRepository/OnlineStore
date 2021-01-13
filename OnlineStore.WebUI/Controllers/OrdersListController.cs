@@ -191,7 +191,12 @@ namespace OnlineStore.WebUI.Controllers
             var returnflag = OrdersServices.CreateAuctionBundle(AddnewBundleModel).Result;
             return RedirectToAction("Index", "OrdersList");
         }
+        public ActionResult _UpdateBundle(int bundleId)
+        {
+            var assets = OrdersServices.AuctionBundleByID(bundleId).Result;
+            return PartialView("_UpdateBundle", assets);
+        }
 
-        
+
     }
 }

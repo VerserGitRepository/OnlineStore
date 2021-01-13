@@ -311,7 +311,7 @@
                         </div>
                     </div>
                 </div>
-                <table class="table caption-top">
+                <table class="table caption-top" id="AssetAuctionTable">
                     <caption>AUCTION ASSET BUNDLES</caption>
                     <thead>
                         <tr>
@@ -326,14 +326,15 @@
                     <tbody>
                         @foreach (var item in Model.AuctionBundleList)
                         {
-                            <tr>
-                                <th scope="row">@item.Id</th>
-                                <td>@item.BundleTitle</td>
-                                <td>@item.Bundle_Auction_StartDate</td>
-                                <td>@item.Bundle_Auction_EndDate</td>
-                                <td>@item.BundleBaseprice</td>
-                                <td>@item.IsAuctionBundleActive</td>
-                            </tr>
+                        <tr>
+                            <th scope="row">@item.Id</th>
+                            <td><a href="javascript:void(0);" class="EditBundleDetails" data-id="@item.Id" style="font-weight:600;color:dodgerblue">@Html.DisplayFor(modelItem => item.BundleTitle) </a></td>
+                            <td>@item.BundleTitle</td>
+                            <td>@item.Bundle_Auction_StartDate</td>
+                            <td>@item.Bundle_Auction_EndDate</td>
+                            <td>@item.BundleBaseprice</td>
+                            <td>@item.IsAuctionBundleActive</td>
+                        </tr>
                         }
                         </tbody>
                 </table>
@@ -501,6 +502,36 @@
             backgroundDismiss: true,
 
             useBootstrap: false,
+            title: '',
+            content: data,
+            closeIcon: true,
+            buttons: {
+            yes: { isHidden: true }
+            },
+            });
+                },
+                error: function (result) { alert(result); console.log(result);}
+            });
+        });
+    });
+
+    $(function () {
+        $("#AssetAuctionTable").on("click", ".EditBundleDetails", function () {
+            debugger;
+            var $buttonClicked = $(this);
+            var bundleId = $buttonClicked.attr('data-id');
+            var AddSiteURL = '@Url.Action("_UpdateBundle", "OrdersList")'
+            $.ajax({
+            type: "GET",
+                url: AddSiteURL,
+                data: { "bundleId": bundleId },
+            success: function (data) {
+
+            $.confirm({
+            boxWidth: '700px',
+            useBootstrap: false,
+            backgroundDismiss: true,
+
             title: '',
             content: data,
             closeIcon: true,
