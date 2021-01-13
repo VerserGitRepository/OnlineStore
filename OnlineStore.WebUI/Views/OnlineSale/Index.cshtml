@@ -53,8 +53,8 @@
 
 @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 15).OrderByDescending(m => m.Id).Take(4).ToList())
 {
-    <div style="padding-left:100px;padding-right:100px;padding-bottom:5px;">
-        <div class="col-md-3">
+    <div style="padding-left:100px;padding-right:100px;">
+        <div class="col-md-3" style="margin-top:20px">
             <div class="card">
                 <div class="caption" style="padding:2px;">
                     <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
@@ -65,8 +65,8 @@
                     <p class="card-text"></p>
                 </div>
                 <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
-                    <div class="card-footer bg-success">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
+                    <div class="card-footer bg-success" style="padding:0">
+                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
                     </div>
                 </a>
             </div>
@@ -76,8 +76,8 @@
 
 @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 40).OrderByDescending(m => m.Id).Take(4).ToList())
 {
-    <div style="padding-left:100px;padding-right:100px;padding-top:5px;">
-        <div class="col-md-3">
+    <div style="padding-left:100px;padding-right:100px;">
+        <div class="col-md-3" style="margin-top:10px">
             <div class="card">
                 <div class="caption" style="padding:2px;">
                     <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
@@ -88,8 +88,8 @@
                     <p class="card-text"></p>
                 </div>
                 <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
-                    <div class="card-footer bg-success">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
+                    <div class="card-footer bg-success" style="padding:0">
+                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
                     </div>
                 </a>
             </div>
@@ -99,8 +99,8 @@
 
 @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.Id).Take(4).ToList())
 {
-    <div style="padding-left:100px;padding-right:100px;padding-top:5px;">
-        <div class="col-md-3">
+    <div style="padding-left:100px;padding-right:100px;">
+        <div class="col-md-3" style="margin-top:10px">
             <div class="card">
                 <div class="caption" style="padding:2px;">
                     <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
@@ -111,8 +111,8 @@
                     <p class="card-text"></p>
                 </div>
                 <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
-                    <div class="card-footer bg-success">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
+                    <div class="card-footer bg-success" style="padding:0">
+                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
                     </div>
                 </a>
             </div>
@@ -123,7 +123,7 @@
 @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 1).OrderByDescending(m => m.Id).Take(4).ToList())
 {
     <div style="padding-left:100px;padding-right:100px;">
-        <div class="col-md-3">
+        <div class="col-md-3" style="margin-top:10px">
             <div class="card">
                 <div class="caption" style="padding:2px;">
                     <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
@@ -134,8 +134,8 @@
                     <p class="card-text"></p>
                 </div>
                 <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
-                    <div class="card-footer bg-success">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
+                    <div class="card-footer bg-success" style="padding:0">
+                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
                     </div>
                 </a>
             </div>
@@ -145,8 +145,8 @@
 
 @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 2).OrderByDescending(m => m.Id).Take(4).ToList())
 {
-    <div style="padding-left:100px;padding-right:100px;padding-bottom:5px;">
-        <div class="col-md-3">
+    <div style="padding-left:100px;padding-right:100px;">
+        <div class="col-md-3" style="margin-top:10px">
             <div class="card">
                 <div class="caption" style="padding:2px;">
                     <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
@@ -157,8 +157,8 @@
                     <p class="card-text"></p>
                 </div>
                 <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
-                    <div class="card-footer bg-success">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART
+                    <div class="card-footer bg-success" style="padding:0">
+                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
                     </div>
                 </a>
             </div>
@@ -260,6 +260,7 @@
                 -webkit-transform: scale(1.2);
                 transform: scale(1.2);
             }
+
 
     .img-thumbnail {
         border: 0px;

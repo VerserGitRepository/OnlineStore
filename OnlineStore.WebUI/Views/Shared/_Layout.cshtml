@@ -37,8 +37,8 @@
 
 
 
-            <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11" style="width:550px;position:absolute;left:25%">
-                <input class="flipkart-navbar-input col-xs-11" placeholder="Search for Products, Brands and more" name="" id="txtSearchProduct">
+            <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11" style="width:550px;position:absolute;left:25%;">
+                <input class="flipkart-navbar-input col-xs-11" placeholder="Search for Products, Brands and more" name="" id="txtSearchProduct" >
                 <button class="flipkart-navbar-button col-xs-1" id="searchProduct" style="position: absolute">
                     <svg width="15px" height="15px">
                         <path d="M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 "></path>
@@ -100,7 +100,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav" id="nav-space" style="font-size:16px;padding:0 60px;display:block">
+            <ul class="nav navbar-nav" style="font-size:16px;display:block;">
                 <li class="nav-item">@Html.ActionLink("Online Store", "Index", "OnlineSale")</li>
                 <li class="nav-item">@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
                 <li class="nav-item">@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
@@ -223,18 +223,12 @@
         padding-top: 50px;
     }
 
-    #nav-space {
-        display: flex;
-        justify-content: space-between;
-        list-style-type: none;
-    }
-
-    .nav-item {
+    li.nav-item {
         padding: 0 20px;
         display: inline;
     }
 
-    .nav-item a{
+    li.nav-item a{
         color: white !important;
     }
 
