@@ -61,14 +61,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-5">
+                            <div class="col-sm-4">
                                 <div class="card border-info mb-3">
                                     <div class="card-header">Bundle Full Description</div>
                                     <p class="card-text">@Model.BundleDescription</p>
                                 </div>
                             </div>
-                            <div class="col-sm-3" style="overflow-y: scroll;">
-                                <div class="card border-info mb-5">
+                            <div class="col-sm-4" style="overflow-y: scroll;">
+                                <div class="card border-info mb-4">
                                     <div class="card-header" style="color:green;font-weight:700;">Live Bidings (@DateTime.Now.ToShortDateString())</div>
                                     <p class="card-text"><p id="discussion" style="height: 200px;overflow-y: scroll;">
                                         @foreach (var _bids in Model.BidTime_Price)
@@ -240,7 +240,8 @@
                     });
                 });
 
-                    $('#btnassetList').click(function () {
+                $('#btnassetList').click(function ()
+                {
 
                     let FK_Bid_AuctionBundleID = $('#Hdn_BundleID').val();
                     var AddSiteURL = '@Url.Action("AuctionAssetList", "AssetAuction")'
