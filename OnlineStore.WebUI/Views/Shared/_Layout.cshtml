@@ -17,15 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - VERSER STORE</title>
 </head>
-
-
-
-
 <body>
-
-    @*Top Search bar*@
-
-
     <div class="search-bar" style="background-color:black;min-width:1566px">
         <div class="col-lg-3" style="vertical-align: central;width:200px">
             <div class="row" style="vertical-align: central;padding-left: 50px; width:200px">
@@ -34,10 +26,7 @@
         </div>
 
         <div id="flipkart-navbar" style="background-color:black">
-
-
-
-            <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11" style="width:550px;position:absolute;left:25%;">
+            <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11" style="width:550px;position:absolute;left:25%">
                 <input class="flipkart-navbar-input col-xs-11" placeholder="Search for Products, Brands and more" name="" id="txtSearchProduct">
                 <button class="flipkart-navbar-button col-xs-1" id="searchProduct" style="position: absolute">
                     <svg width="15px" height="15px">
@@ -45,19 +34,15 @@
                     </svg>
                 </button>
             </div>
-
-
-            <div class="user-info" style="float:right;width:240px;margin:20px 0 0 0;position:absolute;right:12%">
+            <div class="user-info" style="float:right;width:240px;margin:20px 0 0 0;position:absolute;right:5%">
                 <ul style="list-style-type: none;width:240px">
                     @if (@Session["Username"] != null)
                     {
                         if (Session["SiteAdmin"] != null && Session["SiteAdmin"].Equals("True"))
                         {
-
                             <li class="user-info-item">@Html.ActionLink("Auction", "Index", "AssetAuction")</li>
                             <li class="user-info-item">@Html.ActionLink("OrdersList", "Index", "OrdersList")</li>
                             <li class="user-info-item">@Html.ActionLink("Logout", "Login", "Login")</li>
-
                         }
                         else
                         {
@@ -72,56 +57,36 @@
                         <li>@Html.ActionLink("Login", "Login", "Login")</li>
                     }
                 </ul>
-
             </div>
-
-
-
-            <div class="navbar-right" style="vertical-align:bottom;color:white;position:absolute;right:8%">
+            <div class="navbar-right" style="vertical-align:bottom;color:white;position:absolute;right:5%">
                 @Html.Action("Summary", "ShoppingCart")
             </div>
             @if (@Session["productinformation"] != null)
             {
                 <input type="hidden" id="productinfo" style="position: absolute; left: 1350px;" value='@Session["productinformation"].ToString()' />
             }
-
-
-
-
         </div>
     </div>
-
-
     @*Nav Bar*@
-
-
     <nav class="navbar navbar-expand-lg navbar-light" style="padding-top:6px, inherit; padding:0; border:none;min-width:1566px">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color:orange;">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <<<<<<< HEAD
-            <ul class="nav navbar-nav" style="font-size:16px; display: flex;">
-                <li class="nav-item">@Html.ActionLink("Online Store", "Index", "OnlineSale")</li>
-                =======
-                <ul class="nav navbar-nav" id="nav-space" style="font-size:16px;padding:0 60px;display:block">
-                    <li class="nav-item">@Html.ActionLink("Best Sellers", "Index", "OnlineSale")</li>
-                    >>>>>>> 8ac2e6559998870aa91d7e9271c20ac8b47fdcd2
-                    <li class="nav-item">@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
-                    <li class="nav-item">@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
-                    <li class="nav-item">@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
-                    <li class="nav-item">@Html.ActionLink("Desktop PC", "DesktopPC", "OnlineSale")</li>
-                    <li class="nav-item">@Html.ActionLink("Ipad", "IPad", "OnlineSale")</li>
-                    <li class="nav-item">@Html.ActionLink("Accessories", "Mobile", "OnlineSale")</li>
-                    <li class="nav-item">@Html.ActionLink("Printer", "Printer", "OnlineSale")</li>
-                    <li class="nav-item">@Html.ActionLink("Servers", "Server", "OnlineSale")</li>
-                    <li class="nav-item">@Html.ActionLink("Network Gears", "NetworkGear", "OnlineSale")</li>
-                    <li id="faq" class="nav-item no-border">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
-                </ul>
-
+            <ul class="nav navbar-nav" id="nav-space" style="font-size:16px;padding:0 60px;display:block">
+                <li class="nav-item">@Html.ActionLink("Best Sellers", "Index", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Desktop PC", "DesktopPC", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Ipad", "IPad", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Accessories", "Mobile", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Printer", "Printer", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Servers", "Server", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Network Gears", "NetworkGear", "OnlineSale")</li>
+                <li id="faq" class="nav-item no-border">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+            </ul>
         </div>
-
-
     </nav>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:35px;margin:35px">
         <div class="modal-dialog">
@@ -228,22 +193,20 @@
         padding-top: 50px;
     }
 
-    .nav {
-        padding: 0 !important;
-    }
-
-    .navbar-nav {
-        padding: 0 !important;
+    #nav-space {
+        display: flex;
+        justify-content: space-between;
+        list-style-type: none;
     }
 
     .nav-item {
-        padding: 0 !important;
+        padding: 0 20px;
+        display: inline;
     }
 
-    li.nav-item a {
-        color: white !important;
-        padding: 12px 12px !important;
-    }
+        .nav-item a {
+            color: white !important;
+        }
 
     .no-border {
         border-right: none;
