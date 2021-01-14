@@ -7,8 +7,11 @@
         <div class="card-header">
             <h4 class="card-text">@Model.BundleTitle</h4>
         </div>
+
+
         <div class="card-body">
             <div class="row">
+
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-body">
@@ -23,31 +26,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-8">
+
+
+
+
+                <div class="col-sm-8" style="min-height:450px">
                     <div class="card">
                         <div class="card-body">
-                            <div class="col-sm-4">
-                                <div class="card border-info mb-3">
-                                    <div class="card-header" style="color:green;font-size:small;font-weight:700">Current Price $@Model.BundleBaseprice  No Reserve</div>
+                            <div class="col-sm-4" style="min-height:350px; overflow:hidden">
+                                <div class="card border-info mb-3" style="height:20%">
+                                    <div class="card-header" style="color:green;font-size:small;font-weight:700; max-height:36px">Current Price $@Model.BundleBaseprice  No Reserve</div>
 
-                                    <div class="card-body">
+                                    <div class="card-body" style="min-height:299px">
                                         <div class="row">
-                                            <div class="col-md-6 offset-md-1" style="padding-bottom:15px;">
-                                                <input type="submit" class="btn-danger btn-sm" value="Quick Bid $@Model.BundleQuickBidPrice" id="QuickBidBtn" />
-                                                <input type="hidden" value="@Model.PostQuickBidPrice" id="Hdn_BundleQuickBidPrice" />
-                                            </div>
-                                            <div class="col-md-9 offset-md-1">
-                                                <input type="text" placeholder="$ Biding Amount Here.." id="message" />
-                                                <a href="#" class="btn btn-success btn-sm" id="sendmessage" value="Send">BID</a>
+
+                                            <div class="col-md-9" style="min-width:100%; margin-top:40px">
+                                                <input type="text" placeholder="Biding Amount Here" id="message" style="width:74%" />
+                                                <a href="#" class="btn btn-success btn-sm" id="sendmessage" value="Send">Bid</a>
                                                 <input type="hidden" value="@Model.Id" id="Hdn_BundleID" />
                                             </div>
-                                            <div class="col-md-6 offset-md-1">
-                                                <p style="padding-top:20px;">
-                                                    <a href="#" class="btn btn-success btn">BUY NOW $@Model.BundleBuyPrice</a>
+
+                                            <div class="col-md-6" style="padding:15px; min-width:100%; overflow:hidden" ">
+                                                <input type="submit" class="btn-danger btn-sm" value="Quick Bid $@Model.BundleQuickBidPrice" />
+                                                <input type="hidden" value="@Model.PostQuickBidPrice" id="Hdn_BundleQuickBidPrice" />
+                                            </div>
+
+                                            <div class="col-md-6" style="padding:0 15px 15px 15px; min-width:100%; overflow:hidden">
+                                                <p>
+                                                    <a href="#" class="btn btn-success btn">Buy Now $@Model.BundleBuyPrice</a>
                                                 </p>
                                             </div>
-                                            <div class="col-md-6 offset-md-1" style="padding-top:10px;">
+
+                                            <div class="col-md-6" style="padding-top:10px;min-width:100%">
                                                 <span id="current_timer"></span>
+
                                                 <script>
                                                     $(function () {
                                                         $('#current_timer').countdowntimer({
@@ -61,16 +73,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="card border-info mb-3">
-                                    <div class="card-header">Bundle Full Description</div>
-                                    <p class="card-text">@Model.BundleDescription</p>
+
+
+                            <div class="col-sm-4" style="min-height:350px">
+                                <div class="card border-info mb-3" style="min-height:335px">
+                                    <div class="card-header" style="color:green; font-weight:700">Bundle Full Description</div>
+                                    <p class="card-text" style="text-align:justify; padding:15px 5px">@Model.BundleDescription</p>
                                 </div>
                             </div>
-                            <div class="col-sm-4" style="overflow-y: scroll;">
-                                <div class="card border-info mb-4">
+
+
+                            <div class="col-sm-4" style="overflow-y: scroll; min-height:350px">
+                                <div class="card border-info" style="min-height:335px">
                                     <div class="card-header" style="color:green;font-weight:700;">Live Bidings (@DateTime.Now.ToShortDateString())</div>
-                                    <p class="card-text"><p id="discussion" style="height: 200px;overflow-y: scroll;">
+                                    <p class="card-text"><p id="discussion" style="height: 280px;overflow-y: scroll; margin:0">
                                         @foreach (var _bids in Model.BidTime_Price)
                                         {
                                             @_bids<br />
@@ -78,9 +94,11 @@
                                     </p>
                                 </div>
                             </div>
+
+
                             <div class="col-sm-12">
-                                <div class="card">
-                                    <div class="card-body">
+                                <div class="card" style="border:none">
+                                    <div class="card-body" style="padding-left:0;">
                                         <div class="pull-left" style="padding-right:20px;">
                                             <input type="submit" class="btn btn-warning" value="Assets Reference List" id="btnassetList" name="btnassetList" />
                                         </div>
@@ -115,13 +133,15 @@
                 <div class="col-sm-12">
                     <div class="card border-info">
                         <div class="card-header" style="color:green;font-weight:700;">Live Bidings (@DateTime.Now.ToShortDateString())</div>
+                        <div class="text-div" style="min-height:300px">
                         <p class="card-text">
-                        <p id="discussion" style="overflow-y: scroll;">
+                        <p style="overflow-y: scroll;">
                             @foreach (var _bids in Model.BidTime_Price)
                             {
                                 @_bids<br />
                             }
                         </p>
+                        </div>
                     </div>
                 </div>
             </div>
