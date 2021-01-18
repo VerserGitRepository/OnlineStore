@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div class="search-bar" style="background-color:black;min-width:1566px">
+    <div class="search-bar" style="background-color:black;min-width:100%">
         <div class="col-lg-3" style="vertical-align: central;width:200px">
             <div class="row" style="vertical-align: central;padding-left: 50px; width:200px">
                 <a href="@Url.Action("Index", "OnlineSale")">                 
@@ -30,10 +30,8 @@
 
         <div id="flipkart-navbar" style="background-color:black">
 
-
-
-            <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11" style="width:650px;position:absolute;left:28%;">
-                <input class="flipkart-navbar-input col-xs-11" placeholder="Search for Products, Brands and more" name="" id="txtSearchProduct" >
+            <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11" style="width:650px;position:absolute;left:25%;">
+                <input class="flipkart-navbar-input col-xs-11" placeholder="Search for Products, Brands and more" name="" id="txtSearchProduct">
                 <button class="flipkart-navbar-button col-xs-1" id="searchProduct" style="position: absolute">
                     <svg width="15px" height="15px">
                         <path d="M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 "></path>
@@ -41,38 +39,7 @@
                 </button>
             </div>
 
-
-            <div class="user-info" style="float:right;width:240px;margin:20px 0 0 0;position:absolute;left:88%">
-                <ul style="list-style-type: none;width:240px">
-                    @if (@Session["Username"] != null)
-                    {
-                        if (Session["SiteAdmin"] != null && Session["SiteAdmin"].Equals("True"))
-                        {
-
-                            <li class="user-info-item">@Html.ActionLink("Auction", "Index", "AssetAuction")</li>
-                            <li class="user-info-item">@Html.ActionLink("OrdersList", "Index", "OrdersList")</li>
-                            <li class="user-info-item">@Html.ActionLink("Logout", "Login", "Login")</li>
-
-                        }
-                        else
-                        {
-                            <li class="user-info-item">@Html.ActionLink("Auction", "Index", "AssetAuction")</li>
-                            <li class="user-info-item">@Html.ActionLink("Profile", "Index", "PublicUserProfile")</li>
-                            <li class="user-info-item">@Html.ActionLink("Logout", "Login", "Login")</li>
-                        }
-
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Login", "Login", "Login")</li>
-                    }
-                </ul>
-
-            </div>
-
-
-
-            <div class="navbar-right" style="vertical-align:bottom;color:white;position:absolute;left:70%">
+            <div class="navbar-right" style="vertical-align:bottom;color:white;position:absolute;left:76%;">
                 @Html.Action("Summary", "ShoppingCart")
             </div>
             @if (@Session["productinformation"] != null)
@@ -80,8 +47,54 @@
                 <input type="hidden" id="productinfo" style="position: absolute; left: 1350px;" value='@Session["productinformation"].ToString()' />
             }
 
+            <nav class="navbar navbar-expand-lg navbar-light" style="margin:0;left:75%;max-width:200px">
+                <div class="collapse navbar-collapse" style="padding:0; max-width:100% !important; background-color:black">
+                    <ul class="navbar-nav mr-auto">
+
+                        @if (@Session["Username"] != null)
+                        {
+                            if (Session["SiteAdmin"] != null && Session["SiteAdmin"].Equals("True"))
+                            {
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        UserName
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:black!important">Auction</a>
+                                        <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:black!important">Profile</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:black!important">Logout</a>
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        UserName
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:black!important">Auction</a>
+                                        <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:black!important">Profile</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:black!important">Logout</a>
+                                    </div>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li class="nav-item dropdown" style="background-color:black;">
+                                <a class="dropdown-item" id="login-btn" href="@Url.Action("Login", "Login")" style="background-color:black">Login</a>
+                            </li>
+                        }
 
 
+                    </ul>
+                </div>
+            </nav>
 
         </div>
     </div>
@@ -207,21 +220,9 @@
         padding:0 5px;
     }
 
-    .navbar-right {
-        padding-top: 5px;
-    }
-
     .navbar-collapse {
         background-color: orange;
         padding-top: 58px;
-
-    }
-
-    .nav {
-
-    }
-
-    .navbar-nav {
 
     }
 
@@ -243,6 +244,10 @@
         transition: .35s;
     }
 
+    #login-btn:hover {
+        background-color:darkorange;
+    }
+
     .modal-backdrop {
         background: none;
     }
@@ -252,6 +257,7 @@
         background-color: black;
         border-color: transparent;
         padding-top:4px;
+        margin-top:18px;
     }
 
     .flipkart-navbar-input {
