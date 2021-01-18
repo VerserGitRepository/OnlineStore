@@ -37,62 +37,76 @@
                     </svg>
                 </button>
             </div>
-            <div class="navbar-right" style="vertical-align:bottom;color:white;position:absolute;left:76%;">
+
+
+
+
+
+            <div class="navbar-left" style="vertical-align:bottom;color:white;position:absolute;left:84%">
                 @Html.Action("Summary", "ShoppingCart")
             </div>
-            @if (@Session["productinformation"] != null)
-            {
-                <input type="hidden" id="productinfo" style="position: absolute; left: 1350px;" value='@Session["productinformation"].ToString()' />
-            }
-            <nav class="navbar navbar-expand-lg navbar-light" style="margin:0;left:75%;max-width:200px">
-                <div class="collapse navbar-collapse" style="padding:0; max-width:100% !important; background-color:black">
-                    <ul class="navbar-nav mr-auto">
-                        @if (@Session["Username"] != null)
-                        {
-                            if (Session["SiteAdmin"] != null && Session["SiteAdmin"].Equals("True"))
-                            {
 
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        @Session["Username"].ToString()
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:black!important">Auction</a>
-                                        <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:black!important">Profile</a>
-                                        <a class="dropdown-item" href="@Url.Action("Index", "OrdersList")" style="color:black!important">Admin Console</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:black!important">Logout</a>
-                                    </div>
-                                </li>
+                @if (@Session["productinformation"] != null)
+                {
+                    <input type="hidden" id="productinfo" style="margin:0" value='@Session["productinformation"].ToString()' />
+                }
+
+
+
+
+
+
+
+
+                <nav class="navbar navbar-expand-lg navbar-light" style="margin:0;max-width:200px;border:none;padding-left:0;background-color:transparent;position:absolute;left:88%">
+                    <div class="collapse navbar-collapse" style="padding:0; max-width:100% !important; background-color:transparent">
+                        <ul class="navbar-nav mr-auto">
+                            @if (@Session["Username"] != null)
+                            {
+                                if (Session["SiteAdmin"] != null && Session["SiteAdmin"].Equals("True"))
+                                {
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            @Session["Username"].ToString()
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:black!important">Auction</a>
+                                            <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:black!important">Profile</a>
+                                            <a class="dropdown-item" href="@Url.Action("Index", "OrdersList")" style="color:black!important">Admin Console</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:black!important">Logout</a>
+                                        </div>
+                                    </li>
+                                }
+                                else
+                                {
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            @Session["Username"].ToString()
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:black!important">Auction</a>
+                                            <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:black!important">Profile</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:black!important">Logout</a>
+                                        </div>
+                                    </li>
+                                }
                             }
                             else
                             {
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        @Session["Username"].ToString()
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:black!important">Auction</a>
-                                        <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:black!important">Profile</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:black!important">Logout</a>
-                                    </div>
+                                <li class="nav-item dropdown" style="background-color:black;">
+                                    <a class="dropdown-item" id="login-btn" href="@Url.Action("Login", "Login")" style="background-color:black">Login</a>
                                 </li>
                             }
-                        }
-                        else
-                        {
-                            <li class="nav-item dropdown" style="background-color:black;">
-                                <a class="dropdown-item" id="login-btn" href="@Url.Action("Login", "Login")" style="background-color:black">Login</a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </nav>
+                        </ul>
+                    </div>
+                </nav>
 
+            </div>
         </div>
-    </div>
 
     <nav class="navbar navbar-expand-lg navbar-light" style="padding-top:6px, inherit; padding:0; border:none; background-color:orange;">
         @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color:orange;">
@@ -250,8 +264,8 @@
         color: white;
         background-color: black;
         border-color: transparent;
-        padding-top: 4px;
-        margin-top: 18px;
+        padding:8px 10px 8px 10px;
+        margin:15px 15px 15px 0;
     }
 
     .flipkart-navbar-input {
