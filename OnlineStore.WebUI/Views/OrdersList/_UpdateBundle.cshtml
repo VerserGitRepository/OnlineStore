@@ -53,12 +53,45 @@
                 <div class="mb-2">
                     @using (Html.BeginForm("Index", "AssetAuction", FormMethod.Post))
                     {
-                        <input type="submit" class="btn btn-success btn-lg" value="CREATE" id="exampleFormControlInput1">
+                        <input type="submit" class="btn btn-success btn-lg" value="UPDATE" id="exampleFormControlInput1">
                     }
                 </div>
             </div>
         }
         </div>
 </div>
+<script>
+    $('#exampleFormControlInput1').click(function () { $('#exampleFormControlInput1').trigger('click'); });
+    $('#exampleFormControlInput1').on('change', function (event) {
+        var formdata = new FormData(); //FormData object
+        var fileInput = document.getElementById('exampleFormControlInput1');
+        //Iterating through each files selected in fileInput
+        for (i = 0; i < fileInput.files.length; i++) {
+            //Appending each file to FormData object
+            formdata.append(fileInput.files[i].name, fileInput.files[i]);
+        }
+
+        formdata.append("FileUpload", "exampleFormControlInput1");
+        //Creating an XMLHttpRequest and sending
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/AssetAuction/Update');
+        xhr.send(formdata);
+        xhr.onreadystatechange = function (data) {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                $.confirm({
+
+                    content: 'The file has been uploaded successfully.',
+                    boxWidth: '370px',
+                    useBootstrap: false,
+                    buttons: {
+                        OK: function () {
+
+                        }
+                    }
+                });
+            }
+        }
+    });
+</script>
 
 

@@ -69,5 +69,18 @@ namespace OnlineStore.WebUI.Controllers
             Response.End();
             return RedirectToAction("Index", "AssetAuction");
         }
+
+        [HttpPost]
+        public ActionResult Create()
+        {
+            var fileType = Request.Form["FileUpload"];
+            return Json(null);
+        }
+        [HttpPost]
+        public ActionResult Update()
+        {
+            var fileType = Request.Form["FileUpload"];
+            return Json(null);
+        }
     }
 }

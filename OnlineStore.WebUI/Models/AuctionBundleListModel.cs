@@ -12,6 +12,7 @@ namespace OnlineStore.WebUI.Models
 			ImageNames = new List<string>();
 		}
 		public int Id { get; set; }
+		public byte[] ProductImage { get; set; }
 		public string BundleTitle { get; set; }
 		public string BundleDescription { get; set; }
 		public decimal BundleBaseprice { get; set; }
