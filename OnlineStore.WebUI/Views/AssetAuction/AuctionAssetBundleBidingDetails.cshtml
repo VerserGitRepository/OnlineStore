@@ -7,11 +7,8 @@
         <div class="card-header">
             <h4 class="card-text">@Model.BundleTitle</h4>
         </div>
-
-
         <div class="card-body">
             <div class="row">
-
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-body">
@@ -26,20 +23,14 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
                 <div class="col-sm-8" style="min-height:450px">
                     <div class="card">
                         <div class="card-body">
                             <div class="col-sm-4" style="min-height:350px; overflow:hidden">
                                 <div class="card border-info mb-3" style="height:20%">
                                     <div class="card-header" style="color:green;font-size:small;font-weight:700; max-height:36px">Current Price $@Model.BundleBaseprice  No Reserve</div>
-
                                     <div class="card-body" style="min-height:299px">
                                         <div class="row">
-
                                             <div class="col-md-9" style="min-width:100%; margin-top:40px">
                                                 <input type="text" placeholder="Biding Amount Here" id="message" style="width:74%" />
                                                 <a href="#" class="btn btn-success btn-sm" id="sendmessage" value="Send">Bid</a>
@@ -56,7 +47,6 @@
                                                     <a href="#" class="btn btn-success btn">Buy Now $@Model.BundleBuyPrice</a>
                                                 </p>
                                             </div>
-
                                             <div class="col-md-6" style="padding-top:10px;min-width:100%">
                                                 <span id="current_timer"></span>
 
@@ -73,16 +63,12 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="col-sm-4" style="min-height:350px">
                                 <div class="card border-info mb-3" style="min-height:335px">
                                     <div class="card-header" style="color:green; font-weight:700">Bundle Full Description</div>
                                     <p class="card-text" style="text-align:justify; padding:15px 5px">@Model.BundleDescription</p>
                                 </div>
                             </div>
-
-
                             <div class="col-sm-4" style="overflow-y: scroll; min-height:350px">
                                 <div class="card border-info" style="min-height:335px">
                                     <div class="card-header" style="color:green;font-weight:700;">Live Bidings (@DateTime.Now.ToShortDateString())</div>
@@ -94,8 +80,6 @@
                                     </p>
                                 </div>
                             </div>
-
-
                             <div class="col-sm-12">
                                 <div class="card" style="border:none">
                                     <div class="card-body" style="padding-left:0;">
