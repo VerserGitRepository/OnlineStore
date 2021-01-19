@@ -88,7 +88,14 @@
         <div>
             <input type="hidden" id="hdnQty" name="hdnQty" />
             <input type="hidden" id="hdnprice" name="hdnprice" />
-            <button class="btn-success" style="align-content:center;border-radius:30px"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+            @if (Model.QtyAvailable > 0)
+            {
+                <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+            }
+            else
+            {
+                <h3>Sold Out</h3>
+            }
         </div>
             }
             <br />

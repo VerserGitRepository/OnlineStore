@@ -77,9 +77,16 @@
                         @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
                         {
                             //@Html.Hidden(item.Id.ToString());
-                            <div>
-                                <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
-                            </div>
+                    <div>
+                        @if (item.QtyAvailable > 0)
+                        {
+                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                        }
+                        else
+                        {
+                            <h3>Sold Out</h3>
+                        }
+                    </div>
                         }
                     </div>
                 </div>
@@ -104,9 +111,16 @@
                             @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery, @quantity = 1, @price = item.PriceIncGST }, FormMethod.Post))
                             {
                                 //@Html.Hidden(item.Id.ToString());
-                                <div>
-                                    <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
-                                </div>
+                        <div>
+                            @if (item.QtyAvailable > 0)
+                            {
+                                <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                            }
+                            else
+                            {
+                                <h3>Sold Out</h3>
+                            }
+                        </div>
                             }
                             <div class="space-ten"></div>
                         </div>

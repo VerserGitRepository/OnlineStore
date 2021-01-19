@@ -64,11 +64,21 @@
                 <div class="card-body">
                     <p class="card-text"></p>
                 </div>
-                <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
-                    <div class="card-footer bg-success" style="padding:0">
-                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
+                {
+                    //@Html.Hidden(item.Id.ToString());
+                    <div>
+                        @if (item.QtyAvailable > 0)
+                        {
+                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                        }
+                        else
+                        {
+                            <h3>Sold Out</h3>
+                        }
                     </div>
-                </a>
+
+                }
             </div>
         </div>
     </div>
@@ -87,11 +97,21 @@
                 <div class="card-body">
                     <p class="card-text"></p>
                 </div>
-                <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
-                    <div class="card-footer bg-success" style="padding:0">
-                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
+                {
+                    //@Html.Hidden(item.Id.ToString());
+                    <div>
+                        @if (item.QtyAvailable > 0)
+                        {
+                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                        }
+                        else
+                        {
+                            <h3>Sold Out</h3>
+                        }
                     </div>
-                </a>
+
+                }
             </div>
         </div>
     </div>
@@ -110,11 +130,21 @@
                 <div class="card-body">
                     <p class="card-text"></p>
                 </div>
-                <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
-                    <div class="card-footer bg-success" style="padding:0">
-                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
+                {
+                    //@Html.Hidden(item.Id.ToString());
+                    <div>
+                        @if (item.QtyAvailable > 0)
+                        {
+                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                        }
+                        else
+                        {
+                            <h3>Sold Out</h3>
+                        }
                     </div>
-                </a>
+
+                }
             </div>
         </div>
     </div>
@@ -133,11 +163,21 @@
                 <div class="card-body">
                     <p class="card-text"></p>
                 </div>
-                <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
-                    <div class="card-footer bg-success" style="padding:0">
-                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
+                {
+                    //@Html.Hidden(item.Id.ToString());
+                    <div>
+                        @if (item.QtyAvailable > 0)
+                        {
+                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                        }
+                        else
+                        {
+                            <h3>Sold Out</h3>
+                        }
                     </div>
-                </a>
+
+                }
             </div>
         </div>
     </div>
