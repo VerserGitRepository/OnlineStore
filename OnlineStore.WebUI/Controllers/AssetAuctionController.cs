@@ -74,12 +74,42 @@ namespace OnlineStore.WebUI.Controllers
         public ActionResult Create()
         {
             var fileType = Request.Form["FileUpload"];
+
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                HttpPostedFileBase file = Request.Files[i]; //Uploaded file
+                                                            //Use the following properties to get file's name, size and MIMEType
+                int fileSize = file.ContentLength;
+             
+                string mimeType = file.ContentType;
+                if (!Directory.Exists(Server.MapPath("..") + "//ProductImages//"))
+                {
+                    Directory.CreateDirectory(Server.MapPath("..") + "//ProductImages//");
+                }
+                file.SaveAs(Server.MapPath("..") + "//ProductImages//" + Request.Files[i].FileName);
+            }
+
             return Json(null);
         }
         [HttpPost]
         public ActionResult Update()
         {
             var fileType = Request.Form["FileUpload"];
+
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                HttpPostedFileBase file = Request.Files[i]; //Uploaded file
+                                                            //Use the following properties to get file's name, size and MIMEType
+                int fileSize = file.ContentLength;
+              
+                string mimeType = file.ContentType;
+                if (!Directory.Exists(Server.MapPath("..") + "//ProductImages//"))
+                {
+                    Directory.CreateDirectory(Server.MapPath("..") + "//ProductImages//");
+                }
+                file.SaveAs(Server.MapPath("..") + "//ProductImages//" + Request.Files[i].FileName);
+            }
+
             return Json(null);
         }
     }

@@ -63,6 +63,7 @@
 <script>
     $('#exampleFormControlInput1').click(function () { $('#exampleFormControlInput1').trigger('click'); });
     $('#exampleFormControlInput1').on('change', function (event) {
+        debugger;
         var formdata = new FormData(); //FormData object
         var fileInput = document.getElementById('exampleFormControlInput1');
         //Iterating through each files selected in fileInput
