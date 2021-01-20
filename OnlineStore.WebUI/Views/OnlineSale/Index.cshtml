@@ -27,8 +27,10 @@
                     i++;
                     var active = i == 1 ? "active" : "";
                     <div class="item @active" style="background-color:slategray">
-                        <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="LoadSingleProductPage(@item.Id);" style="width:16%;" class="img-responsive" />
-                    </div>
+                        <a href="@Url.Action("CarsoleProductsPage", "OnlineSale")">  
+                            <img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:16%;height:250px;overflow:hidden" class="img-responsive" />    
+                        </a>
+                   </div>
                 }
             </div>
            @*//Left and right controls*@
