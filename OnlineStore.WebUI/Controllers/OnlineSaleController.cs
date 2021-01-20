@@ -44,7 +44,6 @@ namespace OnlineStore.WebUI.Controllers
         {         
             return View();
         }
-
         [HttpPost]
         public ActionResult SingleProductPage(int ProductId)
         {
@@ -59,6 +58,13 @@ namespace OnlineStore.WebUI.Controllers
             int No_Of_Page = Page_No;
             return View(size.ToPagedList(No_Of_Page, Size_Of_Page));
 
+        }
+        public ActionResult CarsoleProductsPage(int Page_No = 1)
+        {
+            var size = SaleProducts.Where(m => m.IsCarouselProduct ==true);
+            int Size_Of_Page = 10;
+            int No_Of_Page = Page_No;
+            return View(size.ToPagedList(No_Of_Page, Size_Of_Page));
         }
         public ActionResult Laptop(int Page_No = 1)
         {

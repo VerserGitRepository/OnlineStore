@@ -1,0 +1,270 @@
+﻿
+@using System.Linq;
+@model PagedList.IPagedList<OnlineStore.WebUI.Models.OnlineSaleProduct>
+@using PagedList.Mvc;
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="~/Scripts/ProductPage.js"></script>
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="offset-sm-8">
+        @Html.PagedListPager(Model, Page_No => Url.Action("Mobile", "OnlineSale",
+            new { Page_No }))
+        <div class="utils-viewtoggle">
+            <span class="utils-viewtoggle-label">
+                View as
+            </span>
+            <button class="utils-viewtoggle-button" id="gridViewBtn" onclick="ReloadPageWithDifferentView(this);">
+
+                <svg class="icon-list " aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">      <path fill="currentColor" fill-rule="nonzero" d="M2 0h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 2v16h16V2H2zm3 3h10v2H5V5zm0 4h10v2H5V9zm0 4h10v2H5v-2z"></path>    </svg>
+            </button>
+            <button class="utils-viewtoggle-button active" id="listViewBtn" onclick="ReloadPageWithDifferentView(this);">
+                <svg class="icon-grid " aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">      <path fill="currentColor" fill-rule="nonzero" d="M2 0h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 2v16h16V2H2zm3 3h4v4H5V5zm6 0h4v4h-4V5zm-6 6h4v4H5v-4zm6 0h4v4h-4v-4z"></path>    </svg>
+            </button>
+        </div>
+    </div>
+    <input type="hidden" value="true" id="viewType" />
+    @if (Model.Count() > 0 && Model.First().IsViewTypeGrid)
+    {
+        <div style="padding-left:100px;padding-right:100px;">
+
+            @foreach (var item in Model)
+            {
+
+                <div class="row" style="margin-top:30px;background: #eee;padding: 3em;line-height: 1.5em;">
+                    <div class="item-photo">
+                        <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:320px;height:280px;" class="img-responsive" />
+                    </div>
+                    <div class="col-xs-5">
+                        <h3>@item.ProductName</h3>
+                        <h5 style="color:#337ab7">@item.BrandName</h5>
+                        <h6 class="title-price"><small>PRICE</small></h6>
+                        <h4 style="margin-top:0px;">AUD $@item.PriceIncGST</h4>
+
+                        @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery, @quantity = 1, @price = item.PriceIncGST }, FormMethod.Post))
+                        {
+                            //@Html.Hidden(item.Id.ToString());
+                            <div>
+                                @if (item.QtyAvailable > 0)
+                                {
+                                    <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                                }
+                                else
+                                {
+                                    <h3>Sold Out</h3>
+                                }
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+
+        <div style="padding-left:100px;padding-right:100px;">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h5 class="pull-right">$@item.PriceIncGST</h5>
+                                <h6>@item.ProductName</h6>
+                                <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:280px;" class="img-responsive" /></p>
+                            </div>
+                            @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery, @quantity = 1, @price = item.PriceIncGST }, FormMethod.Post))
+                            {
+                                //@Html.Hidden(item.Id.ToString());
+                                <div>
+                                    @if (item.QtyAvailable > 0)
+                                    {
+                                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                                    }
+                                    else
+                                    {
+                                        <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
+                                    }
+                                </div>
+
+                            }
+                            <div class="space-ten"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    <div id="spinner" style="display:none;">
+        <img src="~/Images/ajax-loader.gif" />
+    </div>
+</body>
+</html>
+<style>
+    .thumbnail {
+        border: 1px solid #ddd;
+    }
+
+    ul > li {
+        margin-right: 0px;
+        font-weight: lighter;
+        cursor: pointer
+    }
+
+    div.row {
+        border: 0px;
+        border-radius: 0px;
+    }
+
+    li.active {
+        border-bottom: 3px solid silver;
+    }
+
+    .item-photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid #f6f6f6;
+    }
+
+    .menu-items {
+        list-style-type: none;
+        font-size: 11px;
+        display: inline-flex;
+        margin-bottom: 0;
+        margin-top: 20px
+    }
+
+    .btn-success {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .section {
+        width: 70%;
+        margin-left: -15px;
+        padding: 2px;
+        padding-left: 5px;
+        padding-right: 5px;
+        background: #f8f9f9
+    }
+
+    .title-price {
+        margin-top: 30px;
+        margin-bottom: 0;
+        color: black
+    }
+
+    .title-attr {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: black;
+    }
+
+    .btn-minus {
+        cursor: pointer;
+        font-size: 7px;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid gray;
+        border-radius: 2px;
+        border-right: 0;
+    }
+
+    .btn-plus {
+        cursor: pointer;
+        font-size: 7px;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid gray;
+        border-radius: 2px;
+        border-left: 0;
+    }
+
+    div.section > div {
+        width: 100%;
+        display: inline-flex;
+    }
+
+        div.section > div > input {
+            margin: 0;
+            padding-left: 5px;
+            font-size: 10px;
+            padding-right: 5px;
+            max-width: 18%;
+            text-align: center;
+        }
+
+    .attr, .attr2 {
+        cursor: pointer;
+        margin-right: 5px;
+        height: 20px;
+        font-size: 10px;
+        padding: 2px;
+        border: 1px solid gray;
+        border-radius: 2px;
+    }
+
+        .attr.active, .attr2.active {
+            border: 1px solid orange;
+        }
+</style>
+
+<script>
+    function ShowProductDetailPage(ProductId) {
+        var objSpinner = null;
+
+        $.ajax({
+            type: "GET",
+            data: { "ProductId": ProductId },
+            url: '@Url.Action("ProductDetail", "OnlineSale")',
+            beforeSend: function () {
+                objSpinner = $.alert({
+                    boxWidth: '50px',
+                    useBootstrap: false,
+                    title: '',
+                    content: $("#spinner").html(),
+                    buttons: {
+                        yes: { isHidden: true }
+                    }
+                })
+            },
+            success: function (data) {
+                $("#spinner").hide();
+                objSpinner.close();
+                $.confirm({
+                    boxWidth: '800px',
+                    useBootstrap: false,
+                    title: '',
+                    content: data,
+                    closeIcon: true,
+
+                    buttons: {
+                        yes: { isHidden: true }
+                    },
+                });
+            }
+        });
+    }
+
+    function ReloadPageWithDifferentView(control) {
+        $.ajax({
+            type: "GET",
+            data: {
+                "view": control.id,"viewName":"Mobile" },
+            url: '@Url.Action("RenderView", "OnlineSale")',
+            success: function (data) {
+                location.reload(true);
+            }
+        });
+    }
+</script>
