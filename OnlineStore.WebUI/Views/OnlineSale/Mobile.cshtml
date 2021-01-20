@@ -1,17 +1,15 @@
 ﻿@using System.Linq;
 @model PagedList.IPagedList<OnlineStore.WebUI.Models.OnlineSaleProduct>
 @using PagedList.Mvc;
-<!DOCTYPE html>
-<html>
-<body>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <script src="~/Scripts/ProductPage.js"></script>
-
+<!DOCTYPE html>
+<html>
+<body>
     <div class="offset-sm-8">
         @Html.PagedListPager(Model, Page_No => Url.Action("Mobile", "OnlineSale",
             new { Page_No }))
-
         <div class="utils-viewtoggle">
             <span class="utils-viewtoggle-label">
                 View as
@@ -28,7 +26,7 @@
     <input type="hidden" value="true" id="viewType" />
     @if (Model.Count() > 0 && Model.First().IsViewTypeGrid)
     {
-<div class="container">
+<div style="padding-left:100px;padding-right:100px;">
  
     @foreach (var item in Model)
     {

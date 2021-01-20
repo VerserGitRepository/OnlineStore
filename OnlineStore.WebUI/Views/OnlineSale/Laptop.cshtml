@@ -6,8 +6,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script src="~/Scripts/ProductPage.js"></script>
 <html>
-
-
 <body>
     <div class="offset-sm-8">
         @Html.PagedListPager(Model, Page_No => Url.Action("Laptop", "OnlineSale",
@@ -32,7 +30,7 @@
             {
                 <div class="row" style="margin-top: 30px;background: #eee;padding: 3em;line-height: 1.5em;">
 
-                    <div class="col-xs-4 item-photo">
+                    <div class="item-photo">
                         <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" alt="Submit" width="230" height="230">
                     </div>
                     <div class="col-xs-5" style="border:0px solid gray">
@@ -68,7 +66,7 @@
             <div class="row">
                 @foreach (var item in Model)
                 {
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="thumbnail">
                             <div class="caption">
                                 <h5 class="pull-right">$@item.PriceIncGST</h5>
