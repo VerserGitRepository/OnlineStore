@@ -92,8 +92,6 @@
             <input type="hidden" id="productinfo" style="margin:0" value='@Session["productinformation"].ToString()' />
         }
     </div>
-        </div>
-
     <nav class="navbar navbar-expand-lg navbar-light" style=" padding:5px 10px 0 0 !important; border:none; background-color:orange; margin-bottom:0">
         @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color:orange;">
                 <span class="navbar-toggler-icon"></span>
@@ -107,11 +105,11 @@
                     <li class="nav-item">@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
                     <li class="nav-item">@Html.ActionLink("Desktop PC", "DesktopPC", "OnlineSale")</li>
                     <li class="nav-item">@Html.ActionLink("iPad", "IPad", "OnlineSale")</li>
-                    <li class="nav-item">@Html.ActionLink("Accessories", "Mobile", "OnlineSale")</li>
-                    <li class="nav-item">@Html.ActionLink("Printer", "Printer", "OnlineSale")</li>
                     <li class="nav-item">@Html.ActionLink("Servers", "Server", "OnlineSale")</li>
-                    <li class="nav-item">@Html.ActionLink("Network Gears", "NetworkGear", "OnlineSale")</li>
-                    <li id="faq" class="nav-item no-border">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+                    <li class="nav-item">@Html.ActionLink("Printer", "Printer", "OnlineSale")</li>
+                    <li class="nav-item">@Html.ActionLink("Accessories", "Mobile", "OnlineSale")</li>
+                    @*<li class="nav-item">@Html.ActionLink("Network Gears", "NetworkGear", "OnlineSale")</li>*@
+                    <li id="faq" class="nav-item no-border"> <a href="https://verser.com.au/" target="_blank" style="color:dodgerblue;font-weight:500">Verser Services</a></li>
                 </ul>
             </div>
         </div>
@@ -165,15 +163,16 @@
         @RenderBody()
     </div>
     @RenderSection("scripts", required: false)
-    <div class="my_footer text-center text-muted" style="bottom:0;position:page; width:100%;background-color:lightgray;color:dodgerblue;font-size:smaller">
-        The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
-        <img src="~/Images/PaymentOptions.PNG" />
+<div class="my_footer text-center text-muted" style="bottom:0;position:page; width:100%;background-color:lightgray;color:dodgerblue;font-size:smaller">
+    The @Session["CustomerName"] Site is Managed By <a href="https://verser.com.au/" target="_blank" style="color:dodgerblue;font-weight:500">Verser Technology Lifecycles</a> &copy; @DateTime.Now.Year
+    <img src="~/Images/PaymentOptions.PNG" />
 
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-            Terms & Conditions
-        </button>
-        ContactUs: <a href="tel:+61 1800 732 668" style="color:dodgerblue">+61 1800 732 668</a>  Mail: <a href="mailto:Support@verser.com.au" style="color:dodgerblue">Support@verser.com.au</a>
-    </div>
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+        Terms & Conditions
+    </button>
+    ContactUs: <a href="tel:+61 1800 732 668" style="color:dodgerblue">+61 1800 732 668</a>  Mail: <a href="mailto:Support@verser.com.au" style="color:dodgerblue">Support@verser.com.au</a>
+    @Html.ActionLink("FAQ", "FAQ", "Home",null, new { @class = "FaqLink" })
+</div>
 </body>
 </html>
 
@@ -297,6 +296,11 @@
         display: block;
         color: blue;
         text-indent: -9999px;
+    }
+
+    .FaqLink {        
+        color: dodgerblue;
+        font-weight:600;
     }
 </style>
 
