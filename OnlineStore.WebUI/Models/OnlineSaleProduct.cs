@@ -11,8 +11,7 @@ namespace OnlineStore.WebUI.Models
     {
         public OnlineSaleProduct()
         {
-            Images = new List<string>();
-            
+            Images = new List<string>();            
         }
         public int Id { get; set; }
         //[Required("Model is mandatory")]
@@ -54,7 +53,8 @@ namespace OnlineStore.WebUI.Models
         [Newtonsoft.Json.JsonIgnore]
         public HttpPostedFileBase[] files { get; set; }
         public bool IsProductActive { get; set; } = true;
-        public bool IsMainPageProduct { get; set; }= true;
+        public bool IsMainPageProduct { get; set; } = true;
+        public bool IsCarouselProduct { get; set; }
         public bool IsUpdateProduct { get; set; }
         public bool IsViewTypeGrid { get; set; }
 
