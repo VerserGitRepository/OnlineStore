@@ -70,11 +70,11 @@
                     <div>
                         @if (item.QtyAvailable > 0)
                         {
-                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                            <button class="btn-success" style="align-content:center;background-color:#5cb85c;border-color:#4cae4c"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
                         }
                         else
                         {
-                            <h3>Sold Out</h3>
+                            <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
                         }
                     </div>
 
@@ -103,11 +103,11 @@
                     <div>
                         @if (item.QtyAvailable > 0)
                         {
-                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                            <button class="btn-success" style="align-content:center;background-color:#5cb85c;border-color:#4cae4c"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
                         }
                         else
                         {
-                            <h3>Sold Out</h3>
+                            <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
                         }
                     </div>
 
@@ -136,11 +136,11 @@
                     <div>
                         @if (item.QtyAvailable > 0)
                         {
-                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                            <button class="btn-success" style="align-content:center; background-color:#5cb85c;border-color:#4cae4c"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
                         }
                         else
                         {
-                            <h3>Sold Out</h3>
+                            <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
                         }
                     </div>
 
@@ -169,11 +169,11 @@
                     <div>
                         @if (item.QtyAvailable > 0)
                         {
-                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                            <button class="btn-success" style="align-content:center;background-color:#5cb85c;border-color:#4cae4c"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
                         }
                         else
                         {
-                            <h3>Sold Out</h3>
+                            <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
                         }
                     </div>
 
@@ -198,7 +198,7 @@
                 </div>
                 <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
                     <div class="card-footer bg-success" style="padding:0">
-                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                        <button class="btn-success" style="align-content:center;background-color:#5cb85c;border-color:#4cae4c"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
                     </div>
                 </a>
             </div>
@@ -303,4 +303,8 @@
         width: 100%;
         border-radius:0px;
     }
+
+        .btn-success:hover {
+            background-color: #28a745 !important;
+        }
 </style>
