@@ -282,7 +282,11 @@
             type: "Post",
             data: { "ProductId": ProductId },
             url: '@Url.Action("SingleProductPage", "OnlineSale")'                 
-        });
+        }).done(function (res) {
+            window.location.href = res.newUrl;
+        }).fail(function (xhr, a, error) {
+            console.log(error);
+        });;
     }
 
 </script>
