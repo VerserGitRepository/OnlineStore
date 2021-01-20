@@ -41,15 +41,21 @@ namespace OnlineStore.WebUI.Controllers
         }
 
         public ActionResult SingleProductPage()
-        {         
-            return View();
+        {
+            int ProductId = Convert.ToInt32(TempData["productIdcarousel"]);
+            var productdeatiledModel = new OnlineSaleProduct();
+            productdeatiledModel = OrdersServices.OnlineSaleProductById(ProductId).Result;
+            return View(productdeatiledModel);
         }
         [HttpPost]
         public ActionResult SingleProductPage(int ProductId)
         {
+            TempData["productIdcarousel"] = ProductId;
             var productdeatiledModel = new OnlineSaleProduct();
             productdeatiledModel = OrdersServices.OnlineSaleProductById(ProductId).Result;
-            return View(productdeatiledModel);         
+
+            return Json(new { newUrl = Url.Action("SingleProductPage", "OnlineSale") }, JsonRequestBehavior.AllowGet);
+           // return View(productdeatiledModel);         
         }
         public ActionResult Mobile(int Page_No = 1)
         {
