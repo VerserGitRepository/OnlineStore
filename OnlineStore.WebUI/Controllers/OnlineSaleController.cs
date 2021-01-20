@@ -39,6 +39,19 @@ namespace OnlineStore.WebUI.Controllers
             Session["productinformation"] = prodinfo;
             return View(MainpageproductView);
         }
+
+        public ActionResult SingleProductPage()
+        {         
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SingleProductPage(int ProductId)
+        {
+            var productdeatiledModel = new OnlineSaleProduct();
+            productdeatiledModel = OrdersServices.OnlineSaleProductById(ProductId).Result;
+            return View(productdeatiledModel);         
+        }
         public ActionResult Mobile(int Page_No = 1)
         {
             var size = SaleProducts.Where(m => m.ItemType_ID == 15);
