@@ -20,16 +20,15 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="border-radius:0;margin-bottom:0 !important; background-color:black;">
-        <div class="col">
-            <a href="@Url.Action("Index", "OnlineSale")">
-                <img src="~/Images/VerserLogo.png" style="width:110px;height:60px;" />
-            </a>
+    <div class="search-bar" style="background-color:black; z-index:30; justify-content: space-between; display: flex;">
+        <div style="vertical-align: central; margin:0">
+            <div style="vertical-align: central;padding-left: 30%; max-width:8%">
+                <a href="@Url.Action("Index", "OnlineSale")">
+                    <img src="~/Images/VerserLogo.png" style="width:110px;height:60px; margin-right:80px" />
+                </a>
+            </div>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border:2px solid gray">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="flipkart-navbar-search col-sm-8" style="max-width:650px">
+        <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11" style="max-width:650px; z-index:12;">
             <input class="flipkart-navbar-input col-xs-11" placeholder="Search for Products, Brands and more" name="" id="txtSearchProduct" style="float:left; max-width:91%">
             <button class="flipkart-navbar-button col-xs-1" id="searchProduct" style="float:left">
                 <svg width="15px" height="15px">
@@ -37,95 +36,86 @@
                 </svg>
             </button>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:black;">
-            <ul class="navbar-nav mr-auto" style="float:right; padding-right:40px">
-                <li class="nav-item" style="overflow:hidden">
-                    <div>
-                        @Html.Action("Summary", "ShoppingCart")
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index", "ShoppingCart")">
-                        <span class="glyphicon glyphicon-shopping-cart"></span>
-                    </a>
-                    @if (@Session["productinformation"] != null)
-                    {
-                        <input type="hidden" id="productinfo" style="margin:0" value='@Session["productinformation"].ToString()' />
-                    }
 
-                    @if (@Session["productinformation"] != null)
-                    {
-                        <input type="hidden" id="productinfo" style="margin:0" value='@Session["productinformation"].ToString()' />
-                    }
-                </li>
-                @if (@Session["Username"] == null)
-                {
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Login", "Login")">Login</a>
-                    </li>
-                }
-                @if (@Session["Username"] != null)
-                {
-                    if (Session["SiteAdmin"] != null && Session["SiteAdmin"].Equals("True"))
-                    {
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px !important;">
-                                @Session["Username"].ToString()
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:14px !important; background-color:white">
-                                <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:black!important">Auction</a>
-                                <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:black!important">Profile</a>
-                                <a class="dropdown-item" href="@Url.Action("Index", "OrdersList")" style="color:black!important">Admin Console</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:black!important">Logout</a>
-                            </div>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @Session["Username"].ToString()
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:14px !important; background-color:white">
-                                <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:black!important">Auction</a>
-                                <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:black!important">Profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:black!important">Logout</a>
-                            </div>
-                        </li>
-                    }
-                }
+        <div class="user-bar" style="width:320px; height:63px; margin-right:60px">
+            <nav class="navbar navbar-expand-lg navbar-light" style="padding:5px 10px 0 10px;margin:5px 10px 5px 0;border:none;background-color:transparent;float:right;">
+                <div class="collapse navbar-collapse" style="padding:0; max-width:100% !important; background-color:transparent">
+                    <ul class="navbar-nav mr-auto">
+                        @if (@Session["Username"] != null)
+                        {
+                            if (Session["SiteAdmin"] != null && Session["SiteAdmin"].Equals("True"))
+                            {
 
-            </ul>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px !important;">
+                                        @Session["Username"].ToString()
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:14px !important;">
+                                        <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:black!important">Auction</a>
+                                        <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:black!important">Profile</a>
+                                        <a class="dropdown-item" href="@Url.Action("Index", "OrdersList")" style="color:black!important">Admin Console</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:black!important">Logout</a>
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        @Session["Username"].ToString()
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:black!important">Auction</a>
+                                        <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:black!important">Profile</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:black!important">Logout</a>
+                                    </div>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li class="nav-item dropdown" style="background-color:black;">
+                                <a class="dropdown-item" id="login-btn" href="@Url.Action("Login", "Login")" style="background-color:black">Login</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="navbar-right" style="vertical-align:bottom;color:white;position:relative;float:left;min-width:180px; font-size:14px !important;overflow:hidden">
+                @Html.Action("Summary", "ShoppingCart")
+            </div>
+
+            @if (@Session["productinformation"] != null)
+            {
+                <input type="hidden" id="productinfo" style="margin:0" value='@Session["productinformation"].ToString()' />
+            }
 
         </div>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="width:100%;border:none; background-color:orange; margin-bottom:0; margin-top:0">
+
+        <ul class="nav navbar-nav" style="font-size:16px;display: flex;width:100%;padding-top: 58px;display: flex; margin:0 80px; overflow:hidden">
+            <li class="nav-item" style=" flex: 1; text-align: center;">@Html.ActionLink("Best Sellers", "Index", "OnlineSale")</li>
+            <li class="nav-item" style=" flex: 1; text-align: center;">@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
+            <li class="nav-item" style=" flex: 1; text-align: center;">@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
+            <li class="nav-item" style=" flex: 1; text-align: center;">@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
+            <li class="nav-item" style=" flex: 1; text-align: center;">@Html.ActionLink("Desktop PC", "DesktopPC", "OnlineSale")</li>
+            <li class="nav-item" style=" flex: 1; text-align: center;">@Html.ActionLink("iPad", "IPad", "OnlineSale")</li>
+            <li class="nav-item" style=" flex: 1; text-align: center;">@Html.ActionLink("Accessories", "Mobile", "OnlineSale")</li>
+            <li class="nav-item" style=" flex: 1; text-align: center;">@Html.ActionLink("Printer", "Printer", "OnlineSale")</li>
+            <li class="nav-item" style=" flex: 1; text-align: center;">@Html.ActionLink("Servers", "Server", "OnlineSale")</li>
+            <li class="nav-item" style=" flex: 1; text-align: center;">@Html.ActionLink("Network Gears", "NetworkGear", "OnlineSale")</li>
+            <li id="faq" class="nav-item no-border" style=" flex: 1; text-align: center;">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+        </ul>
+
+
     </nav>
-
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:orange; padding:0 16px;margin-bottom:0 !important; justify-content:flex-end;border-radius:0;">
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Product-navbar" aria-controls="Product-navbar" aria-expanded="false" aria-label="Toggle navigation" style="border:1px solid gray">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-        <div class="collapse navbar-collapse" id="Product-navbar">
-            <ul class=" navbar-nav mr-auto" style="margin-left:10%">
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Best Sellers", "Index", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Desktop PC", "DesktopPC", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("iPad", "IPad", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Accessories", "Mobile", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Printer", "Printer", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Servers", "Server", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Network Gears", "NetworkGear", "OnlineSale")</li>
-                <li id="faq" class="nav-item no-border" style="padding:8px 12px">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
-            </ul>
-        </div>
-    </nav>
-
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:35px;margin:35px">
         <div class="modal-dialog">
 
