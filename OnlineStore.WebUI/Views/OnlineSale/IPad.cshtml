@@ -11,96 +11,94 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <div class="container-fluid" style="max-width:95%;padding:0;">
-        <div class="offset-sm-8">
-            @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
-            @Html.PagedListPager(Model, Page_No => Url.Action("IPad", "OnlineSale",
-                new { Page_No }))
-            <div class="utils-viewtoggle">
-                <span class="utils-viewtoggle-label">
-                    View as
-                </span>
-                <button class="utils-viewtoggle-button" id="gridViewBtn" onclick="ReloadPageWithDifferentView(this);">
-                    <svg class="icon-list " aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">      <path fill="currentColor" fill-rule="nonzero" d="M2 0h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 2v16h16V2H2zm3 3h10v2H5V5zm0 4h10v2H5V9zm0 4h10v2H5v-2z"></path>    </svg>
-                </button>
-                <button class="utils-viewtoggle-button active" id="listViewBtn" onclick="ReloadPageWithDifferentView(this);">
-                    <svg class="icon-grid " aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">      <path fill="currentColor" fill-rule="nonzero" d="M2 0h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 2v16h16V2H2zm3 3h4v4H5V5zm6 0h4v4h-4V5zm-6 6h4v4H5v-4zm6 0h4v4h-4v-4z"></path>    </svg>
-                </button>
-            </div>
+    <div class="offset-sm-8">
+        @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+        @Html.PagedListPager(Model, Page_No => Url.Action("IPad", "OnlineSale",
+            new { Page_No }))
+        <div class="utils-viewtoggle">
+            <span class="utils-viewtoggle-label">
+                View as
+            </span>
+            <button class="utils-viewtoggle-button" id="gridViewBtn" onclick="ReloadPageWithDifferentView(this);">
+                <svg class="icon-list " aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">      <path fill="currentColor" fill-rule="nonzero" d="M2 0h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 2v16h16V2H2zm3 3h10v2H5V5zm0 4h10v2H5V9zm0 4h10v2H5v-2z"></path>    </svg>
+            </button>
+            <button class="utils-viewtoggle-button active" id="listViewBtn" onclick="ReloadPageWithDifferentView(this);">
+                <svg class="icon-grid " aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">      <path fill="currentColor" fill-rule="nonzero" d="M2 0h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 2v16h16V2H2zm3 3h4v4H5V5zm6 0h4v4h-4V5zm-6 6h4v4H5v-4zm6 0h4v4h-4v-4z"></path>    </svg>
+            </button>
         </div>
-        @if (Model.Count() > 0 && Model.First().IsViewTypeGrid)
-        {
-            <div>
+    </div>
+    @if (Model.Count() > 0 && Model.First().IsViewTypeGrid)
+    {
+        <div style="padding:0 100px;">
+            @foreach (var item in Model)
+            {
+                <div class="row" style="margin-top: 30px;background: #eee;padding: 3em;line-height: 1.5em;">
+                    <div class="item-photo">
+                        @*<img style="max-width:100%;" src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg" />*@
+                        <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" />
+                    </div>
+                    <div class="col-xs-5" style="border:0px solid gray">
+                        <h3>@item.ProductName</h3>
+                        <h5 style="color:#337ab7">@item.BrandName</h5>
+                        <h6 class="title-price"><small>PRICE</small></h6>
+                        <h3 style="margin-top:0px;">AUD @item.PriceIncGST</h3>
+                        @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery, @quantity = 1, @price = item.PriceIncGST }, FormMethod.Post))
+                        {
+                            //@Html.Hidden(item.Id.ToString());
+                    <div>
+                        @if (item.QtyAvailable > 0)
+                        {
+                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                        }
+                        else
+                        {
+                            <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
+                        }
+                    </div>
+                        }
+                    </div>
+                </div>
+
+            }
+        </div>
+    }
+    else
+    {
+        <div style="padding:0 100px;">
+            <div class="row">
                 @foreach (var item in Model)
                 {
-                    <div class="row" style="margin-top: 30px;background: #eee;padding: 3em;line-height: 1.5em;">
-                        <div class="item-photo">
-                            @*<img style="max-width:100%;" src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg" />*@
-                            <img style="max-width:100%;" src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" />
-                        </div>
-                        <div class="col-xs-5" style="border:0px solid gray">
-                            <h3>@item.ProductName</h3>
-                            <h5 style="color:#337ab7">@item.BrandName</h5>
-                            <h6 class="title-price"><small>PRICE</small></h6>
-                            <h3 style="margin-top:0px;">AUD @item.PriceIncGST</h3>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h5 class="pull-right">$@item.PriceIncGST</h5>
+                                <h6>@item.ProductName</h6>
+                                <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>
+                            </div>
                             @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery, @quantity = 1, @price = item.PriceIncGST }, FormMethod.Post))
                             {
                                 //@Html.Hidden(item.Id.ToString());
-                                <div>
-                                    @if (item.QtyAvailable > 0)
-                                    {
-                                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
-                                    }
-                                    else
-                                    {
-                                        <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
-                                    }
-                                </div>
+                        <div>
+                            @if (item.QtyAvailable > 0)
+                            {
+                                <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                            }
+                            else
+                            {
+                                <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
                             }
                         </div>
+                            }
+                            <div class="space-ten"></div>
+                        </div>
                     </div>
-
                 }
             </div>
-        }
-        else
-        {
-            <div>
-                <div class="row">
-                    @foreach (var item in Model)
-                    {
-                        <div class="col-md-3">
-                            <div class="thumbnail">
-                                <div class="caption">
-                                    <h5 class="pull-right">$@item.PriceIncGST</h5>
-                                    <h6>@item.ProductName</h6>
-                                    <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:260px;height:280px;" class="img-responsive" /></p>
-                                </div>
-                                @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery, @quantity = 1, @price = item.PriceIncGST }, FormMethod.Post))
-                                {
-                                    //@Html.Hidden(item.Id.ToString());
-                                    <div>
-                                        @if (item.QtyAvailable > 0)
-                                        {
-                                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
-                                        }
-                                        else
-                                        {
-                                            <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
-                                        }
-                                    </div>
-                                }
-                                <div class="space-ten"></div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
-        }
-    </div>
-        <div id="spinner" style="display:none;">
-            <img src="~/Images/ajax-loader.gif" />
         </div>
+    }
+    <div id="spinner" style="display:none;">
+        <img src="~/Images/ajax-loader.gif" />
+    </div>
 </body>
 </html>
 <style>
@@ -232,7 +230,7 @@
                 $("#spinner").hide();
                 objSpinner.close();
                 $.confirm({
-                    boxWidth: '90%',
+                    boxWidth: '800px',
                     useBootstrap: false,
                     title: '',
                     content: data,
