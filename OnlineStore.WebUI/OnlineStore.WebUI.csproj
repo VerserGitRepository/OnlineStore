@@ -583,6 +583,7 @@
     <Content Include="Views\AssetAuction\_AuctionAssetList.cshtml" />
     <Content Include="Views\OrdersList\_UpdateBundle.cshtml" />
     <Content Include="Views\OnlineSale\SingleProductPage.cshtml" />
+    <Content Include="Views\OnlineSale\CarsoleProductsPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
