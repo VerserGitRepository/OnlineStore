@@ -20,13 +20,13 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="border-radius:0;margin-bottom:0 !important; background-color:black; padding:5px 10px;">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="border-radius:0;margin-bottom:0 !important; background-color:black; padding:5px 16px;">
         <div class="col">
             <a href="@Url.Action("Index", "OnlineSale")">
                 <img src="~/Images/VerserLogo.png" style="width:110px;height:60px;" />
             </a>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border:2px solid gray">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border:2px solid gray; border-radius:12px">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="flipkart-navbar-search col-sm-8" style="max-width:650px">
@@ -45,7 +45,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index", "ShoppingCart")" style="padding-left:15px; padding-right:15px">
+                    <a class="nav-link" href="@Url.Action("Index", "ShoppingCart")" style="padding-left:20px; padding-right:20px">
                         <span class="glyphicon glyphicon-shopping-cart"></span>
                     </a>
                     @if (@Session["productinformation"] != null)
@@ -61,7 +61,7 @@
                 @if (@Session["Username"] == null)
                 {
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Login", "Login")" style="padding-left: 15px; padding-right: 15px">Login</a>
+                        <a class="nav-link" href="@Url.Action("Login", "Login")" style="padding-left: 20px; padding-right: 20px">Login</a>
                     </li>
                 }
                 @if (@Session["Username"] != null)
@@ -69,7 +69,7 @@
                     if (Session["SiteAdmin"] != null && Session["SiteAdmin"].Equals("True"))
                     {
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px !important; padding:15px 15px !important;">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px !important; padding:15px 15px !important; padding-left:20px; padding-right:20px">
                                 @Session["Username"].ToString()
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:14px !important; background-color:black">
@@ -84,7 +84,7 @@
                     else
                     {
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px !important; padding:15px 15px !important;">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px !important; padding:15px 15px !important; padding-left:20px; padding-right:20px">
                                 @Session["Username"].ToString()
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:14px !important; background-color:black">
@@ -102,26 +102,26 @@
         </div>
     </nav>
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:orange; padding:0 16px;margin-bottom:0 !important; justify-content:flex-end;border-radius:0;">
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Product-navbar" aria-controls="Product-navbar" aria-expanded="false" aria-label="Toggle navigation" style="border:1px solid gray; margin:10px 0">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:orange; padding:0 16px;margin-bottom:0 !important; border-radius:0; justify-content:center">
+        <a class="navbar-toggler" id="navbarDropdown" role="button" data-toggle="collapse" data-target="#Product-navbar" aria-controls="Product-navbar" aria-expanded="false" aria-label="Toggle navigation" style="margin:12px 0; border:none">
+            <span style="color:white">All products</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16" color="white">
+                <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+            </svg>
+        </a>
         <div class="collapse navbar-collapse" id="Product-navbar">
-            <ul class=" navbar-nav mr-auto" style="margin-left:10%">
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Best Sellers", "Index", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Desktop PC", "DesktopPC", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("iPad", "IPad", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Accessories", "Mobile", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Printer", "Printer", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Servers", "Server", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 12px">@Html.ActionLink("Network Gears", "NetworkGear", "OnlineSale")</li>           
-                <li class="nav-item" style="padding:8px 12px"> <a href="https://verser.com.au/" target="_blank" style="color:dodgerblue;font-weight:500">Verser Services</a></li>
+            <ul class="navbar-nav mr-auto" style="margin-left:9%">
+                <li class="nav-item" style="padding:8px 15px">@Html.ActionLink("Best Sellers", "Index", "OnlineSale")</li>
+                <li class="nav-item" style="padding:8px 15px">@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
+                <li class="nav-item" style="padding:8px 15px">@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
+                <li class="nav-item" style="padding:8px 15px">@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
+                <li class="nav-item" style="padding:8px 15px">@Html.ActionLink("Desktop PC", "DesktopPC", "OnlineSale")</li>
+                <li class="nav-item" style="padding:8px 15px">@Html.ActionLink("iPad", "IPad", "OnlineSale")</li>
+                <li class="nav-item" style="padding:8px 15px">@Html.ActionLink("Accessories", "Mobile", "OnlineSale")</li>
+                <li class="nav-item" style="padding:8px 15px">@Html.ActionLink("Printer", "Printer", "OnlineSale")</li>
+                <li class="nav-item" style="padding:8px 15px">@Html.ActionLink("Servers", "Server", "OnlineSale")</li>
+                <li class="nav-item" style="padding:8px 15px">@Html.ActionLink("Network Gears", "NetworkGear", "OnlineSale")</li>
+                <li class="nav-item" style="padding:8px 15px"> <a href="https://verser.com.au/" target="_blank">Verser Services</a></li>
             </ul>
         </div>
     </nav>
@@ -218,8 +218,7 @@
 
         li.nav-item a {
             color: white !important;
-            font-size:16px;
-            padding:15px 8px;
+            font-size:16px !important;
         }
 
             li.nav-item a:hover {
@@ -268,6 +267,7 @@
     a {
         color: white;
         cursor: pointer;
+        padding:8px 15px;
     }
 
         a:hover {
@@ -293,12 +293,6 @@
         margin-top: 10px;
     }
 
-    a.cartImage {
-        background: url(../Images/cart.png) no-repeat top right;
-        display: block;
-        color: blue;
-        text-indent: -9999px;
-    }
 </style>
 
 <script>
