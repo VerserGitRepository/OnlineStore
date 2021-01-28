@@ -49,7 +49,7 @@
                     <div class="caption" style="padding:2px;">
                         <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
                         <h6 style="font-weight:800">@item.ProductName</h6>
-                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px; margin-left:8%" class="img-responsive" /></p>
+                        <div class="show-product" style="overflow:hidden"><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px; margin-left:8%" class="img-responsive" /></div>
                     </div>
                     @*<div class="card-body">
                         <p class="card-text"></p>
@@ -79,7 +79,7 @@
                     <div class="caption" style="padding:2px;">
                         <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
                         <h6 style="font-weight:800">@item.ProductName</h6>
-                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;  margin-left:8%" class="img-responsive" /></p>
+                        <div class="show-product" style="overflow:hidden"><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;  margin-left:8%" class="img-responsive" /></div>
                     </div>
                     @*<div class="card-body">
                         <p class="card-text"></p>
@@ -109,7 +109,7 @@
                     <div class="caption" style="padding:2px;">
                         <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
                         <h6 style="font-weight:800">@item.ProductName</h6>
-                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;  margin-left:8%" class="img-responsive" /></p>
+                        <div class="show-product" style="overflow:hidden"><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;  margin-left:8%" class="img-responsive" /></div>
                     </div>
                     @*<div class="card-body">
                         <p class="card-text"></p>
@@ -139,7 +139,7 @@
                     <div class="caption" style="padding:2px;">
                         <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
                         <h6 style="font-weight:800">@item.ProductName</h6>
-                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;  margin-left:8%" class="img-responsive" /></p>
+                        <div class="show-product" style="overflow:hidden"><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;  margin-left:8%" class="img-responsive" /></div>
                     </div>
                     @*<div class="card-body">
                         <p class="card-text"></p>
@@ -169,7 +169,7 @@
                     <div class="caption" style="padding:2px;">
                         <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
                         <h6 style="font-weight:800">@item.ProductName</h6>
-                        <p><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;  margin-left:8%" class="img-responsive" /></p>
+                        <div class="show-product" style="overflow:hidden"><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:280px;height:280px;  margin-left:8%" class="img-responsive" /></div>
                     </div>
                     @*<div class="card-body">
                         <p class="card-text"></p>
@@ -249,6 +249,11 @@ function ShowProductDetailPage(ProductId) {
 }
 </script>
 <style>
+    .show-product img:hover {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
     .brand-item {
         left: 0;
         top: 10px;
