@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "AuctionAssetBundleBidingDetails";
 }
-<div class="container-fluid" style="max-width:95%;padding:0;">
+<div class="" style="padding-left:50px;padding-right:50px;padding-bottom:30px;">
     <div class="card text-center">
         <div class="card-header">
             <h4 class="card-text">@Model.BundleTitle</h4>
@@ -11,11 +11,11 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="card">
-                        <div class="card-body" style="overflow:hidden">
+                        <div class="card-body">
                             <img src="~/Images/iphone-xs-silver.jpg" style="height:350px;" id="cardImage" />
                         </div>
                         <div class="card-footer">
-                            <div style="overflow:hidden">
+                            <div>
                                 <img src="~/Images/galaxys9.jpg" style="height:50px;" onclick="document.getElementById('cardImage').src='/Images/galaxys9.jpg'" />
                                 <img src="~/Images/iPhone11ProMax.jpg" style="height:50px;" onclick="document.getElementById('cardImage').src='/Images/iPhone11ProMax.jpg'" />
                                 <img src="~/Images/ipad2.jpg" style="height:50px;" onclick="document.getElementById('cardImage').src='/Images/ipad2.jpg'" />
@@ -83,10 +83,10 @@
                             <div class="col-sm-12">
                                 <div class="card" style="border:none">
                                     <div class="card-body" style="padding-left:0;">
-                                        <div class="pull-left" style="padding-right:20px; padding-bottom:20px">
+                                        <div class="pull-left" style="padding-right:20px;">
                                             <input type="submit" class="btn btn-warning" value="Assets Reference List" id="btnassetList" name="btnassetList" />
                                         </div>
-                                        <div class="pull-left" style="padding-right:20px; padding-bottom:20px">
+                                        <div class="pull-left" style="padding-right:20px;">
                                             <input type="submit" class="btn btn-warning" value="Full History Of Biding" name="btnLink" id="btnLink" />
                                         </div>
                                     </div>
@@ -258,7 +258,7 @@
             success: function (data) {
 
             $.confirm({
-            boxWidth: '100%',
+            boxWidth: '700px',
             useBootstrap: false,
             backgroundDismiss: true,
 
