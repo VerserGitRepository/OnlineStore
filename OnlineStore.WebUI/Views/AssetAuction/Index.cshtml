@@ -27,9 +27,9 @@
                                 }
                                 <label style="font-weight:700;color:orangered">Auction Timer: </label> <label class="pull-right">Current Bid $@item.BundleBaseprice </label>
                             </small>
-                            <table style="border:0px;">
+                            <table style="border:0px; max-width:100%">
                                 <tr>
-                                    <td colspan="4"><span id="current_timer" class="current_timer"></span></td>
+                                    <td ><span id="current_timer" class="current_timer"></span></td>
                                 </tr>
                             </table>
                         </div>
@@ -58,7 +58,7 @@
             dateAndTime: '2021/02/02 10:30:00',
             size: "sm",
             regexpMatchFormat: "([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})",
-            regexpReplaceWith: "$1<sup>days</sup>/$2<sup>hours</sup>/$3<sup>minutes</sup>/$4<sup>seconds</sup>"
+            regexpReplaceWith: "$1<sup>days</sup>/$2<sup>hrs</sup>/$3<sup>mins</sup>/$4<sup>secs</sup>"
         });
     });
 </script>

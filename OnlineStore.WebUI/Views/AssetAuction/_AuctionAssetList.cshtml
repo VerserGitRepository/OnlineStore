@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<OnlineStore.WebUI.Models.AssetListModel>
 @using System.Linq;
-<div class="container" style="padding-top:2px 0 0 0; max-width:670px">
+<div class="container-fluid" style="padding-top:2px 0 0 0; max-width:670px">
     @using (Html.BeginForm("ExportAuctionResult", "AssetAuction",new { BundleId =7 }, FormMethod.Post, null))
     {
         <div class="row">
@@ -38,7 +38,7 @@
             }
         </tbody>
     </table>
-    </div>
+</div>
     <script>
         $(document).ready(function () {
             $('#AssetsTable').DataTable();
