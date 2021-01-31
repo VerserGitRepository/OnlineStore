@@ -26,7 +26,7 @@
             var active = i == 1 ? "active" : "";
             <div class="item @active" style="background-color:slategray">
                 <a href="@Url.Action("CarsoleProductsPage", "OnlineSale")">  
-                    <img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:16%;height:250px;overflow:hidden" class="img-responsive" />    
+                    <img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:20%;height:250px;overflow:hidden" class="img-responsive" />    
                 </a>
             </div>
         }
@@ -49,11 +49,10 @@
                     <div class="caption" style="padding:2px;">
                         <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
                         <h6 style="font-weight:800">@item.ProductName</h6>
-                        <div class="show-product" style="overflow:hidden"><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px; margin-left:8%" class="img-responsive" /></div>
+                        <div class="show-product" style="overflow:hidden; width:100%">
+                            <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px; margin-left:10%" class="img-responsive" />
+                        </div>
                     </div>
-                    @*<div class="card-body">
-                        <p class="card-text"></p>
-                    </div>*@
                     @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
                     {
                         //@Html.Hidden(item.Id.ToString());
@@ -67,7 +66,6 @@
                                 <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
                             }
                         </div>
-
                     }
                 </div>
             </div>

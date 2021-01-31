@@ -252,30 +252,29 @@
            let FK_Bid_AuctionBundleID = $('#Hdn_BundleID').val();
            var AddSiteURL = '@Url.Action("AuctionAssetList", "AssetAuction")'
             $.ajax({
-            type: "GET",
-                url: AddSiteURL,
-                data: { "BundleId": FK_Bid_AuctionBundleID },
-            success: function (data) {
+                type: "GET",
+                    url: AddSiteURL,
+                    data: { "BundleId": FK_Bid_AuctionBundleID },
 
-            $.confirm({
-            boxWidth: '90%',
-            useBootstrap: false,
-            backgroundDismiss: true,
-
-            title: '',
-            content: data,
-            closeIcon: true,
-            buttons: {
-            yes: { isHidden: true }
-            },
-            });
+                success: function (data) {
+                    $.confirm({
+                        boxWidth: '40%',
+                        useBootstrap: false,
+                        title: '',
+                        content: data,
+                        backgroundDismiss: true,
+                        closeIcon: true,
+                        buttons: {
+                            yes: { isHidden: true }
+                        },
+                    });
                 },
-                error: function (result) { alert(result); console.log(result);}
-            });
-                });
-
+                    error: function (result) { alert(result); console.log(result);}
             });
         });
+
+    });
+            });
 
         function htmlEncode(value) {
             var encodedValue = $('<div />').text(value).html();
