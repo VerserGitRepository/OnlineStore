@@ -20,7 +20,6 @@
                 }
             </div>
 
-
         </div>
        
         <div class="col-md-8" style="border:0px solid gray">
@@ -44,10 +43,10 @@
                     @Html.DisplayFor(model => model.QtyAvailable)
                 </div>
                 <div class="col-sm-12" style="font-size:small">
-                    <div class="col-sm-3">
-                        Colour
+                    @*<div class="col-sm-3">
+                        Colour*@
                         @*@Html.DropDownListFor(m => m.Colour, Model.Colours, "Select Colour", new { @class = "form-control", @id = "ddlOrderID", @multiple = "multiple" })*@
-                        @Html.DropDownListFor(model => model.Colour, new List<SelectListItem>
+                        @*@Html.DropDownListFor(model => model.Colour, new List<SelectListItem>
                                 {
                                             new SelectListItem{ Text="Black", Value = "Black" },
                                             new SelectListItem{ Text="White", Value = "White" },
@@ -58,12 +57,12 @@
                                             new SelectListItem{ Text="Gold", Value = "Gold" },
                                             new SelectListItem{ Text="Space Grey", Value = "Space Grey" }
                                 }, "Colours", new { @class = "form-control", style = "Height:40px;font-size:small" })
-                    </div>
-                    <div class="col-sm-3">
-                        Memory
+                    </div>*@
+                    @*<div class="col-sm-3">
+                        Memory*@
                         @*@Html.DropDownListFor(m => m.Size, Model.Sizes, "Select Colour", new { @class = "form-control", @id = "ddlOrderID", @multiple = "multiple" })*@
 
-                        @Html.DropDownListFor(model => model.Size, new List<SelectListItem>
+                        @*@Html.DropDownListFor(model => model.Size, new List<SelectListItem>
                                {
                                            new SelectListItem{ Text="16GB", Value = "16GB" },
                                            new SelectListItem{ Text="32GB", Value = "32GB" },
@@ -73,15 +72,14 @@
                                            new SelectListItem{ Text="1TB", Value = "1TB" },
                                            new SelectListItem{ Text="1.5TB", Value = "1.5TB" },
                                            new SelectListItem{ Text="2TB", Value = "2TB" }
-                               }, "Sizes", new { @class = "form-control", style = "Height:40px;font-size:small" })
-                    </div>
+                               }, "Sizes", new { @class = "form-control", style = "Height:40px;font-size:small" })*@
+                    @*</div>*@
                     <div class="col-sm-3">
                         Quantity
                         @Html.DropDownListFor(m => m.PurchasedQty, Enumerable.Range(1, Model.QtyAvailable).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control", style = "font-size:small", placeholder = "Quantity",@id="ddlQuantity" })
                         @Html.ValidationMessageFor(model => model.PurchasedQty, null, new { @class = "text-danger" })
                     </div>
-                </div>
-                <br />
+                </div>            
             </div>
             @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = Model.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
             {
