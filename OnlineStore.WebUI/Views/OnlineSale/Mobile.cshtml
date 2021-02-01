@@ -74,7 +74,7 @@
                                 <div class="caption">
                                     <h5 class="pull-right">$@item.PriceIncGST</h5>
                                     <h6>@item.ProductName</h6>
-                                    <div class="show-product" style="overflow:hidden"><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px;" class="img-responsive" /></div>
+                                    <div class="show-product" style="overflow:hidden; width:100%; text-align:center"><img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px; display:inline-block" class="img-responsive" /></div>
                                 </div>
                                 @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery, @quantity = 1, @price = item.PriceIncGST }, FormMethod.Post))
                                 {
