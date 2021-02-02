@@ -5,9 +5,6 @@
 <script type="text/javascript" src="~/Scripts/jquery.countdownTimer.min.js"></script>
 <link rel="stylesheet" type="text/css" href="~/Content/jquery.countdownTimer.css" />
 <div class="container-fluid" style="max-width:95%;padding:0;">
-    <div class="card-header border-secondary  mb-3">
-        <h5 style="color:darkgray;font:400;align-content:center"> Asset Auction </h5>
-    </div>
     <div class="card-body" style="overflow:hidden">
         <div class="row row-cols-1 row-cols-md-2 g-4 border" style="padding:10px;">
             @foreach (var item in Model)
@@ -15,7 +12,9 @@
                 <input type="hidden" id="hdnStartTime" value='@item.Bundle_Auction_StartDate.ToString("yyyy/MM/dd HH:MM:ss")' />
                 <div class="col">
                     <div class="card  border-success mb-3">
-                        <img src="~/Images/iPhone11ProMax.jpg" class="card-img-top" style="height:350px;" alt="...">
+                        <div style="text-align:center; overflow:hidden">
+                            <img src="~/Images/iPhone11ProMax.jpg" class="card-img-top" style="height:300px; width:300px; display:inline-block" alt="...">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">@item.BundleTitle</h5>
                         </div>

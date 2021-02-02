@@ -24,7 +24,7 @@
 
 </head>
 <body>
-    <div id="tabs" style="margin-left:initial;width:80%">
+    <div id="tabs" style="margin-left:initial;width:100%; text-align:center">
         <ul>
             @*<li><a href="#tabs-1">ONLINE-STORE ORDERS</a></li>*@
             <li><a href="#tabs-2">ORDERS</a></li>
@@ -34,9 +34,9 @@
             <li><a href="#tabs-5">SHIPPED ORDERS</a></li>
             <li><a href="#tabs-6">MANAGE</a></li>
         </ul>
-        <div class="panel-body" style="border-color:gray;width:80%">
+        <div class="panel-body" style="border-color:gray;width:100%">
             <div id="tabs-2">
-                <table class="table table-bordered table-responsive table-hover" id="OrdersTable1" style="font-size:smaller;">
+                <table class="table table-bordered table-responsive table-hover" id="OrdersTable1" >
                     <thead style="background-color:#959ca1;color:white">
                         <tr>
                             <th>Orderno</th>
@@ -84,7 +84,7 @@
             <div id="tabs-3" class="table-bordered">
                 @using (Html.BeginForm("ProcessManualOrder", "OrdersList", FormMethod.Post))
                 {
-                    <div class="col-md-5 table-bordered">
+                    <div class="col-md-5 table-bordered" style="border:none">
                         <div class="col-md-6">
                             <label class="control-label">Surname</label>
                             @Html.EditorFor(model => model.ManualOrdersViewModel.Salutation, "", new { htmlAttributes = new { @class = "form-control" } })
@@ -111,7 +111,7 @@
                             @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Email, "", new { @class = "text-danger" })
                         </div><br>
                     </div>
-                    <div class="col-md-5 table-bordered" style="margin:2px">
+                    <div class="col-md-5 table-bordered" style="border:none">
                         <div class="col-md-6">
                             <label class="control-label">AddressLine1</label>
                             @Html.EditorFor(model => model.ManualOrdersViewModel.AddressLine1, "", new { htmlAttributes = new { @class = "form-control" } })
@@ -148,7 +148,7 @@
 
                         </div>
                     </div><br>
-                    <div class="col-md-10 table-bordered" style="margin:5px">
+                    <div class="col-md-10 table-bordered" style="margin-top:10px; border:none">
                         <div class="col-md-6">
                             <label class="control-label">SSN</label>
                             @Html.EditorFor(model => model.ManualOrdersViewModel.SSN, "", new { htmlAttributes = new { @class = "form-control" } })
@@ -196,7 +196,7 @@
                             @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.CustomerProject, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-sm-6" style="padding-top:15px;">
-                            <button type="submit" class="btn btn-primary">COMPLETE MANUAL ORDER</button>
+                            <button type="submit" class="btn btn-success" style="padding:10px">COMPLETE MANUAL ORDER</button>
                         </div>
                     </div>
                 }
@@ -303,16 +303,17 @@
                 <div class="row pull-right">
                     <div class="col-md-1">
                         <div class="col-md-1">
-                          
-                                <button type="submit" class="btn btn-warning btn-lg"  onclick="OpenAuctionAssetBundle();">
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </button>
-                                
+
+                            <button type="submit" class="btn btn-warning btn-lg" onclick="OpenAuctionAssetBundle();">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+
                         </div>
                     </div>
                 </div>
-                <table class="table caption-top" id="AssetAuctionTable">
+                <table class="table table-bordered table-responsive table-hover" id="OrdersTable1">
                     <caption>AUCTION ASSET BUNDLES</caption>
+                    <thead style="background-color:#959ca1 !important;color:white">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -321,22 +322,23 @@
                             <th scope="col">End Date&TIme</th>
                             <th scope="col">BundlePrice</th>
                             <th scope="col">IsAuctionActive</th>
-                        </tr>
+                            <th scope="col"></th>
+</tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model.AuctionBundleList)
                         {
-                        <tr>
-                            <th scope="row">@item.Id</th>
-                            <td><a href="javascript:void(0);" class="EditBundleDetails" data-id="@item.Id" style="font-weight:600;color:dodgerblue">@Html.DisplayFor(modelItem => item.BundleTitle) </a></td>
-                            <td>@item.BundleTitle</td>
-                            <td>@item.Bundle_Auction_StartDate</td>
-                            <td>@item.Bundle_Auction_EndDate</td>
-                            <td>@item.BundleBaseprice</td>
-                            <td>@item.IsAuctionBundleActive</td>
-                        </tr>
+                            <tr>
+                                <td scope="row">@item.Id</td>
+                                <td><a href="javascript:void(0);" class="EditBundleDetails" data-id="@item.Id" style="font-weight:600;color:dodgerblue">@Html.DisplayFor(modelItem => item.BundleTitle) </a></td>
+                                <td>@item.BundleTitle</td>
+                                <td>@item.Bundle_Auction_StartDate</td>
+                                <td>@item.Bundle_Auction_EndDate</td>
+                                <td>@item.BundleBaseprice</td>
+                                <td>@item.IsAuctionBundleActive</td>
+                            </tr>
                         }
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -367,7 +369,7 @@
             success: function (data) {
 
             $.confirm({
-            boxWidth: '700px',
+            boxWidth: '90%',
             useBootstrap: false,
             backgroundDismiss: true,
 
@@ -392,7 +394,7 @@
             success: function (data) {
 
             $.confirm({
-            boxWidth: '700px',
+            boxWidth: '90%',
             useBootstrap: false,
             backgroundDismiss: true,
 
@@ -416,7 +418,7 @@
             success: function (data) {
 
             $.confirm({
-            boxWidth: '400px',
+            boxWidth: '90%',
             useBootstrap: false,
             backgroundDismiss: true,
 
@@ -445,7 +447,7 @@
             success: function (data) {
 
             $.confirm({
-            boxWidth: '600px',
+            boxWidth: '90%',
             useBootstrap: false,
 
 
@@ -469,7 +471,7 @@
         var desc = row.find(".hiddenVal").val();
         // debugger;
         $.confirm({
-            boxWidth: '400px',
+            boxWidth: '90%',
             backgroundDismiss: true,
 
             useBootstrap: false,
@@ -498,7 +500,7 @@
             success: function (data) {
 
             $.confirm({
-            boxWidth: '700px',
+            boxWidth: '90%',
             backgroundDismiss: true,
 
             useBootstrap: false,
@@ -528,7 +530,7 @@
             success: function (data) {
 
             $.confirm({
-            boxWidth: '700px',
+            boxWidth: '90%',
             useBootstrap: false,
             backgroundDismiss: true,
 
@@ -549,5 +551,9 @@
 <style>
     .popover-content {
         white-space: pre-line;
+    }
+
+    .table tr th {
+        background-color: darkgray;
     }
 </style>
