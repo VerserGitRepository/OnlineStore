@@ -102,7 +102,7 @@
                 </div>
             </div>
     }
-    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.Id).Take(4).ToList())
+    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
     {
             <div class="col-md-3" style="margin-top:10px">
                 <div class="card">
