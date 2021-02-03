@@ -102,7 +102,7 @@
                 </div>
             </div>
     }
-    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.Id).Take(4).ToList())
+    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
     {
             <div class="col-md-3" style="margin-top:10px">
                 <div class="card">
@@ -181,8 +181,16 @@
                         <p class="card-text"></p>
                     </div>*@
                     <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
-                        <div class="card-footer bg-success" style="padding:0">
-                            <button class="btn-success" style="align-content:center;background-color:#5cb85c;border-color:#4cae4c"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                        <div class="card-footer bg-success" style="padding:0">                        
+
+                            @if (item.QtyAvailable > 0)
+                            {
+                                <button class="btn-success" style="align-content:center;background-color:#5cb85c;border-color:#4cae4c"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                            }
+                            else
+                            {
+                                <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
+                            }
                         </div>
                     </a>
                 </div>
