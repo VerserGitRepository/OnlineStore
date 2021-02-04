@@ -59,7 +59,7 @@ namespace OnlineStore.WebUI.Controllers
         }
         public ActionResult Mobile(int Page_No = 1)
         {
-            var size = SaleProducts.Where(m => m.ItemType_ID == 15);
+            var size = SaleProducts.Where(m => m.ItemType_ID == 15).OrderBy(d => d.QtyAvailable);
             int Size_Of_Page = 10;
             int No_Of_Page = Page_No;
             return View(size.ToPagedList(No_Of_Page, Size_Of_Page));
@@ -74,7 +74,7 @@ namespace OnlineStore.WebUI.Controllers
         }
         public ActionResult Laptop(int Page_No = 1)
         {
-            var size = SaleProducts.Where(m => m.ItemType_ID == 3);
+            var size = SaleProducts.Where(m => m.ItemType_ID == 3).OrderByDescending(d=>d.QtyAvailable);
             int Size_Of_Page = 10;
             int No_Of_Page = Page_No;
             return View(size.ToPagedList(No_Of_Page, Size_Of_Page));
