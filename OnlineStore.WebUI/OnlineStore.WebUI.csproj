@@ -388,6 +388,7 @@
     <Content Include="ProductImages\IphoneX-64GB-Silver.PNG" />
     <Content Include="ProductImages\IphoneXS-64GB-Black.PNG" />
     <Content Include="ProductImages\IphoneXS-64GB-Silver.PNG" />
+    <Content Include="ProductImages\LenovoThinkPadX1.jpg" />
     <Content Include="ProductImages\PowerEdge1950.jpg" />
     <Content Include="ProductImages\PowerEdge_R710_1.jpg" />
     <Content Include="ProductImages\R720xd_1.jpg" />

@@ -13,25 +13,45 @@
                 <input type="hidden" id="hdnStartTime" value='@item.Bundle_Auction_StartDate.ToString("yyyy/MM/dd HH:MM:ss")' />
                 <div class="col">
                     <div class="card  border-success mb-3">
-                        <div style="text-align:center; overflow:hidden">
-                            <img src="~/Images/iPhone11ProMax.jpg" class="card-img-top" style="height:300px; width:300px; display:inline-block" alt="...">
-                        </div>
                         <div class="card-body">
                             <h5 class="card-title">@item.BundleTitle</h5>
                         </div>
+                        <div style="text-align:center; overflow:hidden">
+                            <img src="~/Images/iPhone11ProMax.jpg" class="card-img-top" style="height:300px; width:300px; display:inline-block" alt="...">
+                        </div>
+
+
+
+
                         <div class="card-footer" id="updateTime">
-                            <small class="text-muted">
+
+                            <div class="row" style="margin:0">
+                                <div class="float-left">
                                 @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", new { BundleID = @item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                                 {
                                     <input type="submit" class="btn btn-success" value="Bid Auction" />
                                 }
-                                <label style="font-weight:700;color:orangered">Auction Timer: </label> <label class="pull-right">Current Bid $@item.BundleBaseprice </label>
-                            </small>
-                            <table style="border:0px; max-width:100%">
-                                <tr>
-                                    <td ><span id="current_timer" class="current_timer"></span></td>
-                                </tr>
-                            </table>
+                                </div>
+                                <div class="float-right">
+                                    <span style="font-weight:700">Current Bid $@item.BundleBaseprice </span>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+                            <div class="row" style="margin:0">
+                                <div>
+                                    <span style="font-weight:700;color:orangered">Auction Timer: </span>
+                                </div>
+                                <div>
+                                    <span id="current_timer" class="current_timer"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
