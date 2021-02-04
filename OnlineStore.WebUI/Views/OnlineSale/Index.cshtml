@@ -42,7 +42,7 @@
 </div>
 
 <div class="container-fluid" style="max-width:95%;padding:0;">
-    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 15).OrderByDescending(m => m.Id).Take(4).ToList())
+    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 15).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
     {
             <div class="col-md-3" style="margin-top:20px">
                 <div class="card">
@@ -70,7 +70,7 @@
                 </div>
             </div>
     }
-    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 40).OrderByDescending(m => m.Id).Take(4).ToList())
+    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 40).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
     {
             <div class="col-md-3" style="margin-top:10px">
                 <div class="card">
@@ -102,7 +102,7 @@
                 </div>
             </div>
     }
-    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.Id).Take(4).ToList())
+    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
     {
             <div class="col-md-3" style="margin-top:10px">
                 <div class="card">
@@ -134,7 +134,7 @@
                 </div>
             </div>
     }
-    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 1).OrderByDescending(m => m.Id).Take(4).ToList())
+    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 1).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
     {
             <div class="col-md-3" style="margin-top:10px">
                 <div class="card">
@@ -166,7 +166,7 @@
                 </div>
             </div>
     }
-    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 2).OrderByDescending(m => m.Id).Take(4).ToList())
+    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 2).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
     {
             <div class="col-md-3" style="margin-top:10px">
                 <div class="card">
