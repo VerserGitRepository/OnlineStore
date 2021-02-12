@@ -63,38 +63,38 @@
         else
         {
 
-            <div>
-                <div class="row">
-                    @foreach (var item in Model)
-                    {
-                        <div class="col-md-3">
-                            <div class="thumbnail">
-                                <div class="caption">
-                                    <h5 class="pull-right">$@item.PriceIncGST</h5>
-                                    <h6>@item.ProductName</h6>
-                                    <div class="show-product" style="overflow:hidden; width:100%; text-align:center">
-                                        <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px; display:inline-block" class="img-responsive" />
-                                    </div>
+
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h5 class="pull-right">$@item.PriceIncGST</h5>
+                                <h6>@item.ProductName</h6>
+                                <div class="show-product" style="overflow:hidden; width:100%; text-align:center">
+                                    <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px; display:inline-block" class="img-responsive" />
                                 </div>
-                                @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery, @quantity = 1, @price = item.PriceIncGST }, FormMethod.Post))
-                                {
-                                    <div>
-                                        @if (item.QtyAvailable > 0)
-                                        {
-                                            <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
-                                        }
-                                        else
-                                        {
-                                            <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
-                                        }
-                                    </div>
-                                }
-                                <div class="space-ten"></div>
                             </div>
+                            @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = item.Id, @returnUrl = Request.Url.PathAndQuery, @quantity = 1, @price = item.PriceIncGST }, FormMethod.Post))
+                            {
+                                <div>
+                                    @if (item.QtyAvailable > 0)
+                                    {
+                                        <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                                    }
+                                    else
+                                    {
+                                        <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
+                                    }
+                                </div>
+                            }
+                            <div class="space-ten"></div>
                         </div>
-                    }
-                </div>
+                    </div>
+                }
             </div>
+
         }
     </div>
         <div id="spinner" style="display:none;">
