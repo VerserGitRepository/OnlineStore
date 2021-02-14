@@ -2,7 +2,7 @@
 
 
 
-<div class="container" style="padding:20px;">
+<div class="table table-responsive" style="padding:20px;">
 
     <div class="card">
         <div class="card-header">
@@ -11,46 +11,46 @@
         @using (Html.BeginForm("AddNewBundle", "OrdersList", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             <div class="card-body">
-                <div class="mb-2">
+                <div class="col-md-6" style="padding-top:10px">
                     <label for="exampleFormControlInput1" class="form-label">Bundle Title</label>
                     @Html.EditorFor(model => model.BundleTitle, new { htmlAttributes = new { @class = "form-control", placeholder = "BundleTitle" } })
                   
                 </div>
-                <div class="mb-2">
+                <div class="col-md-6" style="padding-top:10px">
                     <label for="exampleFormControlInput1" class="form-label">Bundle Base Price</label>
                     @Html.EditorFor(model => model.BundleBaseprice, new { htmlAttributes = new { @class = "form-control", placeholder = "$Bundle Base Price" } })
                    
                 </div>
-                <div class="mb-2">
+                <div class="col-md-6" style="padding-top:10px">
                     <label for="exampleFormControlInput1" class="form-label">Bundle Quick Bid Price</label>
                     @Html.EditorFor(model => model.BundleQuickBidPrice, new { htmlAttributes = new { @class = "form-control", placeholder = "$Bundle Quick Bid Price" } })
                    
                 </div>
-                <div class="mb-2">
+                <div class="col-md-6" style="padding-top:10px">
                     <label for="exampleFormControlInput1" class="form-label">Bundle BuyPrice</label>
                     @Html.EditorFor(model => model.BundleBuyPrice, new { htmlAttributes = new { @class = "form-control", placeholder = "$Bundle BuyPrice" } })
                     
                 </div>
-                <div class="mb-2">
+                <div class="col-md-6" style="padding-top:10px">
                     <label for="exampleFormControlInput1" class="form-label">Auction StartDate</label>
                     @Html.EditorFor(model => model.Bundle_Auction_StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "StartDate" } })
                     
                 </div>
-                <div class="mb-2">
+                <div class="col-md-6" style="padding-top:10px">
                     <label for="exampleFormControlInput1" class="form-label">Auction EndDate</label>
                     @Html.EditorFor(model => model.Bundle_Auction_EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "EndDate" } })
                    
                 </div>
-                <div class="mb-2">
+                <div class="col-md-6" style="padding-top:10px">
                     <label for="exampleFormControlTextarea1" class="form-label">Images</label>                  
-                    <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Images">
+                    <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Images" style="border:none">
                 </div>
-                <div class="mb-2">
+                <div class="col-md-12" style="padding-top:10px">
                     <label for="exampleFormControlTextarea1" class="form-label">Bundle Description</label>
-                    @Html.TextAreaFor(model => model.BundleDescription, new { htmlAttributes = new { @class = "form-control", placeholder = "Bundle Description" } })
+                    @Html.TextAreaFor(model => model.BundleDescription, new { htmlAttributes = new { @class = "form-control",placeholder = "Bundle Description" } })
                     
                 </div>
-                <div class="mb-2">
+                <div class="col-md-12" style="padding-top:10px">
                     @using (Html.BeginForm("AddNewBundle", "OrdersList", FormMethod.Post))
                     {
                         <input type="submit" class="btn btn-success btn-lg" value="CREATE" id="exampleFormControlInput1">
@@ -58,7 +58,7 @@
                 </div>
             </div>
         }
-        </div>
+    </div>
 </div>
 <script>
     $('#exampleFormControlInput1').click(function () { $('#exampleFormControlInput1').trigger('click'); });

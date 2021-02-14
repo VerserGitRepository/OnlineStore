@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark" style="border-radius:0;margin-bottom:0 !important; background-color:black; padding:5px 16px;">
         <div class="col">
             <a href="@Url.Action("Index", "OnlineSale")">
-                <img src="~/Images/VerserLogo.png" style="width:110px;height:60px;" />
+                <img src="~/Images/VerserLogo.png" style="width:100px;height:50px;" />
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border:2px solid gray; border-radius:12px">
@@ -37,7 +37,7 @@
                 </svg>
             </button>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:black;">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:black; padding:0">
             <ul class="navbar-nav mr-auto" style="float:right; padding-right:40px">
                 <li style="overflow:hidden">
                     <div>
@@ -45,7 +45,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index", "ShoppingCart")" style="padding-left:20px; padding-right:20px">
+                    <a class="nav-link" href="@Url.Action("Index", "ShoppingCart")" style="padding-left:20px; padding-right:20px;">
                         <span class="glyphicon glyphicon-shopping-cart"></span>
                     </a>
                     @if (@Session["productinformation"] != null)
@@ -101,6 +101,7 @@
         </div>
     </nav>
 
+
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color:orange; padding:0 16px;margin-bottom:0 !important; border-radius:0; justify-content:center">
         <a class="navbar-toggler" id="navbarDropdown" role="button" data-toggle="collapse" data-target="#Product-navbar" aria-controls="Product-navbar" aria-expanded="false" aria-label="Toggle navigation" style="margin:12px 0; border:none">
             <span style="color:white; font-size:16px">All products</span>
@@ -109,21 +110,22 @@
             </svg>
         </a>
         <div class="collapse navbar-collapse" id="Product-navbar">
-            <ul class="navbar-nav mr-auto" style="margin-left:12%">
-                <li class="nav-item" style="padding:8px 10px">@Html.ActionLink("Best Sellers", "Index", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 10px">@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 10px">@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 10px">@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 10px">@Html.ActionLink("Desktop PC", "DesktopPC", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 10px">@Html.ActionLink("iPad", "IPad", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 10px">@Html.ActionLink("Accessories", "Mobile", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 10px">@Html.ActionLink("Printer", "Printer", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 10px">@Html.ActionLink("Servers", "Server", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 10px">@Html.ActionLink("Network Gears", "NetworkGear", "OnlineSale")</li>
-                <li class="nav-item" style="padding:8px 10px"> <a href="https://verser.com.au/" target="_blank">Verser Services</a></li>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">@Html.ActionLink("Best Sellers", "Index", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Desktop PC", "DesktopPC", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("iPad", "IPad", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Accessories", "Mobile", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Printer", "Printer", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Servers", "Server", "OnlineSale")</li>
+                <li class="nav-item">@Html.ActionLink("Network Gears", "NetworkGear", "OnlineSale")</li>
+                <li class="nav-item"> <a href="https://verser.com.au/" target="_blank">Verser Services</a></li>
             </ul>
         </div>
     </nav>
+
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:35px;margin:35px">
         <div class="modal-dialog">
