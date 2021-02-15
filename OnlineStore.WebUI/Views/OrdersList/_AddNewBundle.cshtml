@@ -28,20 +28,20 @@
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Bundle Quick Bid Price</label>
                         @Html.EditorFor(model => model.BundleQuickBidPrice, new { htmlAttributes = new { @class = "form-control", placeholder = "$Bundle Quick Bid Price" } })
-                   
+
                     </div>
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Bundle BuyPrice</label>
                         @Html.EditorFor(model => model.BundleBuyPrice, new { htmlAttributes = new { @class = "form-control", placeholder = "$Bundle BuyPrice" } })
-                    
+
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Auction StartDate</label>
-                        @Html.EditorFor(model => model.Bundle_Auction_StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "StartDate" } })
-                    
+                        @Html.EditorFor(model => model.Bundle_Auction_StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "StartDate", id = "Startdatepicker" } })
+
                     </div>
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Auction EndDate</label>
@@ -57,7 +57,7 @@
                 </div>
 
                 <div class=" row">
-                    <div class="col-md-6" style="padding-top:10px">              
+                    <div class="col-md-6" style="padding-top:10px">
                         <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Images" style="border:none">
                     </div>
                 </div>
@@ -73,10 +73,18 @@
     </div>
 </div>
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script>
+    $(function () {
+        $("#Startdatepicker").datepicker();
+    });
     $('#exampleFormControlInput1').click(function () { $('#exampleFormControlInput1').trigger('click'); });
     $('#exampleFormControlInput1').on('change', function (event) {
-        debugger;
+
         var formdata = new FormData(); //FormData object
         var fileInput = document.getElementById('exampleFormControlInput1');
         //Iterating through each files selected in fileInput
