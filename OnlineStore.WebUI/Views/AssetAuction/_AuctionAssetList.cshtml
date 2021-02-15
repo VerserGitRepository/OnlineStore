@@ -20,21 +20,62 @@
                 <th style="text-align:center; padding:13px">COLOUR</th>
                 <th style="text-align:center; padding:13px">GRADE</th>
                 <th style="text-align:center; padding:13px">ITEMTYPE</th>
+                <th style="text-align:center; padding:13px">Barcode</th>
+                <th style="text-align:center; padding:13px">ClientAssetTag</th>
+                <th style="text-align:center; padding:13px">ClientPO</th>
+                <th style="text-align:center; padding:13px">ClientRef </th>
+                <th style="text-align:center; padding:13px">Condition</th>
+                <th style="text-align:center; padding:13px">Completeness</th>
+                <th style="text-align:center; padding:13px">Appearance</th>
+                <th style="text-align:center; padding:13px">Services</th>
+                <th style="text-align:center; padding:13px">Operability</th>
+                <th style="text-align:center; padding:13px">ChassisType</th>
+                <th style="text-align:center; padding:13px">IMEI</th>
+                <th style="text-align:center; padding:13px">OpticalDrives</th>
+                <th style="text-align:center; padding:13px">FlattenedAccessories</th>
+                <th style="text-align:center; padding:13px">FlattenedPorts</th>
+                <th style="text-align:center; padding:13px">SoftwareLicense</th>
+                <th style="text-align:center; padding:13px">VideoMemory</th>
+                <th style="text-align:center; padding:13px">CPU</th>
+                <th style="text-align:center; padding:13px">CPUSpeed</th>
+                <th style="text-align:center; padding:13px">ScreenType</th>
+                <th style="text-align:center; padding:13px">ScreenSize</th>
+
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr style="text-align:center">
-                    <td>@item.SSN</td>
-                    <td>@item.Make</td>
-                    <td>@item.Model</td>
-                    <td>@item.Serial </td>
-                    <td>@item.Memory</td>
-                    <td>@item.Colour</td>
-                    <td>@item.Grade</td>
-                    <td>@item.ItemTypeName</td>
-                </tr>
+            <tr style="text-align:center">
+                <td>@item.SSN</td>
+                <td>@item.Make</td>
+                <td>@item.Model</td>
+                <td>@item.Serial </td>
+                <td>@item.Memory</td>
+                <td>@item.DiskSize</td>
+                <td>@item.Grade</td>
+                <td>@item.ItemTypeName</td>
+                <td>@item.Barcode</td>
+                <td>@item.ClientAssetTag</td>
+                <td>@item.ClientPO</td>
+                <td>@item.ClientRef </td>
+                <td>@item.Condition</td>
+                <td>@item.Completeness</td>
+                <td>@item.Appearance</td>
+                <td>@item.Services</td>
+                <td>@item.Operability</td>
+                <td>@item.ChassisType</td>
+                <td>@item.IMEI</td>
+                <td>@item.OpticalDrives</td>
+                <td>@item.FlattenedAccessories</td>
+                <td>@item.FlattenedPorts</td>
+                <td>@item.SoftwareLicense</td>
+                <td>@item.VideoMemory</td>
+                <td>@item.CPU</td>
+                <td>@item.CPUSpeed</td>
+                <td>@item.ScreenType</td>
+                <td>@item.ScreenSize</td>
+            </tr>
             }
         </tbody>
     </table>

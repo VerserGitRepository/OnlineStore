@@ -39,6 +39,20 @@ namespace OnlineStore.WebUI.Controllers
             return PartialView("_AuctionAssetList",assets);
         }
         [HttpPost]
+        public ActionResult BuyAuctionBundle(int BundleId)
+        {
+            if (Session["Username"] !=null && Session["FullName"] !=null)
+            {
+                var purchaseRequest = new ListItems { 
+                    ID= BundleId,Value= Session["FullName"].ToString()
+                };                   
+                var PurchaseResponse = OrdersServices.BuyAuctionBundle(purchaseRequest).Result;
+                return RedirectToAction("Index", "AssetAuction");
+            }           
+                return RedirectToAction("Login", "Login");     
+        }
+
+        [HttpPost]
         public ActionResult ExportAuctionResult(int BundleId)
         {
             var assets = OrdersServices.AuctionAssetList(BundleId).Result;

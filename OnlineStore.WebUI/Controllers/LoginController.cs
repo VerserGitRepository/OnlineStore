@@ -58,6 +58,7 @@ namespace OnlineStore.WebUI.Controllers
             {
                 Session["SiteAdmin"] = "False";
                 Session["Username"] = login.UserName;
+                Session["FullName"] = login.FullName;
                 return RedirectToAction("Index", "PublicUserProfile");
             }
             else

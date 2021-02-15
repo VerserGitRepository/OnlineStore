@@ -293,6 +293,21 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return returnModel;
         }
+
+        public async static Task<bool> BuyAuctionBundle(ListItems PurchaseRequest)
+        {
+            bool _Resp = false;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.PostAsJsonAsync(string.Format("OnlineStoreAuction/AuctionpurchaseRequest"), PurchaseRequest).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    _Resp = await response.Content.ReadAsAsync<bool>();
+                }
+            }
+            return _Resp;
+        }
     }
 }
 
