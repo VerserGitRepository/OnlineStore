@@ -101,7 +101,6 @@
         </div>
     </nav>
 
-
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color:orange; padding:0 16px;margin-bottom:0 !important; border-radius:0; justify-content:center">
         <a class="navbar-toggler" id="navbarDropdown" role="button" data-toggle="collapse" data-target="#Product-navbar" aria-controls="Product-navbar" aria-expanded="false" aria-label="Toggle navigation" style="margin:12px 0; border:none">
             <span style="color:white; font-size:16px">All products</span>
@@ -109,8 +108,8 @@
                 <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
             </svg>
         </a>
-        <div class="collapse navbar-collapse" id="Product-navbar">
-            <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse justify-content-md-center" id="Product-navbar">
+            <ul class="navbar-nav mr-auto" style="margin-left:17%">
                 <li class="nav-item">@Html.ActionLink("Best Sellers", "Index", "OnlineSale")</li>
                 <li class="nav-item">@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
                 <li class="nav-item">@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
@@ -172,21 +171,23 @@
             </div>
         </div>
     </div>
+
     <div class="body-content">
         @RenderBody()
     </div>
+
     @RenderSection("scripts", required: false)
 
-<div class="my_footer text-center text-muted" style="bottom:0;position:page; width:100%;background-color:lightgray;color:dodgerblue;font-size:smaller">
-    The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
-    <img src="~/Images/PaymentOptions.PNG" />
+    <div class="my_footer text-center text-muted" style="bottom:0;position:page; width:100%;background-color:lightgray;color:dodgerblue;font-size:smaller">
+        The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
+        <img src="~/Images/PaymentOptions.PNG" />
 
-    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-        Terms & Conditions
-    </button>
-    ContactUs: <a href="tel:+61 1800 732 668" style="color:dodgerblue">+61 1800 732 668</a>  Mail: <a href="mailto:Support@verser.com.au" style="color:dodgerblue">Support@verser.com.au</a>
-    @Html.ActionLink("FAQ", "FAQ", "Home", null, new { @class = "FaqLink" })
-</div>
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+            Terms & Conditions
+        </button>
+        ContactUs: <a href="tel:+61 1800 732 668" style="color:dodgerblue">+61 1800 732 668</a>  Mail: <a href="mailto:Support@verser.com.au" style="color:dodgerblue">Support@verser.com.au</a>
+        @Html.ActionLink("FAQ", "FAQ", "Home", null, new { @class = "FaqLink" })
+    </div>
 </body>
 </html>
 
