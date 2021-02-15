@@ -65,7 +65,7 @@
                         {
                             <tr class="submitOrder">
                                 <td>
-                                    <a href="javascript:void(0);" class="btn btn-secondary OrderDesc" data-id="@item.Id">@Html.DisplayFor(modelItem => item.Id)</a>
+                                    <a href="javascript:void(0);" class="btn OrderDesc" data-id="@item.Id">@Html.DisplayFor(modelItem => item.Id)</a>
                                     <input class="hiddenVal" type="hidden" id="hiddenDesc" value="@item.OnlineSalePurchasedProductsDesc" />
                                 </td>
                                 <td></td>
@@ -91,61 +91,62 @@
             <div id="tabs-3" class="table-bordered" style="overflow-x:scroll">
                 @using (Html.BeginForm("ProcessManualOrder", "OrdersList", FormMethod.Post))
                 {
-                    <div class="row well" style="margin-bottom:10px">
-                        <div class="col-md-2 offset-4" style="text-align:start">
-                            <label class="control-label">Surname</label>
-                            @Html.EditorFor(model => model.ManualOrdersViewModel.Salutation, "", new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Salutation, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-md-2" style="text-align:start">
-                            <label class="control-label">First Name</label>
-                            @Html.EditorFor(model => model.ManualOrdersViewModel.FirstName, "", new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.FirstName, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="col-md-2 offset-4" style="text-align:start">
-                            <label class="control-label">Last Name</label>
-                            @Html.EditorFor(model => model.ManualOrdersViewModel.LastName, "", new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.LastName, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-md-2" style="text-align:start">
-                            <label class="control-label">Contact Number</label>
-                            @Html.EditorFor(model => model.ManualOrdersViewModel.ContactNumber, "", new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.ContactNumber, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="col-md-2 offset-4" style="text-align:start">
-                            <label class="control-label">Email</label><br />
-                            @Html.EditorFor(model => model.ManualOrdersViewModel.Email, "", new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Email, "", new { @class = "text-danger" })
+                    <div class="row" style="margin-bottom:10px">
+                        <div class="col-md-6 well">
+                            <div class="col-md-4" style="text-align:start">
+                                <label class="control-label">Surname</label>
+                                @Html.EditorFor(model => model.ManualOrdersViewModel.Salutation, "", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Salutation, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-4" style="text-align:start">
+                                <label class="control-label">First Name</label>
+                                @Html.EditorFor(model => model.ManualOrdersViewModel.FirstName, "", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.FirstName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-4" style="text-align:start">
+                                <label class="control-label">Last Name</label>
+                                @Html.EditorFor(model => model.ManualOrdersViewModel.LastName, "", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.LastName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6" style="text-align:start">
+                                <label class="control-label">Contact Number</label>
+                                @Html.EditorFor(model => model.ManualOrdersViewModel.ContactNumber, "", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.ContactNumber, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6" style="text-align:start">
+                                <label class="control-label">Email</label><br />
+                                @Html.EditorFor(model => model.ManualOrdersViewModel.Email, "", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Email, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
 
-                    <div class="row well" style="margin-bottom:10px">
-                        <div class="col-md-2 offset-4" style="text-align:start">
+                    <div class="row" style="margin-bottom:10px">
+                        <div class="col-md-6 well">
+                        <div class="col-md-6" style="text-align:start">
                             <label class="control-label">AddressLine1</label>
                             @Html.EditorFor(model => model.ManualOrdersViewModel.AddressLine1, "", new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AddressLine1, "", new { @class = "text-danger" })
                         </div>
-                        <div class="col-md-2" style="text-align:start">
+                        <div class="col-md-6" style="text-align:start">
                             <label class="control-label">AddressLine2</label>
                             @Html.EditorFor(model => model.ManualOrdersViewModel.AddressLine2, "", new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AddressLine2, "", new { @class = "text-danger" })
                         </div>
 
-                        <div class="col-md-2 offset-4" style="text-align:start">
+                        <div class="col-md-4" style="text-align:start">
                             <label class="control-label">Locality</label>
                             @Html.EditorFor(model => model.ManualOrdersViewModel.Locality, "", new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Locality, "", new { @class = "text-danger" })
                         </div>
 
-                        <div class="col-md-2" style="text-align:start">
+                        <div class="col-md-4" style="text-align:start">
                             <label class="control-label">Postcode</label>
                             @Html.EditorFor(model => model.ManualOrdersViewModel.Postcode, "", new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.Postcode, "", new { @class = "text-danger" })
                         </div>
 
-                        <div class="col-md-2 offset-4" style="text-align:start">
+                        <div class="col-md-4" style="text-align:start">
                             <label class="control-label">State</label>
                             @Html.DropDownList("State", new List<SelectListItem>
                             {
@@ -161,66 +162,79 @@
                             new { @class = "form-control", style = "Height:35px" })
 
                         </div>
+                        </div>
                     </div>
 
-                    <div class="row well" style="margin-bottom:10px">
-                        <div class="col-md-2 offset-4" style="text-align:start">
-                            <label class="control-label">SSN</label>
-                            @Html.EditorFor(model => model.ManualOrdersViewModel.SSN, "", new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.SSN, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-md-2" style="text-align:start">
-                            <label class="control-label">No Of Items</label>
-                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.NoOfItems, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                    <div class="row" style="margin-bottom:10px">
+                        <div class="col-md-6 well">
+                            <div class="row">
+                                <div class="col-md-6" style="text-align:start">
+                                    <label class="control-label">SSN</label>
+                                    @Html.EditorFor(model => model.ManualOrdersViewModel.SSN, "", new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.SSN, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6" style="text-align:start">
+                                    <label class="control-label">No Of Items</label>
+                                    @Html.DropDownListFor(m => m.ManualOrdersViewModel.NoOfItems, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3" style="text-align:start">
+                                    <label class="control-label">Height</label>
+                                    @Html.DropDownListFor(m => m.ManualOrdersViewModel.Height, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-3" style="text-align:start">
+                                    <label class="control-label">Weight</label>
+                                    @Html.DropDownListFor(m => m.ManualOrdersViewModel.Weight, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-3" style="text-align:start">
+                                    <label class="control-label">Width</label>
+                                    @Html.DropDownListFor(m => m.ManualOrdersViewModel.Width, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-3" style="text-align:start">
+                                    <label class="control-label">Length</label>
+                                    @Html.DropDownListFor(m => m.ManualOrdersViewModel.Length, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6" style="text-align:start">
+                                    <label class="control-label">AmazonOrderNo</label>
+                                    @Html.EditorFor(model => model.ManualOrdersViewModel.AmazonOrderNo, "", new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AmazonOrderNo, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-6" style="text-align:start">
+                                    <label class="control-label">SKU</label>
+                                    @Html.EditorFor(model => model.ManualOrdersViewModel.SKU, "", new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.SKU, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6" style="text-align:start">
+                                    <label class="control-label">Ref No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    @Html.EditorFor(model => model.ManualOrdersViewModel.RefNo, "", new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.RefNo, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-6" style="text-align:start">
+                                    <label class="control-label">Project</label>
+                                    @Html.DropDownListFor(model => model.ManualOrdersViewModel.ProjectId, Model.ManualOrdersViewModel.CustomerProject, "Projects", new { @class = "form-control ItemType", @id = "ddlProjects", style = "Height:40px" })
+                                    @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.CustomerProject, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
                         </div>
 
-                        <div class="col-md-1 offset-4" style="text-align:start">
-                            <label class="control-label">Height</label>
-                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.Height, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                        </div>
-                        <div class="col-md-1" style="text-align:start">
-                            <label class="control-label">Weight</label>
-                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.Weight, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                        </div>
-                        <div class="col-md-1" style="text-align:start">
-                            <label class="control-label">Width</label>
-
-                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.Width, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                        </div>
-                        <div class="col-md-1" style="text-align:start">
-                            <label class="control-label">Length</label>
-                            @Html.DropDownListFor(m => m.ManualOrdersViewModel.Length, Enumerable.Range(1, 100).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
-                        </div>
-
-                        <div class="col-md-2 offset-4" style="text-align:start">
-                            <label class="control-label">AmazonOrderNo</label>
-                            @Html.EditorFor(model => model.ManualOrdersViewModel.AmazonOrderNo, "", new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.AmazonOrderNo, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-md-2" style="text-align:start">
-                            <label class="control-label">SKU</label>
-                            @Html.EditorFor(model => model.ManualOrdersViewModel.SKU, "", new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.SKU, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="col-md-2 offset-4" style="text-align:start">
-                            <label class="control-label">Ref No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            @Html.EditorFor(model => model.ManualOrdersViewModel.RefNo, "", new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.RefNo, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-md-2" style="text-align:start">
-                            <label class="control-label">Project</label>
-                            @Html.DropDownListFor(model => model.ManualOrdersViewModel.ProjectId, Model.ManualOrdersViewModel.CustomerProject, "Projects", new { @class = "form-control ItemType", @id = "ddlProjects", style = "Height:40px" })
-                            @Html.ValidationMessageFor(model => Model.ManualOrdersViewModel.CustomerProject, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="col-sm-2 offset-4" style="padding-top:15px; text-align:start">
+                        <div class="col-sm-12" style="padding-top:15px; text-align:start">
                             <button type="submit" class="btn btn-success" style="padding:10px">COMPLETE MANUAL ORDER</button>
                         </div>
                     </div>
 
-                        }
-                    </div>
+                }
+            </div>
 
             <div id="tabs-4" style="overflow-x:scroll">
                 <div class="row pull-right">
@@ -493,7 +507,7 @@
         var desc = row.find(".hiddenVal").val();
         // debugger;
         $.confirm({
-            boxWidth: '90%',
+            boxWidth: '40%',
             backgroundDismiss: true,
 
             useBootstrap: false,
@@ -522,7 +536,7 @@
             success: function (data) {
 
             $.confirm({
-            boxWidth: '90%',
+            boxWidth: '40%',
             backgroundDismiss: true,
 
             useBootstrap: false,
@@ -552,7 +566,7 @@
             success: function (data) {
 
             $.confirm({
-            boxWidth: '90%',
+            boxWidth: '40%',
             useBootstrap: false,
             backgroundDismiss: true,
 

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<OnlineStore.WebUI.Models.AuctionBundleListModel>
+
 @{
     ViewBag.Title = "Index";
 }
@@ -27,10 +28,10 @@
 
                             <div class="row" style="margin:0">
                                 <div class="float-left">
-                                @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", new { BundleID = @item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                {
-                                    <input type="submit" class="btn btn-success" value="Bid Auction" />
-                                }
+                                    @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", new { BundleID = @item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <input type="submit" class="btn btn-success" value="Bid Auction" />
+                                    }
                                 </div>
                                 <div class="float-right">
                                     <span style="font-weight:700">Current Bid $@item.BundleBaseprice </span>
@@ -61,8 +62,6 @@
 </div>
 
 <style>
-
-
 </style>
 
 <script>
@@ -76,7 +75,7 @@
     $(function () {
         $(".current_timer").countdowntimer({
             dateAndTime: '2021/02/02 10:30:00',
-            size: "sm",
+            size: "xs",
             regexpMatchFormat: "([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})",
             regexpReplaceWith: "$1<sup>days</sup>/$2<sup>hrs</sup>/$3<sup>mins</sup>/$4<sup>secs</sup>"
         });
