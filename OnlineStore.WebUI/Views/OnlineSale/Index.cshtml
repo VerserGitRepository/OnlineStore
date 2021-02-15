@@ -42,10 +42,12 @@
 </div>
 
 <div class="container-fluid" style="max-width:95%;padding:0;">
-    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 15).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
-    {
+
+    <div class="row">
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 15).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
+        {
             <div class="col-md-3" style="margin-top:20px">
-                <div class="card">
+                <div class="thumbnail">
                     <div class="caption" style="padding:2px;">
                         <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
                         <h6 style="font-weight:800">@item.ProductName</h6>
@@ -69,11 +71,14 @@
                     }
                 </div>
             </div>
-    }
-    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 40).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
-    {
+        }
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 40).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
+        {
             <div class="col-md-3" style="margin-top:10px">
-                <div class="card">
+                <div class="thumbnail">
                     <div class="caption" style="padding:2px;">
                         <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
                         <h6 style="font-weight:800">@item.ProductName</h6>
@@ -101,11 +106,14 @@
                     }
                 </div>
             </div>
-    }
-    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
-    {
+        }
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
+        {
             <div class="col-md-3" style="margin-top:10px">
-                <div class="card">
+                <div class="thumbnail">
                     <div class="caption" style="padding:2px;">
                         <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
                         <h6 style="font-weight:800">@item.ProductName</h6>
@@ -133,11 +141,14 @@
                     }
                 </div>
             </div>
-    }
-    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 1).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
-    {
+        }
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 1).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
+        {
             <div class="col-md-3" style="margin-top:10px">
-                <div class="card">
+                <div class="thumbnail">
                     <div class="caption" style="padding:2px;">
                         <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
                         <h6 style="font-weight:800">@item.ProductName</h6>
@@ -165,11 +176,14 @@
                     }
                 </div>
             </div>
-    }
-    @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 2).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
-    {
+        }
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 2).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
+        {
             <div class="col-md-3" style="margin-top:10px">
-                <div class="card">
+                <div class="thumbnail">
                     <div class="caption" style="padding:2px;">
                         <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
                         <h6 style="font-weight:800">@item.ProductName</h6>
@@ -177,9 +191,7 @@
                             <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px;  display:inline-block" class="img-responsive" />
                         </div>
                     </div>
-                    @*<div class="card-body">
-                        <p class="card-text"></p>
-                    </div>*@
+
                     <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
                         <div class="card-footer bg-success" style="padding:0">                        
 
@@ -195,7 +207,9 @@
                     </a>
                 </div>
             </div>
-    }
+        }
+    </div>
+
     <div class="container-fluid" style="margin-bottom:40px;width:80%; display:flex">
         <div class="col-sm-2">
             <div class="brand-item"> <img style="max-width:100%;" src="~/Images/apple.jpg" alt="Submit" width="144" height="81"></div>

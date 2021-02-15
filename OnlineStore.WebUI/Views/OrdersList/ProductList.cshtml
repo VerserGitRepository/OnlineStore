@@ -4,24 +4,34 @@
 <script src="~/Scripts/jquery.validate.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
-@using (Html.BeginForm("SendShipment", "OrdersList", FormMethod.Post))
-{
-    <div class="table table-responsive" id="tblCustomers" style="padding-left:50px;padding-bottom:30px;border-color:lightgray">
-        @foreach (var item in Model.OnlineSalePurchasedProducts)
-        {
-            <div class="row" style="padding-top:10px">
-                <div class="form-group" tabindex=1>
-                    <label class="control-label">@item.ProductName</label>&nbsp;&nbsp;
-                </div>
-                <div class="form-group" tabindex=1>
-                    @Html.EditorFor(id => item.SSN);
-                    @Html.ValidationMessageFor(id => item.SSN, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-        }
-        <div class="row" style="padding-top:10px">
-            <input type="submit" value="Process" />
+<div class="table table-responsive" style="padding:20px;">
+    <div class="card">
+        <div class="card-header">
+            Add Promo Code
         </div>
+        @using (Html.BeginForm("SendShipment", "OrdersList", FormMethod.Post))
+        {
+            <div class="card-body">
+
+                @foreach (var item in Model.OnlineSalePurchasedProducts)
+                {
+                    <div class="col-md-12" style="padding-top:10px">
+                        <div class="form-group" tabindex=1>
+                            <label class="control-label">@item.ProductName</label>
+                        </div>
+
+                        <div class="form-group" tabindex=1>
+                            @Html.EditorFor(id => item.SSN)
+                            @Html.ValidationMessageFor(id => item.SSN, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                }
+                <div class="col-md-12" style="padding-bottom:10px; padding-top:10px">
+                    <input type="submit" value="Process" />
+                </div>
+
+            </div>
+        }
     </div>
-}
+</div>
