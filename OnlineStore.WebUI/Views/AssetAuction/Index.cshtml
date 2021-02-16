@@ -41,6 +41,15 @@
                                     @*<span id="current_timer" class="current_timer"></span>*@
                                 </div>
                             </div>
+
+                            <div class="row" style="margin:0; padding-top:5px;">
+
+                                @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", new { BundleID = @item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    <input type="submit" class="btn btn-success" value="Bid Auction" />
+                                }
+
+                            </div>
                         </div>
                 </div>
                 }

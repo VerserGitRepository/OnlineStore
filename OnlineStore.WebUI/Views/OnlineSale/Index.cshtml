@@ -44,7 +44,7 @@
 <div class="container-fluid" style="max-width:95%;padding:0;">
 
     <div class="row">
-        @foreach (var item in Model.OnlineSaleProductModel.OrderByDescending(p=>p.QtyAvailable).ToList())
+        @foreach (var item in Model.OnlineSaleProductModel.OrderByDescending(p => p.QtyAvailable).ToList())
         {
             <div class="col-md-3 col-lg-3" style="margin-top:20px">
                 <div class="thumbnail">
@@ -57,7 +57,7 @@
                     </div>
                     @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
                     {
-                       
+
                         <div>
                             @if (item.QtyAvailable > 0)
                             {
@@ -76,133 +76,133 @@
 
 
     @*<div class="row">
-        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 40).Take(4).ToList())
-        {
-            <div class="col-md-3" style="margin-top:10px">
-                <div class="thumbnail">
-                    <div class="caption" style="padding:2px;">
-                        <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
-                        <h6 style="font-weight:800">@item.ProductName</h6>
-                        <div class="show-product" style="overflow:hidden; width:100%; text-align:center">
-                            <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px;  display:inline-block" class="img-responsive" />
+            @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 40).Take(4).ToList())
+            {
+                <div class="col-md-3" style="margin-top:10px">
+                    <div class="thumbnail">
+                        <div class="caption" style="padding:2px;">
+                            <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
+                            <h6 style="font-weight:800">@item.ProductName</h6>
+                            <div class="show-product" style="overflow:hidden; width:100%; text-align:center">
+                                <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px;  display:inline-block" class="img-responsive" />
+                            </div>
                         </div>
+
+                        @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
+                        {
+
+                            <div>
+                                @if (item.QtyAvailable > 0)
+                                {
+                                    <button class="btn-success" style="align-content:center;background-color:#5cb85c;border-color:#4cae4c; padding:6px"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                                }
+                                else
+                                {
+                                    <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
+                                }
+                            </div>
+
+                        }
                     </div>
-                 
-                    @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
-                    {
-                     
-                        <div>
-                            @if (item.QtyAvailable > 0)
-                            {
-                                <button class="btn-success" style="align-content:center;background-color:#5cb85c;border-color:#4cae4c; padding:6px"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
-                            }
-                            else
-                            {
-                                <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
-                            }
-                        </div>
-
-                    }
                 </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
 
-    <div class="row">
-        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).Take(4).ToList())
-        {
-            <div class="col-md-3" style="margin-top:10px">
-                <div class="thumbnail">
-                    <div class="caption" style="padding:2px;">
-                        <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
-                        <h6 style="font-weight:800">@item.ProductName</h6>
-                        <div class="show-product" style="overflow:hidden; width:100%; text-align:center">
-                            <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px;  display:inline-block" class="img-responsive" />
+        <div class="row">
+            @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).Take(4).ToList())
+            {
+                <div class="col-md-3" style="margin-top:10px">
+                    <div class="thumbnail">
+                        <div class="caption" style="padding:2px;">
+                            <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
+                            <h6 style="font-weight:800">@item.ProductName</h6>
+                            <div class="show-product" style="overflow:hidden; width:100%; text-align:center">
+                                <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px;  display:inline-block" class="img-responsive" />
+                            </div>
                         </div>
+
+                        @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
+                        {
+
+                            <div>
+                                @if (item.QtyAvailable > 0)
+                                {
+                                    <button class="btn-success" style="align-content:center; background-color:#5cb85c;border-color:#4cae4c; padding:6px"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                                }
+                                else
+                                {
+                                    <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
+                                }
+                            </div>
+
+                        }
                     </div>
-               
-                    @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
-                    {
-                  
-                        <div>
-                            @if (item.QtyAvailable > 0)
-                            {
-                                <button class="btn-success" style="align-content:center; background-color:#5cb85c;border-color:#4cae4c; padding:6px"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
-                            }
-                            else
-                            {
-                                <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
-                            }
-                        </div>
-
-                    }
                 </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
 
-    <div class="row">
-        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 1).Take(4).ToList())
-        {
-            <div class="col-md-3" style="margin-top:10px">
-                <div class="thumbnail">
-                    <div class="caption" style="padding:2px;">
-                        <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
-                        <h6 style="font-weight:800">@item.ProductName</h6>
-                        <div class="show-product" style="overflow:hidden; width:100%; text-align:center">
-                            <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px; display:inline-block" class="img-responsive" />
+        <div class="row">
+            @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 1).Take(4).ToList())
+            {
+                <div class="col-md-3" style="margin-top:10px">
+                    <div class="thumbnail">
+                        <div class="caption" style="padding:2px;">
+                            <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
+                            <h6 style="font-weight:800">@item.ProductName</h6>
+                            <div class="show-product" style="overflow:hidden; width:100%; text-align:center">
+                                <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px; display:inline-block" class="img-responsive" />
+                            </div>
                         </div>
+
+                        @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
+                        {
+                            <div>
+                                @if (item.QtyAvailable > 0)
+                                {
+                                    <button class="btn-success" style="align-content:center;background-color:#5cb85c;border-color:#4cae4c; padding:6px"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                                }
+                                else
+                                {
+                                    <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
+                                }
+                            </div>
+
+                        }
                     </div>
-               
-                    @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
-                    {               
-                        <div>
-                            @if (item.QtyAvailable > 0)
-                            {
-                                <button class="btn-success" style="align-content:center;background-color:#5cb85c;border-color:#4cae4c; padding:6px"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
-                            }
-                            else
-                            {
-                                <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
-                            }
-                        </div>
-
-                    }
                 </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
 
-    <div class="row">
-        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 2).Take(4).ToList())
-        {
-            <div class="col-md-3" style="margin-top:10px">
-                <div class="thumbnail">
-                    <div class="caption" style="padding:2px;">
-                        <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
-                        <h6 style="font-weight:800">@item.ProductName</h6>
-                        <div class="show-product" style="overflow:hidden;  width:100%; text-align:center">
-                            <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px;  display:inline-block" class="img-responsive" />
+        <div class="row">
+            @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 2).Take(4).ToList())
+            {
+                <div class="col-md-3" style="margin-top:10px">
+                    <div class="thumbnail">
+                        <div class="caption" style="padding:2px;">
+                            <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
+                            <h6 style="font-weight:800">@item.ProductName</h6>
+                            <div class="show-product" style="overflow:hidden;  width:100%; text-align:center">
+                                <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px;  display:inline-block" class="img-responsive" />
+                            </div>
                         </div>
+
+                        <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
+                            <div class="card-footer bg-success" style="padding:0">
+
+                                @if (item.QtyAvailable > 0)
+                                {
+                                    <button class="btn-success" style="align-content:center;background-color:#5cb85c;border-color:#4cae4c; padding:6px"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                                }
+                                else
+                                {
+                                    <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
+                                }
+                            </div>
+                        </a>
                     </div>
-
-                    <a href="@Url.Action("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty,@quantity=1,@ItemPrice=item.PriceIncGST })">
-                        <div class="card-footer bg-success" style="padding:0">                        
-
-                            @if (item.QtyAvailable > 0)
-                            {
-                                <button class="btn-success" style="align-content:center;background-color:#5cb85c;border-color:#4cae4c; padding:6px"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
-                            }
-                            else
-                            {
-                                <h3 style="margin:0!important; text-align:center;background-color:indianred;color:white">Sold Out</h3>
-                            }
-                        </div>
-                    </a>
                 </div>
-            </div>
-        }
-    </div>*@
+            }
+        </div>*@
     <div class="container-fluid" style="margin-bottom:40px;width:80%; display:flex">
         <div class="col-sm-2">
             <div class="brand-item"> <img style="max-width:100%;" src="~/Images/apple.jpg" alt="Submit" width="144" height="81"></div>
