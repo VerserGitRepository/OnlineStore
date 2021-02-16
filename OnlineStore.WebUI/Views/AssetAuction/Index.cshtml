@@ -17,7 +17,7 @@
                             <div class="caption" style="padding:2px;">
                                 <h6 class="card-title" style="font-weight:600;color:green">@item.BundleTitle <p class="pull-right">Current Bid $@item.BundleBaseprice</p></h6>                              
                             </div>
-                            </div>
+                        </div>
                             <div style="text-align:center; overflow:hidden">
                                 @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", new { BundleID = @item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                                 {
@@ -42,13 +42,13 @@
                                 </div>
                             </div>
 
-                            <div class="row" style="margin:0; padding-top:5px;">
-
-                                @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", new { BundleID = @item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                {
-                                    <input type="submit" class="btn btn-success" value="Bid Auction" />
-                                }
-
+                            <div class="row" style="margin:0; padding:10px 0;">
+                                <div class="col-md-12">
+                                    @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", new { BundleID = @item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <input type="submit" class="btn btn-success pull-right" value="Bid Auction" />
+                                    }
+                                </div>
                             </div>
                         </div>
                 </div>
