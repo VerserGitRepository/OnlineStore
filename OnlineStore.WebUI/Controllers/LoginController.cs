@@ -64,6 +64,7 @@ namespace OnlineStore.WebUI.Controllers
             else
             {
                 Session["ErrorMessage"] = "Invalid UserName Or Password";
+                TempData["ErrorMessage"] = "Invalid UserName Or Password";
                 Session.Clear();
                 Session.RemoveAll();
                 return View("Login");

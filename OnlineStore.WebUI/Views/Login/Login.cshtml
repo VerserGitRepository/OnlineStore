@@ -19,7 +19,7 @@
                             <div class="col-lg-12">
                                 <div class="input-group col-sm-12" style="justify-content:center">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    @Html.TextBoxFor(Model => Model.UserName, new { @class = "form-control", placeholder = "JMS UserID" })
+                                    @Html.TextBoxFor(Model => Model.UserName, new { @class = "form-control", placeholder = "JMS UserID", autofocus = "autofocus" })
                                 </div>
                                 <br />
 
@@ -32,10 +32,10 @@
                                     <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log in" style="background-color:grey;border-color:gray">
                                 </div>
 
-                                <div class="input-group col-sm-12" style="justify-content:center">
+                                @*<div class="input-group col-sm-12" style="justify-content:center">
                                     <br />
                                     <a href="#" style="color:cornflowerblue" onclick="ShowRegisterNewUserPage();">New User Registration</a>
-                                </div>
+                                </div>*@
                                 <div>
                                     @*@Html.Partial("_RegisterNewUser")*@
                                 </div>
@@ -109,6 +109,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script>
+    $(document).ready(function () {
+        $("form").bind("keypress", function (e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+        });
+    }); 
+
     function ShowRegisterNewUserPage() {
         $.ajax({
             type: "GET",

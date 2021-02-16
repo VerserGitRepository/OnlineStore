@@ -23,5 +23,6 @@ namespace OnlineStore.WebUI.Models
 		public DateTime Bundle_Auction_EndDate { get; set; }
 		public bool IsAuctionBundleActive { get; set; }
 		public List<string> ImageNames { get; set; }
+		public string AuctionCountDown { get; set; }
 	}
 }

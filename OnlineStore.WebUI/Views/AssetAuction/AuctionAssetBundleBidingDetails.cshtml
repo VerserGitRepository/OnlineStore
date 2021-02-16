@@ -52,13 +52,19 @@
                                                     </p>
                                             </div>
                                             <div class="col-md-6" style="padding-top:10px;min-width:100%">
+                                                @{
+                                                    DateTime startDate = DateTime.Now;
+                                                    TimeSpan t =Model.Bundle_Auction_EndDate - startDate;
+                                                    string countDown = string.Format("Auction Ends In {0} Days, {1} Hours, {2} Minutes, {3} Seconds", t.Days, t.Hours, t.Minutes, t.Seconds);
+                                                    <label style="font-size:smaller;color:orangered;font-weight:400">@countDown</label>
+                                                }
                                                 <span id="current_timer"></span>
 
                                                 <script>
                                                     $(function () {
                                                         $('#current_timer').countdowntimer({
                                                             currentTime: true,
-                                                            size: "md"
+                                                            size: "sm"
                                                         });
                                                     });
                                                 </script>
@@ -110,7 +116,7 @@
             </div>
         </div>
         <div class="card-footer text-muted">
-            <p style="color:cornflowerblue;font-weight:500"> Bundle #Item 45789123 AUCTION End Date: @Model.Bundle_Auction_EndDate - Start Date :@Model.Bundle_Auction_StartDate </p>
+            <p style="color:cornflowerblue;font-weight:500"><a class="pull-left" href="@Url.Action("Index", "AssetAuction")" style="color:orange">Back To Auctions</a>  Bundle #Item 45789123 AUCTION End Date: @Model.Bundle_Auction_EndDate - Start Date :@Model.Bundle_Auction_StartDate </p>
         </div>
     </div>
 </div>

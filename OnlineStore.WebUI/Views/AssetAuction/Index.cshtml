@@ -1,62 +1,49 @@
 ﻿@model IEnumerable<OnlineStore.WebUI.Models.AuctionBundleListModel>
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Auction Bundles";
 }
 
 <script type="text/javascript" src="~/Scripts/jquery.countdownTimer.min.js"></script>
 <link rel="stylesheet" type="text/css" href="~/Content/jquery.countdownTimer.css" />
 <div class="container-fluid" style="max-width:95%;padding:0;">
     <div class="card-body" style="overflow:hidden">
-        <div class="row row-cols-1 row-cols-md-2 g-4 border" style="padding:10px;">
+        <div class="row row-cols-1 row-cols-md-2 g-4 border" style="padding:5px;">
             @foreach (var item in Model)
             {
                 <input type="hidden" id="hdnStartTime" value='@item.Bundle_Auction_StartDate.ToString("yyyy/MM/dd HH:MM:ss")' />
                 <div class="col">
                     <div class="card  border-success mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">@item.BundleTitle</h5>
-                        </div>
-                        <div style="text-align:center; overflow:hidden">
-                            <img src="~/Images/iPhone11ProMax.jpg" class="card-img-top" style="height:300px; width:300px; display:inline-block" alt="...">
-                        </div>
+                            <div class="caption" style="padding:2px;">
+                                <h6 class="card-title" style="font-weight:600;color:green">@item.BundleTitle <p class="pull-right">Current Bid $@item.BundleBaseprice</p></h6>                              
+                            </div>
+                            </div>
+                            <div style="text-align:center; overflow:hidden">
+                                @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", new { BundleID = @item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    <input type="image" value="" src="~/Images/iPhone11ProMax.jpg" class="card-img-top" style="height:300px; width:300px; display:inline-block" alt="...">
+                                }
+                            </div>
 
-
-
-
-                        <div class="card-footer" id="updateTime">
-
-                            <div class="row" style="margin:0">
-                                <div class="float-left">
-                                    @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", new { BundleID = @item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                    {
-                                        <input type="submit" class="btn btn-success" value="Bid Auction" />
+                            <div class="card-footer" id="updateTime">
+                                @*<div class="row" style="margin:0">
+                                    <div class="float-right">
+                                        <span style="font-weight:700">Current Bid $@item.BundleBaseprice </span>
+                                    </div>
+                                </div>*@
+                                <div class="row" style="margin:0;font-weight:400;color:orangered;font-size:small">
+                                    @{
+                                        DateTime startDate = DateTime.Now;
+                                        TimeSpan t = @item.Bundle_Auction_EndDate - startDate;
+                                        string countDown = string.Format("Auction Ends In {0} Days, {1} Hours, {2} Minutes, {3} Seconds", t.Days, t.Hours, t.Minutes, t.Seconds);
+                                        <label>@countDown</label>
                                     }
-                                </div>
-                                <div class="float-right">
-                                    <span style="font-weight:700">Current Bid $@item.BundleBaseprice </span>
-                                </div>
-                            </div>
-
-
-
-
-
-
-
-
-                            <div class="row" style="margin:0">
-                                <div>
-                                    <span style="font-weight:700;color:orangered">Auction Timer: </span>
-                                </div>
-                                <div>
-                                    <span id="current_timer" class="current_timer"></span>
+                                    @*<span id="current_timer" class="current_timer"></span>*@
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
-            }
+                }
         </div>
     </div>
 </div>
