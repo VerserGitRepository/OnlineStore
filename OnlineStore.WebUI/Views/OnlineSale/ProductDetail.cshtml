@@ -24,56 +24,74 @@
                 <div class="col-md-12" style="font-weight:600">
                     @Html.DisplayFor(model => model.BrandName)  @Html.DisplayFor(model => model.ModelName)  @Html.DisplayFor(model => model.ProductName)
                 </div>
+            </div>
+
+            <div class="row">
                 <div class="col-md-12">
                     <br />
                     <label class="control-label">Description:</label>
                     @Html.DisplayFor(model => model.Description)
                 </div>
+            </div>
+
+            <div class="row">
                 <div class="col-md-12">
                     <br /> <label class="control-label" style="font-size:medium">$</label>
                     <span id="priceLabel" style="font-size:medium"> @Html.DisplayFor(model => model.PriceIncGST, new { }) </span><label style="font-size:x-small">&nbsp;&nbsp;&nbsp; (Inc GST)</label>
                     @Html.HiddenFor(model => model.PriceIncGST, new { @id = "hiddenPrice" })
                 </div>
+            </div>
+
+            <div class="row">
                 <div class="col-md-12">
                     <br /> <label class="control-label">Available:</label>
                     @Html.DisplayFor(model => model.QtyAvailable)
                 </div>
+            </div>
+
+            <div class="row">
                 <div class="col-sm-3">
                     @Html.DropDownListFor(m => m.PurchasedQty, Enumerable.Range(1, Model.QtyAvailable).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control", style = "font-size:small", placeholder = "Quantity", @id = "ddlQuantity" })
                     @Html.ValidationMessageFor(model => model.PurchasedQty, null, new { @class = "text-danger" })
                 </div>
-                <div class="col-md-12">
-                    <div class="col-md-6">
-                        @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = Model.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
-                        {
-                            <div>
-                                <input type="hidden" id="hdnQty" name="hdnQty" />
-                                <input type="hidden" id="hdnprice" name="hdnprice" />
-                                @if (Model.QtyAvailable > 0)
-                                {
-                                    <button class="btn-success" style="align-content:center"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
-                                }
-                                else
-                                {
-                                    <h3>Sold Out</h3>
-                                }
-                            </div>
-                        }
-                    </div>
-                    <br />
-                    @if (Model.QtyAvailable > 0)
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = Model.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
                     {
-                        <div class="col-md-6">
-                            <div class="col-md-4" style="font-size:smaller">
-                                <input type="text" id="PromoCodetxt" style="font-size:small;vertical-align:top" placeholder="Promocode Here.." />
-                            </div>
-                            <div class="col-md-4">
-                                <input type="submit" class="btn-success" value="Apply Promo" onclick="ApplyPromoCode();" />
-                            </div>
+                        <div>
+                            <input type="hidden" id="hdnQty" name="hdnQty" />
+                            <input type="hidden" id="hdnprice" name="hdnprice" />
+                            @if (Model.QtyAvailable > 0)
+                            {
+                                <button class="btn-success" style="align-content:center; padding:10px"><span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button>
+                            }
+                            else
+                            {
+                                <h3>Sold Out</h3>
+                            }
                         </div>
                     }
                 </div>
+
             </div>
+
+            <div class="row">
+                @if (Model.QtyAvailable > 0)
+                {
+                    <div class="col-md-3">
+                        <div class="col-md-6" style="padding-top:10px">
+                            <input type="text" id="PromoCodetxt" style="font-size:small;vertical-align:top" placeholder="Promocode Here.." />
+                        </div>
+                        <div class="col-md-6" style="padding-top:10px">
+                            <input type="submit" class="btn-success" style="padding:6px" value="Apply" onclick="ApplyPromoCode();" />
+                        </div>
+                    </div>
+                }
+            </div>
+            </>
         </div>
     </div>
 </div>

@@ -264,6 +264,7 @@
                             <th>PriceIncGST</th>
                             <th>Quantity</th>
                             <th>PromoCode</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -296,6 +297,9 @@
 
                                         <span><strong>Add Promo Code</strong></span>
                                     </a>
+                                </td>
+                                                                <td>
+                                    <input type="checkbox" checked data-toggle="toggle" data-onstyle="primary" data-on="Yes" data-off="No" onchange="">
                                 </td>
                             </tr>
                         }
@@ -375,9 +379,7 @@
                                 <td>@item.BundleBaseprice</td>
                                 <td>@item.IsAuctionBundleActive</td>
                                 <td>
-
-                                        <input type="checkbox" checked data-toggle="toggle" data-onstyle="primary" data-on="Yes" data-off="No" onchange="">
-
+                                    <input type="checkbox" checked data-toggle="toggle" data-onstyle="primary" data-on="Yes" data-off="No" onchange="">
                                 </td>
                             </tr>
                         }
