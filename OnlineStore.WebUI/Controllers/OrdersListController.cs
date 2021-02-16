@@ -82,23 +82,26 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult AddUpdateProduct(OnlineSaleProduct OnlineSaleProductModel)
         {
-            if(!ModelState.IsValid)
-                return RedirectToAction("Index", "OrdersList");
-            string filePath = Path.Combine(Server.MapPath(".."),@"ProductImages\");
-            if (!Directory.Exists(filePath))
+            if (OnlineSaleProductModel != null && Session["Username"] != null)
             {
-                Directory.CreateDirectory(filePath);
-            }
-            foreach (HttpPostedFileBase file in OnlineSaleProductModel.files)
-            {
-                if (file != null)
+
+                string filePath = Path.Combine(Server.MapPath(".."), @"ProductImages\");
+                if (!Directory.Exists(filePath))
                 {
-                    file.SaveAs(filePath + file.FileName + ".jpg");
-                    OnlineSaleProductModel.Images.Add(file.FileName + ".jpg");
+                    Directory.CreateDirectory(filePath);
                 }
+                foreach (HttpPostedFileBase file in OnlineSaleProductModel.files)
+                {
+                    if (file != null)
+                    {
+                        file.SaveAs(filePath + file.FileName + ".jpg");
+                        OnlineSaleProductModel.Images.Add(file.FileName + ".jpg");
+                    }
+                }
+                var jsondata = JsonConvert.SerializeObject(OnlineSaleProductModel);
+                var resp = OrdersServices.AddUpdateProduct(OnlineSaleProductModel);
+                return RedirectToAction("Index", "OrdersList");
             }
-            var jsondata = JsonConvert.SerializeObject(OnlineSaleProductModel);
-            var resp = OrdersServices.AddUpdateProduct(OnlineSaleProductModel);
             return RedirectToAction("Index", "OrdersList");
         }
        

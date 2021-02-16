@@ -130,7 +130,7 @@ namespace OnlineStore.WebUI.Controllers
         }
         public ActionResult Accessories(int Page_No = 1)
         {
-            var _ItemTypelist = new List<int>{15,10,3,2,1,39,6,4,9,40 };
+            var _ItemTypelist = new List<int>{15,3,2,1,39,6,4,9,40 };
             var size = SaleProducts.Where(m =>!_ItemTypelist.Contains(Convert.ToInt32(m.ItemType_ID))).OrderBy(d => d.QtyAvailable);
             int Size_Of_Page = 10;
             int No_Of_Page = Page_No;
