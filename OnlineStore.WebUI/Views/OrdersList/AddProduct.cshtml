@@ -32,7 +32,7 @@
         <div class="row" style="padding-top:10px">
             <div class="form-group  required col-md-6" tabindex=3>
                 <label class="control-label">ItemType</label><br />
-                @Html.DropDownListFor(model => model.ItemType_ID, Model.ItemTypes, "ItemType", new { @class = "form-control", id = "ddlItemType", @multiple = "multiple" })
+                @Html.DropDownListFor(model => model.ItemType_ID, Model.ItemTypes, "ItemType", new { @class = "form-control", id = "ddlItemType",  @multiple = "multiple" })
             </div>
             <div class="form-group  required col-md-6" tabindex=4>
                 <label class="control-label">Brand</label><br />
@@ -227,6 +227,10 @@
 
     .btn-default {
         border: 1px solid gray;
+        font-size:12px;
+    }
+
+    .radio {
         font-size:12px;
     }
 </style>

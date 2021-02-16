@@ -22,6 +22,10 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+
 </head>
 <body>
 
@@ -356,8 +360,8 @@
                             <th scope="col">Start Date&TIme</th>
                             <th scope="col">End Date&TIme</th>
                             <th scope="col">BundlePrice</th>
-                            <th scope="col">IsAuctionActive</th>
-                            <th scope="col"></th>
+                            <th scope="col">Auction Status</th>
+                            <th scope="col">######</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -366,15 +370,20 @@
                             <tr>
                                 <td scope="row">@item.Id</td>
                                 <td><a href="javascript:void(0);" class="EditBundleDetails" data-id="@item.Id" style="font-weight:600;color:dodgerblue">@Html.DisplayFor(modelItem => item.BundleTitle) </a></td>
-                                <td>@item.BundleTitle</td>
                                 <td>@item.Bundle_Auction_StartDate</td>
                                 <td>@item.Bundle_Auction_EndDate</td>
                                 <td>@item.BundleBaseprice</td>
                                 <td>@item.IsAuctionBundleActive</td>
+                                <td>
+
+                                        <input type="checkbox" checked data-toggle="toggle" data-onstyle="primary" data-on="Yes" data-off="No" onchange="">
+
+                                </td>
                             </tr>
                         }
                     </tbody>
                 </table>
+
             </div>
 
         </div>
@@ -581,7 +590,9 @@
                 error: function (result) { alert(result); console.log(result);}
             });
         });
-        });
+    });
+
+
 
 </script>
 <style>

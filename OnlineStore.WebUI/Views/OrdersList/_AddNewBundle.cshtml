@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Auction EndDate</label>
-                        @Html.EditorFor(model => model.Bundle_Auction_EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "EndDate" } })
+                        @Html.EditorFor(model => model.Bundle_Auction_EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "EndDate", id = "Enddatepicker" } })
 
                     </div>
                 </div>
@@ -81,6 +81,9 @@
 <script>
     $(function () {
         $("#Startdatepicker").datepicker();
+    });
+    $(function () {
+        $("#Enddatepicker").datepicker();
     });
     $('#exampleFormControlInput1').click(function () { $('#exampleFormControlInput1').trigger('click'); });
     $('#exampleFormControlInput1').on('change', function (event) {
