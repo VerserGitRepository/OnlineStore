@@ -22,9 +22,9 @@ namespace OnlineStore.WebUI.Models
         public bool IsSKU { get; set; }
         [Required(ErrorMessage = "ItemType Is Mandatory")]
         public int? ItemType_ID { get; set; }
-        [Required(ErrorMessage = "Brand Is Mandatory")]
+        //[Required(ErrorMessage = "Brand Is Mandatory")]
         public int? Brand_ID { get; set; }
-        [Required(ErrorMessage = "Model is mandatory")]
+        //[Required(ErrorMessage = "Model is mandatory")]
         public int? Model_ID { get; set; }
         public int PurchasedQty { get; set; }
         public decimal PriceExGST { get; set; }

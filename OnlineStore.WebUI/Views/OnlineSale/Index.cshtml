@@ -44,9 +44,9 @@
 <div class="container-fluid" style="max-width:95%;padding:0;">
 
     <div class="row">
-        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 15).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
+        @foreach (var item in Model.OnlineSaleProductModel.OrderByDescending(p=>p.QtyAvailable).ToList())
         {
-            <div class="col-md-3" style="margin-top:20px">
+            <div class="col-md-3 col-lg-3" style="margin-top:20px">
                 <div class="thumbnail">
                     <div class="caption" style="padding:2px;">
                         <h5 class="pull-right" style="font-weight:800">$@item.PriceIncGST</h5>
@@ -57,7 +57,7 @@
                     </div>
                     @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
                     {
-                        //@Html.Hidden(item.Id.ToString());
+                       
                         <div>
                             @if (item.QtyAvailable > 0)
                             {
@@ -74,8 +74,9 @@
         }
     </div>
 
-    <div class="row">
-        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 40).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
+
+    @*<div class="row">
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 40).Take(4).ToList())
         {
             <div class="col-md-3" style="margin-top:10px">
                 <div class="thumbnail">
@@ -86,12 +87,10 @@
                             <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px;  display:inline-block" class="img-responsive" />
                         </div>
                     </div>
-                    @*<div class="card-body">
-                        <p class="card-text"></p>
-                    </div>*@
+                 
                     @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
                     {
-                        //@Html.Hidden(item.Id.ToString());
+                     
                         <div>
                             @if (item.QtyAvailable > 0)
                             {
@@ -110,7 +109,7 @@
     </div>
 
     <div class="row">
-        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 3).Take(4).ToList())
         {
             <div class="col-md-3" style="margin-top:10px">
                 <div class="thumbnail">
@@ -121,12 +120,10 @@
                             <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px;  display:inline-block" class="img-responsive" />
                         </div>
                     </div>
-                    @*<div class="card-body">
-                        <p class="card-text"></p>
-                    </div>*@
+               
                     @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
                     {
-                        //@Html.Hidden(item.Id.ToString());
+                  
                         <div>
                             @if (item.QtyAvailable > 0)
                             {
@@ -145,7 +142,7 @@
     </div>
 
     <div class="row">
-        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 1).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 1).Take(4).ToList())
         {
             <div class="col-md-3" style="margin-top:10px">
                 <div class="thumbnail">
@@ -156,12 +153,9 @@
                             <img src="~/ProductImages/@item.Images.FirstOrDefault()" onclick="ShowProductDetailPage(@item.Id);" style="width:300px;height:300px; display:inline-block" class="img-responsive" />
                         </div>
                     </div>
-                    @*<div class="card-body">
-                        <p class="card-text"></p>
-                    </div>*@
+               
                     @using (Html.BeginForm("AddToCartNoVerb", "OnlineSale", new { @id = item.Id, @returnUrl = string.Empty, @quantity = 1, @ItemPrice = item.PriceIncGST }, FormMethod.Post))
-                    {
-                        //@Html.Hidden(item.Id.ToString());
+                    {               
                         <div>
                             @if (item.QtyAvailable > 0)
                             {
@@ -180,7 +174,7 @@
     </div>
 
     <div class="row">
-        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 2).OrderByDescending(m => m.QtyAvailable).Take(4).ToList())
+        @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.ItemType_ID == 2).Take(4).ToList())
         {
             <div class="col-md-3" style="margin-top:10px">
                 <div class="thumbnail">
@@ -208,8 +202,7 @@
                 </div>
             </div>
         }
-    </div>
-
+    </div>*@
     <div class="container-fluid" style="margin-bottom:40px;width:80%; display:flex">
         <div class="col-sm-2">
             <div class="brand-item"> <img style="max-width:100%;" src="~/Images/apple.jpg" alt="Submit" width="144" height="81"></div>
@@ -234,7 +227,6 @@
         <img src="~/Images/ajax-loader.gif" />
     </div>
 </div>
-
 <script>
 $('.carousel').carousel({
     interval: 2000
