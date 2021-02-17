@@ -40,12 +40,8 @@
             <li><a href="#tabs-5">SHIPPED ORDERS</a></li>
             <li><a href="#tabs-6">MANAGE</a></li>
         </ul>
-
-
         <div class="panel-body" >
-
             <div id="tabs-2" style="overflow-x:scroll">
-
                 <table class="table table-bordered table-hover" id="OrdersTable1">
                     <thead style="background-color:#959ca1;color:white;">
                         <tr>
@@ -91,7 +87,6 @@
                     </tbody>
                 </table>
             </div>
-
             <div id="tabs-3" class="table-bordered" style="overflow-x:scroll">
                 @using (Html.BeginForm("ProcessManualOrder", "OrdersList", FormMethod.Post))
                 {
@@ -256,11 +251,7 @@
                             <th>ID</th>
                             <th>Image</th>
                             <th>Product</th>
-                            <th>ItemType</th>
-                            <th>Brand</th>
-                            <th>Model</th>
-                            <th>PriceExGST</th>
-                            <th>GSTAmount</th>
+                            <th>ItemType</th>                        
                             <th>PriceIncGST</th>
                             <th>Quantity</th>
                             <th>PromoCode</th>
@@ -285,22 +276,18 @@
                                     }
                                 </td>
                                 <td><a href="javascript:void(0);" class="ProductName" data-id="@item.Id" style="font-weight:600;color:dodgerblue">@Html.DisplayFor(modelItem => item.ProductName) </a></td>
-                                <td>@item.Brand_ID</td>
-                                <td>@item.ItemType_ID</td>
-                                <td>@item.Model_ID</td>
-                                <td>@item.PriceExGST</td>
-                                <td>@item.GSTAmount</td>
+                              
+                                <td>@item.ItemType_ID</td>                               
                                 <td>@item.PriceIncGST</td>
                                 <td>@item.QtyAvailable</td>
                                 <td>
                                     <a class="Update btn btn-success a-btn-slide-text" href="javascript:;" id="AddPromo">
-
                                         <span><strong>Add Promo Code</strong></span>
                                     </a>
-                                </td>
-                                                                <td>
-                                    <input type="checkbox" checked data-toggle="toggle" data-onstyle="primary" data-on="Yes" data-off="No" onchange="">
-                                </td>
+                                </td>        
+                                <td>
+                                    <input data-size="mini" type="checkbox" data-toggle="toggle"  data-onstyle="primary" data-id="@item.Id" name="AssignedGroups[@item.IsProductActive].Assigned" @(item.IsProductActive ? "checked" : "") value="@item.IsProductActive" id="SaleProductCheckBoxID" onchange="ProductsActivateDeActivate(this);" />
+                                     </td>
                             </tr>
                         }
                     </tbody>
@@ -433,7 +420,7 @@
         });
 
     function OpenAuctionAssetBundle() {
-            debugger;
+          //  debugger;
             var AddSiteURL = '@Url.Action("_AddNewBundle", "OrdersList")'
             $.ajax({
             type: "GET",
@@ -596,6 +583,26 @@
 
 
 
+    function ProductsActivateDeActivate(theRow) {
+        var tr = $(theRow).closest("tr");
+        var td = tr.find("td:nth-child(1)");
+        var SaleproductId = td.text();
+        var ischecked = tr.find("#SaleProductCheckBoxID").is(':checked');
+        var ProductsActivateURL = '@Url.Action("ProductsActivateDeActivate", "OrdersList")'
+        $.ajax({
+            url: ProductsActivateURL,
+            type: "POST",
+            data: { SaleproductId: SaleproductId, isActive: ischecked },
+            dataType: "json",
+            traditional: true,
+            success: function (data) {
+                if (data.Url === "/OrdersList/Index") {
+                    window.location.href = data.Url
+                }
+
+            }
+        });
+    }
 </script>
 <style>
     .popover-content {
