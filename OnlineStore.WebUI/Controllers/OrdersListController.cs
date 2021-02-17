@@ -205,8 +205,12 @@ namespace OnlineStore.WebUI.Controllers
         {
             if (Session["userid"]!=null)
             {
-              //  var _r = AdminHelperService.UpdateOpportunity(opportunityID, isActive);
-                var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "OrdersList");
+                var _ActiveDisActiveDto = new ActiveDisActiveDto { 
+                    auctionbundleID= SaleproductId,
+                    IsActive= isActive
+                };
+                 var _r = OrdersServices.Active_DisActive_Product(_ActiveDisActiveDto);
+                 var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "OrdersList");              
                 return Json(new { Url = redirectUrl });
             }
             else
