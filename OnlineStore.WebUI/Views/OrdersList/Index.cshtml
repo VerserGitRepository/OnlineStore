@@ -286,7 +286,7 @@
                                     </a>
                                 </td>        
                                 <td>
-                                    <input data-size="mini" type="checkbox" data-toggle="toggle"  data-onstyle="primary" data-id="@item.Id" name="AssignedGroups[@item.IsProductActive].Assigned" @(item.IsProductActive ? "checked" : "") value="@item.IsProductActive" id="SaleProductCheckBoxID" onchange="ProductsActivateDeActivate(this);" />
+                                    <input type="checkbox" data-toggle="toggle"  data-onstyle="primary" data-id="@item.Id" name="AssignedGroups[@item.IsProductActive].Assigned" @(item.IsProductActive ? "checked" : "") value="@item.IsProductActive" id="SaleProductCheckBoxID" onchange="ProductsActivateDeActivate(this);" />
                                      </td>
                             </tr>
                         }
