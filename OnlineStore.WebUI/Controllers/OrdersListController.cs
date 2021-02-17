@@ -214,5 +214,21 @@ namespace OnlineStore.WebUI.Controllers
                 return RedirectToAction("Login", "Login");
             }
         }
+
+        [HttpPost]
+        public ActionResult ProductsAuctionStatus( bool isActive)
+        {
+            if (Session["userid"] != null)
+            {
+                //  var _r = AdminHelperService.UpdateOpportunity(opportunityID, isActive);
+                var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "OrdersList");
+                return Json(new { Url = redirectUrl });
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
+        }
+
     }
 }
