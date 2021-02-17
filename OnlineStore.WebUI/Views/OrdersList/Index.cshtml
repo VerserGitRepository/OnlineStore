@@ -234,8 +234,7 @@
 
                 }
             </div>
-
-            <div id="tabs-4" style="overflow-x:scroll">
+            <div id="tabs-4" style="overflow-x:scroll; padding-top:0">
                 <div class="row pull-right">
                     <div class="col-md-1">
                         <div class="col-md-1" style="margin-bottom:5px">
@@ -293,7 +292,6 @@
                     </tbody>
                 </table>
             </div>
-
             <div id="tabs-5" style="overflow-x:scroll">
                 <table class="table table-bordered table-hover" id="OrdersTable1" style="font-size:smaller">
                     <thead style="background-color:#959ca1;color:white">
@@ -326,12 +324,10 @@
                     </tbody>
                 </table>
             </div>
-
             <div id="tabs-6">
                 MANAGEDISPATCHORDER
             </div>
-
-            <div id="tabs-7" style="overflow-x:scroll">
+            <div id="tabs-7" style="overflow-x:scroll; padding-top:0">
                 <div class="row pull-right">
                     <div class="col-md-1">
                         <div class="col-md-1" style="margin-bottom:5px">
@@ -352,7 +348,7 @@
                             <th scope="col">End Date&TIme</th>
                             <th scope="col">BundlePrice</th>
                             <th scope="col">Auction Status</th>
-                            <th scope="col">######</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -366,7 +362,7 @@
                                 <td>@item.BundleBaseprice</td>
                                 <td>@item.IsAuctionBundleActive</td>
                                 <td>
-                                    <input type="checkbox" checked data-toggle="toggle" data-onstyle="primary" data-on="Yes" data-off="No" onchange="">
+                                    <input type="checkbox" data-toggle="toggle"  data-onstyle="primary" data-id="@item.Id" name = "AssignedGroups[@item.IsAuctionBundleActive].Assigned" @(item.IsAuctionBundleActive? "checked" : "") value="@item.IsAuctionBundleActive" id="AuctionStatusCheckBoxID" onchange="ProductsAuctionStatus(this);" />
                                 </td>
                             </tr>
                         }
@@ -603,6 +599,28 @@
             }
         });
     }
+
+    function ProductsAuctionStatus(theRow) {
+        var tr = $(theRow).closest("tr");
+        var td = tr.find("td:nth-child(1)");
+        var SaleproductId = td.text();
+        var ischecked = tr.find("#AuctionStatusCheckBoxID").is(':checked');
+        var ProductsActivateURL = '@Url.Action("ProductsAuctionStatus", "OrdersList")'
+        $.ajax({
+            url: ProductsActivateURL,
+            type: "POST",
+            data: { SaleproductId: SaleproductId, isActive: ischecked },
+            dataType: "json",
+            traditional: true,
+            success: function (data) {
+                if (data.Url === "/OrdersList/Index") {
+                    window.location.href = data.Url
+                }
+
+            }
+        });
+    }
+
 </script>
 <style>
     .popover-content {
