@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark" style="border-radius:0;margin-bottom:0 !important; background-color:black; padding:5px 16px;">
         <div class="col">
             <a href="@Url.Action("Index", "OnlineSale")">
-                <img src="~/Images/VerserLogo.png" style="width:100px;height:50px;" />
+                <img src="~/Images/Logo.png" style="width:180px;height:50px;" />
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border:2px solid gray; border-radius:12px">
@@ -184,16 +184,16 @@
 
     @RenderSection("scripts", required: false)
 
-    <div class="my_footer text-center text-muted" style="bottom:0;position:page; width:100%;background-color:lightgray;color:dodgerblue;font-size:smaller">
-        The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
-        <img src="~/Images/Payment_options.PNG" />
+<div class="my_footer text-center text-muted" style="bottom:0;position:page; width:100%;background-color:lightgray;color:dodgerblue;font-size:smaller">
+    The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
+    <img src="~/Images/Payment_options.PNG" />
 
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-            Terms & Conditions
-        </button>
-        ContactUs: <a href="tel:+61 1800 732 668" style="color:dodgerblue">+61 1800 732 668</a>  Mail: <a href="mailto:Support@verser.com.au" style="color:dodgerblue">Support@verser.com.au</a>
-        @Html.ActionLink("FAQ", "FAQ", "Home", null, new { @class = "FaqLink" })
-    </div>
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+        Terms & Conditions
+    </button>
+    ContactUs: <a href="tel:+61 1800 732 668" style="color:dodgerblue">+61 1800 732 668</a>  Mail: <a href="mailto:Support@verser.com.au" style="color:dodgerblue">Support@verser.com.au</a>&nbsp
+    @Html.ActionLink("FAQ", "FAQ", "Home", null, new { @class = "FaqLink", style = "color:dodgerblue" })
+</div>
 </body>
 </html>
 
