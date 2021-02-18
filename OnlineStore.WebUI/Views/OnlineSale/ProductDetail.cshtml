@@ -7,7 +7,7 @@
 <script src="~/Scripts/jquery.elevatezoom.js"></script>
 <div class="panel-body" style="font-size:small;color:grey;border-color:gray;padding:0px">
     <br>
-    <div class="row" style="border:1px solid #ddd; border-left:solid;border-width:thin; padding-right: 0px;margin-right: 0px;">
+    <div class="row" style="padding-right: 0px;margin-right: 0px;">
         <div class="col-md-4 item-photo">
             <img style="max-width:100%;"src="/ProductImages/@Model.Images.FirstOrDefault()" @*data-zoom-image="/ProductImages/@Model.Images.FirstOrDefault()"*@ />
             <div id="gal1">
@@ -21,44 +21,45 @@
         </div>
         <div class="col-md-8" style="border:0px solid gray">
             <div class="row">
-                <div class="col-md-12" style="font-weight:600">
-                    @Html.DisplayFor(model => model.BrandName)  @Html.DisplayFor(model => model.ModelName)  @Html.DisplayFor(model => model.ProductName)
+                <div class="col-md-12">
+                    <h2 style="font-weight:400">
+                        @Html.DisplayFor(model => model.BrandName)  @Html.DisplayFor(model => model.ModelName)  @Html.DisplayFor(model => model.ProductName)
+                    </h2>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <br />
-                    <label class="control-label">Description:</label>
+            <div class="row well">
+                <div class="col-md-12" style="text-align:justify">
+                    <label class="control-label" style="font-size:20px">Description:</label>
+                    <h4>
                     @Html.DisplayFor(model => model.Description)
+                    </h4>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" style="padding-top:15px; border-top:1px solid lightgray">
                 <div class="col-md-12">
-                    <br /> <label class="control-label" style="font-size:medium">$</label>
-                    <span id="priceLabel" style="font-size:medium"> @Html.DisplayFor(model => model.PriceIncGST, new { }) </span><label style="font-size:x-small">&nbsp;&nbsp;&nbsp; (Inc GST)</label>
+                    <label class="control-label" style="font-size:medium">$</label>
+                    <span id="priceLabel" style="font-size:18px; font-weight:800"> @Html.DisplayFor(model => model.PriceIncGST, new { }) </span><label style="font-size:x-small">&nbsp;&nbsp;&nbsp; (Inc GST)</label>
                     @Html.HiddenFor(model => model.PriceIncGST, new { @id = "hiddenPrice" })
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12">
-                    <br /> <label class="control-label">Available:</label>
-                    @Html.DisplayFor(model => model.QtyAvailable)
+                    <label class="control-label" style="font-size:18px;">Available:</label>
+                    <span style="font-size:18px; font-weight:800">@Html.DisplayFor(model => model.QtyAvailable)</span>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-sm-3">
-                    @Html.DropDownListFor(m => m.PurchasedQty, Enumerable.Range(1, Model.QtyAvailable).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control", style = "font-size:small", placeholder = "Quantity", @id = "ddlQuantity" })
+            <div class="row" style="margin-top:10px">
+                <div class="col-sm-1">
+                    @Html.DropDownListFor(m => m.PurchasedQty, Enumerable.Range(1, Model.QtyAvailable).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control", style = "font-size:small; margin-top:0", placeholder = "Quantity", @id = "ddlQuantity" })
                     @Html.ValidationMessageFor(model => model.PurchasedQty, null, new { @class = "text-danger" })
                 </div>
-            </div>
 
-            <div class="row">
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     @using (Html.BeginForm("AddToCart", "OnlineSale", new { @id = Model.Id, @returnUrl = Request.Url.PathAndQuery }, FormMethod.Post))
                     {
                         <div>
@@ -70,7 +71,7 @@
                             }
                             else
                             {
-                                <h3>Sold Out</h3>
+                                <h3 style="margin-top:5px">Sold Out</h3>
                             }
                         </div>
                     }
@@ -81,13 +82,11 @@
             <div class="row">
                 @if (Model.QtyAvailable > 0)
                 {
-                    <div class="col-md-3">
-                        <div class="col-md-6" style="padding-top:10px">
-                            <input type="text" id="PromoCodetxt" style="font-size:small;vertical-align:top" placeholder="Promocode Here.." />
-                        </div>
-                        <div class="col-md-6" style="padding-top:10px">
-                            <input type="submit" class="btn-success" style="padding:6px" value="Apply" onclick="ApplyPromoCode();" />
-                        </div>
+                    <div class="col-md-2" style="padding-top:10px">
+                        <input type="text" id="PromoCodetxt" style="font-size:small;vertical-align:top" placeholder="Promocode Here.." />
+                    </div>
+                    <div class="col-md-3" style="padding-top:10px">
+                        <input type="submit" class="btn-success" style="padding:6px" value="Apply" onclick="ApplyPromoCode();" />
                     </div>
                 }
             </div>
