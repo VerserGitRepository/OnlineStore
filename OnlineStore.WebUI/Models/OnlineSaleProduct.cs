@@ -57,6 +57,7 @@ namespace OnlineStore.WebUI.Models
         public bool IsCarouselProduct { get; set; }
         public bool IsUpdateProduct { get; set; }
         public bool IsViewTypeGrid { get; set; }
+        public string PromoCode { get; set; }
 
     }
     public class RequiredIfAttribute : ValidationAttribute

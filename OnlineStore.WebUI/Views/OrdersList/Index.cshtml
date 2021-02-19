@@ -260,34 +260,30 @@
                     <tbody>
                         @foreach (var item in Model.OnlineSaleProductList)
                         {
-                            <tr>
-                                <td>@item.Id</td>
-                                <td>
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>
+                                @if (item.Images.Count > 0)
+                                {
+                                    <img src="~/ProductImages/@item.Images.FirstOrDefault()" width="90" height="60" />
+                                }
+                            </td>
+                            <td><a href="javascript:void(0);" class="ProductName" data-id="@item.Id" style="font-weight:600;color:dodgerblue">@Html.DisplayFor(modelItem => item.ProductName) </a></td>
 
-                                    @*@if (item.ProductImage.Length > 0)
-                            {
-                                <img src="data:image;base64,@System.Convert.ToBase64String(item.ProductImage)" alt="@item.ProductName" width="200" height="150"/>
-                            }*@
+                            <td>@item.ItemTypeName</td>
+                            <td>@item.PriceIncGST</td>
+                            <td>@item.QtyAvailable</td>                          
+                            <td>
+                                @item.PromoCode
+                                <a class="Update btn btn-success a-btn-slide-text pull-right" style="color:white" href="javascript:;" onclick="ApplyNewPromo('@item.Id')" id="AddPromo">
 
-                                    @if (item.Images.Count > 0)
-                                    {
-                                        <img src="~/ProductImages/@item.Images.FirstOrDefault()" width="90" height="60" />
-                                    }
-                                </td>
-                                <td><a href="javascript:void(0);" class="ProductName" data-id="@item.Id" style="font-weight:600;color:dodgerblue">@Html.DisplayFor(modelItem => item.ProductName) </a></td>
-                              
-                                <td>@item.ItemType_ID</td>                               
-                                <td>@item.PriceIncGST</td>
-                                <td>@item.QtyAvailable</td>
-                                <td>
-                                    <a class="Update btn btn-success a-btn-slide-text" href="javascript:;" id="AddPromo">
-                                        <span><strong>Add Promo Code</strong></span>
-                                    </a>
-                                </td>        
-                                <td>
-                                    <input type="checkbox" data-toggle="toggle"  data-onstyle="primary" data-id="@item.Id" name="AssignedGroups[@item.IsProductActive].Assigned" @(item.IsProductActive ? "checked" : "") value="@item.IsProductActive" id="SaleProductCheckBoxID" onchange="ProductsActivateDeActivate(this);" />
-                                     </td>
-                            </tr>
+                                    &nbsp;<span class="glyphicon glyphicon-plus"></span>
+                                </a>
+                            </td>
+                            <td>
+                                <input type="checkbox" data-toggle="toggle" data-onstyle="primary" data-id="@item.Id" name="AssignedGroups[@item.IsProductActive].Assigned" @(item.IsProductActive ? "checked" : "") value="@item.IsProductActive" id="SaleProductCheckBoxID" onchange="ProductsActivateDeActivate(this);" />
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
@@ -362,7 +358,8 @@
                                 <td>@item.BundleBaseprice</td>
                                 <td>@item.IsAuctionBundleActive</td>
                                 <td>
-                                    <input type="checkbox" data-toggle="toggle"  data-onstyle="primary" data-id="@item.Id" name = "AssignedGroups[@item.IsAuctionBundleActive].Assigned" @(item.IsAuctionBundleActive? "checked" : "") value="@item.IsAuctionBundleActive" id="AuctionStatusCheckBoxID" onchange="ProductsAuctionStatus(this);" />
+                                    <input type="checkbox" data-toggle="toggle" data-onstyle="primary" data-id="@item.Id" name="AssignedGroups[@item.IsAuctionBundleActive].Assigned" @(item.IsAuctionBundleActive ? "checked" : "") value="@item.IsAuctionBundleActive" id="AuctionStatusCheckBoxID" onchange="ProductsAuctionStatus(this);" />
+                                    @*<input type="checkbox" data-toggle="toggle" data-onstyle="primary" data-id="@item.Id" name="AssignedGroups[@item.IsAuctionBundleActive].Assigned" @(item.IsAuctionBundleActive ? "checked" : "") value="@item.IsAuctionBundleActive" id="SaleProductCheckBoxID" onchange="ProductsActivateDeActivate(this);" />*@
                                 </td>
                             </tr>
                         }
@@ -370,50 +367,48 @@
                 </table>
 
             </div>
-
         </div>
     </div>
 </body>
 <script>
 
-
-        $(function () {
-            $("#tabs").tabs();
+    $(function () {
+        $("#tabs").tabs();
+    });
+    $(document).ready(function () {
+        $('#ProductsTable').DataTable();
+        $('#OrdersTable').DataTable();
+            $('#OrdersTable1').DataTable();
+        $('.dataTables_filter').addClass('pull-right');
+        $('[data-toggle="popover"]').popover({
+            container: 'body'
         });
-        $(document).ready(function () {
-            $('#ProductsTable').DataTable();
-            $('#OrdersTable').DataTable();
-             $('#OrdersTable1').DataTable();
-            $('.dataTables_filter').addClass('pull-right');
-            $('[data-toggle="popover"]').popover({
-                container: 'body'
-            });
-            $('.date-picker').datepicker();
+        $('.date-picker').datepicker();
+    });
+    $('#addProduct').click(function () {
+        debugger;
+        var AddSiteURL = '@Url.Action("AddProduct", "OrdersList")'
+        $.ajax({
+        type: "GET",
+        url: AddSiteURL,
+        success: function (data) {
+
+        $.confirm({
+        boxWidth: '40%',
+        useBootstrap: false,
+        backgroundDismiss: true,
+
+        title: '',
+        content: data,
+        closeIcon: true,
+        buttons: {
+        yes: { isHidden: true }
+        },
         });
-        $('#addProduct').click(function () {
-            debugger;
-            var AddSiteURL = '@Url.Action("AddProduct", "OrdersList")'
-            $.ajax({
-            type: "GET",
-            url: AddSiteURL,
-            success: function (data) {
-
-            $.confirm({
-            boxWidth: '40%',
-            useBootstrap: false,
-            backgroundDismiss: true,
-
-            title: '',
-            content: data,
-            closeIcon: true,
-            buttons: {
-            yes: { isHidden: true }
             },
-            });
-                },
-                error: function (result) { alert(result); console.log(result);}
-            });
+            error: function (result) { alert(result); console.log(result);}
         });
+    });
 
     function OpenAuctionAssetBundle() {
           //  debugger;
@@ -439,13 +434,15 @@
                 error: function (result) { alert(result); console.log(result);}
             });
         }
-    $('.Update').click(function () {
+    //$('.Update').click(function () {
+    function ApplyNewPromo(_ProductID_FK) {
             debugger;
             var AddSiteURL = '@Url.Action("AddPromo", "OrdersList")'
             $.ajax({
             type: "GET",
-            url: AddSiteURL,
-            success: function (data) {
+                url: AddSiteURL,            
+                data: { "_ProductID_FK": _ProductID_FK },
+                success: function (data) {
 
             $.confirm({
             boxWidth: '40%',
@@ -462,9 +459,9 @@
                 },
                 error: function (result) { alert(result); console.log(result);}
             });
-        });
-    function SubmitOrder(row) {
+    }
 
+    function SubmitOrder(row) {
            debugger;
         var buttonClicked = $(row).closest("tr");
            var theId = buttonClicked.find(".OrderDesc").text();
@@ -577,8 +574,6 @@
         });
     });
 
-
-
     function ProductsActivateDeActivate(theRow) {
         var tr = $(theRow).closest("tr");
         var td = tr.find("td:nth-child(1)");
@@ -603,13 +598,13 @@
     function ProductsAuctionStatus(theRow) {
         var tr = $(theRow).closest("tr");
         var td = tr.find("td:nth-child(1)");
-        var SaleproductId = td.text();
+        var bundleId = td.text();
         var ischecked = tr.find("#AuctionStatusCheckBoxID").is(':checked');
         var ProductsActivateURL = '@Url.Action("ProductsAuctionStatus", "OrdersList")'
         $.ajax({
             url: ProductsActivateURL,
             type: "POST",
-            data: { SaleproductId: SaleproductId, isActive: ischecked },
+            data: { bundleId: bundleId, isActive: ischecked },
             dataType: "json",
             traditional: true,
             success: function (data) {

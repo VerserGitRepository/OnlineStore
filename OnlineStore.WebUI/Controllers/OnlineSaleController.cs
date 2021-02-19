@@ -35,7 +35,6 @@ namespace OnlineStore.WebUI.Controllers
             {
                 prodinfo += s + ",";
             }
-
             Session["productinformation"] = prodinfo;
             return View(MainpageproductView);
         }

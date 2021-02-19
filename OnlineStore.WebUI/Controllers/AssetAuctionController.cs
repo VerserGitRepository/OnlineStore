@@ -16,14 +16,17 @@ namespace OnlineStore.WebUI.Controllers
         // GET: AssetAuction
         public ActionResult Index()
         {
-            var bundleslist = OrdersServices.AuctionBundles().Result;          
+            var bundleslist = OrdersServices.AuctionBundles().Result;           
             return View(bundleslist);
         }
         [HttpPost]
         public ActionResult AuctionAssetBundleBidingDetails(int BundleID)
         {
             var modelDetails = new AssetAuctionBundleModel();
-            var modeldata = OrdersServices.AuctionBundleByID(BundleID).Result;
+
+            //(2021, 12, 25)
+           var modeldata = OrdersServices.AuctionBundleByID(BundleID).Result;
+            modeldata.AuctionEndDateStringFormat = $"{modeldata.Bundle_Auction_EndDate.Year}, {modeldata.Bundle_Auction_EndDate.Month}, {modeldata.Bundle_Auction_EndDate.Day}";
             return View(modeldata);
         }
         [HttpGet]
@@ -41,10 +44,10 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult BuyAuctionBundle(int BundleId)
         {
-            if (Session["Username"] !=null && Session["FullName"] !=null)
+            if (Session["Username"] !=null)
             {
                 var purchaseRequest = new ListItems { 
-                    ID= BundleId,Value= Session["FullName"].ToString()
+                    ID= BundleId,Value= Session["Username"].ToString()
                 };                   
                 var PurchaseResponse = OrdersServices.BuyAuctionBundle(purchaseRequest).Result;
                 return RedirectToAction("Index", "AssetAuction");
@@ -125,6 +128,21 @@ namespace OnlineStore.WebUI.Controllers
             }
 
             return Json(null);
+        }
+
+        [HttpGet]
+        public ActionResult _AuctionCounterClock()
+        {
+            return PartialView();
+        }
+
+        public string Calculatecountdowntimer(DateTime AuctionEndDate )
+        {
+           // DateTime daysLeft = DateTime.Parse(AuctionEndDate);
+            DateTime startDate = DateTime.Now;          
+            TimeSpan t = AuctionEndDate - startDate;
+            string countDown = string.Format("{0} Days, {1} Hours, {2} Minutes, {3} Seconds til launch.", t.Days, t.Hours, t.Minutes, t.Seconds);
+            return countDown;            
         }
     }
 }

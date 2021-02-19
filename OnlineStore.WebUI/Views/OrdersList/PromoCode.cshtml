@@ -7,15 +7,16 @@
         <div class="card-header">
             Add Promo Code
         </div>
-        @using (Html.BeginForm("ApplyPromoCode", "OnlineSale", FormMethod.Post))
+        @using (Html.BeginForm("ApplyPromoCode", "OrdersList", FormMethod.Post))
         {
-
+            @Html.HiddenFor(model => model.promoCodeModel.ProductID_FK)
             <div class="card-body">
                 <div class="col-md-6" style="padding-top:10px">
                     <label class="control-label">Promo Code</label>
                     @Html.EditorFor(model => model.promoCodeModel.PromoCode, new { htmlAttributes = new { @class = "form-control", @id = "promoCode", @style = "width:200px;" } })
                     @Html.ValidationMessageFor(model => model.promoCodeModel.PromoCode, "", new { @class = "text-danger" })
                 </div>
+
                 <div class="col-md-6" style="padding-top:10px">
                     <label class="control-label">Promo Discount Percentage</label>
                     <br />

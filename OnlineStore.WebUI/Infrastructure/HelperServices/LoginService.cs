@@ -62,6 +62,7 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
                 if (response.IsSuccessStatusCode)
                 {
                     returnmessage = await response.Content.ReadAsAsync<LoginModel>();
+                    HttpContext.Current.Session["FullName"] = returnmessage.FullName;
                 }
             }
             return returnmessage;

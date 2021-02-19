@@ -278,6 +278,20 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return returnModel;       
         }
+        public async static Task<List<AuctionBundleListModel>> AdminAuctionBundleList()
+        {
+            var returnModel = new List<AuctionBundleListModel>();
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.GetAsync(string.Format("OnlineStoreAuction/AdminAuctionBundleList")).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    returnModel = await response.Content.ReadAsAsync<List<AuctionBundleListModel>>();
+                }
+            }
+            return returnModel;
+        }
 
         public async static Task<List<AssetListModel>> AuctionAssetList(int bundleid)
         {
@@ -301,6 +315,34 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             {
                 client.BaseAddress = new Uri(BaseUri);
                 HttpResponseMessage response = client.PostAsJsonAsync(string.Format("OnlineStoreAuction/AuctionpurchaseRequest"), PurchaseRequest).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    _Resp = await response.Content.ReadAsAsync<bool>();
+                }
+            }
+            return _Resp;
+        }
+        public async static Task<bool> Active_DisActive_Product(ActiveDisActiveDto _ActiveDisActiveDto)
+        {
+            bool _Resp = false;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.PostAsJsonAsync(string.Format("OnlineSaleOrders/Active_DisActive_Product"), _ActiveDisActiveDto).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    _Resp = await response.Content.ReadAsAsync<bool>();
+                }
+            }
+            return _Resp;
+        }
+        public async static Task<bool> Active_DisActive_AuctionBundle(ActiveDisActiveDto _ActiveDisActiveDto)
+        {
+            bool _Resp = false;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUri);
+                HttpResponseMessage response = client.PostAsJsonAsync(string.Format("OnlineStoreAuction/Active_DisActive_Bundle"), _ActiveDisActiveDto).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     _Resp = await response.Content.ReadAsAsync<bool>();

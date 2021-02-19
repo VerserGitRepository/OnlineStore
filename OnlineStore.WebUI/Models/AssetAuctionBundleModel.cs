@@ -16,6 +16,7 @@ namespace OnlineStore.WebUI.Models
 		public string BundleTitle { get; set; }
 		public string BundleDescription { get; set; }
 		public decimal BundleBaseprice { get; set; }
+		public decimal HigestBidPrice { get; set; }
 		public decimal BundleQuickBidPrice { get; set; }
 		public decimal PostQuickBidPrice { get; set; }
 		public decimal BundleBuyPrice { get; set; }
@@ -31,5 +32,8 @@ namespace OnlineStore.WebUI.Models
 		public int Image_Id { get; set; }
 		public List<string> ImageName { get; set; }
 		public int FK_AuctionBundleID { get; set; }
+		public bool IsBuyAuctionActive { get; set; }
+		public string AuctionEndDateStringFormat { get; set; }
+		
 	}
 }

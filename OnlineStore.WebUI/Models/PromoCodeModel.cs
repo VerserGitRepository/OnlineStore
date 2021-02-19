@@ -13,6 +13,7 @@ namespace OnlineStore.WebUI.Models
         {
         }
         public int Id { get; set; }
+        [Required(ErrorMessage = "PromoCode Is Mandatory")]
         public int ProductID_FK { get; set; }
         [Required(ErrorMessage = "PromoCode Is Mandatory")]
         public string PromoCode { get; set; }

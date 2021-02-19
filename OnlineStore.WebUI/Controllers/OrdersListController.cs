@@ -21,7 +21,7 @@ namespace OnlineStore.WebUI.Controllers
             if (Session["Username"] != null)
             {
                 var LoadViewModel = new OrderViewModel();
-                LoadViewModel.AuctionBundleList = OrdersServices.AuctionBundles().Result;
+                LoadViewModel.AuctionBundleList = OrdersServices.AdminAuctionBundleList().Result;
                 LoadViewModel.OnlineSaleOrdersList = OrdersServices.OnlineSaleOrdersList().Result;
                 foreach (OnlineSaleOrdersListModel s in LoadViewModel.OnlineSaleOrdersList)
                 {
@@ -178,11 +178,20 @@ namespace OnlineStore.WebUI.Controllers
             return Json(Models, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
-        public ActionResult AddPromo()
+        public ActionResult AddPromo(int _ProductID_FK)
         {
-            var LoadViewModel = (OrderViewModel)Session["OrderViewModel"];
+            //var LoadViewModel = (OrderViewModel) Session["OrderViewModel"];
+            var LoadViewModel =new OrderViewModel();
+            LoadViewModel.promoCodeModel.ProductID_FK = _ProductID_FK;
             return PartialView("PromoCode", LoadViewModel);
-        }       
+        }
+        [HttpPost]
+        public ActionResult ApplyPromoCode(OrderViewModel model)
+        {
+            var promocodemodel = new PromoCodeModel { PromoDiscountPercent = model.promoCodeModel.PromoDiscountPercent, PromoEndDate = model.promoCodeModel.PromoEndDate, PromoCode = model.promoCodeModel.PromoCode, PromoStartDate = model.promoCodeModel.PromoStartDate, ProductID_FK = model.promoCodeModel.ProductID_FK };
+            var result = OrdersServices.ApplyPromoCode(promocodemodel);
+            return RedirectToAction("Index", "OrdersList");
+        }
         public ActionResult _AddNewBundle()
         {
          //   var LoadViewModel = (OrderViewModel)Session["OrderViewModel"];
@@ -203,7 +212,7 @@ namespace OnlineStore.WebUI.Controllers
         [HttpPost]
         public ActionResult ProductsActivateDeActivate(int SaleproductId, bool isActive)
         {
-            if (Session["userid"]!=null)
+            if (Session["Username"] !=null)
             {
                 var _ActiveDisActiveDto = new ActiveDisActiveDto { 
                     auctionbundleID= SaleproductId,
@@ -220,11 +229,17 @@ namespace OnlineStore.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProductsAuctionStatus( bool isActive)
+        public ActionResult ProductsAuctionStatus(int bundleId, bool isActive)
         {
-            if (Session["userid"] != null)
+            if (Session["Username"] != null)
             {
-                //  var _r = AdminHelperService.UpdateOpportunity(opportunityID, isActive);
+                var _ActiveDisActiveDto = new ActiveDisActiveDto
+                {
+                    auctionbundleID = bundleId,
+                    IsActive = isActive
+                };
+
+                var _r = OrdersServices.Active_DisActive_AuctionBundle(_ActiveDisActiveDto);
                 var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "OrdersList");
                 return Json(new { Url = redirectUrl });
             }

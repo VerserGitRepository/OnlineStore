@@ -6,7 +6,7 @@
 <div class="container-fluid" style="max-width:95%;padding:0;">
     <div class="card text-center">
         <div class="card-header">
-            <h4 class="card-text">@Model.BundleTitle</h4>
+            <h4 class="card-text">@Model.BundleTitle</h4>            
         </div>
         <div class="card-body">
             <div class="row">
@@ -44,30 +44,27 @@
                                             </div>
 
                                             <div class="col-md-6" style="padding:0 15px 15px 15px; min-width:100%; overflow:hidden">
-                                                <p>
-                                                    @using (Html.BeginForm("BuyAuctionBundle", "AssetAuction", new { BundleId = @Model.Id }, FormMethod.Post, null))
+                                                <p>     
+                                                    @if (@Model.IsBuyAuctionActive)
                                                     {
-                                                        <input type="submit" class="btn btn-success btn" value="Buy Now $@Model.BundleBuyPrice"/> 
+                                                        using (Html.BeginForm("BuyAuctionBundle", "AssetAuction", new { BundleId = @Model.Id }, FormMethod.Post, null))
+                                                        {
+                                                            <input type="submit" class="btn btn-success btn" value="Buy Now $@Model.BundleBuyPrice" />
+                                                        }
                                                     }
-                                                    </p>
+                                                </p>
                                             </div>
-                                            <div class="col-md-6" style="padding-top:10px;min-width:100%">
-                                                @{
+                                            <div class="col-md-4" style="padding-top:10px;min-width:100%">
+                                                @*@{
                                                     DateTime startDate = DateTime.Now;
-                                                    TimeSpan t =Model.Bundle_Auction_EndDate - startDate;
+                                                    TimeSpan t = Model.Bundle_Auction_EndDate - startDate;
                                                     string countDown = string.Format("Auction Ends In {0} Days, {1} Hours, {2} Minutes, {3} Seconds", t.Days, t.Hours, t.Minutes, t.Seconds);
                                                     <label style="font-size:smaller;color:orangered;font-weight:400">@countDown</label>
-                                                }
-                                                <span id="current_timer"></span>
-
-                                                <script>
-                                                    $(function () {
-                                                        $('#current_timer').countdowntimer({
-                                                            currentTime: true,
-                                                            size: "sm"
-                                                        });
-                                                    });
-                                                </script>
+                                                }*@
+                                                <p style="color:red;font-size:medium">AUCTION WILL CLOSE IN !</p>
+                                                <p style="font-size:x-small">
+                                                    @Html.Partial("_AuctionCounterClock",Model.AuctionEndDateStringFormat)
+                                                </p>                                             
                                             </div>
                                         </div>
                                     </div>
@@ -84,9 +81,10 @@
                                     <div class="card-header" style="color:green;font-weight:700;">Live Bidings (@DateTime.Now.ToShortDateString())</div>
                                     <p class="card-text"><p id="discussion" style="height: 280px;overflow-y: scroll; margin:0">
                                         @foreach (var _bids in Model.BidTime_Price)
-                                        {
-                                            @_bids<br />
-                                        }
+                                         {
+                                              @_bids<br />
+                                         }                                 
+                                     <input type="hidden" value="@Model.HigestBidPrice" id="Hdn_HigestBidPrice" />
                                     </p>
                                 </div>
                             </div>
@@ -116,7 +114,7 @@
             </div>
         </div>
         <div class="card-footer text-muted">
-            <p style="color:cornflowerblue;font-weight:500"><a class="pull-left" href="@Url.Action("Index", "AssetAuction")" style="color:orange">Back To Auctions</a>  Bundle #Item 45789123 AUCTION End Date: @Model.Bundle_Auction_EndDate - Start Date :@Model.Bundle_Auction_StartDate </p>
+            <p style="color:cornflowerblue;font-weight:500"><a class="pull-left" href="@Url.Action("Index", "AssetAuction")" style="color:orange">Back To Auctions</a> AUCTION End Date: @Model.Bundle_Auction_EndDate - Start Date :@Model.Bundle_Auction_StartDate </p>
         </div>
     </div>
 </div>
@@ -197,14 +195,18 @@
             $.connection.hub.start().done(function () {
                 $('#sendmessage').click(function () {
                     var bidamount = $('#message').val();
-                    var highbid = $('#Hdn_BundleQuickBidPrice').val();
+                    var ChkBidAmount = parseFloat(bidamount).toFixed(2);
+                    var highbid = $('#Hdn_HigestBidPrice').val();
+                    alert(highbid)
+                    alert(ChkBidAmount)
                     if (bidamount == "" || bidamount == null ) {
                         $.confirm({
                             title: 'Warning!',
                             content: 'Bid Amount Is Empty!'
                         });
                         return false;
-                    } else if (bidamount <= highbid)
+                    }
+                    if (ChkBidAmount <= highbid)
                     {
                         $.confirm({
                             title: 'Warning!',
