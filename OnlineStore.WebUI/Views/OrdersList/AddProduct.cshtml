@@ -16,7 +16,7 @@
         {
     <div class="card-body">
         <div class="row" style="padding-top:10px">
-            <div class="form-group col-md-6" tabindex=1>
+            <div class="form-group required col-md-6" tabindex=1>
                 <label class="control-label">ProductName</label><br />
                 @Html.EditorFor(model => model.ProductName, "", new { @class = "form-control", @style = "width:600px;" })
                 @Html.ValidationMessageFor(model => Model.ProductName, "", new { @class = "text-danger" })

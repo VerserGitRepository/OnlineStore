@@ -16,6 +16,7 @@
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Bundle Title</label>
                         @Html.EditorFor(model => model.BundleTitle, new { htmlAttributes = new { @class = "form-control", placeholder = "BundleTitle" } })
+                        @Html.ValidationMessageFor(model => Model.BundleTitle, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Bundle Base Price</label>

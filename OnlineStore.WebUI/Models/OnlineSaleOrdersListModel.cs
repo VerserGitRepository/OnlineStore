@@ -32,6 +32,6 @@ namespace OnlineStore.WebUI.Models
         public string SSN { get; set; }
         public int? AssetId { get; set; }
         public List<OnlineSaleProduct> OnlineSalePurchasedProducts { get; set; }
-         public string OnlineSalePurchasedProductsDesc { get; set; }
+        public string OnlineSalePurchasedProductsDesc { get; set; }
     }
 }

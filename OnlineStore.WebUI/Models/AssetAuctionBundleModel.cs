@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -13,15 +14,23 @@ namespace OnlineStore.WebUI.Models
 			ImageName = new List<string>();		
 		}
 		public int Id { get; set; }
+		[Required(ErrorMessage = "BundleTitle Is Mandatory")]
 		public string BundleTitle { get; set; }
 		public string BundleDescription { get; set; }
+		[Required(ErrorMessage = "BundleBaseprice Is Mandatory")]
 		public decimal BundleBaseprice { get; set; }
+		[Required(ErrorMessage = "HigestBidPrice Is Mandatory")]
 		public decimal HigestBidPrice { get; set; }
+		[Required(ErrorMessage = "BundleQuickBidPrice Is Mandatory")]
 		public decimal BundleQuickBidPrice { get; set; }
+		[Required(ErrorMessage = "PostQuickBidPrice Is Mandatory")]
 		public decimal PostQuickBidPrice { get; set; }
+		[Required(ErrorMessage = "BundleBuyPrice Is Mandatory")]
 		public decimal BundleBuyPrice { get; set; }
 		public string AuctionStatus { get; set; }
+		[Required(ErrorMessage = "Bundle_Auction_StartDate Is Mandatory")]
 		public DateTime Bundle_Auction_StartDate { get; set; }
+		[Required(ErrorMessage = "Bundle_Auction_EndDate Is Mandatory")]
 		public DateTime Bundle_Auction_EndDate { get; set; }
 		public int? Bundle_Auction_BuyerID { get; set; }
 		public bool IsAuctionBundleActive { get; set; }

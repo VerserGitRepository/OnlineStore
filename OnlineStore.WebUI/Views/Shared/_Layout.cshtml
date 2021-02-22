@@ -79,15 +79,15 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:14px !important; background-color:black">
                                 <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:white !important;padding:10px 15px !important;">Auction</a>
                                 <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:white !important; padding:10px 15px !important;">Profile</a>
-                                <a class="dropdown-item" href="@Url.Action("Index", "OrdersList")" style="color:white !important; padding:10px 15px !important;">Admin Console</a>                                
-                                <a class="dropdown-item" href="#" style="color:white !important; padding:10px 15px !important;" onclick="ShowRegisterNewUserPage();">Register New User</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "OrdersList")" style="color:white !important; padding:10px 15px !important;">Admin Console</a>
+                                <a class="dropdown-item" href="@Url.Action("_RegisterNewUser", "Login")" style="color:white !important; padding:10px 15px !important;" @*onclick="ShowRegisterNewUserPage();*@>Register New User</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:white !important; padding:10px 15px !important;">Logout</a>
                             </div>
                         </li>
-                    }
-                    else
-                    {
+                        }
+                        else
+                        {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px !important; padding:15px 15px !important; padding-left:20px; padding-right:20px">
                                 @Session["Username"].ToString()
@@ -99,10 +99,10 @@
                                 <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:white !important; padding:10px 15px !important;">Logout</a>
                             </div>
                         </li>
+                        }
                     }
-                }
 
-            </ul>
+                </ul>
         </div>
     </nav>
 

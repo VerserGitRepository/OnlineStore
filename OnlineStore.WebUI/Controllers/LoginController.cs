@@ -73,15 +73,21 @@ namespace OnlineStore.WebUI.Controllers
 
         public ActionResult _RegisterNewUser()
         {
-            return PartialView();
+            return /*Partial*/View();
         }
 
         [HttpPost]
-        public ActionResult RegisterNewUser(LoginModel NewUserRegisterModel)
+        [ValidateAntiForgeryToken]
+        public ActionResult _RegisterNewUser(LoginModel NewUserRegisterModel)
         {
-           var _t= OrdersServices.CreateOnlineStoreUserAccount(NewUserRegisterModel);
-            return RedirectToAction("Index","OnlineSale");
+            if (ModelState.IsValid)
+            {
+                var _t = OrdersServices.CreateOnlineStoreUserAccount(NewUserRegisterModel);
+                return RedirectToAction("Index", "OnlineSale");
+            }
+            return View();
         }
+
 
         public ActionResult Logout(LoginModel login)
         {
