@@ -209,45 +209,45 @@ namespace OnlineStore.WebUI.Controllers
             return PartialView("_UpdateBundle", assets);
         }
 
-        [HttpPost]
-        public ActionResult ProductsActivateDeActivate(int SaleproductId, bool isActive)
-        {
-            if (Session["Username"] !=null)
-            {
-                var _ActiveDisActiveDto = new ActiveDisActiveDto { 
-                    auctionbundleID= SaleproductId,
-                    IsActive= isActive
-                };
-                 var _r = OrdersServices.Active_DisActive_Product(_ActiveDisActiveDto);
-                 var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "OrdersList");              
-                return Json(new { Url = redirectUrl });
-            }
-            else
-            {
-                return RedirectToAction("Login", "Login");
-            }
-        }
+        //[HttpPost]
+        //public ActionResult ProductsActivateDeActivate(int SaleproductId, bool isActive)
+        //{
+        //    if (Session["Username"] !=null)
+        //    {
+        //        var _ActiveDisActiveDto = new ActiveDisActiveDto { 
+        //            auctionbundleID= SaleproductId,
+        //            IsActive= isActive
+        //        };
+        //         var _r = OrdersServices.Active_DisActive_Product(_ActiveDisActiveDto);
+        //         var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "OrdersList");              
+        //        return Json(new { Url = redirectUrl });
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Login", "Login");
+        //    }
+        //}
 
-        [HttpPost]
-        public ActionResult ProductsAuctionStatus(int bundleId, bool isActive)
-        {
-            if (Session["Username"] != null)
-            {
-                var _ActiveDisActiveDto = new ActiveDisActiveDto
-                {
-                    auctionbundleID = bundleId,
-                    IsActive = isActive
-                };
+        //[HttpPost]
+        //public ActionResult ProductsAuctionStatus(int bundleId, bool isActive)
+        //{
+        //    if (Session["Username"] != null)
+        //    {
+        //        var _ActiveDisActiveDto = new ActiveDisActiveDto
+        //        {
+        //            auctionbundleID = bundleId,
+        //            IsActive = isActive
+        //        };
 
-                var _r = OrdersServices.Active_DisActive_AuctionBundle(_ActiveDisActiveDto);
-                var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "OrdersList");
-                return Json(new { Url = redirectUrl });
-            }
-            else
-            {
-                return RedirectToAction("Login", "Login");
-            }
-        }
+        //        var _r = OrdersServices.Active_DisActive_AuctionBundle(_ActiveDisActiveDto);
+        //        var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "OrdersList");
+        //        return Json(new { Url = redirectUrl });
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Login", "Login");
+        //    }
+        //}
 
     }
 }
