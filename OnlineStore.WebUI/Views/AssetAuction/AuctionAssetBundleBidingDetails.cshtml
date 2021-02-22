@@ -6,7 +6,7 @@
 <div class="container-fluid" style="max-width:95%;padding:0;">
     <div class="card text-center">
         <div class="card-header">
-            <h4 class="card-text">@Model.BundleTitle</h4>            
+            <h4 class="card-text">@Model.BundleTitle</h4>
         </div>
         <div class="card-body">
             <div class="row">
@@ -44,7 +44,7 @@
                                             </div>
 
                                             <div class="col-md-6" style="padding:0 15px 15px 15px; min-width:100%; overflow:hidden">
-                                                <p>     
+                                                <p>
                                                     @if (@Model.IsBuyAuctionActive)
                                                     {
                                                         using (Html.BeginForm("BuyAuctionBundle", "AssetAuction", new { BundleId = @Model.Id }, FormMethod.Post, null))
@@ -55,16 +55,10 @@
                                                 </p>
                                             </div>
                                             <div class="col-md-4" style="padding-top:10px;min-width:100%">
-                                                @*@{
-                                                    DateTime startDate = DateTime.Now;
-                                                    TimeSpan t = Model.Bundle_Auction_EndDate - startDate;
-                                                    string countDown = string.Format("Auction Ends In {0} Days, {1} Hours, {2} Minutes, {3} Seconds", t.Days, t.Hours, t.Minutes, t.Seconds);
-                                                    <label style="font-size:smaller;color:orangered;font-weight:400">@countDown</label>
-                                                }*@
                                                 <p style="color:red;font-size:medium">AUCTION WILL CLOSE IN !</p>
                                                 <p style="font-size:x-small">
-                                                    @Html.Partial("_AuctionCounterClock",Model.AuctionEndDateStringFormat)
-                                                </p>                                             
+                                                    @Html.Partial("_AuctionCounterClock", Model.AuctionEndDateStringFormat)
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -81,10 +75,10 @@
                                     <div class="card-header" style="color:green;font-weight:700;">Live Bidings (@DateTime.Now.ToShortDateString())</div>
                                     <p class="card-text"><p id="discussion" style="height: 280px;overflow-y: scroll; margin:0">
                                         @foreach (var _bids in Model.BidTime_Price)
-                                         {
-                                              @_bids<br />
-                                         }                                 
-                                     <input type="hidden" value="@Model.HigestBidPrice" id="Hdn_HigestBidPrice" />
+                                        {
+                                            @_bids<br />
+                                        }
+                                        <input type="hidden" value="@Model.HigestBidPrice" id="Hdn_HigestBidPrice" />
                                     </p>
                                 </div>
                             </div>
@@ -134,13 +128,13 @@
                     <div class="card border-info">
                         <div class="card-header" style="color:green;font-weight:700;">Live Bidings (@DateTime.Now.ToShortDateString())</div>
                         <div class="text-div" style="min-height:300px">
-                        <p class="card-text">
-                        <p style="overflow-y: scroll;">
-                            @foreach (var _bids in Model.BidTime_Price)
-                            {
-                                @_bids<br />
-                            }
-                        </p>
+                            <p class="card-text">
+                            <p style="overflow-y: scroll;">
+                                @foreach (var _bids in Model.BidTime_Price)
+                                {
+                                    @_bids<br />
+                                }
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -156,10 +150,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.countdownTimer.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="~/Content/jquery.countdownTimer.css" />
-    @*<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />*@
+
     <!--Reference the autogenerated SignalR hub script. -->
     <script src="~/signalr/hubs"></script>
     <!--SignalR script to update the chat page and send messages.-->
@@ -197,8 +188,8 @@
                     var bidamount = $('#message').val();
                     var ChkBidAmount = parseFloat(bidamount).toFixed(2);
                     var highbid = $('#Hdn_HigestBidPrice').val();
-                    alert(highbid)
-                    alert(ChkBidAmount)
+                    //alert(highbid)
+                    //alert(ChkBidAmount)
                     if (bidamount == "" || bidamount == null ) {
                         $.confirm({
                             title: 'Warning!',
@@ -239,7 +230,7 @@
                     });
                 });
 
-                $('#QuickBidBtn').click(function () {                  
+                $('#QuickBidBtn').click(function () {
                     $.confirm({
                         title: 'Confirm',
                         content: 'Are you sure you want to Bid with this Amount?',
@@ -251,7 +242,7 @@
                                 let BidId = 1;
                                 let FK_Bid_AuctionCustomerID = 3;
                                 let FK_Bid_AuctionBundleID = $('#Hdn_BundleID').val();
-                                let BidPrice = $('#Hdn_BundleQuickBidPrice').val(); 
+                                let BidPrice = $('#Hdn_BundleQuickBidPrice').val();
                                 let Bid_TimeStamp = BidDateByUser;
                                 let BidUserId = $('#displayname').val();
                                 chat.server.send($('#displayname').val(), 'Bid Time:' + BidDateByUser + '- $' + $('#Hdn_BundleQuickBidPrice').val(), FK_Bid_AuctionCustomerID, FK_Bid_AuctionBundleID, BidPrice, FK_Bid_AuctionCustomerID);

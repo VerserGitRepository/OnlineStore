@@ -17,6 +17,7 @@ namespace OnlineStore.WebUI.Controllers
         public ActionResult Index()
         {
             var bundleslist = OrdersServices.AuctionBundles().Result;           
+
             return View(bundleslist);
         }
         [HttpPost]
@@ -27,6 +28,7 @@ namespace OnlineStore.WebUI.Controllers
             //(2021, 12, 25)
            var modeldata = OrdersServices.AuctionBundleByID(BundleID).Result;
             modeldata.AuctionEndDateStringFormat = $"{modeldata.Bundle_Auction_EndDate.Year}, {modeldata.Bundle_Auction_EndDate.Month}, {modeldata.Bundle_Auction_EndDate.Day}";
+         //   modeldata.AuctionEndDateStringFormat = $"2021, 02, 20";
             return View(modeldata);
         }
         [HttpGet]
@@ -134,6 +136,13 @@ namespace OnlineStore.WebUI.Controllers
         public ActionResult _AuctionCounterClock()
         {
             return PartialView();
+        }
+
+        [HttpGet]
+        public ActionResult AuctionClosure()
+        {
+            //return RedirectToAction("Index", "AssetAuction");
+          return  RedirectToAction(nameof(AssetAuctionController.Index), "AssetAuction");
         }
 
         public string Calculatecountdowntimer(DateTime AuctionEndDate )

@@ -350,6 +350,21 @@ namespace OnlineStore.WebUI.Infrastructure.HelperServices
             }
             return _Resp;
         }
+
+        //public async static Task<bool> AuctionClosure()
+        //{
+        //    bool _Resp = false;
+        //    using (HttpClient client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri(BaseUri);
+        //        HttpResponseMessage response = client.PostAsJsonAsync(string.Format("OnlineStoreAuction/AuctionClosure")).Result;
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            _Resp = await response.Content.ReadAsAsync<bool>();
+        //        }
+        //    }
+        //    return _Resp;
+        //}
     }
 }
 
