@@ -25,22 +25,50 @@
                 </div>
                 <div class="col-md-6" style="padding-top:10px">
                     <label>Start Date</label>
-                    @Html.EditorFor(model => model.promoCodeModel.PromoStartDate, new { htmlAttributes = new { @class = "form-control date-picker", Id = "DatePickId", @style = "width:200px;" } })
+                    @Html.EditorFor(model => model.promoCodeModel.PromoStartDate, new { htmlAttributes = new { @class = "form-control date-picker", Id = "DatePickStartId", @style = "width:200px;" } })
                     @Html.ValidationMessageFor(model => model.promoCodeModel.PromoStartDate, "", new { @class = "text-danger" })
                 </div>
                 <div class="col-md-6" style="padding-top:10px">
                     <label class="control-label">End Date</label>
-                    @Html.EditorFor(model => model.promoCodeModel.PromoEndDate, new { htmlAttributes = new { @class = "form-control date-picker", Id = "DatePickId", @style = "width:200px;" } })
+                    @Html.EditorFor(model => model.promoCodeModel.PromoEndDate, new { htmlAttributes = new { @class = "form-control date-picker", Id = "DatePickEndId", @style = "width:200px;" } })
                     @Html.ValidationMessageFor(model => model.promoCodeModel.PromoEndDate, "", new { @class = "text-danger" })<br />
                 </div>
                 <div class="col-md-6" style="padding-top:10px">
-                    <button type="submit" class="btn btn-warning btn-lg" id="btnregister" style="margin-bottom:10px">
+                    <button type="submit" class="btn btn-warning btn-lg" id="btnregister" style="margin-bottom:10px" , onclick = "validateFormData(this)">
                         <span class="glyphicon glyphicon-ok-sign"></span> Save
                     </button>
                 </div>
-
             </div>
-
         }
     </div>
 </div>
+<script>
+    $(document).ready(function (e) {      
+    });
+    function validateFormData()
+    {
+        var promocodeVal = $("#promoCode").val();
+        var discountVal = $("#discount").val();
+        var DatePickStartIdVal = $("#DatePickStartId").val();
+        var DatePickEndIdVal = $("#DatePickEndId").val();
+        if (promocodeVal == '') {
+
+            alert('promocode Is Empty');
+            e.preventDefault();
+        } 
+        if (discountVal == '') {
+
+            alert('Discount Is Empty');
+            e.preventDefault();
+        } 
+        if (DatePickStartIdVal == '') {
+
+            alert('DatePickStart Is Empty');
+            e.preventDefault();
+        } 
+        if (DatePickEndIdVal == '') {
+            alert('DatePickEnd Is Empty');
+            e.preventDefault();           
+        }
+    }  
+</script>
