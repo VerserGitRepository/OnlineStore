@@ -10,7 +10,7 @@
     <br>
     <div class="row" style="padding-right: 0px;margin-right: 0px;">
         <div class="col-md-4 item-photo">
-            <img style="max-width:100%;"src="/ProductImages/@Model.Images.FirstOrDefault()" @*data-zoom-image="/ProductImages/@Model.Images.FirstOrDefault()"*@ />
+            <img class="zoom-img" id="zoom_01" style="max-width:100%;"src="/ProductImages/@Model.Images.FirstOrDefault()" data-zoom-image="/ProductImages/@Model.Images.FirstOrDefault()" />
             <div id="gal1">
                 @foreach (var item in Model.Images)
                 {

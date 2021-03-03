@@ -70,10 +70,19 @@ namespace OnlineStore.WebUI.Controllers
                 return View("Login");
             }
         }
-
+        public ActionResult Logout(LoginModel login)
+        {
+            Session["Username"] = null;
+            Session["FullName"] = null;
+            Session["ErrorMessage"] = null;
+            Session.Clear();
+            Session.RemoveAll();
+            Session.Abandon();
+            return RedirectToAction("Login", "Login");
+        }
         public ActionResult _RegisterNewUser()
         {
-            return /*Partial*/View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -88,16 +97,5 @@ namespace OnlineStore.WebUI.Controllers
             return View();
         }
 
-
-        public ActionResult Logout(LoginModel login)
-        {
-            Session["Username"] = null;
-            Session["FullName"] = null;
-            Session["ErrorMessage"] = null;
-            Session.Clear();
-            Session.RemoveAll();
-            Session.Abandon();
-            return RedirectToAction("Login", "Login");
-        }
     }
 }
