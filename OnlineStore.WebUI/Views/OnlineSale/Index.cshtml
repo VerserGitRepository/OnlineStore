@@ -45,8 +45,8 @@
 
     <div class="well" style="margin-bottom:0">
         @*<div class="col-md-12">
-            <h2 style="font-weight:600; margin:0; padding-bottom:5px;border-bottom:1px solid lightgray">Best Sellers</h2>
-        </div>*@
+                <h2 style="font-weight:600; margin:0; padding-bottom:5px;border-bottom:1px solid lightgray">Best Sellers</h2>
+            </div>*@
 
         <div class="row">
             @foreach (var item in Model.OnlineSaleProductModel.OrderByDescending(p => p.QtyAvailable).ToList())
@@ -78,25 +78,25 @@
                 </div>
             }
         </div>
-    </div>
-    <div class="container-fluid" style="margin-bottom:20px;width:80%; display:flex">
+    </div>select * from [dbo].[OnlineSaleProducts] where ProductName='iPhone XS 64GB -Silver'
+    <div class="container-fluid" style="margin-bottom:20px;width:100%; display:flex">
 
-        <div class="col-md-2">
+        <div class="col-lg-2">
             <div class="brand-item"> <img style="max-width:100%;" src="~/Images/apple.jpg" alt="Submit"></div>
         </div>
-        <div class="col-md-2">
+        <div class="col-lg-2">
             <div class="brand-item"> <img style="max-width:100%;" src="~/Images/samsung.jpg" alt="Submit"></div>
         </div>
-        <div class="col-md-2">
+        <div class="col-lg-2">
             <div class="brand-item"> <img style="max-width:100%;" src="~/Images/dell.jpg" alt="Submit"></div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-lg-2">
             <div class="brand-item"> <img style="max-width:100%;" src="~/Images/hp.jpg" alt="Submit"></div>
         </div>
-        <div class="col-md-2">
+        <div class="col-lg-2">
             <div class="brand-item"> <img style="max-width:100%;" src="~/Images/microsoftlogo.jpg" alt="Submit"></div>
         </div>
-        <div class="col-md-2">
+        <div class="col-lg-2">
             <div class="brand-item"> <img style="max-width:100%;" src="~/Images/logolenovo.jpg" alt="Submit"></div>
         </div>
 
