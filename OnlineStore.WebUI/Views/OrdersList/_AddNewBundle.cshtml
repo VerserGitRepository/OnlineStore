@@ -16,12 +16,15 @@
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Bundle Title</label>
                         @Html.EditorFor(model => model.BundleTitle, new { htmlAttributes = new { @class = "form-control", placeholder = "BundleTitle" } })
+                        <input type="text" id="BundleTitle" name="@Model.BundleTitle" value="" required placeholder="BundleTitle" />
                         @Html.ValidationMessageFor(model => Model.BundleTitle, "", new { @class = "text-danger" })
                     </div>
+
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Bundle Base Price</label>
                         @Html.EditorFor(model => model.BundleBaseprice, new { htmlAttributes = new { @class = "form-control", placeholder = "$Bundle Base Price" } })
-
+                        <input type="text" id="BundleBasePrice" name="@Model.BundleBaseprice" value="" required placeholder="Bundle Base Price" />
+                        @Html.ValidationMessageFor(model => Model.BundleBaseprice, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -29,12 +32,14 @@
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Bundle Quick Bid Price</label>
                         @Html.EditorFor(model => model.BundleQuickBidPrice, new { htmlAttributes = new { @class = "form-control", placeholder = "$Bundle Quick Bid Price" } })
-
+                        <input type="text" id="BundleQuickBidPrice" name="@Model.BundleQuickBidPrice" value="" required placeholder="Bundle Quic Bid Price" />
+                        @Html.ValidationMessageFor(model => Model.BundleQuickBidPrice, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Bundle BuyPrice</label>
                         @Html.EditorFor(model => model.BundleBuyPrice, new { htmlAttributes = new { @class = "form-control", placeholder = "$Bundle BuyPrice" } })
-
+                        <input type="text" id="BundleBuyPrice" name="@Model.BundleTitle" value="" required placeholder="Bundle Buy Price" />
+                        @Html.ValidationMessageFor(model => Model.BundleBuyPrice, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -42,12 +47,14 @@
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Auction StartDate</label>
                         @Html.EditorFor(model => model.Bundle_Auction_StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "StartDate", id = "Startdatepicker" } })
-
+                        @*<input type="text" id="BundleTitle" name="@Model.BundleTitle" value="" required placeholder="BundleTitle" />*@
+                        @Html.ValidationMessageFor(model => Model.BundleTitle, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6" style="padding-top:10px">
                         <label for="exampleFormControlInput1" class="form-label">Auction EndDate</label>
                         @Html.EditorFor(model => model.Bundle_Auction_EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "EndDate", id = "Enddatepicker" } })
-
+                        @*<input type="text" id="BundleTitle" name="@Model.BundleTitle" value="" required placeholder="BundleTitle" />*@
+                        @Html.ValidationMessageFor(model => Model.BundleTitle, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -80,6 +87,51 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
+
+
+    @*$(document).ready(function (e) {
+    });
+    function validateFormData()
+    {
+        var BundleTitleVal = $("#BundleTitle").val();
+        var BundleBasePriceVal = $("#BundleBasePrice").val();
+        var BundleQuickBidPriceVal = $("#BundleQuickBidPrice").val();
+        var BundleBuyPriceVal = $("#BundleBuyPrice").val();
+        //var DatePickEndIdVal = $("#DatePickEndId").val();
+
+         $.ajax({
+            type: "Post",
+            data: {
+                "BundleTitle": "BundleTitleVal", "PromoCode": BundleBasePriceVal, "PromoDiscountPercent": BundleQuickBidPriceVal, "BundleBuyPrice": BundleBuyPriceVal},
+            url: '@Url.Action("_AddNewBundle", "OrdersList")',
+            success: function (data) {
+                location.reload(true);
+            }
+         });
+
+        if (BundleTitleVal == '') {
+
+            alert('Bundle Title Is Empty');
+            e.preventDefault();
+        }
+        if (BundleBasePriceVal == '') {
+
+            alert('Bundle Base Price Is Empty');
+            e.preventDefault();
+        }
+        if (BundleQuickBidPriceVal == '') {
+
+            alert('Bundle Quick Bid Price Is Empty');
+            e.preventDefault();
+        }
+        if (BundleBuyPriceVal == '') {
+            alert('Bundle Buy Price Is Empty');
+            e.preventDefault();
+        }
+    }*@
+
+
+
     $(function () {
         $("#Startdatepicker").datepicker();
     });

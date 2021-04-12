@@ -343,7 +343,7 @@
                             <th scope="col">Start Date&TIme</th>
                             <th scope="col">End Date&TIme</th>
                             <th scope="col">BundlePrice</th>
-                            <th scope="col">Auction Status</th>
+                            @*<th scope="col">Auction Status</th>*@
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -356,7 +356,7 @@
                                 <td>@item.Bundle_Auction_StartDate</td>
                                 <td>@item.Bundle_Auction_EndDate</td>
                                 <td>@item.BundleBaseprice</td>
-                                <td>@item.IsAuctionBundleActive</td>
+                                @*<td>@item.IsAuctionBundleActive</td>*@
                                 <td>
                                     <input type="checkbox" data-toggle="toggle" data-onstyle="primary" data-id="@item.Id" name="AssignedGroups[@item.IsAuctionBundleActive].Assigned" @(item.IsAuctionBundleActive ? "checked" : "") value="@item.IsAuctionBundleActive" id="AuctionStatusCheckBoxID" onchange="ProductsAuctionStatus(this);" />
                                     @*<input type="checkbox" data-toggle="toggle" data-onstyle="primary" data-id="@item.Id" name="AssignedGroups[@item.IsAuctionBundleActive].Assigned" @(item.IsAuctionBundleActive ? "checked" : "") value="@item.IsAuctionBundleActive" id="SaleProductCheckBoxID" onchange="ProductsActivateDeActivate(this);" />*@
@@ -434,7 +434,7 @@
                 error: function (result) { alert(result); console.log(result);}
             });
         }
-    //$('.Update').click(function () {
+
     function ApplyNewPromo(_ProductID_FK) {
             debugger;
             var AddSiteURL = '@Url.Action("AddPromo", "OrdersList")'

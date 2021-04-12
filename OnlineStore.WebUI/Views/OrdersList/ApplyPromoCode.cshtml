@@ -1,0 +1,44 @@
+﻿@*@model OnlineStore.WebUI.Models.OrderViewModel
+
+<div class="table table-responsive" style="padding:20px;">
+    <div class="card">
+        <div class="card-header">
+            Add Promo Code
+        </div>
+        @using (Html.BeginForm("ApplyPromoCode", "OrdersList", FormMethod.Post))
+        {
+            @Html.HiddenFor(model => model.promoCodeModel.ProductID_FK)
+            <div class="card-body">
+                <div class="col-md-6" style="padding-top:10px">
+                    <label class="control-label">Promo Code</label>
+                    @Html.EditorFor(model => model.promoCodeModel.PromoCode, new { htmlAttributes = new { @class = "form-control", @id = "promoCode", @style = "width:200px;" } })
+                    @Html.ValidationMessageFor(model => model.promoCodeModel.PromoCode, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-6" style="padding-top:10px">
+                    <label class="control-label">Promo Discount Percentage</label>
+                    <br />
+                    @Html.EditorFor(model => model.promoCodeModel.PromoDiscountPercent, new { htmlAttributes = new { @class = "form-control", @id = "discount", @style = "width:200px;" } })
+                    @Html.ValidationMessageFor(model => model.promoCodeModel.PromoDiscountPercent, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6" style="padding-top:10px">
+                    <label>Start Date</label>
+                    @Html.EditorFor(model => model.promoCodeModel.PromoStartDate, new { htmlAttributes = new { @class = "form-control date-picker", Id = "DatePickId", @style = "width:200px;" } })
+                    @Html.ValidationMessageFor(model => model.promoCodeModel.PromoStartDate, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6" style="padding-top:10px">
+                    <label class="control-label">End Date</label>
+                    @Html.EditorFor(model => model.promoCodeModel.PromoEndDate, new { htmlAttributes = new { @class = "form-control date-picker", Id = "DatePickId", @style = "width:200px;" } })
+                    @Html.ValidationMessageFor(model => model.promoCodeModel.PromoEndDate, "", new { @class = "text-danger" })<br />
+                </div>
+                <div class="col-md-6" style="padding-top:10px">
+                    <button type="submit" class="btn btn-warning btn-lg" id="btnregister" style="margin-bottom:10px">
+                        <span class="glyphicon glyphicon-ok-sign"></span> Save
+                    </button>
+                </div>
+
+            </div>
+
+        }
+    </div>
+</div>*@

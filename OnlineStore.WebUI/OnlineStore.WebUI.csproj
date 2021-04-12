@@ -585,7 +585,6 @@
     <Content Include="Views\OnlineSale\NetworkGear.cshtml" />
     <Content Include="Views\OnlineSale\ShowProducts.cshtml" />
     <Content Include="Views\OrdersList\ProductList.cshtml" />
-    <Content Include="Views\Login\_RegisterNewUser.cshtml" />
     <Content Include="Views\PublicUserProfile\Index.cshtml" />
     <Content Include="Views\OrdersList\PromoCode.cshtml" />
     <Content Include="Views\OnlineSale\Auction.cshtml" />
@@ -600,6 +599,8 @@
     <Content Include="Views\OnlineSale\CarsoleProductsPage.cshtml" />
     <Content Include="Views\OnlineSale\Accessories.cshtml" />
     <Content Include="Views\AssetAuction\_AuctionCounterClock.cshtml" />
+    <Content Include="Views\OrdersList\ApplyPromoCode.cshtml" />
+    <Content Include="Views\Login\_RegisterNewUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
