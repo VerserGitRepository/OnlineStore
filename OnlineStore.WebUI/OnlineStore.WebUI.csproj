@@ -179,6 +179,7 @@
     <Content Include="Images\amex.gif" />
     <Content Include="Images\apple.jpg" />
     <Content Include="Images\cart.png" />
+    <Content Include="Images\CompanyLogo.jpg" />
     <Content Include="Images\Dell-xps-13.jpg" />
     <Content Include="Images\dell.jpg" />
     <Content Include="Images\DellMonitor.jpg" />
@@ -194,6 +195,7 @@
     <Content Include="Images\jcb.gif" />
     <Content Include="Images\laptop.jfif" />
     <Content Include="Images\laptop2.jfif" />
+    <Content Include="Images\Logo.png" />
     <Content Include="Images\logolenovo.jpg" />
     <Content Include="Images\mac1.jpg" />
     <Content Include="Images\mac2.jpg" />
@@ -203,12 +205,10 @@
     <Content Include="Images\mastercard.gif" />
     <Content Include="Images\microsoftlogo.jpg" />
     <Content Include="Images\no-image.png" />
-    <Content Include="Images\Payment Options.PNG" />
-    <Content Include="Images\PaymentOptions.PNG" />
+    <Content Include="Images\Payment_options.png" />
     <Content Include="Images\samsung.jpg" />
     <Content Include="Images\sufacepro1.jpg" />
     <Content Include="Images\SurfacePro2.jpg" />
-    <Content Include="Images\VerserLogo.png" />
     <Content Include="Images\visa.gif" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -287,6 +287,7 @@
     <Content Include="ProductImages\17_DELL Optiplex 780 + 22_ LCD Bundle.jpg" />
     <Content Include="ProductImages\18_DELL Optiplex 990 i5 + 22_ LCD Bundle.jpg" />
     <Content Include="ProductImages\19_Office 365 Personal.jpg" />
+    <Content Include="ProductImages\1_DELL OPTIPLEX 980 &amp; 20 LCD Bundle.jpg" />
     <Content Include="ProductImages\20_LATITUDE E4310.jpg" />
     <Content Include="ProductImages\21_TRAVELMATE 6594.jpg" />
     <Content Include="ProductImages\22_ASPIRE 3830T.jpg" />
@@ -297,7 +298,6 @@
     <Content Include="ProductImages\27_Samsung 900x.jpg" />
     <Content Include="ProductImages\28_Apple MacBook Air A1342.jpg" />
     <Content Include="ProductImages\29_Apple MacBook Air A1465.jpg" />
-    <Content Include="ProductImages\2_DELL OPTIPLEX 980 &amp; 20_ LCD Bundle.jpg" />
     <Content Include="ProductImages\30_Acer Veriton L4610 + 21.5_ LCD Bundle.jpg" />
     <Content Include="ProductImages\31_Apple iPad 4 Retina Display 16GB WiFi A1458 Silver.jpg" />
     <Content Include="ProductImages\32_Apple iPad 2 %28Model A1395%29.jpg" />
@@ -373,6 +373,16 @@
     <Content Include="ProductImages\98_Apple iPhone 6S Plus 16GB A1687 SILVER.jpg" />
     <Content Include="ProductImages\99_Apple iPhone 6s Plus 64GB A1687 SPACE GREY.jpg" />
     <Content Include="ProductImages\9_DELL LATITUDE E6320.jpg" />
+    <Content Include="ProductImages\Apple HomePod- Space Grey- Apple Refurbished.jpg" />
+    <Content Include="ProductImages\Apple_13_inch_MacBook_Air_Space_Grey.jpg" />
+    <Content Include="ProductImages\Apple_Blackmagic_eGPU.jpg" />
+    <Content Include="ProductImages\Apple_iPad_Air_Wi-Fi_64GB_Silver_Apple_refurbished.jpg" />
+    <Content Include="ProductImages\Apple_iPhone_8_Plus_Space_Gray_256GB.jpg" />
+    <Content Include="ProductImages\Apple_MacBook_Air_13_Z0X9_New_in_sealed_box.jpg" />
+    <Content Include="ProductImages\Apple_Mac_Mini.jpg" />
+    <Content Include="ProductImages\Apple_Smart_Keyboard_Folio_for_12.9_inch_iPad_Pro_4th_Generation.jpg" />
+    <Content Include="ProductImages\Apple_Smart_Keyboard_for_iPad_Pro_9.7_Black.jpg" />
+    <Content Include="ProductImages\Beats_Solo3 _Wireless_Matte_Black.jpg.jpg" />
     <Content Include="ProductImages\Dell Server R720xd 2013.jpg" />
     <Content Include="ProductImages\DellMonitor24Inch-U2415-3.PNG" />
     <Content Include="ProductImages\DellMonitor24Inch-U2415.PNG" />
@@ -380,10 +390,12 @@
     <Content Include="ProductImages\DellMonitor24Inch-U2415E.PNG" />
     <Content Include="ProductImages\DellOptiPlex3070.PNG" />
     <Content Include="ProductImages\DellOptiPlex7070.PNG" />
+    <Content Include="ProductImages\Dell_Server_R720xd_2013.jpg" />
     <Content Include="ProductImages\hp-laserjet-mfp-m477.jpg" />
     <Content Include="ProductImages\ipad_pro_12_9-in_cellular_space_gray.jpg" />
-    <Content Include="ProductImages\Iphone11-64GB-Black.PNG" />
+    <Content Include="ProductImages\iPad_Wi-Fi_Cellular_128GB_Space_Grey_ Apple_Refurbished.jpg" />
     <Content Include="ProductImages\iPhone11ProMax.jpg" />
+    <Content Include="ProductImages\Iphone11_64GB_Black.png" />
     <Content Include="ProductImages\IphoneX-64GB-Black.PNG" />
     <Content Include="ProductImages\IphoneX-64GB-Silver.PNG" />
     <Content Include="ProductImages\IphoneXS-64GB-Black.PNG" />
@@ -483,6 +495,7 @@
     <Compile Include="Infrastructure\HelperServices\MainPageProductService.cs" />
     <Compile Include="Infrastructure\HelperServices\OrdersServices.cs" />
     <Compile Include="Infrastructure\LogService.cs" />
+    <Compile Include="Models\ActiveDisActiveDto.cs" />
     <Compile Include="Models\ActiveDisActiveModel.cs" />
     <Compile Include="Models\AssetAuctionBundleModel.cs" />
     <Compile Include="Models\AssetListModel.cs" />
@@ -584,6 +597,8 @@
     <Content Include="Views\OrdersList\_UpdateBundle.cshtml" />
     <Content Include="Views\OnlineSale\SingleProductPage.cshtml" />
     <Content Include="Views\OnlineSale\CarsoleProductsPage.cshtml" />
+    <Content Include="Views\OnlineSale\Accessories.cshtml" />
+    <Content Include="Views\AssetAuction\_AuctionCounterClock.cshtml" />
     <Content Include="Views\OrdersList\ApplyPromoCode.cshtml" />
     <Content Include="Views\Login\_RegisterNewUser.cshtml" />
     <None Include="Web.Debug.config">
