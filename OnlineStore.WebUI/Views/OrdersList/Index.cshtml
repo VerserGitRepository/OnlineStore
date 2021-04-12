@@ -44,7 +44,7 @@
             <div id="tabs-2" style="overflow-x:scroll">
                 <table class="table table-bordered table-hover" id="OrdersTable1">
                     <thead style="background-color:#959ca1;color:white;">
-                        <tr>
+                        <tr style="color:black">
                             <th>Orderno</th>
                             <th>SKU</th>
                             <th>Customer</th>
@@ -238,15 +238,15 @@
                 <div class="row pull-right">
                     <div class="col-md-1">
                         <div class="col-md-1" style="margin-bottom:5px">
-                            <button type="submit" class="btn btn-warning btn-lg" id="addProduct" data-toggle="tooltip" data-placement="left">
+                            <button type="submit" class="btn btn-lg" id="addProduct" style="background-color:orange" data-toggle="tooltip" data-placement="left">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered table-hover" table-responsive table-hover" width="250%" id="ProductsTable" style="font-size:smaller">
+                <table class="table table-bordered table-hover" table-responsive table-hover" id="ProductsTable" style="font-size:smaller">
                     <thead style="background-color:#959ca1;color:white">
-                        <tr>
+                        <tr style="color:black">
                             <th>ID</th>
                             <th>Image</th>
                             <th>Product</th>
@@ -275,13 +275,12 @@
                             <td>@item.QtyAvailable</td>                          
                             <td>
                                 @*@item.PromoCode*@
-                                <a class="Update btn btn-success a-btn-slide-text pull-right" style="color:white" href="javascript:;" onclick="ApplyNewPromo('@item.Id')" id="AddPromo">
-
-                                    &nbsp;<span class="glyphicon glyphicon-plus"></span>
+                                <a class="Update btn btn-success a-btn-slide-text pull-right" style="color:black; background-color:orange; border:none" href="javascript:;" onclick="ApplyNewPromo('@item.Id')" id="AddPromo">
+                                    <span class="glyphicon glyphicon-plus"></span>
                                 </a>
                             </td>
                             <td>
-                                <input type="checkbox" data-toggle="toggle" data-onstyle="primary" data-id="@item.Id" name="AssignedGroups[@item.IsProductActive].Assigned" @(item.IsProductActive ? "checked" : "") value="@item.IsProductActive" id="SaleProductCheckBoxID" onchange="ProductsActivateDeActivate(this);" />
+                                <input type="checkbox" data-toggle="toggle" data-onstyle="dark" data-id="@item.Id" name="AssignedGroups[@item.IsProductActive].Assigned" @(item.IsProductActive ? "checked" : "") value="@item.IsProductActive" id="SaleProductCheckBoxID" onchange="ProductsActivateDeActivate(this);" />
                             </td>
                         </tr>
                         }
@@ -289,9 +288,9 @@
                 </table>
             </div>
             <div id="tabs-5" style="overflow-x:scroll">
-                <table class="table table-bordered table-hover" id="OrdersTable1" style="font-size:smaller">
+                <table class="table table-bordered table-hover" id="OrdersTable1" style="font-size:smaller;">
                     <thead style="background-color:#959ca1;color:white">
-                        <tr>
+                        <tr style="color:black">
                             @*<th>Orderno</th>*@
                             <th>BrandName </th>
                             <th>Description </th>
@@ -327,7 +326,7 @@
                 <div class="row pull-right">
                     <div class="col-md-1">
                         <div class="col-md-1" style="margin-bottom:5px">
-                            <button type="submit" class="btn btn-warning btn-lg" onclick="OpenAuctionAssetBundle();">
+                            <button type="submit" class="btn btn-lg" style="background-color:orange" onclick="OpenAuctionAssetBundle();">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </div>
@@ -352,13 +351,13 @@
                         {
                             <tr>
                                 <td scope="row">@item.Id</td>
-                                <td><a href="javascript:void(0);" class="EditBundleDetails" data-id="@item.Id" style="font-weight:600;color:dodgerblue">@Html.DisplayFor(modelItem => item.BundleTitle) </a></td>
+                                <td><a href="javascript:void(0);" class="EditBundleDetails" data-id="@item.Id" style="font-weight:600;color:black;float:left; text-decoration:underline">@Html.DisplayFor(modelItem => item.BundleTitle) </a></td>
                                 <td>@item.Bundle_Auction_StartDate</td>
                                 <td>@item.Bundle_Auction_EndDate</td>
                                 <td>@item.BundleBaseprice</td>
                                 @*<td>@item.IsAuctionBundleActive</td>*@
                                 <td>
-                                    <input type="checkbox" data-toggle="toggle" data-onstyle="primary" data-id="@item.Id" name="AssignedGroups[@item.IsAuctionBundleActive].Assigned" @(item.IsAuctionBundleActive ? "checked" : "") value="@item.IsAuctionBundleActive" id="AuctionStatusCheckBoxID" onchange="ProductsAuctionStatus(this);" />
+                                    <input type="checkbox" data-toggle="toggle" data-onstyle="dark" data-id="@item.Id" name="AssignedGroups[@item.IsAuctionBundleActive].Assigned" @(item.IsAuctionBundleActive ? "checked" : "") value="@item.IsAuctionBundleActive" id="AuctionStatusCheckBoxID" onchange="ProductsAuctionStatus(this);" />
                                     @*<input type="checkbox" data-toggle="toggle" data-onstyle="primary" data-id="@item.Id" name="AssignedGroups[@item.IsAuctionBundleActive].Assigned" @(item.IsAuctionBundleActive ? "checked" : "") value="@item.IsAuctionBundleActive" id="SaleProductCheckBoxID" onchange="ProductsActivateDeActivate(this);" />*@
                                 </td>
                             </tr>

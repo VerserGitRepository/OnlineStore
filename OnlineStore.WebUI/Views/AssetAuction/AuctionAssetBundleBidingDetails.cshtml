@@ -6,7 +6,7 @@
 <div class="container-fluid" style="max-width:95%;padding:0;">
     <div class="card text-center">
         <div class="card-header">
-            <h4 class="card-text">@Model.BundleTitle</h4>
+            <h5 class="card-text">@Model.BundleTitle</h5>
         </div>
         <div class="card-body">
             <div class="row">
@@ -24,55 +24,52 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-8" style="min-height:450px">
+                <div class="col-sm-8">
                     <div class="card">
                         <div class="card-body">
-                            <div class="col-sm-4" style="min-height:350px; overflow:hidden">
-                                <div class="card border-info mb-3" style="height:20%">
-                                    <div class="card-header" style="color:green;font-size:small;font-weight:700; max-height:36px">Current Price $@Model.BundleBaseprice  No Reserve</div>
+                            <div class="col-sm-6" style="min-height:350px; overflow:hidden">
+                                <div class="card mb-3">
+                                    <div class="card-header" style="color:green;font-size:smaller;font-weight:700; max-height:36px">Current Price $@Model.BundleBaseprice  No Reserve</div>
                                     <div class="card-body" style="min-height:299px">
                                         <div class="row">
-                                            <div class="col-md-9" style="min-width:100%; margin-top:40px">
-                                                <input type="text" placeholder="Biding Amount Here" id="message" style="width:74%" />
-                                                <a href="#" class="btn btn-success btn-sm" id="sendmessage" value="Send">Bid</a>
+
+                                            <div class="col-md-9" style="min-width:100%; margin-top:15px">
+                                                <input type="text" placeholder="Bidding Amount Here" id="message" style="width:60%; height:39px" />
+                                                <a href="#" class="btn btn-success" id="sendmessage" value="Send" style="width:20%; padding-top:8px; padding-bottom:8px">Bid</a>
                                                 <input type="hidden" value="@Model.Id" id="Hdn_BundleID" />
                                             </div>
 
-                                            <div class="col-md-6" style="padding:15px; min-width:100%; overflow:hidden" ">
-                                                <input type="submit" class="btn-danger btn-sm" value="Quick Bid $@Model.BundleQuickBidPrice" id="QuickBidBtn" />
+                                            <div class="col-md-12" style="padding-top:10px;overflow:hidden">
+                                                <input type="submit" class="btn-danger btn-lg" value="Quick Bid $@Model.BundleQuickBidPrice" id="QuickBidBtn" />
                                                 <input type="hidden" value="@Model.PostQuickBidPrice" id="Hdn_BundleQuickBidPrice" />
                                             </div>
 
-                                            <div class="col-md-6" style="padding:0 15px 15px 15px; min-width:100%; overflow:hidden">
+                                            <div class="col-md-12" style="padding-bottom:10px;overflow:hidden">
                                                 <p>
                                                     @if (@Model.IsBuyAuctionActive)
                                                     {
                                                         using (Html.BeginForm("BuyAuctionBundle", "AssetAuction", new { BundleId = @Model.Id }, FormMethod.Post, null))
                                                         {
-                                                            <input type="submit" class="btn btn-success btn" value="Buy Now $@Model.BundleBuyPrice" />
+                                                            <input type="submit" class="btn btn-success btn-lg" value="Buy Now $@Model.BundleBuyPrice" />
                                                         }
                                                     }
                                                 </p>
                                             </div>
-                                            <div class="col-md-4" style="padding-top:10px;min-width:100%">
+                                            <div class="col-md-12" style="overflow:hidden">
                                                 <p style="color:red;font-size:medium">AUCTION WILL CLOSE IN !</p>
-                                                <p style="font-size:x-small">
+                                                <p style="font-size:x-small;">
                                                     @Html.Partial("_AuctionCounterClock", Model.AuctionEndDateStringFormat)
                                                 </p>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4" style="min-height:350px">
-                                <div class="card border-info mb-3" style="min-height:335px">
-                                    <div class="card-header" style="color:green; font-weight:700">Bundle Full Description</div>
-                                    <p class="card-text" style="text-align:justify; padding:15px 5px">@Model.BundleDescription</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-4" style="overflow-y: scroll; min-height:350px">
-                                <div class="card border-info" style="min-height:335px">
-                                    <div class="card-header" style="color:green;font-weight:700;">Live Bidings (@DateTime.Now.ToShortDateString())</div>
+
+                            <div class="col-sm-6">
+                                <div class="card" style="min-height:335px">
+                                    <div class="card-header" style="color:green; font-size:smaller; font-weight:700;">Live Bids (@DateTime.Now.ToShortDateString())</div>
                                     <p class="card-text"><p id="discussion" style="height: 280px;overflow-y: scroll; margin:0">
                                         @foreach (var _bids in Model.BidTime_Price)
                                         {
@@ -82,25 +79,33 @@
                                     </p>
                                 </div>
                             </div>
+
+
                             <div class="col-sm-12">
-                                <div class="card" style="border:none">
-                                    <div class="card-body" style="padding-left:0;">
-                                        <div class="pull-left" style="padding-right:20px; padding-bottom:20px">
-                                            @using (Html.BeginForm("ExportAuctionResult", "AssetAuction", new { BundleId = @Model.Id }, FormMethod.Post, null))
-                                            {
-                                                <div class="row">
-                                                    <button type="submit" class="btn btn-warning">
-                                                        <span class="glyphicon glyphicon-export black"></span> Assets Reference List
-                                                    </button>
-                                                </div>
-                                            }
-                                            @*<input type="submit" class="btn btn-warning" value="Assets Reference List" id="btnassetList" name="btnassetList" />*@
-                                        </div>
-                                        <div class="pull-left" style="padding-right:20px; padding-bottom:20px">
-                                            <input type="submit" class="btn btn-warning" value="Full History Of Biding" name="btnLink" id="btnLink" />
-                                        </div>
-                                    </div>
+                                <div class="card mb-3">
+                                    <div class="card-header" style="color:green; font-size:smaller;font-weight:700">Bundle Full Description</div>
+                                    <p class="card-text" style="text-align:justify; padding:15px 5px">@Model.BundleDescription</p>
                                 </div>
+                            </div>
+
+
+                            <div class="col-sm-12">
+
+                                <div class="pull-left" style="padding-right:10px; padding-bottom:10px">
+                                    @using (Html.BeginForm("ExportAuctionResult", "AssetAuction", new { BundleId = @Model.Id }, FormMethod.Post, null))
+                                    {
+                                        <div>
+                                            <button type="submit" class="btn btn-warning" style="padding:10px">
+                                                <span class="glyphicon glyphicon-export black"></span> Assets Reference List
+                                            </button>
+                                        </div>
+                                    }
+                                    @*<input type="submit" class="btn btn-warning" value="Assets Reference List" id="btnassetList" name="btnassetList" />*@
+                                </div>
+                                <div class="pull-left" style="padding-right:20px; padding-bottom:20px">
+                                    <input type="submit" class="btn btn-warning" value="Full History Of Bidding" name="btnLink" id="btnLink" style="padding:10px" />
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -126,7 +131,7 @@
             <div class="modal-body" style="text-align:center;">
                 <div class="col-sm-12">
                     <div class="card border-info">
-                        <div class="card-header" style="color:green;font-weight:700;">Live Bidings (@DateTime.Now.ToShortDateString())</div>
+                        <div class="card-header" style="color:green;font-weight:700;">Live Bids (@DateTime.Now.ToShortDateString())</div>
                         <div class="text-div" style="min-height:300px">
                             <p class="card-text">
                             <p style="overflow-y: scroll;">

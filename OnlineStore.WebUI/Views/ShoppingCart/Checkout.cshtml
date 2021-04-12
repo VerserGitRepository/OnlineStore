@@ -127,28 +127,26 @@
         <label for="city"><i class="fa fa-institution"></i>Suburb</label>
         @Html.TextBoxFor(x => x.Shipping_Suburb, new { @class = "form-control", placeholder = "Sydney" })
         @Html.ValidationMessageFor(x => x.Shipping_Suburb, "", new { @class = "text-danger" })
-        <div class="row">
-            <div class="col-50">
-                <label for="state">State</label>
-                @Html.DropDownListFor(x => x.Shipping_State, new List<SelectListItem>
-               {
-                           new SelectListItem{ Text="NSW", Value = "NSW" },
-                           new SelectListItem{ Text="QLD", Value = "QLD" },
-                           new SelectListItem{ Text="SA", Value = "SA" },
-                           new SelectListItem{ Text="TAS", Value = "TAS" },
-                           new SelectListItem{ Text="VIC", Value = "VIC" },
-                           new SelectListItem{ Text="WA", Value = "WA" },
-                           new SelectListItem{ Text="ACT", Value = "ACT" },
-                           new SelectListItem{ Text="NT", Value = "NT" }
-               }, "Please select a state", new { @class = "form-control", style = "Height:40px" })
-                @Html.ValidationMessageFor(x => x.Shipping_State, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-50">
-                <label for="zip">PostCode</label>
-                @Html.TextBoxFor(x => x.Shipping_Postcode, new { @class = "form-control", placeholder = "2410" })
-                @Html.ValidationMessageFor(x => x.Shipping_Postcode, "", new { @class = "text-danger" })
-            </div>
-        </div>
+
+
+        <label for="state">State</label>
+        @Html.DropDownListFor(x => x.Shipping_State, new List<SelectListItem>
+        {
+                    new SelectListItem{ Text="NSW", Value = "NSW" },
+                    new SelectListItem{ Text="QLD", Value = "QLD" },
+                    new SelectListItem{ Text="SA", Value = "SA" },
+                    new SelectListItem{ Text="TAS", Value = "TAS" },
+                    new SelectListItem{ Text="VIC", Value = "VIC" },
+                    new SelectListItem{ Text="WA", Value = "WA" },
+                    new SelectListItem{ Text="ACT", Value = "ACT" },
+                    new SelectListItem{ Text="NT", Value = "NT" }
+        }, "Please select a state", new { @class = "form-control", style = "Height:40px; max-width:350px" })
+        @Html.ValidationMessageFor(x => x.Shipping_State, "", new { @class = "text-danger" })
+
+        <label for="zip" style="padding-top:20px">PostCode</label>
+        @Html.TextBoxFor(x => x.Shipping_Postcode, new { @class = "form-control", placeholder = "2410", style = "max-width:350px" })
+        @Html.ValidationMessageFor(x => x.Shipping_Postcode, "", new { @class = "text-danger" })
+
         Different Billing Address? @Html.CheckBoxFor(x => x.IsBillingAddressDifferent, new { @onchange = "EnableBillingAdressDivModel(this);" })
 
         <div id="EnableBillingAdressDivID" class="well" style="display:none;">
@@ -158,28 +156,25 @@
             <label for="city"><i class="fa fa-institution"></i>Suburb</label>
             @Html.TextBoxFor(x => x.Billing_Suburb, new { @class = "form-control", placeholder = "Sydney" })
             @Html.ValidationMessageFor(x => x.Billing_Suburb, "", new { @class = "text-danger" })
-            <div class="row">
-                <div class="col-50">
-                    <label for="state">State</label>
-                    @Html.DropDownListFor(x => x.Billing_State, new List<SelectListItem>
-                   {
-                               new SelectListItem{ Text="NSW", Value = "NSW" },
-                               new SelectListItem{ Text="QLD", Value = "QLD" },
-                               new SelectListItem{ Text="SA", Value = "SA" },
-                               new SelectListItem{ Text="TAS", Value = "TAS" },
-                               new SelectListItem{ Text="VIC", Value = "VIC" },
-                               new SelectListItem{ Text="WA", Value = "WA" },
-                               new SelectListItem{ Text="ACT", Value = "ACT" },
-                               new SelectListItem{ Text="NT", Value = "NT" }
-                   }, "Please select a state", new { @class = "form-control", style = "Height:40px" })
-                    @Html.ValidationMessageFor(x => x.Shipping_State, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-50">
-                    <label for="zip">PostCode</label>
-                    @Html.TextBoxFor(x => x.Billing_Postcode, new { @class = "form-control", placeholder = "2410" })
-                    @Html.ValidationMessageFor(x => x.Billing_Postcode, "", new { @class = "text-danger" })
-                </div>
-            </div>
+
+            <label for="state">State</label>
+            @Html.DropDownListFor(x => x.Billing_State, new List<SelectListItem>
+            {
+                        new SelectListItem{ Text="NSW", Value = "NSW" },
+                        new SelectListItem{ Text="QLD", Value = "QLD" },
+                        new SelectListItem{ Text="SA", Value = "SA" },
+                        new SelectListItem{ Text="TAS", Value = "TAS" },
+                        new SelectListItem{ Text="VIC", Value = "VIC" },
+                        new SelectListItem{ Text="WA", Value = "WA" },
+                        new SelectListItem{ Text="ACT", Value = "ACT" },
+                        new SelectListItem{ Text="NT", Value = "NT" }
+            }, "Please select a state", new { @class = "form-control", style = "Height:40px; max-width:350px" })
+            @Html.ValidationMessageFor(x => x.Shipping_State, "", new { @class = "text-danger" })
+
+            <label for="zip" style="padding-top:20px">PostCode</label>
+            @Html.TextBoxFor(x => x.Billing_Postcode, new { @class = "form-control", placeholder = "2410", style = "max-width:350px" })
+            @Html.ValidationMessageFor(x => x.Billing_Postcode, "", new { @class = "text-danger" })
+
 
         </div>
     </div>

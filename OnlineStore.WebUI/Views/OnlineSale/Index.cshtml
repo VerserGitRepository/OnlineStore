@@ -18,18 +18,21 @@
         <li data-target="#myCarousel" data-slide-to="3" style="background-color:forestgreen"></li>
         <li data-target="#myCarousel" data-slide-to="4" style="background-color:hotpink"></li>
     </ol>
-    <div class="carousel-inner style:"align-content-center">
-        @{ int i = 0;}
+    <div class="carousel-inner style:" align-content-center">
+        @*@{ int i = 0;}
         @foreach (var item in Model.OnlineSaleProductModel.Where(p => p.IsCarouselProduct == true).ToList())
         {
             i++;
             var active = i == 1 ? "active" : "";
             <div class="item @active" style="background-color:slategray">
-                <a href="@Url.Action("CarsoleProductsPage", "OnlineSale")">  
-                    <img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:20%;height:250px;overflow:hidden" class="img-responsive" />    
+                <a href="@Url.Action("CarsoleProductsPage", "OnlineSale")">
+                    <img src="~/ProductImages/@item.Images.FirstOrDefault()" style="width:20%;height:250px;overflow:hidden" class="img-responsive" />
                 </a>
             </div>
-        }
+        }*@
+
+        <img src="~/Images/test image.png" />
+
     </div>
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>

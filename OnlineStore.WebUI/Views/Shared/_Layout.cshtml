@@ -24,7 +24,7 @@
 </head>
 
 <body @*style="background-color:#EAEDED"*@>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="border-radius:0;margin-bottom:0 !important; background-color:black; padding:5px 16px; box-shadow:none">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="border-radius:0;margin-bottom:0 !important; background-color:black; padding:0 16px; box-shadow:none">
         <div class="col">
             <a href="@Url.Action("Index", "OnlineSale")">
                 <img src="~/Images/Logo.png" style="width:180px;height:50px;" />
@@ -42,7 +42,7 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:black; padding:0">
-            <ul class="navbar-nav mr-auto" style="float:right; padding-right:40px">
+            <ul class="navbar-nav mr-auto" style="float:right; padding-right:40px;">
                 <li style="overflow:hidden">
                     <div>
                         @Html.Action("Summary", "ShoppingCart")
@@ -76,14 +76,14 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px !important; padding:15px 15px !important; padding-left:20px; padding-right:20px">
                                 @Session["Username"].ToString()
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:14px !important; background-color:black">
-                                <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:white !important;padding:10px 15px !important;">Auction</a>
-                                <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:white !important; padding:10px 15px !important;">Profile</a>
-                                <a class="dropdown-item" href="@Url.Action("Index", "OrdersList")" style="color:white !important; padding:10px 15px !important;">Admin Console</a>
-                                <a class="dropdown-item" href="#" style="color:white !important; padding:10px 15px !important;" onclick="ShowRegisterNewUserPage();">Register New User</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:14px !important; background-color:black;">
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:white !important;padding:10px 15px !important;">Auction</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:white !important; padding:10px 15px !important;">Profile</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "OrdersList")" style="color:white !important; padding:10px 15px !important;">Admin Console</a></li>
+                                <li><a class="dropdown-item" href="#" style="color:white !important; padding:10px 15px !important;" onclick="ShowRegisterNewUserPage();">Register</a></li>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:white !important; padding:10px 15px !important;">Logout</a>
-                            </div>
+                                <li><a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:white !important; padding:10px 15px !important;">Logout</a></li>
+                            </ul>
                         </li>
                         }
                         else
@@ -92,12 +92,12 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px !important; padding:15px 15px !important; padding-left:20px; padding-right:20px">
                                 @Session["Username"].ToString()
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:14px !important; background-color:black">
-                                <a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:white !important; padding:10px 15px !important;">Auction</a>
-                                <a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:white !important; padding:10px 15px !important;">Profile</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:14px !important; background-color:black">
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "AssetAuction")" style="color:white !important; padding:10px 15px !important;">Auction</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "PublicUserProfile")" style="color:white !important; padding:10px 15px !important;">Profile</a></li>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:white !important; padding:10px 15px !important;">Logout</a>
-                            </div>
+                                <li><a class="dropdown-item" href="@Url.Action("Login", "Login")" style="color:white !important; padding:10px 15px !important;">Logout</a></li>
+                            </ul>
                         </li>
                         }
                     }
@@ -117,17 +117,17 @@
                 </a>
                 <div class="collapse navbar-collapse justify-content-md-center" id="Product-navbar">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item" style="padding:10px 0">@Html.ActionLink("Best Sellers", "Index", "OnlineSale")</li>
-                        <li class="nav-item" style="padding:10px 0">@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
-                        <li class="nav-item" style="padding:10px 0">@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
-                        <li class="nav-item" style="padding:10px 0">@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
-                        <li class="nav-item" style="padding:10px 0">@Html.ActionLink("Desktop PC", "DesktopPC", "OnlineSale")</li>
-                        <li class="nav-item" style="padding:10px 0">@Html.ActionLink("iPad", "IPad", "OnlineSale")</li>
-                        <li class="nav-item" style="padding:10px 0">@Html.ActionLink("Accessories", "Accessories", "OnlineSale")</li>
-                        <li class="nav-item" style="padding:10px 0">@Html.ActionLink("Printer", "Printer", "OnlineSale")</li>
-                        <li class="nav-item" style="padding:10px 0">@Html.ActionLink("Servers", "Server", "OnlineSale")</li>
-                        <li class="nav-item" style="padding:10px 0">@Html.ActionLink("Network Gears", "NetworkGear", "OnlineSale")</li>
-                        <li class="nav-item" style="padding:10px 0"> <a href="https://verser.com.au/" target="_blank">Verser Services</a></li>
+                        <li class="nav-item" style="padding:10px 2px">@Html.ActionLink("Best Sellers", "Index", "OnlineSale")</li>
+                        <li class="nav-item" style="padding:10px 2px">@Html.ActionLink("Mobile", "Mobile", "OnlineSale")</li>
+                        <li class="nav-item" style="padding:10px 2px">@Html.ActionLink("Laptops", "Laptop", "OnlineSale")</li>
+                        <li class="nav-item" style="padding:10px 2px">@Html.ActionLink("Monitor", "Monitor", "OnlineSale")</li>
+                        <li class="nav-item" style="padding:10px 2px">@Html.ActionLink("Desktop PC", "DesktopPC", "OnlineSale")</li>
+                        <li class="nav-item" style="padding:10px 2px">@Html.ActionLink("iPad", "IPad", "OnlineSale")</li>
+                        <li class="nav-item" style="padding:10px 2px">@Html.ActionLink("Accessories", "Accessories", "OnlineSale")</li>
+                        <li class="nav-item" style="padding:10px 2px">@Html.ActionLink("Printer", "Printer", "OnlineSale")</li>
+                        <li class="nav-item" style="padding:10px 2px">@Html.ActionLink("Servers", "Server", "OnlineSale")</li>
+                        <li class="nav-item" style="padding:10px 2px">@Html.ActionLink("Network Gear", "NetworkGear", "OnlineSale")</li>
+                        <li class="nav-item" style="padding:10px 2px"> <a href="https://verser.com.au/" target="_blank">Verser Services</a></li>
                     </ul>
                 </div>
             </nav>
@@ -186,15 +186,15 @@
 
     @RenderSection("scripts", required: false)
 
-<div class="my_footer text-center text-muted" style="bottom:0;position:page; width:100%;background-color:lightgray;color:dodgerblue;font-size:smaller">
+<div class="my_footer text-center" style="bottom:0;position:page; width:100%;background-color:lightgray;font-size:smaller;">
     The @Session["CustomerName"] Site is Managed By Verser Technology Lifecycles &copy; @DateTime.Now.Year
     <img src="~/Images/Payment_options.PNG" />
 
-    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-sm" style="background-color:orange; color:black !important" data-toggle="modal" data-target="#exampleModal">
         Terms & Conditions
     </button>
-    ContactUs: <a href="tel:+61 1800 732 668" style="color:dodgerblue">+61 1800 732 668</a>  Mail: <a href="mailto:Support@verser.com.au" style="color:dodgerblue">Support@verser.com.au</a>&nbsp
-    @Html.ActionLink("FAQ", "FAQ", "Home", null, new { @class = "FaqLink", style = "color:dodgerblue" })
+    ContactUs: <a href="tel:+61 1800 732 668" style="color:#2f87ff">+61 1800 732 668</a>  Mail: <a href="mailto:Support@verser.com.au" style="color:#2f87ff">Support@verser.com.au</a>&nbsp
+    @Html.ActionLink("FAQ", "FAQ", "Home", null, new { @class = "FaqLink", style = "color:black" })
 </div>
 </body>
 </html>
