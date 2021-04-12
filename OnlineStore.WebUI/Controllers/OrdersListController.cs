@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnlineStore.WebUI.Infrastructure.HelperServices;
-using System.Drawing;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -189,9 +188,18 @@ namespace OnlineStore.WebUI.Controllers
         public ActionResult ApplyPromoCode(OrderViewModel model)
         {
             var promocodemodel = new PromoCodeModel { PromoDiscountPercent = model.promoCodeModel.PromoDiscountPercent, PromoEndDate = model.promoCodeModel.PromoEndDate, PromoCode = model.promoCodeModel.PromoCode, PromoStartDate = model.promoCodeModel.PromoStartDate, ProductID_FK = model.promoCodeModel.ProductID_FK };
-            var result = OrdersServices.ApplyPromoCode(promocodemodel);
+           // var result = OrdersServices.ApplyPromoCode(promocodemodel);
             return RedirectToAction("Index", "OrdersList");
         }
+
+        [HttpPost]
+        public ActionResult CreateProductPromo(PromoCodeModel model)
+        {
+            //var promocodemodel = new PromoCodeModel { PromoDiscountPercent = model.promoCodeModel.PromoDiscountPercent, PromoEndDate = model.promoCodeModel.PromoEndDate, PromoCode = model.promoCodeModel.PromoCode, PromoStartDate = model.promoCodeModel.PromoStartDate, ProductID_FK = model.promoCodeModel.ProductID_FK };
+            // var result = OrdersServices.ApplyPromoCode(promocodemodel);
+            return RedirectToAction("Index", "OrdersList");
+        }
+
         public ActionResult _AddNewBundle()
         {
          //   var LoadViewModel = (OrderViewModel)Session["OrderViewModel"];
