@@ -14,7 +14,7 @@
                         @using (Html.BeginForm("Login", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                         {
                             <br />
-                            <div class="col-lg-12">
+                            <div class="col-md-12">
                                 <img img src="~/Images/CompanyLogo.jpg" />
                                 <div class="input-group col-sm-12" style="justify-content:center; margin-top:10px">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -22,11 +22,11 @@
                                 </div>
                                 <br />
 
-                                <div class="input-group col-sm-12" style="justify-content:center">
+                                <div class="input-group col-md-12" style="justify-content:center">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                     @Html.PasswordFor(Model => Model.Password, new { @class = "form-control", placeholder = "Password" })
                                 </div>
-                                <div class="input-group col-sm-12" style="justify-content:center">
+                                <div class="input-group col-md-12" style="justify-content:center">
                                     <br />
                                     <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log in" style="background-color:grey;border-color:gray">
                                 </div>
