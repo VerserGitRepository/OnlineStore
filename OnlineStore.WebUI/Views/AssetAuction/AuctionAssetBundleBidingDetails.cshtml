@@ -95,7 +95,7 @@
                                     @using (Html.BeginForm("ExportAuctionResult", "AssetAuction", new { BundleId = @Model.Id }, FormMethod.Post, null))
                                     {
                                         <div>
-                                            <button type="submit" class="btn btn-warning" style="padding:10px">
+                                            <button type="submit" class="btn" style="padding:10px; background-color:orange; color:white">
                                                 <span class="glyphicon glyphicon-export black"></span> Assets Reference List
                                             </button>
                                         </div>
@@ -103,7 +103,7 @@
                                     @*<input type="submit" class="btn btn-warning" value="Assets Reference List" id="btnassetList" name="btnassetList" />*@
                                 </div>
                                 <div class="pull-left" style="padding-right:20px; padding-bottom:20px">
-                                    <input type="submit" class="btn btn-warning" value="Full History Of Bidding" name="btnLink" id="btnLink" style="padding:10px" />
+                                    <input type="submit" class="btn" value="Full History Of Bidding" name="btnLink" id="btnLink" style="padding:10px;  background-color:orange; color:white" />
                                 </div>
 
                             </div>
@@ -113,7 +113,7 @@
             </div>
         </div>
         <div class="card-footer text-muted">
-            <p style="color:cornflowerblue;font-weight:500"><a class="pull-left" href="@Url.Action("Index", "AssetAuction")" style="color:orange">Back To Auctions</a> AUCTION End Date: @Model.Bundle_Auction_EndDate - Start Date :@Model.Bundle_Auction_StartDate </p>
+            <p style="color:darkorange;font-weight:500"><a class="pull-left" href="@Url.Action("Index", "AssetAuction")" style="color:white; border:1px solid orange; padding:5px; border-radius:4px; background-color:orange">Back To Auctions</a> AUCTION End Date: @Model.Bundle_Auction_EndDate - Start Date :@Model.Bundle_Auction_StartDate </p>
         </div>
     </div>
 </div>
@@ -145,7 +145,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn" data-bs-dismiss="modal" style="background-color:orange">Close</button>
             </div>
         </div>
     </div>

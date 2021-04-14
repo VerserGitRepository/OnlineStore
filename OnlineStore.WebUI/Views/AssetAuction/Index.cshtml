@@ -46,7 +46,7 @@
                                 <div class="col-md-12">
                                     @using (Html.BeginForm("AuctionAssetBundleBidingDetails", "AssetAuction", new { BundleID = @item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                                     {
-                                        <input type="submit" class="btn btn-success pull-right" value="Bid Auction" />
+                                        <input type="submit" class="btn pull-right" value="Bid Auction" style="color:white; background-color:orange"/>
                                     }
                                 </div>
                             </div>
